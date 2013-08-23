@@ -1,7 +1,7 @@
 Deploy
 ******
 
-Following on from the previous :doc:`release` step...
+Following on from the previous :doc:`fabric-release` step...
 
 To deploy your project, change into the ``fabric`` folder.
 

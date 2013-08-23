@@ -1,5 +1,5 @@
-Digital Ocean
-*************
+Salt - Provision
+****************
 
 How to create a new server and deploy a web site.
 
@@ -71,4 +71,4 @@ You might like to add the server to your ssh configuration file e.g:
       Compression yes
 
 If your pillar file contained a ``site``, then click here for instructions on
-getting started: :doc:`site`
+getting started: :doc:`fabric-database`

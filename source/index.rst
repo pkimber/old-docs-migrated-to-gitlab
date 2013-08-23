@@ -11,9 +11,15 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   digitalocean
-   site
+   salt-cloud-install
+   salt-cloud-digitalocean
+   salt-cloud-rackspace
+   salt-provision
 
+   fabric-database
+   fabric-release
+   fabric-deploy
+   fabric-solr
 
 Indices and tables
 ==================

@@ -1,6 +1,25 @@
 Database
 ********
 
+If you are ready to deploy a Django site, start by creating a database...
+
+.. note::
+
+  Make sure the Salt pillar is configured correctly for the site.  You need to
+  include the database password.
+
+Create
+------
+
+To create a database for a site (in this example for ``hatherleigh_net``):
+
+::
+
+  fab create_db:dbname
+
+Maintenance
+===========
+
 Backup
 ------
 
@@ -15,15 +34,6 @@ The backup will be copied from the server into the following folder on your loca
 ::
 
   ~/repo/backup/csw/postgres/
-
-Database - Create
------------------
-
-To create a database for a new client (in this example for ``dbname``):
-
-::
-
-  fab create_db:dbname
 
 Database - Version
 ------------------

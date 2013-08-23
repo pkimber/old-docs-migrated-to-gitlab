@@ -26,7 +26,7 @@ Release the module and upload to your package index:
 
   Don't forget to commit your code to the version control system after running this task
 
-Click here for :doc:`deploy` instructions...
+Click here for :doc:`fabric-deploy` instructions...
 
 To check the contents of the release:
 
