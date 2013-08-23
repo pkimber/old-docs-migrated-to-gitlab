@@ -6,12 +6,11 @@ Release
   The release process currently supports Mercurial and GIT.
 
   The fabric release task will deploy your module to a package index of your choice (e.g. ``dev``).
-  For details on setting up your own package index, see the ``devpi`` documentation in our ``salt``
-  project.
+  For details on setting up your own package index, see the :doc:`devpi` documentation.
 
   This task prefixes your application name with a name of your choosing.  This prevents name
-  clashes with other packages in the index.  We recommend choosing a short version of your company
-  name (e.g.  ``pkimber``):
+  clashes with other packages in your package index.  We recommend choosing a short version
+  of your company name (e.g.  ``pkimber``):
 
 Start by committing your code to the version control system.
 

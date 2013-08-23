@@ -1,17 +1,14 @@
 Salt - Provision
 ****************
 
-How to create a new server and deploy a web site.
+After following the :doc:`salt-cloud-digitalocean` or
+:doc:`salt-cloud-rackspace` instructions to create your
+server...  you will want to use Salt to set it up...
 
 Minion
 ======
 
-Follow the *Digital Ocean* instructions in the ``create_cloud_server`` module
-to create your server...
-
-  Make a note of the IP address of the new server e.g. 1.2.3.4
-
-Log into the server as ``root`` using the IP address above:
+Log into the new server as ``root`` using the IP address:
 
 ::
 

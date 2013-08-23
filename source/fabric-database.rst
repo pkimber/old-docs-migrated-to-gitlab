@@ -3,13 +3,13 @@ Database
 
 If you are ready to deploy a Django site, start by creating a database...
 
+Create
+======
+
 .. note::
 
   Make sure the Salt pillar is configured correctly for the site.  You need to
   include the database password.
-
-Create
-------
 
 To create a database for a site (in this example for the server ``drop-temp``
 and the site ``hatherleigh_net``):

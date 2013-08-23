@@ -1,8 +1,8 @@
-Install
-*******
+Salt Cloud - Install
+********************
 
 Prerequisites
--------------
+=============
 
 ::
 
@@ -26,6 +26,7 @@ Virtual Environment
 
 ::
 
+  cd create_cloud_server
   mkvirtualenv --system-site-packages create_cloud_server
   pip install -r requirements.txt
 
@@ -40,3 +41,12 @@ The configuration files are kept securely and should
   cd /etc/salt/
   sudo ln -s /secure/folder/cloud.profiles .
   sudo ln -s /secure/folder/cloud.providers .
+
+Create a Server
+===============
+
+You can now follow the appropriate instructions for creating your own cloud
+server:
+
+- :doc:`salt-cloud-digitalocean`
+- :doc:`salt-cloud-rackspace`

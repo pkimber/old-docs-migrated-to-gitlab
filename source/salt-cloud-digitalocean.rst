@@ -66,3 +66,8 @@ To log into the server:
 
   sudo -i -u root
   ssh the.server.ip.address
+
+Provision
+=========
+
+You will now want to set-up your server: :doc:`salt-provision`...
