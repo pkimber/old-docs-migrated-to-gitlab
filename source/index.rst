@@ -6,7 +6,7 @@
 Cloud Docs
 **********
 
-Contents:
+Minion
 
 .. toctree::
    :maxdepth: 2
@@ -20,6 +20,13 @@ Contents:
    fabric-release
    fabric-deploy
    fabric-solr
+
+Master
+
+.. toctree::
+
+  devpi
+
 
 Indices and tables
 ==================
