@@ -3,6 +3,9 @@ Digital Ocean
 
 How to create a new server and deploy a web site.
 
+Minion
+======
+
 Follow the *Digital Ocean* instructions in the ``create_cloud_server`` module
 to create your server...
 
@@ -12,7 +15,8 @@ Log into the server as ``root`` using the IP address above:
 
 ::
 
-  sudo ssh root@1.2.3.4
+  sudo -i -u root
+  ssh the.server.ip.address
 
 Edit the Salt Minion configuration file, set the IP address for the Salt Master and
 re-start the minion:
@@ -21,7 +25,7 @@ re-start the minion:
 
   vi /etc/salt/minion
   
-  master: 5.6.7.8
+  master: the.master.ip.address
 
   stop salt-minion
   start salt-minion
@@ -38,9 +42,23 @@ minion is receiving requests:
 
   salt '*' test.ping
 
-Staying logged into the master as root, apply the update to the minion:
+Staying logged into the master as root and apply the configuration to the minion.
+
+.. note::
+
+  Make sure the Salt pillar is configured correctly for the new server.
+
+.. note::
+
+  Check that the latest Salt configuration and the pillar data are on the master.
 
 ::
 
   cd /srv/salt/
-  salt 'temp.server.*' state.highstate
+  salt 'drop-*' state.highstate
+
+Your new server should now be provisioned.  If your pillar file contained a
+list of ``users``, they should have been created.
+
+If your pillar file contained a ``site``, then click here for instructions on
+getting started: :doc:`site`
