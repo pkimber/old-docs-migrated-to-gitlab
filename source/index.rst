@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    digitalocean
+   site
 
 
 Indices and tables

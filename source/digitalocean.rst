@@ -38,7 +38,7 @@ minion is receiving requests:
   sudo -i -u root
 
   salt-key -L
-  salt-key -a temp.server.b
+  salt-key -a drop-temp
 
   salt '*' test.ping
 
@@ -59,6 +59,16 @@ Staying logged into the master as root and apply the configuration to the minion
 
 Your new server should now be provisioned.  If your pillar file contained a
 list of ``users``, they should have been created.
+
+You might like to add the server to your ssh configuration file e.g:
+
+::
+
+  vim ~/.ssh/config
+
+  Host drop-temp
+      HostName 37.139.130.130
+      Compression yes
 
 If your pillar file contained a ``site``, then click here for instructions on
 getting started: :doc:`site`
