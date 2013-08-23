@@ -1,0 +1,17 @@
+SOLR
+****
+
+To update the Haystack SOLR index for ``app_name`` on ``web.server``:
+
+::
+
+  fab -H web@web.server haystack_index:app_name
+
+To clear the Haystack SOLR index for ``app_name`` on the ``web.server``:
+
+::
+
+  fab -H web@web.server haystack_index_clear:app_name
+
+**Note**: you will be asked to confirm this command.  For more information see
+https://django-haystack.readthedocs.org/en/v2.0.0/management_commands.html#clear-index
