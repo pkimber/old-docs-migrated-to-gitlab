@@ -27,6 +27,12 @@ Master
 
   devpi
 
+Site
+
+.. toctree::
+
+  site-config
+
 
 Indices and tables
 ==================
