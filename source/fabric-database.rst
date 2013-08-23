@@ -11,11 +11,17 @@ If you are ready to deploy a Django site, start by creating a database...
 Create
 ------
 
-To create a database for a site (in this example for ``hatherleigh_net``):
+To create a database for a site (in this example for the server ``drop-temp``
+and the site ``hatherleigh_net``):
 
 ::
 
-  fab create_db:dbname
+  fab -H drop-temp create_db:site_name=hatherleigh_net,table_space=
+
+  # if your would like to specify a Postgres table space name
+  fab -H drop-temp create_db:site_name=hatherleigh_net,table_space=cbs
+
+You are now ready to :doc:`fabric-deploy` your site...
 
 Maintenance
 ===========
