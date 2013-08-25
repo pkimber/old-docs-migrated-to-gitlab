@@ -73,3 +73,21 @@ To configure your workstation to upload packages to the ``devpi`` index you crea
   repository: http://your.server/root/dev/
   username: root
   password: 123
+
+Issues
+======
+
+If the release procedure (``python setup.py clean sdist upload -r dev``) starts
+to throw some weird errors e.g:
+
+::
+
+  running upload
+  Submitting dist/pkimber-my-app-0.0.03.tar.gz to http://your.server/root/dev/
+  error: None
+
+... then check the nginx error logs on the server:
+
+::
+
+  tail /var/log/nginx/error.log
