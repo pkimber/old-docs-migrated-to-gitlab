@@ -32,6 +32,7 @@ Site
 .. toctree::
 
   site-config
+  ssl
 
 
 Indices and tables
