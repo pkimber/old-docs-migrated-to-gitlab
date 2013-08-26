@@ -19,6 +19,7 @@ Minion
    fabric-database
    fabric-release
    fabric-deploy
+   fabric-ssl
    fabric-solr
 
 Master

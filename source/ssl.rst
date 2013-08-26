@@ -67,3 +67,5 @@ Concatenate the three certificates to create a unified certificate:
 ::
 
   cat ssl.crt sub.class1.server.ca.pem ca.pem > ssl-unified.crt
+
+To copy the certificate to the server, refer to the :doc:`fabric-ssl` notes...
