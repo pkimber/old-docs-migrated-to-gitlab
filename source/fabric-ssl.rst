@@ -13,9 +13,11 @@ folder e.g:
   ├── salt-pillar
   ├── ssl-cert
   │   ├── hatherleigh.info
-  │   │   ├── ssl-unified.crt
+  │   │   ├── server.key
+  │   │   └── ssl-unified.crt
   │   ├── pkimber.net
-  │   │   ├── ssl-unified.crt
+  │   │   ├── server.key
+  │   │   └── ssl-unified.crt
 
 Make sure the Salt pillar is configured correctly for the site.  You need to
 set ``ssl`` to ``True`` and the ``domain`` must match the certificate e.g:
