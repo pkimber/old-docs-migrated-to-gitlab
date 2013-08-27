@@ -33,6 +33,7 @@ Site
 .. toctree::
 
   site-config
+  auth
   ssl
 
 
