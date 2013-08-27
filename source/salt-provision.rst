@@ -27,8 +27,9 @@ re-start the minion:
   stop salt-minion
   start salt-minion
 
-Log into your Salt Master, accept the key for the new minion and make sure the
-minion is receiving requests:
+Log into your Salt Master as yourself (make sure you exit the ``root`` session from
+the previous step).  Accept the key for the new minion and make sure the minion is
+receiving requests:
 
 ::
 
