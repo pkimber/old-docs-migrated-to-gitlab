@@ -36,6 +36,12 @@ Site
   auth
   ssl
 
+Development
+
+.. toctree::
+
+  dev-django-media
+
 
 Indices and tables
 ==================
