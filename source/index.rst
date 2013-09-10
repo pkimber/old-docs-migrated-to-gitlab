@@ -11,6 +11,7 @@ Minion
 .. toctree::
    :maxdepth: 2
 
+   salt-install
    salt-cloud-install
    salt-cloud-digitalocean
    salt-cloud-rackspace
