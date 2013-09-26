@@ -37,6 +37,7 @@ Site
 
   site-config
   auth
+  mailgun
   ssl
 
 Development

@@ -6,7 +6,7 @@ Deploy
   Before deploying your site, you need to release the code.  If you have not
   done this, check out the :doc:`fabric-release` instructions...
 
-To deploy your project (in this example for the server ``server`` and the
+To deploy your project (in this example for the server ``drop-temp`` and the
 site ``hatherleigh_net``):
 
 ::
