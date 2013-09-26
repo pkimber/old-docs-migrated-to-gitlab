@@ -7,7 +7,7 @@ Restore
   started on the notes...
 
 Database
-=======
+========
 
 Copy a recent backup to the cloud server::
 
@@ -48,6 +48,6 @@ On the cloud server::
   cd /home/web/repo/files/
   tar xzf /home/web/repo/backup/files/hatherleigh_net_20130926_121358_patrick.tar.gz
 
-..note::
+.. warning::
 
   This will restore all files for all sites.  You might not want this!!
