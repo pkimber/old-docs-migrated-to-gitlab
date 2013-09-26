@@ -21,7 +21,7 @@ re-start the minion:
 ::
 
   vi /etc/salt/minion
-  
+
   master: the.master.ip.address
 
   stop salt-minion

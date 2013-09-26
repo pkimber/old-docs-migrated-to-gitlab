@@ -16,6 +16,7 @@ and the site ``hatherleigh_net``):
 
 ::
 
+  cd fabric
   fab -H drop-temp create_db:site_name=hatherleigh_net,table_space=
 
   # if your would like to specify a Postgres table space name
@@ -40,6 +41,8 @@ The backup will be copied from the server into the following folder on your loca
 ::
 
   ~/repo/backup/csw/postgres/
+
+To restore the database, see :doc:`restore`
 
 Database - Version
 ------------------

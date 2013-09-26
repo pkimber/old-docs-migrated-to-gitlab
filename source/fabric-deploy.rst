@@ -12,6 +12,6 @@ site ``hatherleigh_net``):
 ::
 
   cd fabric
-  fab -H web@server -f deploy.py deploy:prefix=pkimber,name=hatherleigh_net,version=0.0.16
+  fab -H web@drop-temp -f deploy.py deploy:prefix=pkimber,name=hatherleigh_net,version=0.0.16
 
 For details on the ``prefix`` parameter, see :doc:`fabric-release`

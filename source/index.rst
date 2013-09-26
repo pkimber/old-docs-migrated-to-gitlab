@@ -23,6 +23,8 @@ Minion
    fabric-ssl
    fabric-solr
 
+   restore
+
 Master
 
 .. toctree::
