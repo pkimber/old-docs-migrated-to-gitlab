@@ -30,11 +30,11 @@ set ``ssl`` to ``True`` and the ``domain`` must match the certificate e.g:
 Usage
 =====
 
-To copy an SSL certificate to a web server:
+To copy an SSL certificate to a cloud server:
 
 ::
 
-  fab -H server ssl_cert:hatherleigh_net
+  fab -H drop-temp ssl_cert:hatherleigh_net
 
 .. note:: The task will ask you to enter the ``sudo`` password for the user on
   the server.

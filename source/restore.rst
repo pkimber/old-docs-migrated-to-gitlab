@@ -6,6 +6,9 @@ Restore
   These are draft notes...  I have only restored once... but wanted to get
   started on the notes...
 
+Database
+=======
+
 Copy a recent backup to the cloud server::
 
   scp ~/repo/backup/postgres/hatherleigh_net_20130926_113531_patrick.sql drop-temp:/home/patrick/repo/backup/postgres/
@@ -27,6 +30,24 @@ On the cloud server::
 
 Check the contents of ``out.log`` to make sure the restore succeeded.
 
+Files
+=====
+
+Copy a recent backup from your workstation to the cloud server::
+
+  scp ~/repo/backup/files/hatherleigh_net_20130926_121358_patrick.tar.gz web@drop-temp:/home/web/repo/backup/files/
+
 .. note::
 
-  We still have to restore the cloud files...
+  We are copying the files as user ``web``.  We should get the correct
+  permissions if we extract the files as the ``web`` user.
+
+On the cloud server::
+
+  sudo -i -u web
+  cd /home/web/repo/files/
+  tar xzf /home/web/repo/backup/files/hatherleigh_net_20130926_121358_patrick.tar.gz
+
+..note::
+
+  This will restore all files for all sites.  You might not want this!!
