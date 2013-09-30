@@ -6,7 +6,7 @@ Salt Master
   A Salt master starts life as a minion.
 
 To create the minion (which will become a master), follow the instructions in
-:doc:`salt-cloud-install``, followed by :doc:`salt-cloud-digitalocean` or
+:doc:`salt-cloud-install`, followed by :doc:`salt-cloud-digitalocean` or
 :doc:`salt-cloud-rackspace`
 
 Log into your new master server as ``root``...
@@ -71,6 +71,14 @@ following folder structure:
 
 Provision
 ---------
+
+The Salt pillar should be set-up to install the services you require for your
+master e.g::
+
+  base:
+    'master':
+      - global.yourcompany.users
+      - service.yourcompany.devpi
 
 To set-up your ``master``, follow the instructions in :doc:`salt-provision`
 remembering to use ``localhost`` as the IP address of the master.
