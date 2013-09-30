@@ -6,12 +6,18 @@
 Cloud Docs
 **********
 
+Master
+
+.. toctree::
+
+  salt-master
+  devpi
+
 Minion
 
 .. toctree::
    :maxdepth: 2
 
-   salt-install
    salt-cloud-install
    salt-cloud-digitalocean
    salt-cloud-rackspace
@@ -24,12 +30,6 @@ Minion
    fabric-solr
 
    restore
-
-Master
-
-.. toctree::
-
-  devpi
 
 Site
 

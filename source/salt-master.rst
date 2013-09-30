@@ -1,10 +1,25 @@
-Salt - Install
-**************
+Salt Master
+***********
 
-Master
-======
+.. note::
 
-Log into your master server as ``root``:
+  A Salt master starts life as a minion.
+
+To create the minion (which will become a master), follow the instructions in
+:doc:`salt-cloud-install``, followed by :doc:`salt-cloud-digitalocean` or
+:doc:`salt-cloud-rackspace`
+
+Log into your new master server as ``root``...
+
+Install
+-------
+
+Install salt master::
+
+  apt-get install salt-master
+
+Configuration
+-------------
 
 ::
 
@@ -13,6 +28,11 @@ Log into your master server as ``root``:
   # file_roots:
   #   base:
   #     - /srv/salt
+
+  # and uncomment the following lines:
+  # pillar_roots:
+  #   base:
+  #     - /srv/pillar
 
 Then re-start the salt master:
 
@@ -48,3 +68,9 @@ following folder structure:
   |   │   ├── uwsgi
   |   │   └── web
   │   └── ssl
+
+Provision
+---------
+
+To set-up your ``master``, follow the instructions in :doc:`salt-provision`
+remembering to use ``localhost`` as the IP address of the master.

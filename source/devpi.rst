@@ -4,7 +4,8 @@ devpi
 Initial Configuration
 =====================
 
-To configure http://doc.devpi.net/ after Salt has installed it on your server:
+To configure http://doc.devpi.net/ after Salt has installed it on your server,
+run the following commands on your workstation:
 
 ::
 
@@ -15,7 +16,7 @@ To configure http://doc.devpi.net/ after Salt has installed it on your server:
 Security
 --------
 
-Create a password for the root user (change ``123`` to as password of your choice):
+Create a password for the root user (change ``123`` to a password of your choice):
 
 ::
 

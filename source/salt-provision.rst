@@ -27,6 +27,11 @@ re-start the minion:
   stop salt-minion
   start salt-minion
 
+.. note::
+
+  If your server is going to be a master, then the master IP address
+  will be ``localhost``.
+
 Log into your Salt Master as yourself (make sure you exit the ``root`` session from
 the previous step).  Accept the key for the new minion and make sure the minion is
 receiving requests:
