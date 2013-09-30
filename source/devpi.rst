@@ -9,9 +9,9 @@ run the following commands on your workstation:
 
 ::
 
-  cd docs
-  mkvirtualenv salt
-  pip install -r requirements.txt
+  mkvirtualenv devpi-client
+  pip install nose
+  pip install devpi-client
 
 Security
 --------

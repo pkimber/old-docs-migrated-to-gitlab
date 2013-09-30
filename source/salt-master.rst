@@ -16,6 +16,7 @@ Install
 
 Install salt master::
 
+  apt-get update
   apt-get install salt-master
 
 Configuration
