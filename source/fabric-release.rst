@@ -22,6 +22,16 @@ Release the module and upload to your package index:
   cd /your/app/folder/
   fab -f /path/to/fabric/release.py dist:prefix=pkimber,pypirc=dev
 
+If the upload to :doc:`devpi` fails, then you can use the command line to
+upload (change the password to the one you defined when setting up ``devpi``)::
+
+  pip install nose
+  pip install devpi-client
+
+  devpi login root --password="123"
+  devpi use root/dev
+  devpi upload
+
 .. note::
 
   Don't forget to commit your code to the version control system after running this task
