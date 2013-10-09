@@ -41,7 +41,6 @@ We need to create an index so we can upload our own packages:
   devpi login root --password "123"
   devpi index -c dev volatile=False
 
-
 Note: To delete the index: ``devpi index --delete dev``
 
 Client
@@ -77,6 +76,25 @@ To configure your workstation to upload packages to the ``devpi`` index you crea
 
 Issues
 ======
+
+To solve any server side issues, start by using the ``--debug`` parameter e.g::
+
+  /home/web/repo/devpi/venv_devpi/bin/devpi-server --serverdir=/home/web/repo/devpi/data --refresh=60 --port=4040 --host=127.0.0.1 --debug
+
+Bad Request
+-----------
+
+I kept getting a *Bad request (400)* error with no more information when
+running::
+
+  python setup.py clean sdist upload -r dev
+
+It worked perfectly when using ``devpi upload``.  I spent over 3 hours trying
+to find why...  but it just started working when I actually used ``devpi`` to
+install one of the packages I had uploaded.
+
+Weird
+-----
 
 If the release procedure (``python setup.py clean sdist upload -r dev``) starts
 to throw some weird errors e.g:
