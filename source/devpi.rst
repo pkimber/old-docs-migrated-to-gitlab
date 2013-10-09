@@ -89,9 +89,8 @@ running::
 
   python setup.py clean sdist upload -r dev
 
-It worked perfectly when using ``devpi upload``.  I spent over 3 hours trying
-to find why...  but it just started working when I actually used ``devpi`` to
-install one of the packages I had uploaded.
+For the first release of a module, use the ``devpi upload`` command.
+Subsequent releases will work using ``setup.py upload``.
 
 Weird
 -----
