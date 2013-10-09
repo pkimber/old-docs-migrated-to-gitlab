@@ -9,9 +9,15 @@ Release
   choice (e.g. ``dev``).  For details on setting up your own package index,
   see the :doc:`devpi` documentation.
 
+.. note::
+
   This task prefixes your application name with a name of your choosing.  This
-  prevents name clashes with other packages in your package index.  We
-  recommend choosing a short version of your company name (e.g.  ``pkimber``):
+  prevents name clashes with other packages on the python package index (PyPI).
+
+  The prefix is also used for looking up the database settings for your
+  application.  For details, see :doc:`site-config`
+
+  I recommend choosing a short version of your company name e.g. ``pkimber``:
 
 Start by committing your code to the version control system.
 

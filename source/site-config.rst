@@ -3,8 +3,17 @@ Site - Configuration
 
 .. highlight:: yaml
 
+.. warning::
+
+  The Salt pillar data must be kept secure.  Do not push to a public repository
+  such as GitHub or BitBucket
+
+Sites
+=====
+
 To set-up a new site (or sites) on a server, create or edit a file in the
-pillar, ``sites`` folder e.g.
+pillar, ``sites`` folder e.g. ``sites/mysites.sls``.  The file should contain
+details of the sites to be deployed onto this server e.g:
 
 ::
 
@@ -22,17 +31,8 @@ pillar, ``sites`` folder e.g.
       ssl: True
       uwsgi_port: 3036
 
-.. note::
-
-  The Salt pillar data must be kept secure.  Do not push to a public repository
-  such as GitHub or BitBucket
-
-To validate the file, use the fabric ``validate`` task e.g:
-
-::
-
-  cd fabric
-  fab valid:pkimber_net
+Secret Key
+----------
 
 To generate a new secret key, use the Django extensions application:
 
@@ -48,6 +48,33 @@ To generate a new secret key, use the Django extensions application:
 ::
 
   django-admin.py generate_secret_key
+
+Database
+========
+
+The fabric :doc:`fabric-release` task uses a ``prefix`` parameter for
+identifying your modules.  This ``prefix`` is also used to lookup the
+database IP address for your site when running the :doc:`fabric-deploy`
+command.  So, for example, if your prefix is ``pkimber``, you should have a
+file in your pillar called::
+
+  db/pkimber/settings.sls
+
+This file should contain the IP address of your server (or ``localhost`` if
+your database is installed on the same server as your site) e.g::
+
+  postgres_settings:
+    listen_address: localhost
+
+Validate
+========
+
+To validate the pillar files, use the fabric ``validate`` task e.g:
+
+::
+
+  cd fabric
+  fab valid:pkimber_net
 
 Testing
 =======
