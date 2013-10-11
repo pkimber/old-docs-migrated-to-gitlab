@@ -74,7 +74,7 @@ To validate the pillar files, use the fabric ``validate`` task e.g:
 ::
 
   cd fabric
-  fab valid:pkimber_net
+  fab valid:prefix=pkimber,name=pkimber_net
 
 Testing
 =======

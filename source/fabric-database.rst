@@ -9,7 +9,9 @@ Create
 .. note::
 
   Make sure the Salt pillar is configured correctly for the site.  You need to
-  include the database password.
+  include the database password and a folder containing the database settings.
+
+  For details, see :doc:`site-config`
 
 To create a database for a site (in this example for the server ``drop-temp``
 and the site ``hatherleigh_net``):
@@ -17,10 +19,12 @@ and the site ``hatherleigh_net``):
 ::
 
   cd fabric
-  fab -H drop-temp create_db:site_name=hatherleigh_net,table_space=
+  fab -H drop-temp create_db:prefix=pkimber,site_name=hatherleigh_net,table_space=
 
   # if your would like to specify a Postgres table space name
-  fab -H drop-temp create_db:site_name=hatherleigh_net,table_space=cbs
+  fab -H drop-temp create_db:prefix=pkimber,site_name=hatherleigh_net,table_space=cbs
+
+For more information on the ``prefix`` parameter, see :doc:`site-config`.
 
 You are now ready to :doc:`fabric-deploy` your site...
 
