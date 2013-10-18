@@ -46,6 +46,7 @@ Development
 
   dev-django-media
   dev-django-static
+  dev-django-thumbnails
 
 
 Indices and tables
