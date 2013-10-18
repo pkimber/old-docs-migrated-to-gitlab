@@ -45,6 +45,7 @@ Development
 .. toctree::
 
   dev-django-media
+  dev-django-static
 
 
 Indices and tables

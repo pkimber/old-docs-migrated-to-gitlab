@@ -3,6 +3,12 @@ Django Media
 
 .. highlight:: python
 
+.. warning::
+
+  Don't forget to use
+  ``<form enctype="multipart/form-data" method="post"...``
+  in your forms, or the file/image will not be uploaded.
+
 Public
 ======
 
@@ -42,7 +48,9 @@ For development, add the following to your ``project/urls.py`` file:
       url(regex=r'^admin/',
           view=include(admin.site.urls)
           ),
-  ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+  )
+
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
   #   ^ helper function to return a URL pattern for serving files in debug mode.
   # https://docs.djangoproject.com/en/1.5/howto/static-files/#serving-files-uploaded-by-a-user
 
