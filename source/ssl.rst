@@ -71,7 +71,7 @@ Concatenate the three certificates to create a unified certificate:
 To copy the certificate to the server, refer to the :doc:`fabric-ssl` notes...
 
 Verify
-------
+======
 
 To make sure your certificate matches the private key:
 
@@ -80,3 +80,21 @@ To make sure your certificate matches the private key:
   openssl x509 -noout -modulus -in ssl.crt
   openssl req -noout -modulus -in server.csr
   openssl rsa -noout -modulus -in server.key
+
+Issues
+======
+
+::
+
+  Starting nginx:
+  nginx: [emerg] SSL_CTX_use_certificate_chain_file("/srv/ssl/hatherleigh_net/ssl-unified.crt")
+  failed (SSL: error:0906D066:PEM
+  routines:PEM_read_bio:bad end line error:140DC009:SSL
+  routines:SSL_CTX_use_certificate_chain_file:PEM lib)
+  nginx: configuration file /etc/nginx/nginx.conf test failed
+
+This is an issue with the line breaks in the concatenated files.  For help
+solving this issue, see `Fixing PEM routines:PEM_read_bio:bad end line error`_.
+
+
+.. _`Fixing PEM routines:PEM_read_bio:bad end line error`: http://drewsymo.com/how-to/pem-routinespem_read_biobad-end-line-error/
