@@ -27,13 +27,13 @@ following folder structure::
   |  │  ├── devpi
   |  │  ├── ...
   |  └── ssl-cert
-  |      ├── hatherleigh.net
-  |      │   ├── server.key
-  |      │   └── ssl-unified.crt
-  |      ├── pkimber.net
-  |      │   ├── server.key
-  |      │   └── ssl-unified.crt
-  |      └── ...
+  |     ├── hatherleigh.net
+  |     │   ├── server.key
+  |     │   └── ssl-unified.crt
+  |     ├── pkimber.net
+  |     │   ├── server.key
+  |     │   └── ssl-unified.crt
+  |     └── ...
 
 Sites
 =====
@@ -57,6 +57,21 @@ details of the sites to be deployed onto this server e.g:
       secret_key: 'another-secret-key-generated-by-django'
       ssl: True
       uwsgi_port: 3036
+      ftp: True
+      ftp_password: "generated-using-mkpasswd-see-below"
+
+FTP
+---
+
+If you want to allow FTP access for a site, set ``ftp`` to ``True`` and create
+an ``ftp_password``.  The password is generated using ``mkpasswd``::
+
+  mkpasswd -m sha-512 <password>
+
+If you enable FTP for a site, a system user will be created using the name of
+the site as the user name e.g. ``another_site``.  They will be able to login
+and upload files to a ``site`` folder which is within their home folder.  This
+``site`` folder is linked to the web site.
 
 Secret Key
 ----------
