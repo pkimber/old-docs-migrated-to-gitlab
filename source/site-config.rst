@@ -11,28 +11,29 @@ Site - Configuration
 The fabric tasks expect the folder structure for your projects to be in the
 following folder structure::
 
-  ├── fabric
-  │  ├── deploy.py
-  │  ├── fabfile.py
-  │  └── ...
-  ├── pillar
-  │  ├── db
-  │  ├── global
-  │  ├── README.rst
-  │  ├── ...
-  ├── salt
-  │  ├── db
-  │  ├── default
-  │  ├── devpi
-  │  ├── ...
-  └── ssl-cert
-      ├── hatherleigh.net
-      │   ├── server.key
-      │   └── ssl-unified.crt
-      ├── pkimber.net
-      │   ├── server.key
-      │   └── ssl-unified.crt
-      └── ...
+  ├── module
+  |  ├── fabric
+  |  │  ├── deploy.py
+  |  │  ├── fabfile.py
+  |  │  └── ...
+  |  ├── pillar
+  |  │  ├── db
+  |  │  ├── global
+  |  │  ├── README.rst
+  |  │  ├── ...
+  |  ├── salt
+  |  │  ├── db
+  |  │  ├── default
+  |  │  ├── devpi
+  |  │  ├── ...
+  |  └── ssl-cert
+  |      ├── hatherleigh.net
+  |      │   ├── server.key
+  |      │   └── ssl-unified.crt
+  |      ├── pkimber.net
+  |      │   ├── server.key
+  |      │   └── ssl-unified.crt
+  |      └── ...
 
 Sites
 =====
