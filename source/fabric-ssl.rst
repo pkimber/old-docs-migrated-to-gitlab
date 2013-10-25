@@ -5,19 +5,8 @@ Configuration
 =============
 
 The following task expects the certificate to be in a folder for the domain
-within a folder called ``ssl-cert`` which is placed beside the ``salt-pillar``
-folder e.g:
-
-::
-
-  ├── salt-pillar
-  ├── ssl-cert
-  │   ├── hatherleigh.info
-  │   │   ├── server.key
-  │   │   └── ssl-unified.crt
-  │   ├── pkimber.net
-  │   │   ├── server.key
-  │   │   └── ssl-unified.crt
+within a folder called ``ssl-cert`` which is placed beside the ``fabric`` and
+``pillar`` folders.  See :doc:`site-config` for details...
 
 Make sure the Salt pillar is configured correctly for the site.  You need to
 set ``ssl`` to ``True`` and the ``domain`` must match the certificate e.g:
