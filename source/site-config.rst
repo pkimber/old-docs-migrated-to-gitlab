@@ -12,28 +12,35 @@ The fabric tasks expect the folder structure for your projects to be in the
 following folder structure::
 
   ├── module
-  |  ├── fabric
-  |  │  ├── deploy.py
-  |  │  ├── fabfile.py
-  |  │  └── ...
-  |  ├── pillar
-  |  │  ├── db
-  |  │  ├── global
-  |  │  ├── README.rst
-  |  │  ├── ...
-  |  ├── salt
-  |  │  ├── db
-  |  │  ├── default
-  |  │  ├── devpi
-  |  │  ├── ...
-  |  └── ssl-cert
-  |     ├── hatherleigh.net
-  |     │   ├── server.key
-  |     │   └── ssl-unified.crt
-  |     ├── pkimber.net
-  |     │   ├── server.key
-  |     │   └── ssl-unified.crt
-  |     └── ...
+  │   ├── deploy
+  │   │   ├── pillar
+  |   |   │   ├── db
+  |   |   │   ├── global
+  |   |   │   ├── README.rst
+  |   |   |
+  │   │   ├── post-deploy
+  │   │   │   ├── hatherleigh_net.txt
+  │   │   │   ├── pkimber_net.txt
+  |   |   |
+  │   │   ├── salt-cloud
+  │   │   │   ├── cloud.profiles
+  │   │   │   ├── cloud.providers
+  │   │   │
+  │   │   └── ssl-cert
+  |   |       ├── hatherleigh.net
+  |   |       │   ├── server.key
+  |   |       │   └── ssl-unified.crt
+  |   |       ├── pkimber.net
+  |   |       │   ├── server.key
+  |   |       │   └── ssl-unified.crt
+  |   |
+  │   ├── fabric
+  │   │   ├── deploy.py
+  │   │   ├── fabfile.py
+  |   |
+  │   └── salt
+  │       ├── db
+  │       ├── default
 
 Sites
 =====
@@ -72,6 +79,15 @@ If you enable FTP for a site, a system user will be created using the name of
 the site as the user name e.g. ``another_site``.  They will be able to login
 and upload files to a ``site`` folder which is within their home folder.  This
 ``site`` folder is linked to the web site.
+
+To allow your project to find templates uploaded using FTP, update your
+``TEMPLATE_DIRS`` in ``settings/base.py`` as follows:
+
+.. code-block:: python
+
+  TEMPLATE_DIRS = (
+      get_env_variable('FTP_TEMPLATE_DIR'),
+  )
 
 Secret Key
 ----------

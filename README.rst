@@ -5,7 +5,7 @@ To build the documentation:
 
 ::
 
-  mkvirtualenv dev_docs_cloud
+  mkvirtualenv dev_docs
   pip install -r requirements.txt
 
 ::
