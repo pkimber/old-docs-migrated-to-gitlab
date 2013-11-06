@@ -7,7 +7,7 @@ Configuration
 =============
 
 If you want to allow FTP access for a site, set ``ftp`` to ``True`` and create
-an ``ftp_password`` e.g:
+an ``ftp_user_id`` and ``ftp_password`` e.g:
 
 .. code-block:: yaml
 
@@ -20,6 +20,12 @@ an ``ftp_password`` e.g:
       uwsgi_port: 3036
       ftp: True
       ftp_password: "generated-using-mkpasswd-see-below"
+      ftp_user_id: 7600
+
+.. note::
+
+  Keep the ``ftp_user_id`` unique across all the sites and start from ID 7600
+  so we don't clash with standard users.
 
 The password is generated using ``mkpasswd``:
 
@@ -85,6 +91,13 @@ are set-up as follows::
   url(regex=r'^article/',
       view=include('templatepages.urls'),
       ),
+
+If your project (or application) need access to the FTP static folder, then
+you can make it available in your environment by adding the following to your
+``production.py`` file::
+
+  # FTP upload 'static' folder
+  FTP_STATIC_DIR = get_env_variable('FTP_STATIC_DIR')
 
 
 .. _`django-templatepages`: https://github.com/bryanchow/django-templatepages

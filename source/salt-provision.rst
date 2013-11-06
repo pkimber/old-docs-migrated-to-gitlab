@@ -32,11 +32,9 @@ re-start the minion:
   If your server is going to be a master, then the master IP address
   will be ``localhost``.
 
-Log into your Salt Master as yourself (make sure you exit the ``root`` session from
-the previous step).  Accept the key for the new minion and make sure the minion is
-receiving requests:
-
-::
+Log into your Salt Master as yourself (make sure you exit the ``root`` session
+from the previous step).  Accept the key for the new minion and make sure the
+minion is receiving requests::
 
   sudo -i -u root
 
@@ -45,7 +43,8 @@ receiving requests:
 
   salt '*' test.ping
 
-Staying logged into the master as root and apply the configuration to the minion.
+Staying logged into the master as root and apply the configuration to the
+minion.
 
 .. note::
 
@@ -53,7 +52,8 @@ Staying logged into the master as root and apply the configuration to the minion
 
 .. note::
 
-  Check that the latest Salt configuration and the pillar data are on the master.
+  Check that the latest Salt configuration and the pillar data are on the
+  master.
 
 ::
 

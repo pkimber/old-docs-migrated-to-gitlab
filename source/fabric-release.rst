@@ -41,6 +41,10 @@ password to the one you defined when setting up ``devpi``)::
 
 .. note::
 
+  I see ``devpi`` registers the module.  Perhaps I need to do the same!
+
+.. note::
+
   Don't forget to commit your code to the version control system after running
   this task
 
