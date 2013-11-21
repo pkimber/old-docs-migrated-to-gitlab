@@ -21,9 +21,7 @@ Release
 
 Start by committing your code to the version control system.
 
-Release the module and upload to your package index:
-
-::
+Release the module and upload to your package index::
 
   cd /your/app/folder/
   fab -f /path/to/fabric/release.py dist:prefix=pkimber,pypirc=dev
@@ -50,9 +48,7 @@ password to the one you defined when setting up ``devpi``)::
 
 Click here for :doc:`fabric-deploy` instructions...
 
-To check the contents of the release:
-
-::
+To check the contents of the release::
 
   tar -ztvf dist/pkimber-app-name-0.0.16.tar.gz
 

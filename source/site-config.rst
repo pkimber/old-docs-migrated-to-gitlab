@@ -47,9 +47,7 @@ Sites
 
 To set-up a new site (or sites) on a server, create or edit a file in the
 pillar, ``sites`` folder e.g. ``sites/mysites.sls``.  The file should contain
-details of the sites to be deployed onto this server e.g:
-
-::
+details of the sites to be deployed onto this server e.g::
 
   sites:
     pkimber_net:
@@ -71,6 +69,33 @@ FTP
 ---
 
 :doc:`ftp`
+
+LAN
+---
+
+If you want to install a site to your local area network, then add the
+``lan`` option to your site configuration e.g::
+
+  sites:
+    my_site:
+      db_pass: password
+      domain: pkimber.net
+      lan: True
+      secret_key: 'my-secret-key-generated-by-django'
+      ssl: False
+      uwsgi_port: 3038
+
+.. note::
+
+  If you enable the ``lan`` option then you (currently) cannot use ``ssl``.
+
+  nginx will be configured with an empty server name so only one site can be
+  installed on the server.
+
+.. warning::
+
+  The Django site will set ``ALLOWED_HOSTS`` to ``*``   This is a security risk
+  for public web sites.
 
 Secret Key
 ----------
@@ -128,9 +153,7 @@ should be checked.  The test will attempt to open the pages using
 http://docs.seleniumhq.org/ in the Firefox browser.
 
 If, for example, your site is called ``pkimber_net``, then you could create a
-file called ``pkimber_net.txt`` with the following contents:
-
-::
+file called ``pkimber_net.txt`` with the following contents::
 
   urls:
   - doc: not https

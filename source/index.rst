@@ -39,12 +39,14 @@ Site
   auth
   ftp
   mailgun
+  maintain
   ssl
 
 Development
 
 .. toctree::
 
+  dev-django
   dev-django-media
   dev-django-static
   dev-django-thumbnails

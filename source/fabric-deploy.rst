@@ -7,9 +7,7 @@ Deploy
   done this, check out the :doc:`fabric-release` instructions...
 
 To deploy your project (in this example for the server ``drop-temp`` and the
-site ``hatherleigh_net``):
-
-::
+site ``hatherleigh_net``)::
 
   cd fabric
   fab -H web@drop-temp -f deploy.py deploy:prefix=pkimber,name=hatherleigh_net,version=0.0.16

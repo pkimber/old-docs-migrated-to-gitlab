@@ -16,7 +16,7 @@ Copy a recent backup to the cloud server::
 On the cloud server::
 
   cd ~/repo/backup/postgres/
-  psql -X -U postgres -c "DROP DATABASE hatherleigh_net"                                         
+  psql -X -U postgres -c "DROP DATABASE hatherleigh_net"
 
 On your workstation, re-create the database.  See :doc:`fabric-database`
 

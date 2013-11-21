@@ -14,9 +14,7 @@ Create
   For details, see :doc:`site-config`
 
 To create a database for a site (in this example for the server ``drop-temp``
-and the site ``hatherleigh_net``):
-
-::
+and the site ``hatherleigh_net``)::
 
   cd fabric
   fab -H drop-temp create_db:prefix=pkimber,site_name=hatherleigh_net,table_space=
@@ -38,9 +36,8 @@ To backup a database (in this example ``hatherleigh_net``)::
 
   fab -H drop-temp backup_db:hatherleigh_net
 
-The backup will be copied from the server into the following folder on your local workstation:
-
-::
+The backup will be copied from the server into the following folder on your
+local workstation::
 
   ~/repo/backup/postgres/
 
