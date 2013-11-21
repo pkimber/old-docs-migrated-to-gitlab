@@ -24,7 +24,7 @@ Start by committing your code to the version control system.
 Release the module and upload to your package index::
 
   cd /your/app/folder/
-  fab -f /path/to/fabric/release.py dist:prefix=pkimber,pypirc=dev
+  fab -f ../../module/fabric/release.py dist:prefix=pkimber,pypirc=dev
 
 If the upload to :doc:`devpi` fails (as it seems to do the first time you
 release a module), then you can use the command line to upload (change the
