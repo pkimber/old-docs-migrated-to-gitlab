@@ -100,9 +100,7 @@ If you want to install a site to your local area network, then add the
 Secret Key
 ----------
 
-To generate a new secret key, use the Django extensions application:
-
-::
+To generate a new secret key, use the Django extensions application::
 
   pip install django-extensions
 

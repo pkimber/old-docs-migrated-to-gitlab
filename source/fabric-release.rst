@@ -26,20 +26,21 @@ Release the module and upload to your package index::
   cd /your/app/folder/
   fab -f ../../module/fabric/release.py dist:prefix=pkimber,pypirc=dev
 
-If the upload to :doc:`devpi` fails (as it seems to do the first time you
-release a module), then you can use the command line to upload (change the
-password to the one you defined when setting up ``devpi``)::
+If this is the first time you have released this package then the upload will
+fail.  You need to run the following before running the ``release`` command
+again::
 
-  pip install nose
-  pip install devpi-client
+  cd /your/app/folder/
+  python setup.py register -r dev
 
-  devpi login root --password="123"
-  devpi use root/dev
-  devpi upload
-
-.. note::
-
-  I see ``devpi`` registers the module.  Perhaps I need to do the same!
+.. If the upload to :doc:`devpi` fails (as it seems to do the first time you
+   release a module), then you can use the command line to upload (change the
+   password to the one you defined when setting up ``devpi``)::
+   pip install nose
+   pip install devpi-client
+   devpi login root --password="123"
+   devpi use root/dev
+   devpi upload
 
 .. note::
 

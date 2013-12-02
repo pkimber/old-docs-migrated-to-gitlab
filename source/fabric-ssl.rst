@@ -9,9 +9,7 @@ within a folder called ``ssl-cert`` which is placed beside the ``fabric`` and
 ``pillar`` folders.  See :doc:`site-config` for details...
 
 Make sure the Salt pillar is configured correctly for the site.  You need to
-set ``ssl`` to ``True`` and the ``domain`` must match the certificate e.g:
-
-::
+set ``ssl`` to ``True`` and the ``domain`` must match the certificate e.g::
 
   domain: hatherleigh.info
   ssl: True
@@ -19,9 +17,7 @@ set ``ssl`` to ``True`` and the ``domain`` must match the certificate e.g:
 Usage
 =====
 
-To copy an SSL certificate to a cloud server:
-
-::
+To copy an SSL certificate to a cloud server::
 
   fab -H drop-temp ssl_cert:hatherleigh_net
 

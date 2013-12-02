@@ -98,6 +98,16 @@ you can make it available in your environment by adding the following to your
 
   # FTP upload 'static' folder
   FTP_STATIC_DIR = get_env_variable('FTP_STATIC_DIR')
+  FTP_STATIC_URL = get_env_variable('FTP_STATIC_URL')
+
+.. note::
+
+  If you don't want to allow FTP upload to your site, then set
+  ``FTP_STATIC_DIR`` and ``FTP_STATIC_URL`` to ``None``::
+
+    # FTP upload 'static' folder
+    FTP_STATIC_DIR = None
+    FTP_STATIC_URL = None
 
 
 .. _`django-templatepages`: https://github.com/bryanchow/django-templatepages

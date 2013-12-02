@@ -5,9 +5,7 @@ Using https://www.startssl.com/, enter the *Validations Wizard* and choose
 *Domain Name Validation*, enter the *Domain Name*, select a *Verification Email*
 and then enter the verification code sent to the selected email address.
 
-Generate your certificate request and private key:
-
-::
+Generate your certificate request and private key::
 
   openssl req -new -newkey rsa:2048 -nodes -keyout server.key -out server.csr
 
@@ -45,8 +43,9 @@ and ``server.key`` (the private key).
 Enter the *Certificates Wizard*, select *Web Server SSL/TLS Certificate*,
 then click *Skip*.
 
-Paste the contents of ``server.csr`` into the box.  The request is the whole file starting with
-``-----BEGIN CERTIFICATE REQUEST-----`` and ending with ``-----END CERTIFICATE REQUEST-----``.
+Paste the contents of ``server.csr`` into the box.  The request is the whole
+file starting with ``-----BEGIN CERTIFICATE REQUEST-----`` and ending with
+``-----END CERTIFICATE REQUEST-----``.
 
 Click *Continue*, then *Continue* again.  Choose the *Domain*...
 
@@ -59,12 +58,10 @@ Complete the process and then *Save Certificate* into a file named ``ssl.crt``
 .. Note:: if you forget to download any of these files, then don't panic!
   ``ssl.crt`` can be downloaded from *Control Panel*, *Toolbox*, *Retrieve
   Certificate*.  I think the other two files are the same for all StartSSL
-  certificates and can be re-used from another download or found on the StartSSL
-  web site (possibly http://www.startssl.com/certs/)
+  certificates and can be re-used from another download or found on the
+  StartSSL web site (possibly http://www.startssl.com/certs/)
 
-Concatenate the three certificates to create a unified certificate:
-
-::
+Concatenate the three certificates to create a unified certificate::
 
   cat ssl.crt sub.class1.server.ca.pem ca.pem > ssl-unified.crt
 
@@ -73,9 +70,7 @@ To copy the certificate to the server, refer to the :doc:`fabric-ssl` notes...
 Verify
 ======
 
-To make sure your certificate matches the private key:
-
-::
+To make sure your certificate matches the private key::
 
   openssl x509 -noout -modulus -in ssl.crt
   openssl req -noout -modulus -in server.csr
