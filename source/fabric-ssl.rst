@@ -14,6 +14,9 @@ set ``ssl`` to ``True`` and the ``domain`` must match the certificate e.g::
   domain: hatherleigh.info
   ssl: True
 
+.. important:: If you are using :doc:`mailgun`, then don't forget to update
+  the route to use ``https`` rather than ``http``.
+
 Usage
 =====
 

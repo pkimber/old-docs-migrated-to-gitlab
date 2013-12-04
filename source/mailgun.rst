@@ -6,7 +6,8 @@ Mailgun
 Configuration
 =============
 
-Create a route for your Mailgun domain::
+Using https://mailgun.com/cp/routes, create a route for your Mailgun domain
+(change ``pkimber.net`` to the domain name of your own site)::
 
   Priority              0
   Filter Expressions    match_recipient(".*@pkimber.net")
@@ -15,8 +16,6 @@ Create a route for your Mailgun domain::
 .. note::
 
   As shown above, append ``/mailgun/incoming/`` to your domain name.
-
-  Change ``pkimber.net`` to the domain name of your own site.
 
 Project
 =======
@@ -27,9 +26,24 @@ Add the following to your requirements::
 
   django-mailgun==0.2.2
 
-Add the following to your requirements if you want to receive mail::
+If you want to receive mail, add the following to ``requirements/base.txt``::
 
   git+https://github.com/hedberg/django-mailgun-incoming.git#egg=mailgun_incoming
+
+Until this pull request has been accepted
+https://github.com/hedberg/django-mailgun-incoming/pull/1
+then use my fork::
+
+  git+https://github.com/pkimber/django-mailgun-incoming.git#egg=mailgun_incoming
+
+If you want to receive mail, add the following to ``project/urls.py``::
+
+  urlpatterns = patterns(
+      ...
+      url(regex=r'^mailgun/',
+          view=include('mailgun_incoming.urls')
+          ),
+      ...
 
 Add the following to ``production.py``::
 
@@ -51,10 +65,11 @@ be the same for all your sites e.g:
 In your Salt pillar for the site:
 
 - enable ``mailgun_send`` 
-- if you want to receive email, ``mailgun_receive``
-- if the mailgun domain is different to the site domain a ``mailgun_domain``
+- if you want to receive email, enable ``mailgun_receive``
+- if the mailgun domain is different to the site domain add a
+  ``mailgun_domain``
 
-e.g::
+e.g:
 
 .. code-block:: yaml
 
