@@ -22,7 +22,10 @@ Usage
 
 To copy an SSL certificate to a cloud server::
 
-  fab -H drop-temp ssl_cert:hatherleigh_net
+  fab -H drop-d ssl_cert:prefix=pkimber,site_name=hatherleigh_net
+
+For details on the ``prefix`` parameter, see :doc:`fabric-release` and
+:doc:`site-config`
 
 .. note:: The task will ask you to enter the ``sudo`` password for the user on
   the server.
