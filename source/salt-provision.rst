@@ -8,21 +8,22 @@ server...  you will want to use Salt to set it up...
 Minion
 ======
 
-Log into the new server as ``root`` using the IP address:
-
-::
+Log into the new server as ``root`` using the IP address::
 
   sudo -i -u root
   ssh the.server.ip.address
 
-Edit the Salt Minion configuration file, set the IP address for the Salt Master and
-re-start the minion:
+Find the IP address of your master (in this example, ``1.2.3.4``), and add
+this to the ``/etc/hosts`` file::
 
-::
+  echo "1.2.3.4 salt" >> /etc/hosts
 
-  vi /etc/salt/minion
+.. Edit the Salt Minion configuration file, set the IP address for the Salt Master and
+   re-start the minion::
+   vi /etc/salt/minion
+   master: the.master.ip.address
 
-  master: the.master.ip.address
+Restart the minion::
 
   stop salt-minion
   start salt-minion
@@ -58,14 +59,12 @@ minion.
 ::
 
   cd /srv/salt/
-  salt 'drop-*' state.highstate
+  salt 'drop-temp' state.highstate
 
 Your new server should now be provisioned.  If your pillar file contained a
 list of ``users``, they should have been created.
 
-You might like to add the server to your ssh configuration file e.g:
-
-::
+You might like to add the server to your ssh configuration file e.g::
 
   vim ~/.ssh/config
 

@@ -16,16 +16,12 @@ Configuration
   this article:
   http://russell.ballestrini.net/create-your-own-fleet-of-servers-with-digital-ocean-and-salt-cloud/
 
-Set-up a virtual environment::
-
-  mkvirtualenv --system-site-packages dev_create_cloud_server
-
 Profile
 -------
 
 ::
 
-  vim /etc/salt/cloud.profiles
+  vim ~/repo/dev/module/deploy/salt-cloud/cloud.profiles
 
 ::
 
@@ -39,7 +35,7 @@ Providers
 
 ::
 
-  vim /etc/salt/cloud.providers
+  vim ~/repo/dev/module/deploy/salt-cloud/cloud.providers
 
 ::
 
@@ -48,23 +44,56 @@ Providers
     api_key: the-api-key
     provider: digital_ocean
     location: Amsterdam 1
-    ssh_key_name: name-of-root-key
+    ssh_key_name: name-of-my-key.pub
 
-The ``name-of-root-key`` will look similar to this:: ``root@euston.pub`` (where
+The ``name-of-my-key.pub`` will look similar to this:: ``root@euston.pub`` (where
 ``euston`` is the host name of my workstation.
+
+.. warning::
+
+  The actual **name** must match... so if the name of the key in the Digital
+  Ocean GUI is ``name-of-my-key.pub``, then this must match the value contained
+  in ``ssh_key_name`` in ``cloud.providers``.
+
+Locations
+---------
+
+To list all locations for a provider (in this example for ``digitalocean``)::
+
+  workon dev_create_cloud_server
+  sudo ~/.virtualenvs/dev_create_cloud_server/bin/python \
+    ~/.virtualenvs/dev_create_cloud_server/bin/salt-cloud \
+    --profiles=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles \
+    --providers-config=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers \
+    --list-location \
+    digitalocean
+
+.. note::
+
+  You can also use ``--list-images`` and ``--list-sizes``
 
 Usage
 =====
 
+Set-up a virtual environment::
+
+  mkvirtualenv --system-site-packages dev_create_cloud_server
+  pip install --upgrade -r requirements.txt
+
 To create a server called ``drop-temp`` (replace ``patrick`` with your own
 name)::
 
+  workon dev_create_cloud_server
   sudo ~/.virtualenvs/dev_create_cloud_server/bin/python \
       ~/.virtualenvs/dev_create_cloud_server/bin/salt-cloud \
       --profiles=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles \
       --providers-config=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers \
-      -p droplet_512 \
+      --profile droplet_512 \
       drop-temp
+
+.. tip::
+
+  To get some logging, add ``--log-level=debug`` to the ``salt-cloud`` command.
 
 .. note::
 
