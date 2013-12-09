@@ -52,6 +52,13 @@ Development
   dev-django-thumbnails
 
 
+PHP
+
+.. toctree::
+
+  php
+
+
 Indices and tables
 ==================
 
