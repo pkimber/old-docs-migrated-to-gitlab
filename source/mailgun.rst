@@ -6,6 +6,11 @@ Mailgun
 Configuration
 =============
 
+Create a mailgun domain for your site (e.g. ``hatherleigh.info``) and set-up
+the DNS records e.g:
+
+.. image:: ./misc/mailgun-dns.jpg
+
 Using https://mailgun.com/cp/routes, create a route for your Mailgun domain
 (change ``pkimber.net`` to the domain name of your own site)::
 
@@ -26,6 +31,10 @@ Add the following to your requirements::
 
   django-mailgun==0.2.2
 
+Add the following to ``THIRD_PARTY_APPS`` in ``settings/base.py``::
+
+  'mailgun_incoming',
+
 If you want to receive mail, add the following to ``requirements/base.txt``::
 
   git+https://github.com/hedberg/django-mailgun-incoming.git#egg=mailgun_incoming
@@ -45,7 +54,7 @@ If you want to receive mail, add the following to ``project/urls.py``::
           ),
       ...
 
-Add the following to ``production.py``::
+Add the following to ``settings/production.py``::
 
   # django-mailgun
   EMAIL_BACKEND = 'django_mailgun.MailgunBackend'

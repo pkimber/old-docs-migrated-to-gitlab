@@ -6,6 +6,12 @@
 Cloud Docs
 **********
 
+Process
+
+.. toctree::
+
+  process
+
 Master
 
 .. toctree::
