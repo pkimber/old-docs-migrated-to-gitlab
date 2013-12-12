@@ -61,7 +61,12 @@ step to read any emails sent to the site.
 
   If using http://www.startssl.com/ then send emails to ``webmaster``.
 
+Copy the SSL certificate to the server: :doc:`fabric-ssl`
 
+After installing the certificate, run a ``salt 'drop-temp' state.highstate``
+for your server so the site is set-up correctly for SSL.
+
+Finally...
 
 .. important::
 
