@@ -22,14 +22,14 @@ Set-up the basic DNS records e.g.
 
 Enable mailgun for your project: :doc:`mailgun`
 
-.. warning::
+.. important::
 
   Your site doesn't yet have ``https`` enables, so for the *Action*
   on the mailgun route, use ``http`` (not ``https``).
 
 Set-up your pillar :doc:`site-config`
 
-.. warning:: Set-up your site with ``ssl: False``
+.. important:: Set-up your site with ``ssl: False``
 
 Transfer the pillar to the salt master and then :doc:`salt-provision`
 
@@ -52,11 +52,19 @@ Log into your cloud server and check the email was received e.g::
 .. code-block:: python
 
   from mailgun_incoming.models import IncomingEmail
-  IncomingEmail.objects.all()
+  for mail in IncomingEmail.objects.all().order_by('-id'): print mail.body_plain
 
-Create an SSL certificate e.g. http://www.startssl.com/
+Create an SSL certificate: :doc:`ssl`.  Use the python code in the previous
+step to read any emails sent to the site.
 
-.. warning::
+.. note::
+
+  If using http://www.startssl.com/ then choose to send emails to
+  ``webmaster``.
+
+
+
+.. important::
 
   Change the *Action* on the mailgun route filter to use ``https``:
   :doc:`mailgun`

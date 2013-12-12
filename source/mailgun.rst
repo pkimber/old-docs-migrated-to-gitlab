@@ -88,3 +88,14 @@ e.g:
       mailgun_domain: mg.hatherleigh.net
       mailgun_receive: True
       mailgun_send: True
+
+Diagnostics
+===========
+
+Check the mailgun URL for your site (appending ``/mailgun/incoming/`` to the
+site URL).
+
+e.g using https://github.com/jkbr/httpie::
+
+  $ http GET http://hatherleigh.info/mailgun/incoming/
+  HTTP/1.1 405 METHOD NOT ALLOWED
