@@ -109,5 +109,20 @@ you can make it available in your environment by adding the following to your
     FTP_STATIC_DIR = None
     FTP_STATIC_URL = None
 
+For local development, to simulate access to the FTP upload folder, add
+something similar to this to the ``settings/local.py`` file::
+
+  # FTP upload 'static' folder
+  FTP_STATIC_DIR = os.path.normpath(os.path.join(
+      os.path.dirname(os.path.realpath(__file__)),
+      '..',
+      'project',
+      'tests',
+      'data',
+      'ftp_static_dir',
+  ))
+  # Start a local web server in the 'project' folder.
+  FTP_STATIC_URL = 'http://localhost:8080/'
+
 
 .. _`django-templatepages`: https://github.com/bryanchow/django-templatepages

@@ -59,8 +59,7 @@ step to read any emails sent to the site.
 
 .. note::
 
-  If using http://www.startssl.com/ then choose to send emails to
-  ``webmaster``.
+  If using http://www.startssl.com/ then send emails to ``webmaster``.
 
 
 

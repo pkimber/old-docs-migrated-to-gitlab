@@ -22,7 +22,7 @@ Usage
 
 To copy an SSL certificate to a cloud server::
 
-  fab -H drop-d ssl_cert:prefix=pkimber,site_name=hatherleigh_net
+  fab -H drop-temp ssl_cert:prefix=pkimber,site_name=hatherleigh_info
 
 For details on the ``prefix`` parameter, see :doc:`fabric-release` and
 :doc:`site-config`
@@ -33,3 +33,6 @@ For details on the ``prefix`` parameter, see :doc:`fabric-release` and
 .. note:: This task expects the ``/srv/`` folder to exist on the server.  I
   don't know what creates the folder... so I am currently not sure how it gets
   there!
+
+.. important:: Don't forget to run a ``salt 'drop-temp' state.highstate`` for
+  your server so the site is set-up correctly for SSL.
