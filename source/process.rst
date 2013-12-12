@@ -5,12 +5,16 @@ Process
 
 To deploy a site from scratch:
 
+Domain
+======
+
 Purchase a domain name e.g. http://dyn.com/
 
 Create a cloud server for your project: :doc:`salt-cloud-digitalocean` or
 :doc:`salt-cloud-rackspace`.
 
-Set the name servers.  e.g. for https://cloud.digitalocean.com/domains::
+Set the name servers e.g. in https://account.dyn.com/services/zones/ point the
+domain to the https://cloud.digitalocean.com/domains DNS server::
 
   ns1.digitalocean.com
   ns2.digitalocean.com
@@ -27,6 +31,9 @@ Enable mailgun for your project: :doc:`mailgun`
   Your site doesn't yet have ``https`` enables, so for the *Action*
   on the mailgun route, use ``http`` (not ``https``).
 
+Server
+======
+
 Set-up your pillar :doc:`site-config`
 
 .. important:: Set-up your site with ``ssl: False``
@@ -38,6 +45,9 @@ Create the database for your project: :doc:`fabric-database`
 Release your project: :doc:`fabric-release`
 
 Deploy your project to the server: :doc:`fabric-deploy`
+
+SSL
+===
 
 Check the mailgun domain to make sure the DNS records are set-up correctly.
 
@@ -66,7 +76,8 @@ Copy the SSL certificate to the server: :doc:`fabric-ssl`
 After installing the certificate, run a ``salt 'drop-temp' state.highstate``
 for your server so the site is set-up correctly for SSL.
 
-Finally...
+Finally
+=======
 
 .. important::
 
