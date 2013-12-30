@@ -19,7 +19,6 @@ For an app::
       ...
       'django.contrib.staticfiles',
       'easy_thumbnails',
-      'registration',
 
 In your templates::
 

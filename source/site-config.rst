@@ -26,13 +26,15 @@ following folder structure::
   │   │   │   ├── cloud.profiles
   │   │   │   ├── cloud.providers
   │   │   │
-  │   │   └── ssl-cert
-  |   |       ├── hatherleigh.net
-  |   |       │   ├── server.key
-  |   |       │   └── ssl-unified.crt
-  |   |       ├── pkimber.net
-  |   |       │   ├── server.key
-  |   |       │   └── ssl-unified.crt
+  │   │   ├── ssl-cert
+  │   │   │   ├── hatherleigh.net
+  |   |   │   │   ├── server.key
+  |   |   │   │   └── ssl-unified.crt
+  |   |   │   ├── pkimber.net
+  |   |   │   │   ├── server.key
+  |   |   │   │   └── ssl-unified.crt
+  |   |   │
+  │   │   └── upload
   |   |
   │   ├── fabric
   │   │   ├── deploy.py
@@ -52,12 +54,14 @@ details of the sites to be deployed onto this server e.g::
   sites:
     pkimber_net:
       db_pass: password
+      db_type: psql
       domain: pkimber.net
       secret_key: 'my-secret-key-generated-by-django'
       ssl: False
       uwsgi_port: 3035
     another_site:
       db_pass: password2
+      db_type: psql
       domain: hatherleigh.net
       secret_key: 'another-secret-key-generated-by-django'
       ssl: True
@@ -133,12 +137,10 @@ your database is installed on the same server as your site) e.g::
 Validate
 ========
 
-To validate the pillar files, use the fabric ``validate`` task e.g:
-
-::
+To validate the pillar files, use the fabric ``valid`` task e.g::
 
   cd fabric
-  fab valid:prefix=pkimber,name=pkimber_net
+  fab valid:server_name=drop-temp,site_name=hatherleigh_net
 
 Testing
 =======

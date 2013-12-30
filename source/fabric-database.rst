@@ -17,12 +17,10 @@ To create a database for a site (in this example for the server ``drop-temp``
 and the site ``hatherleigh_net``)::
 
   cd fabric
-  fab -H drop-temp create_db:prefix=pkimber,site_name=hatherleigh_net,table_space=
+  fab -H drop-temp create_db:server_name=drop-temp,site_name=hatherleigh_net
 
   # if your would like to specify a Postgres table space name
-  fab -H drop-temp create_db:prefix=pkimber,site_name=hatherleigh_net,table_space=cbs
-
-For more information on the ``prefix`` parameter, see :doc:`site-config`.
+  fab -H drop-temp create_db:server_name=drop-temp,site_name=hatherleigh_net,table_space=cbs
 
 You are now ready to :doc:`fabric-deploy` your site...
 
@@ -34,7 +32,7 @@ Backup
 
 To backup a database (in this example ``hatherleigh_net``)::
 
-  fab -H drop-temp backup_db:hatherleigh_net
+  fab -H drop-temp backup_db:server_name=drop-temp,site_name=hatherleigh_net
 
 The backup will be copied from the server into the following folder on your
 local workstation::
@@ -53,8 +51,15 @@ The backup will be copied to the following folder on your workstation::
 
 To restore the files, see :doc:`restore`...
 
-Database - Version
-------------------
+Restore
+-------
+
+MySQL::
+
+  mysql --user=hatherleigh_net --password=mypassword --database=hatherleigh_net < /home/patrick/repo/backup/mysql/hatherleigh_net_20131230_125531_patrick.sql
+
+Version
+-------
 
 ::
 

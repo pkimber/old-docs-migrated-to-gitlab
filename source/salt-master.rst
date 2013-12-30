@@ -35,9 +35,7 @@ Configuration
   #   base:
   #     - /srv/pillar
 
-Then re-start the salt master:
-
-::
+Then re-start the salt master::
 
   restart salt-master
   # or:
