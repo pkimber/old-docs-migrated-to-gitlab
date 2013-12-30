@@ -31,8 +31,9 @@ file with ``sites`` at the root.  The sites are configured like this:
 .. warning::
 
   A MySQL user name cannot be longer than 16 characters.  The ``db_user``
-  setting is an *optional* parameter and should be used where the site name
-  (``hatherleigh_net`` in this example) is longer than 16 characters.
+  setting is an *optional* parameter and should **only** be used where the
+  site name (``hatherleigh_net`` in this example) is longer than 16
+  characters.
 
 .. note::
 
@@ -42,7 +43,7 @@ file with ``sites`` at the root.  The sites are configured like this:
 Deploy
 ======
 
-Check the ``deploy/upload`` folder (see doc:`site-config`) to see if it
+Check the ``deploy/upload`` folder (see :doc:`site-config`) to see if it
 contains the archive for the version of Drupal you want to install.
 
 If you need a newer version, download a Drupal archive from
@@ -51,7 +52,8 @@ https://drupal.org/download.
 Update the ``sites`` configuration so the ``drupal`` ``archive`` contains the
 version you want to install.
 
-To install Drupal, run the fabric deploy command e.g::
+To install Drupal and any modules listed in the ``packages`` section of the
+pillar file, run the fabric deploy command e.g::
 
   fab -H web@drop-temp -f deploy.py deploy:server_name=drop-temp,site_name=hatherleigh_net,prefix=pkimber,version=1.0.01
 
@@ -72,7 +74,7 @@ Use the fabric ``create_db`` task to create the database (see
 .. 
 .. .. warning:: A MySQL user name cannot be longer than 16 characters.
 
-To instructions on how to restore the database, see :doc:`fabric-database`.
+For instructions on how to restore the database, see :doc:`fabric-database`.
 
 To restore the files, copy a recent full backup to the server and restore just
 the custom bits e.g::
