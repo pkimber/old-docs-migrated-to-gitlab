@@ -75,9 +75,8 @@ In your Salt pillar for the site:
 
 - enable ``mailgun_send`` 
 - if you want to receive email, enable ``mailgun_receive``
-- if the mailgun domain is different to the site domain add a
-  ``mailgun_domain``
 
+If the mailgun domain is different to the site domain add a ``mailgun_domain``
 e.g:
 
 .. code-block:: yaml
@@ -99,3 +98,5 @@ e.g using https://github.com/jkbr/httpie::
 
   $ http GET http://hatherleigh.info/mailgun/incoming/
   HTTP/1.1 405 METHOD NOT ALLOWED
+
+See :doc:`process` for notes on how to check incoming mail.

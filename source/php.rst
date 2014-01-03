@@ -86,6 +86,7 @@ the custom bits e.g::
     /home/patrick/repo/backup/files/hatherleigh_net_20131230_140527_patrick.tar.gz \
     ./images \
     ./sites/all/libraries \
+    ./sites/all/modules \
     ./sites/all/themes \
     ./sites/default/files \
     ./sites/default/settings.php

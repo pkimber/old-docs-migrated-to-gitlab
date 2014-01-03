@@ -22,7 +22,7 @@ Usage
 
 To copy an SSL certificate to a cloud server::
 
-  fab -H drop-temp ssl_cert:prefix=pkimber,site_name=hatherleigh_info
+  fab -H drop-temp ssl_cert:server_name=drop-temp,site_name=hatherleigh_info
 
 For details on the ``prefix`` parameter, see :doc:`fabric-release` and
 :doc:`site-config`

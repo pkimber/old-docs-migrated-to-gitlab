@@ -9,20 +9,22 @@ Cloud Docs
 Process
 
 .. toctree::
+   :maxdepth: 1
 
-  process
+   process
 
 Master
 
 .. toctree::
+   :maxdepth: 1
 
-  salt-master
-  devpi
+   salt-master
+   devpi
 
 Minion
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    salt-cloud-install
    salt-cloud-digitalocean
@@ -40,29 +42,31 @@ Minion
 Site
 
 .. toctree::
+   :maxdepth: 1
 
-  site-config
-  auth
-  ftp
-  mailgun
-  maintain
-  ssl
+   site-config
+   auth
+   ftp
+   mailgun
+   maintain
+   ssl
 
 Development
 
 .. toctree::
+   :maxdepth: 1
 
-  dev-django
-  dev-django-media
-  dev-django-static
-  dev-django-thumbnails
-
+   dev-django
+   dev-django-media
+   dev-django-static
+   dev-django-thumbnails
 
 PHP
 
 .. toctree::
+   :maxdepth: 1
 
-  php
+   php
 
 
 Indices and tables

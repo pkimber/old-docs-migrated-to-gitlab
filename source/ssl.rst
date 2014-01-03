@@ -1,9 +1,15 @@
 SSL
 ***
 
+.. note::
+
+  To validate the domain name using StartSSL, you will need to receive an
+  email.  To set-up MailGun follow the instructions in :doc:`mailgun`
+
 Using https://www.startssl.com/, enter the *Validations Wizard* and choose
-*Domain Name Validation*, enter the *Domain Name*, select a *Verification Email*
-and then enter the verification code sent to the selected email address.
+*Domain Name Validation*, enter the *Domain Name*, select a
+*Verification Email* and then enter the verification code sent to the selected
+email address.
 
 Generate your certificate request and private key::
 

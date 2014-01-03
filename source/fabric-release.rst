@@ -14,9 +14,6 @@ Release
   This task prefixes your application name with a name of your choosing.  This
   prevents name clashes with other packages on the python package index (PyPI).
 
-  The prefix is also used for looking up the database settings for your
-  application.  For details, see :doc:`site-config`
-
   I recommend choosing a short version of your company name e.g. ``pkimber``:
 
 Start by committing your code to the version control system.
