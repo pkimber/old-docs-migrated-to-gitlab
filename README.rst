@@ -11,3 +11,6 @@ To build the documentation:
 ::
 
   make html && firefox build/html/index.html
+
+  on a mac...
+  make html && open -a firefox build/html/index.html
