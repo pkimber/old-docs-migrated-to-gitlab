@@ -6,9 +6,10 @@ Prerequisites
 
 ::
 
-  sudo apt-get install build-essential
-  sudo apt-get install python-m2crypto
-  sudo apt-get install sshpass
+  apt-get install build-essential python-m2crypto sshpass python-software-properties
+  add-apt-repository ppa:saltstack/salt
+  apt-get update
+  apt-get install salt-master
 
 On OSX
 

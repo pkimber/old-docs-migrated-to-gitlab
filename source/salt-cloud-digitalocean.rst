@@ -55,23 +55,6 @@ The ``name-of-my-key.pub`` will look similar to this:: ``root@euston.pub`` (wher
   Ocean GUI is ``name-of-my-key.pub``, then this must match the value contained
   in ``ssh_key_name`` in ``cloud.providers``.
 
-Locations
----------
-
-To list all locations for a provider (in this example for ``digitalocean``)::
-
-  workon dev_create_cloud_server
-  sudo ~/.virtualenvs/dev_create_cloud_server/bin/python \
-    ~/.virtualenvs/dev_create_cloud_server/bin/salt-cloud \
-    --profiles=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles \
-    --providers-config=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers \
-    --list-location \
-    digitalocean
-
-.. note::
-
-  You can also use ``--list-images`` and ``--list-sizes``
-
 Usage
 =====
 
@@ -101,10 +84,30 @@ name)::
 
 To log into the server::
 
-  sudo -i -u root
+  sudo -i
   ssh the.server.ip.address
 
 Provision
 =========
 
 You will now want to set-up your server: :doc:`salt-provision`...
+
+Utility
+=======
+
+Locations
+---------
+
+To list all locations for a provider (in this example for ``digitalocean``)::
+
+  workon dev_create_cloud_server
+  sudo ~/.virtualenvs/dev_create_cloud_server/bin/python \
+    ~/.virtualenvs/dev_create_cloud_server/bin/salt-cloud \
+    --profiles=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles \
+    --providers-config=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers \
+    --list-location \
+    digitalocean
+
+.. note::
+
+  You can also use ``--list-images`` and ``--list-sizes``
