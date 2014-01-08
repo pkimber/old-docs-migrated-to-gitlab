@@ -4,13 +4,13 @@ Authentication
 .. highlight:: python
 
 If your site is deployed, but you don't have an admin user (in this example
-``hatherleigh_net`` is the name of the site):
+``hatherleigh_info`` is the name of the site):
 
 .. code-block:: bash
 
   ssh server
   sudo -i -u web
-  ~/opt/hatherleigh_net.sh shell
+  ~/opt/hatherleigh_info.sh shell
 
 ::
 

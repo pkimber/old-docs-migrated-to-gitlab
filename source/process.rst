@@ -24,6 +24,10 @@ Set-up the basic DNS records e.g.
 
 .. image:: ./misc/process-dns.jpg
 
+.. note::
+
+  Don't forget to add a ``CNAME`` entry for the ``www`` subdomain.
+
 Enable mailgun for your project: :doc:`mailgun`
 
 .. important::
