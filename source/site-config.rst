@@ -53,6 +53,7 @@ details of the sites to be deployed onto this server e.g::
 
   sites:
     pkimber_net:
+      profile: django
       db_pass: password
       db_type: psql
       domain: pkimber.net
@@ -60,6 +61,7 @@ details of the sites to be deployed onto this server e.g::
       ssl: False
       uwsgi_port: 3035
     another_site:
+      profile: django
       db_pass: password2
       db_type: psql
       domain: hatherleigh.net

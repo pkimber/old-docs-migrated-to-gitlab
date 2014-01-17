@@ -28,7 +28,7 @@ Set-up the basic DNS records e.g.
 
   Don't forget to add a ``CNAME`` entry for the ``www`` subdomain.
 
-Enable mailgun for your project: :doc:`mailgun`
+If you are using mailgun for your project, then enable it: :doc:`mailgun`
 
 .. important::
 

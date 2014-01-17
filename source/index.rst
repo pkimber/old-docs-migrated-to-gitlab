@@ -49,6 +49,7 @@ Site
    ftp
    mailgun
    maintain
+   search
    ssl
 
 Development
