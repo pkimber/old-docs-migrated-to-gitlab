@@ -6,6 +6,7 @@ Requirements
 
 ::
 
+  cssselect==0.9.1
   django-haystack==2.1.0
   lxml==3.2.1
   pysolr==3.1.0
@@ -74,8 +75,11 @@ Edit the code so that it matches the fixed version on GitHub i.e::
 
   for field in model._meta.fields:
 
-Pillar
+Deploy
 ======
+
+Pillar
+------
 
 If you are using SOLR in your project, then include a pillar file containing
 the following::
@@ -88,3 +92,9 @@ file like this::
 
   'drop-temp':
     - config.solr
+
+Set-up
+------
+
+To create the SOLR index, see :doc:`fabric-search`.  A cron task should update
+the index at regular intervals.

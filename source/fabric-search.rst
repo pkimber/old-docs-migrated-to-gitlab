@@ -1,15 +1,11 @@
-SOLR
-****
+Search
+******
 
-To update the Haystack SOLR index for ``app_name`` on ``web.server``:
+To update the Haystack SOLR index for ``hatherleigh_info``::
 
-::
+  fab site:hatherleigh_info haystack_index
 
-  fab -H web@web.server haystack_index:app_name
-
-To clear the Haystack SOLR index for ``app_name`` on the ``web.server``:
-
-::
+To clear the Haystack SOLR index for ``app_name`` on the ``web.server``::
 
   fab -H web@web.server haystack_index_clear:app_name
 

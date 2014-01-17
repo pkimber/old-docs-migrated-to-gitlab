@@ -32,10 +32,10 @@ Minion
    salt-provision
 
    fabric-database
-   fabric-release
    fabric-deploy
+   fabric-release
+   fabric-search
    fabric-ssl
-   fabric-solr
 
    restore
 
