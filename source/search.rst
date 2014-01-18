@@ -96,5 +96,43 @@ file like this::
 Set-up
 ------
 
+SOLR needs a ``schema.xml`` file to work.  To create this file for your search
+indexes, pipe the output of the ``build_solr_schema`` command into a new file
+called ``schema.xml``::
+
+  django-admin.py build_solr_schema
+
+The current version of Haystack does not add a ``_version`` field to the
+``schema.xml`` file.  You will see this error when running ``update_index``::
+
+  Caused by: org.apache.solr.common.SolrException:
+  _version_field must exist in schema,
+  using indexed="true" stored="true" and multiValued="false"
+  (_version_ does not exist)
+
+To solve the problem, add a ``_version_`` field to the ``fields`` section of
+``schema.xml``::
+
+  <fields>
+    <!-- other stuff... -->
+
+    <field name="_version_" type="long" indexed="true" stored ="true"/>
+  </fields>
+
+For more information, see
+https://github.com/toastdriven/django-haystack/issues/671
+
+Copy your ``schema.xml`` to the following folder on your server::
+
+  /var/data/solr/multicore/institutelegalsecretaries_com/conf/schema.xml
+
+Make sure the permissions are set as follows::
+
+  -rw-r--r-- tomcat7 tomcat7
+
+Re-start Tomcat::
+
+  service tomcat7 restart
+
 To create the SOLR index, see :doc:`fabric-search`.  A cron task should update
 the index at regular intervals.
