@@ -122,9 +122,10 @@ To solve the problem, add a ``_version_`` field to the ``fields`` section of
 For more information, see
 https://github.com/toastdriven/django-haystack/issues/671
 
-Copy your ``schema.xml`` to the following folder on your server::
+Copy your ``schema.xml`` to the following folder on your server (replacing
+``hatherleigh_info`` with your site name)::
 
-  /var/data/solr/multicore/institutelegalsecretaries_com/conf/schema.xml
+  /var/data/solr/multicore/hatherleigh_info/conf/schema.xml
 
 Make sure the permissions are set as follows::
 
