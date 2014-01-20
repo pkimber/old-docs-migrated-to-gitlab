@@ -49,7 +49,7 @@ Site
    ftp
    mailgun
    maintain
-   solr
+   search
    ssl
 
 Development
