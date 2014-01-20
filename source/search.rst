@@ -4,7 +4,7 @@ SOLR
 Requirements
 ============
 
-::
+Add the following to ``requirements/base.py``::
 
   cssselect==0.9.1
   django-haystack==2.1.0
