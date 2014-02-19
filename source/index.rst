@@ -61,6 +61,7 @@ Development
    dev-django-media
    dev-django-static
    dev-django-thumbnails
+   dev-requirements
 
 PHP
 
