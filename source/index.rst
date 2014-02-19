@@ -57,6 +57,7 @@ Development
 .. toctree::
    :maxdepth: 1
 
+   dev-captcha
    dev-django
    dev-django-media
    dev-django-static
