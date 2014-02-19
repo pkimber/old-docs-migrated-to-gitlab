@@ -30,15 +30,6 @@ again::
   cd /your/app/folder/
   python setup.py register -r dev
 
-.. If the upload to :doc:`devpi` fails (as it seems to do the first time you
-   release a module), then you can use the command line to upload (change the
-   password to the one you defined when setting up ``devpi``)::
-   pip install nose
-   pip install devpi-client
-   devpi login root --password="123"
-   devpi use root/dev
-   devpi upload
-
 .. note::
 
   Don't forget to commit your code to the version control system after running
