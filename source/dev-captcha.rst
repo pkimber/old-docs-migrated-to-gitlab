@@ -20,6 +20,15 @@ Add the following to ``settings/base.py``::
   RECAPTCHA_PUBLIC_KEY = get_env_variable('RECAPTCHA_PUBLIC_KEY')
   RECAPTCHA_USE_SSL = True
 
+Make sure your pillar includes an ``sls`` file containing the public and
+private keys e.g:
+
+.. code-block:: yaml
+
+  captcha:
+    recaptcha_private_key: 1234567890
+    recaptcha_public_key: 1234567890
+
 When setting up your project for local development, you will need to set-up the
 environment variables as follows (this can be added to ``README.rst``):
 
