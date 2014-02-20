@@ -64,6 +64,13 @@ Development
    dev-django-thumbnails
    dev-requirements
 
+Apps
+
+.. toctree::
+   :maxdepth: 1
+
+   app-enquiry
+
 PHP
 
 .. toctree::
