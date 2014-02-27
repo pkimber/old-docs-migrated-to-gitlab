@@ -22,10 +22,7 @@ Usage
 
 To copy an SSL certificate to a cloud server::
 
-  fab -H drop-temp ssl_cert:server_name=drop-temp,site_name=hatherleigh_info
-
-For details on the ``prefix`` parameter, see :doc:`fabric-release` and
-:doc:`site-config`
+  fab site:hatherleigh_info ssl-cert
 
 .. note:: The task will ask you to enter the ``sudo`` password for the user on
   the server.
