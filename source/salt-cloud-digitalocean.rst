@@ -60,7 +60,7 @@ Usage
 
 Set-up a virtual environment::
 
-  mkvirtualenv --system-site-packages dev_create_cloud_server
+  mkvirtualenv --python=/usr/bin/python --system-site-packages dev_create_cloud_server
   pip install --upgrade -r requirements.txt
 
 To create a server called ``drop-temp`` (replace ``patrick`` with your own
