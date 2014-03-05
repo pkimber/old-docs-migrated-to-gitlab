@@ -12,12 +12,29 @@ Requirements::
 
 For an app::
 
-  example/base.py
+  # example/base.py
 
   THUMBNAIL_DEBUG = DEBUG
   INSTALLED_APPS = (
       ...
       'django.contrib.staticfiles',
+      'easy_thumbnails',
+
+For a project::
+
+  # settings/production.py
+  THUMBNAIL_DEBUG = DEBUG
+
+  # settings/local.py
+  THUMBNAIL_DEBUG = DEBUG
+
+  # settings/base.py
+  DJANGO_APPS = (
+      ...
+      'django.contrib.staticfiles',
+
+  THIRD_PARTY_APPS = (
+      ...
       'easy_thumbnails',
 
 In your templates::
