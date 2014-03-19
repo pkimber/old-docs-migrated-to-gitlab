@@ -30,6 +30,13 @@ On the cloud server::
 
 Check the contents of ``out.log`` to make sure the restore succeeded.
 
+MySQL
+-----
+
+::
+
+  mysql --user=hatherleigh_net --password=mypassword --database=hatherleigh_net < /home/patrick/repo/backup/mysql/hatherleigh_net_20131230_125531_patrick.sql
+
 Files
 =====
 

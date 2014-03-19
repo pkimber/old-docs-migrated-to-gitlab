@@ -31,6 +31,7 @@ Minion
    salt-cloud-rackspace
    salt-provision
 
+   fabric-backup
    fabric-database
    fabric-deploy
    fabric-release

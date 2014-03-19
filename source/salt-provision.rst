@@ -13,15 +13,14 @@ Log into the new server as ``root`` using the IP address::
   sudo -i -u root
   ssh the.server.ip.address
 
-Find the IP address of your master (in this example, ``1.2.3.4``), and add
-this to the ``/etc/hosts`` file::
+Find the IP address of your master (in this example, ``1.2.3.4``).  Edit the
+hosts file::
 
-  echo "1.2.3.4 salt" >> /etc/hosts
+  vim /etc/hosts
 
-.. Edit the Salt Minion configuration file, set the IP address for the Salt Master and
-   re-start the minion::
-   vi /etc/salt/minion
-   master: the.master.ip.address
+Add the IP address of your master::
+
+  1.2.3.4 salt
 
 Restart the minion::
 
@@ -43,6 +42,10 @@ minion is receiving requests::
   salt-key -a drop-temp
 
   salt '*' test.ping
+
+If your minion doesn't respond, you can check it's log file::
+
+  tail -f /var/log/salt/minion
 
 Staying logged into the master as root and apply the configuration to the
 minion.
