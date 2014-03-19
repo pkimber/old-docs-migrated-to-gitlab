@@ -58,6 +58,7 @@ Development
    :maxdepth: 1
 
    dev-captcha
+   dev-ckeditor
    dev-django
    dev-django-media
    dev-django-static
@@ -69,6 +70,7 @@ Apps
 .. toctree::
    :maxdepth: 1
 
+   app-block
    app-enquiry
 
 PHP

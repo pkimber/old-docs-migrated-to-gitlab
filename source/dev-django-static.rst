@@ -9,9 +9,7 @@ Django Static
   function, but they still serve static files... but I cannot see how!!
 
 The Django documentation describes a helper function, staticfiles_urlpatterns_,
-for serving static files during development:
-
-::
+for serving static files during development::
 
   from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -28,14 +26,18 @@ for serving static files during development:
 
   This helper function will only work if ``DEBUG`` is ``True``
 
+Editor
+======
 
-.. _staticfiles_urlpatterns: https://docs.djangoproject.com/en/1.5/ref/contrib/staticfiles/
+:doc:`dev-ckeditor`
 
 favicon.ico
 ===========
 
-In order for nginx to serve your applications favicon.ico file, it will need to be located in the following static folder within your project:
-
-::
+In order for nginx to serve your applications favicon.ico file, it will need
+to be located in the following static folder within your project::
 
   static/ico/favicon.ico
+
+
+.. _staticfiles_urlpatterns: https://docs.djangoproject.com/en/1.5/ref/contrib/staticfiles/
