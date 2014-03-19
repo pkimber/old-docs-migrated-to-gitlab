@@ -58,3 +58,22 @@ On the cloud server::
 .. warning::
 
   This will restore all files for all sites.  You might not want this!!
+
+FTP
+===
+
+.. note::
+
+  In this example, we are restoring files for the ``hatherleigh_net`` site.
+  Please replace any references to ``hatherleigh_net`` with the correct site
+  name.
+
+Copy a recent backup from your workstation to the cloud server::
+
+  scp /home/patrick/repo/backup/ftp/hatherleigh_net_20140319_165906_patrick.ftp.tar.gz web@drop-f:/home/web/repo/temp/
+
+On the cloud server::
+
+  sudo -i -u hatherleigh_net
+  cd ~/site/
+  tar xzf /home/web/repo/temp/hatherleigh_net_20140319_165906_patrick.ftp.tar.gz

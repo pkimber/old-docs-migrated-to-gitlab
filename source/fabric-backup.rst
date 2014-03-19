@@ -1,7 +1,12 @@
 Backup
 ******
 
-To backup a database (in this example ``hatherleigh_net``)::
+.. highlight:: bash
+
+Database
+========
+
+To backup a database (in this example ``hatherleigh_info``)::
 
   fab site:hatherleigh_info backup_db
 
@@ -11,6 +16,9 @@ local workstation::
   ~/repo/backup/postgres/
 
 To restore the database, see :doc:`restore`...
+
+Files
+=====
 
 To backup the files for *all* sites on a cloud server::
 
@@ -22,3 +30,10 @@ The backup will be copied to the following folder on your workstation::
 
 To restore the files, see :doc:`restore`...
 
+FTP
+===
+
+To backup the FTP file uploads for a site (in this example
+``hatherleigh_info``)::
+
+  fab site:hatherleigh_info backup_ftp

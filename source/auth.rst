@@ -12,12 +12,16 @@ If your site is deployed, but you don't have an admin user (in this example
   sudo -i -u web
   ~/opt/hatherleigh_info.sh shell
 
-::
+Superuser::
 
   from django.contrib.auth.models import User
   User.objects.create_superuser('your.name', '', 'password')
   exit()
 
-::
+Member of staff::
 
-  User.objects.create_user('your.name', '', 'password', is_staff=True)
+  from django.contrib.auth.models import User
+  user = User.objects.create_user('your.name', '', 'password')
+  user.is_staff = True
+  user.save()
+  exit()
