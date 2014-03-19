@@ -1,47 +1,33 @@
 Salt Cloud - Install
 ********************
 
-Prerequisites
-=============
+.. highlight:: bash
 
-::
+Install::
 
-  apt-get install build-essential python-m2crypto sshpass python-software-properties
-  add-apt-repository ppa:saltstack/salt
-  apt-get update
-  apt-get install salt-master
+  sudo apt-get install build-essential python-m2crypto sshpass python-software-properties
+  sudo add-apt-repository ppa:saltstack/salt
+  sudo apt-get update
+  sudo apt-get install salt-cloud
 
-On OSX
-
-::
+On OSX::
 
   brew install swig
   mkvirtualenv create_cloud_server
   pip install M2Crypto
   brew install https://raw.github.com/eugeneoden/homebrew/eca9de1/Library/Formula/sshpass.rb
 
-Virtual Environment
--------------------
-
-**Note**: Don't forget to use the ``--system-site-packages`` parameter:
-
-::
-
-  cd create_cloud_server
-  mkvirtualenv --system-site-packages create_cloud_server
-  pip install -r requirements.txt
-
 Configuration files
 -------------------
 
 The configuration files are kept securely and should
-**never be copied to GitHub or BitBucket**:
+**never be copied to a public repository e.g. DropBox, GitHub or BitBucket**
+(replace ``patrick`` with your own name)::
 
-::
-
+  sudo -i
   cd /etc/salt/
-  sudo ln -s /secure/folder/cloud.profiles .
-  sudo ln -s /secure/folder/cloud.providers .
+  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles .
+  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers .
 
 Create a Server
 ===============

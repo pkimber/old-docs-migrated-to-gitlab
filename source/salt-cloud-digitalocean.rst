@@ -58,17 +58,11 @@ The ``name-of-my-key.pub`` will look similar to this:: ``root@euston.pub`` (wher
 Usage
 =====
 
-Set-up a virtual environment::
-
-  mkvirtualenv --python=/usr/bin/python --system-site-packages dev_create_cloud_server
-  pip install --upgrade -r requirements.txt
-
 To create a server called ``drop-temp`` (replace ``patrick`` with your own
 name)::
 
-  workon dev_create_cloud_server
-  sudo ~/.virtualenvs/dev_create_cloud_server/bin/python \
-      ~/.virtualenvs/dev_create_cloud_server/bin/salt-cloud \
+  sudo -i
+  salt-cloud \
       --profiles=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles \
       --providers-config=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers \
       --profile droplet_512 \
@@ -100,9 +94,8 @@ Locations
 
 To list all locations for a provider (in this example for ``digitalocean``)::
 
-  workon dev_create_cloud_server
-  sudo ~/.virtualenvs/dev_create_cloud_server/bin/python \
-    ~/.virtualenvs/dev_create_cloud_server/bin/salt-cloud \
+  sudo -i
+  salt-cloud \
     --profiles=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles \
     --providers-config=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers \
     --list-location \
