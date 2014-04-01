@@ -71,6 +71,7 @@ Apps
 .. toctree::
    :maxdepth: 1
 
+   app-base
    app-block
    app-enquiry
 
