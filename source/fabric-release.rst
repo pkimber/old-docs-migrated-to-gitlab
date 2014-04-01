@@ -19,10 +19,10 @@ Release
 Start by committing your code to the version control system.
 
 Release the module and upload to your package index.  In this first example, we
-switch to the ``fabric`` virtual environment which is using python 2.
-``fabric`` is currently not compatible with python 3 which is why we need to do
-this::
+switch to the ``fabric`` virtual environment which is using python
+(``fabric`` is currently not compatible with python 3)::
 
+  cd /your/app/folder/
   workon dev_fabric && \
       fab -f ../../module/fabric/release.py dist:prefix=pkimber,pypirc=dev && \
       cd .
