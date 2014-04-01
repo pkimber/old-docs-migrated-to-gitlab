@@ -3,6 +3,12 @@ Mailgun
 
 .. highlight::python
 
+.. warning::
+
+  If your site is using ``https`` and doesn't have a valid certificate, then
+  switch it to ``http`` while setting up Mailgun.  Don't forget to switch the
+  site back to ``https`` and update the route when you have finished.
+
 Configuration
 =============
 
@@ -30,9 +36,9 @@ To integrate http://www.mailgun.com/ into your project...
 Send email
 ----------
 
-Add the following to your requirements::
+Add the following to ``requirements/base.txt``::
 
-  django-mailgun==0.2.2
+  git+https://github.com/BradWhittington/django-mailgun.git#egg=django_mailgun
 
 Add the following to ``settings/production.py``::
 
@@ -70,12 +76,6 @@ Receive email
 
 If you want to receive mail, add the following to ``requirements/base.txt``::
 
-  git+https://github.com/hedberg/django-mailgun-incoming.git#egg=mailgun_incoming
-
-Until this pull request has been accepted
-https://github.com/hedberg/django-mailgun-incoming/pull/1
-then use my fork::
-
   git+https://github.com/pkimber/django-mailgun-incoming.git#egg=mailgun_incoming
 
 Add the following to ``THIRD_PARTY_APPS`` in ``settings/base.py``::
@@ -102,3 +102,8 @@ e.g using https://github.com/jkbr/httpie::
   HTTP/1.1 405 METHOD NOT ALLOWED
 
 See :doc:`process` for notes on how to check incoming mail.
+
+.. warning::
+
+  Don't forget to leave the site set to ``https`` with the correct route
+  before moving on...

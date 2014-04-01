@@ -22,7 +22,7 @@ Usage
 
 To copy an SSL certificate to a cloud server::
 
-  fab site:hatherleigh_info ssl-cert
+  fab site:hatherleigh_info ssl_cert
 
 .. note:: The task will ask you to enter the ``sudo`` password for the user on
   the server.
