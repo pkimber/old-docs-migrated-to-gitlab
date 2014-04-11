@@ -40,6 +40,13 @@ Minion
 
    restore
 
+Issues
+
+.. toctree::
+   :maxdepth: 1
+
+   issues
+
 Site
 
 .. toctree::
@@ -65,6 +72,7 @@ Development
    dev-django-static
    dev-django-thumbnails
    dev-requirements
+   paypal
 
 Apps
 
