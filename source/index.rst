@@ -71,8 +71,8 @@ Development
    dev-django-media
    dev-django-static
    dev-django-thumbnails
+   dev-pay
    dev-requirements
-   paypal
 
 Apps
 
