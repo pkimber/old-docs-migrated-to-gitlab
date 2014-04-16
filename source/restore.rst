@@ -49,15 +49,17 @@ Copy a recent backup from your workstation to the cloud server::
   We are copying the files as user ``web``.  We should get the correct
   permissions if we extract the files as the ``web`` user.
 
+.. warning::
+
+  The next step will restore *all* files for *all* the sites.
+  You might not want this!!
+  You probably DO NOT WANT TO OVERWRITE ALL THE FILES FOR THE OTHER SITES
+
 On the cloud server::
 
   sudo -i -u web
   cd /home/web/repo/files/
-  tar xzf /home/web/repo/backup/files/hatherleigh_net_20130926_121358_patrick.tar.gz
-
-.. warning::
-
-  This will restore all files for all sites.  You might not want this!!
+  tar xzf /home/web/repo/backup/files/drop_temp_20130926_121358_patrick.tar.gz
 
 FTP
 ===

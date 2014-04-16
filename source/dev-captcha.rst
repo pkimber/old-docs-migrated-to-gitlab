@@ -20,11 +20,20 @@ private keys e.g:
 
 Add the following to ``requirements/base.txt``::
 
-  django-recaptcha==0.0.9
+  git+https://github.com/pkimber/django-recaptcha.git#egg=captcha
+
+.. note::
+
+  This is a fork of
+  https://github.com/insttrack/django-recaptcha
+  which is a fork of
+  https://github.com/praekelt/django-recaptcha.
+
+  The fork by ``insttrack`` appear to be compatible with python 3.
 
 Add the following to ``settings/base.py``::
 
-  # https://github.com/praekelt/django-recaptcha/
+  # https://github.com/insttrack/django-recaptcha
   RECAPTCHA_PRIVATE_KEY = get_env_variable('RECAPTCHA_PRIVATE_KEY')
   RECAPTCHA_PUBLIC_KEY = get_env_variable('RECAPTCHA_PUBLIC_KEY')
   RECAPTCHA_USE_SSL = True

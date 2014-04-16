@@ -71,7 +71,6 @@ Development
    dev-django-media
    dev-django-static
    dev-django-thumbnails
-   dev-pay
    dev-requirements
 
 Apps
@@ -82,6 +81,7 @@ Apps
    app-base
    app-block
    app-enquiry
+   app-pay
 
 PHP
 

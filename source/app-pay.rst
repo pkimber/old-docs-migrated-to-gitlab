@@ -22,10 +22,16 @@ In your ``requirements/base.txt``, add ``stripe`` e.g::
 In your ``settings/base.py`` module, add the following::
 
   # Stripe
+  STRIPE_CAPTION = 'Company Name'
   STRIPE_PUBLISH_KEY = get_env_variable('STRIPE_PUBLISH_KEY')
   STRIPE_SECRET_KEY = get_env_variable('STRIPE_SECRET_KEY')
 
-Make sure your site pillar includes the Stripe publish key e.g:
+.. note::
+
+  ``STRIPE_CAPTION`` is used (by the ``pay`` app) as the caption for
+  the pop-up dialog.
+
+Make sure your site pillar includes the Stripe keys e.g:
 
 .. code-block:: yaml
 
@@ -49,6 +55,16 @@ environment variables as follows (this can be added to ``README.rst``):
   Replace ``your_stripe_publish_key`` and ``your_stripe_secret_key`` with the
   *publishable* and *secret* key.
 
+Error
+-----
+
+https://stripe.com/docs/api/python#errors
+
+Testing
+-------
+
+https://stripe.com/docs/testing
+
 PayPal
 ======
 
@@ -57,6 +73,15 @@ PayPal
 Using your PayPal account, set-up two test accounts, one for the buyer
 (personal) and one for the merchant (business):
 https://developer.paypal.com/webapps/developer/applications/accounts
+
+Add ``paypal.standard.ipn`` to ``settings/base.py`` e.g::
+
+  THIRD_PARTY_APPS = (
+      'paypal.standard.ipn',
+
+Add ``paypal`` to ``requirements/base.txt``::
+
+  git+https://github.com/spookylukey/django-paypal.git#egg=paypal
 
 In your ``settings/base.py`` module, add the following::
 
