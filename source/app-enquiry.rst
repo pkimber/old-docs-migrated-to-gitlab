@@ -3,6 +3,11 @@ Enquiry
 
 https://github.com/pkimber/enquiry
 
+Development
+===========
+
+:doc:`dev-captcha`
+
 Set-up
 ======
 

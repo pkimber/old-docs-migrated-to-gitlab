@@ -31,7 +31,13 @@ Add the following to ``requirements/base.txt``::
 
   The fork by ``insttrack`` appear to be compatible with python 3.
 
+
 Add the following to ``settings/base.py``::
+
+  THIRD_PARTY_APPS = (
+      'captcha',
+      # ...
+  )
 
   # https://github.com/insttrack/django-recaptcha
   RECAPTCHA_PRIVATE_KEY = get_env_variable('RECAPTCHA_PRIVATE_KEY')
