@@ -1,6 +1,10 @@
 Search
 ******
 
+.. note::
+
+  Don't forget to set-up :doc:`solr`
+
 To update the Haystack SOLR index for ``hatherleigh_info``::
 
   fab site:hatherleigh_info haystack_index

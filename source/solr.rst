@@ -30,6 +30,10 @@ Set-up ``HAYSTACK_CONNECTIONS`` in ``settings/local.py``::
       },
   }
 
+.. note::
+
+  See :doc:`issues` for a current issue with the ``simple_backend``.
+
 Set-up ``HAYSTACK_CONNECTIONS`` in ``settings/production.py``::
 
   HAYSTACK_CONNECTIONS = {
@@ -59,21 +63,6 @@ e.g::
 
   {{ object.first_name }}
   {{ object.surname }}
-
-Issues
-------
-
-The current version of Haystack has an issue with the ``simple_backend.py``:
-https://github.com/toastdriven/django-haystack/commit/49564861
-
-To temporarily fix the issue::
-
-  cdsitepackages
-  vim +67 haystack/backends/simple_backend.py
-
-Edit the code so that it matches the fixed version on GitHub i.e::
-
-  for field in model._meta.fields:
 
 Deploy
 ======
@@ -137,3 +126,12 @@ Re-start Tomcat::
 
 To create the SOLR index, see :doc:`fabric-search`.  A cron task should update
 the index at regular intervals.
+
+Configuration
+-------------
+
+Tomcat uses the following folders::
+
+  /usr/share/tomcat7/
+  /var/lib/tomcat7/
+

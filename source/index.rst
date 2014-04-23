@@ -40,11 +40,12 @@ Minion
 
    restore
 
-Issues
+Diagnostics
 
 .. toctree::
    :maxdepth: 1
 
+   diagnostics
    issues
 
 Site
@@ -72,6 +73,7 @@ Development
    dev-django-static
    dev-django-thumbnails
    dev-requirements
+   dev-timezone
 
 Apps
 

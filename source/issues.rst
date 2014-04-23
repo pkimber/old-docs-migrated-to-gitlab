@@ -1,6 +1,21 @@
 Issues
 ******
 
+SOLR
+====
+
+The current version of Haystack has an issue with the ``simple_backend.py``:
+https://github.com/toastdriven/django-haystack/commit/49564861
+
+To temporarily fix the issue::
+
+  cdsitepackages
+  vim +67 haystack/backends/simple_backend.py
+
+Edit the code so that it matches the fixed version on GitHub i.e::
+
+  for field in model._meta.fields:
+
 uwsgi
 =====
 
