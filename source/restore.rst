@@ -40,6 +40,23 @@ MySQL
 Files
 =====
 
+Development
+-----------
+
+Extract a recent backup (from your workstation) to a temporary folder (in this
+example ``drop_a_20140426_133620_patrick`` is the name of the temporary
+folder and ``hatherleigh_info`` is the name of the site::
+
+  mkdir ~/repo/temp/drop_a_20140426_133620_patrick/
+  cd ~/repo/temp/drop_a_20140426_133620_patrick/
+
+  tar xzf /home/patrick/repo/backup/files/drop_a_20140426_133620_patrick.tar.gz
+
+  mv hatherleigh_info/public/ ~/repo/dev/project/hatherleigh_info/media/
+
+Server
+------
+
 Copy a recent backup from your workstation to the cloud server::
 
   scp ~/repo/backup/files/hatherleigh_net_20130926_121358_patrick.tar.gz web@drop-temp:/home/web/repo/backup/files/
