@@ -1,6 +1,8 @@
 Restore
 *******
 
+.. highlight:: bash
+
 .. note::
 
   These are draft notes...  I have only restored once... but wanted to get
@@ -45,7 +47,7 @@ Development
 
 Extract a recent backup (from your workstation) to a temporary folder (in this
 example ``drop_a_20140426_133620_patrick`` is the name of the temporary
-folder and ``hatherleigh_info`` is the name of the site::
+folder and ``hatherleigh_info`` is the name of the site)::
 
   mkdir ~/repo/temp/drop_a_20140426_133620_patrick/
   cd ~/repo/temp/drop_a_20140426_133620_patrick/
