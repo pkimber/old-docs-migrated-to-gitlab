@@ -1,6 +1,11 @@
 Diagnostics
 ***********
 
+Site
+====
+
+See :doc:`maintain`
+
 SOLR
 ====
 
