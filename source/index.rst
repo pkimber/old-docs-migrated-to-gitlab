@@ -66,6 +66,7 @@ Development
 .. toctree::
    :maxdepth: 1
 
+   dev-env
    dev-captcha
    dev-ckeditor
    dev-django
