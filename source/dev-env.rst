@@ -28,6 +28,8 @@ Check to make sure the following are **not** installed::
   dpkg -l | grep python-setuptools
   dpkg -l | grep virtualenvwrapper
 
+
+
 python 2
 --------
 
@@ -47,6 +49,11 @@ python 3
 Install the following::
 
   sudo apt-get install python3-dev
+
+The following packages are needed for ``pillow``::
+
+  sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
+    libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
 
 python Virtual Environment
 ==========================

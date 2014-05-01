@@ -44,16 +44,13 @@ environment variables as follows (this can be added to ``README.rst``):
 
 .. code-block:: bash
 
-  echo "export STRIPE_PUBLISH_KEY=\"your_stripe_publish_key\"" >> $VIRTUAL_ENV/bin/postactivate
-  echo "unset STRIPE_PUBLISH_KEY" >> $VIRTUAL_ENV/bin/postdeactivate
-
-  echo "export STRIPE_SECRET_KEY=\"your_stripe_secret_key\"" >> $VIRTUAL_ENV/bin/postactivate
-  echo "unset STRIPE_SECRET_KEY" >> $VIRTUAL_ENV/bin/postdeactivate
+  export STRIPE_PUBLISH_KEY="your_stripe_publish_key"
+  export STRIPE_SECRET_KEY="your_stripe_secret_key"
 
 .. note::
 
   Replace ``your_stripe_publish_key`` and ``your_stripe_secret_key`` with the
-  *publishable* and *secret* key.
+  test versions of the *publishable* and *secret* key.
 
 Error
 -----
