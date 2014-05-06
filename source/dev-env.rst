@@ -57,7 +57,7 @@ The following packages are needed for ``pillow``::
 
 The following package is needed for SOLR/Haystack::
 
-  sudo apt-get libxslt1-dev
+  sudo apt-get install libxslt1-dev
 
 python Virtual Environment
 ==========================
