@@ -18,6 +18,17 @@ Development Environment
   git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
   echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
 
+Database
+========
+
+Install PostgreSQL 9.3
+
+Create a role for your user name (replace ``patrick`` with your linux user
+name)::
+
+  psql -X -U postgres
+  CREATE ROLE patrick WITH NOSUPERUSER CREATEDB NOCREATEROLE LOGIN;
+
 Packages
 ========
 

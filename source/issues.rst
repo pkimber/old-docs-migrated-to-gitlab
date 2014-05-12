@@ -1,6 +1,20 @@
 Issues
 ******
 
+PostgreSQL
+==========
+
+Ubuntu 14.04 LTS
+----------------
+
+.. warning:: Check you have a backup of all databases on your development
+             machine.
+
+If you have upgraded from a previous version of Ubuntu running Postgres 9.1,
+you might need to completely remove the old version::
+
+  sudo apt-get purge postgresql-9.1
+
 SOLR
 ====
 
