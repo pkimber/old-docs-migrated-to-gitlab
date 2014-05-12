@@ -84,6 +84,7 @@ Apps
    app-base
    app-block
    app-enquiry
+   app-invoice
    app-pay
 
 PHP
