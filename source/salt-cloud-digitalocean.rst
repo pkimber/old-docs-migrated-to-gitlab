@@ -28,7 +28,7 @@ Profile
   droplet_512:
     provider: digitalocean
     size: 512MB
-    image: Ubuntu 12.04 x64
+    image: Ubuntu 14.04 x32
 
 Providers
 ---------

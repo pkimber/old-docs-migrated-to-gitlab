@@ -134,4 +134,31 @@ Tomcat uses the following folders::
 
   /usr/share/tomcat7/
   /var/lib/tomcat7/
+  /var/lib/tomcat7/logs/
 
+Issue
+=====
+
+I am getting time-outs all the time.  I made a ``schema.xml`` file for both
+sites on the server.
+
+I edited::
+
+  /usr/share/tomcat7/lib/log4j.properties:
+
+To set the location of ``solr.log`` to::
+
+  vim /tmp/tomcat7-tomcat7-tmp/solr.log
+
+The log file is created when I do the following as the ``web`` user::
+
+  pkimber_net.sh shell
+  import requests
+  requests.get('http://127.0.0.1:8080/solr/')
+
+It has suddenly started working now... How?  Why?
+
+Now it has stopped working!
+
+Then it started working.  Is there some kind of delay in Tomcat getting
+started?

@@ -28,8 +28,6 @@ Check to make sure the following are **not** installed::
   dpkg -l | grep python-setuptools
   dpkg -l | grep virtualenvwrapper
 
-
-
 python 2
 --------
 
@@ -67,7 +65,7 @@ python 2
 
 To create and activate a virtual environment::
 
-  virtualenv --no-site-packages venv-name
+  virtualenv venv-name
   source venv-name/bin/activate
 
 python 3
