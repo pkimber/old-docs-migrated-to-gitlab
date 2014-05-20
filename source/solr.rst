@@ -8,8 +8,8 @@ Add the following to ``requirements/base.py``::
 
   cssselect==0.9.1
   django-haystack==2.1.0
-  lxml==3.2.1
-  pysolr==3.1.0
+  lxml==3.3.5
+  pysolr==3.2.0
 
 Development
 ===========

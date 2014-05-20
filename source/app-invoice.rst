@@ -15,7 +15,7 @@ To create an invoice for a particular date (the ``slug`` is for the contact)::
 
   invoice_date = date(2013, 12, 31)
   slug = 'kb'
-  user_name='patrick.kimber'
+  user_name = 'patrick.kimber'
 
   invoice_create = InvoiceCreate()
   contact = Contact.objects.get(slug=slug)
@@ -31,7 +31,7 @@ Who do I need to invoice::
 
   from invoice.models import TimeRecord
   qs = TimeRecord.objects.filter(invoice_line__isnull=True, billable=True).order_by('ticket__contact__slug').distinct('ticket__contact__slug')
-  for t in qs: print t.ticket.contact.slug
+  for t in qs: print(t.ticket.contact.slug)
 
 PDF
 ===

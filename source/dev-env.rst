@@ -26,8 +26,7 @@ Install PostgreSQL 9.3
 Create a role for your user name (replace ``patrick`` with your linux user
 name)::
 
-  psql -X -U postgres
-  CREATE ROLE patrick WITH NOSUPERUSER CREATEDB NOCREATEROLE LOGIN;
+  psql -X -U postgres -c "CREATE ROLE patrick WITH NOSUPERUSER CREATEDB NOCREATEROLE LOGIN;"
 
 Packages
 ========

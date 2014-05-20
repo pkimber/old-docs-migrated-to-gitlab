@@ -49,12 +49,14 @@ Extract a recent backup (from your workstation) to a temporary folder (in this
 example ``drop_a_20140426_133620_patrick`` is the name of the temporary
 folder and ``hatherleigh_info`` is the name of the site)::
 
-  mkdir ~/repo/temp/drop_a_20140426_133620_patrick/
-  cd ~/repo/temp/drop_a_20140426_133620_patrick/
+  mkdir ~/repo/temp/media/
+  cd ~/repo/temp/media/
 
   tar xzf /home/patrick/repo/backup/files/drop_a_20140426_133620_patrick.tar.gz
 
   mv hatherleigh_info/public/ ~/repo/dev/project/hatherleigh_info/media/
+
+.. warning:: The ``mv`` command (above) is not correct (yet)!!
 
 Server
 ------
