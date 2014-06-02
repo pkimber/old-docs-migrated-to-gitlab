@@ -22,7 +22,7 @@ Using https://mailgun.com/cp/routes, create a route for your Mailgun domain
 
   Priority              0
   Filter Expressions    match_recipient(".*@pkimber.net")
-  Actions               forward("https://pkimber.net/mailgun/incoming/")
+  Actions               forward("http://pkimber.net/mailgun/incoming/")
 
 .. note::
 

@@ -40,7 +40,7 @@ Make sure your site pillar includes the Stripe keys e.g:
   stripe_secret_key: sk_test_BQokikJOvBiI2HlWgH4olfQ2
 
 When setting up your project for local development, you will need to set the
-environment variables as follows (this can be added to ``README.rst``):
+environment variables as follows:
 
 .. code-block:: bash
 
@@ -104,10 +104,10 @@ environment variables as follows (this can be added to ``README.rst``):
 
 .. note::
 
-  Replace ``merchat@pkimber.net`` with your PayPal merchant email address.
+  Replace ``merchant@pkimber.net`` with your PayPal merchant email address.
 
 Notes
-=====
+-----
 
 Using https://github.com/spookylukey/django-paypal, I think the *Pro (WPP)*
 API requires the merchant to pay 20 pounds per month:
@@ -117,6 +117,11 @@ For the standard version, I think I can implement ``IPN`` AND ``PDT``.  Just
 have to be careful not to credit the account twice!
 
 Links
-=====
+-----
 
 http://go.developer.ebay.com/devzone/articles/getting-started-paypal-django
+
+Integration
+===========
+
+

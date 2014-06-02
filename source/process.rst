@@ -66,7 +66,7 @@ Log into your cloud server and check the email was received e.g::
 .. code-block:: python
 
   from mailgun_incoming.models import IncomingEmail
-  for mail in IncomingEmail.objects.all().order_by('-id'): print(mail.body_plain)
+  for mail in IncomingEmail.objects.all().order_by('-id'): print(mail.subject, mail.body_plain)
 
 Create an SSL certificate: :doc:`ssl`.  Use the python code in the previous
 step to read any emails sent to the site.
