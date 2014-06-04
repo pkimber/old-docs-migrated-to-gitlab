@@ -103,6 +103,11 @@ If you want to install a site to your local area network, then add the
   If you enable the ``lan`` option, Django site will set ``ALLOWED_HOSTS`` to
   ``*``   This is a security risk for public web sites.
 
+Mail
+----
+
+:doc:`app-mail`
+
 pip and devpi
 -------------
 

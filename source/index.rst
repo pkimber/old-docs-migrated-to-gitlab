@@ -86,6 +86,7 @@ Apps
    app-enquiry
    app-invoice
    app-login
+   app-mail
    app-pay
 
 PHP
