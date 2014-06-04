@@ -3,22 +3,23 @@ Restore
 
 .. highlight:: bash
 
-.. note::
-
-  These are draft notes...  I have only restored once... but wanted to get
-  started on the notes...
-
 Database
 ========
 
-Copy a recent backup to the cloud server::
+On the cloud server (first time only)::
 
-  scp ~/repo/backup/postgres/hatherleigh_net_20130926_113531_patrick.sql drop-temp:/home/patrick/repo/backup/postgres/
+  mkdir -p ~/repo/backup/postgres/
+
+Copy a recent backup to the cloud server (replace ``patrick`` with your own
+user name)::
+
+  scp ~/repo/backup/postgres/hatherleigh_info_20130926_113531_patrick.sql \
+    drop-temp:/home/patrick/repo/backup/postgres/
 
 On the cloud server::
 
   cd ~/repo/backup/postgres/
-  psql -X -U postgres -c "DROP DATABASE hatherleigh_net"
+  psql -X -U postgres -c "DROP DATABASE hatherleigh_info"
 
 On your workstation, re-create the database.  See :doc:`fabric-database`
 
@@ -28,7 +29,7 @@ On your workstation, re-create the database.  See :doc:`fabric-database`
 
 On the cloud server::
 
-  psql -U postgres -d hatherleigh_net -f hatherleigh_net_20130926_113531_patrick.sql 2> out.log
+  psql -U postgres -d hatherleigh_info -f hatherleigh_info_20130926_113531_patrick.sql 2> out.log
 
 Check the contents of ``out.log`` to make sure the restore succeeded.
 
@@ -37,33 +38,23 @@ MySQL
 
 ::
 
-  mysql --user=hatherleigh_net --password=mypassword --database=hatherleigh_net < /home/patrick/repo/backup/mysql/hatherleigh_net_20131230_125531_patrick.sql
+  mysql --user=hatherleigh_info --password=mypassword --database=hatherleigh_net < /home/patrick/repo/backup/mysql/hatherleigh_net_20131230_125531_patrick.sql
 
 Files
 =====
 
-Development
------------
-
-Extract a recent backup (from your workstation) to a temporary folder (in this
-example ``drop_a_20140426_133620_patrick`` is the name of the temporary
-folder and ``hatherleigh_info`` is the name of the site)::
-
-  mkdir ~/repo/temp/media/
-  cd ~/repo/temp/media/
-
-  tar xzf /home/patrick/repo/backup/files/drop_a_20140426_133620_patrick.tar.gz
-
-  mv hatherleigh_info/public/ ~/repo/dev/project/hatherleigh_info/media/
-
-.. warning:: The ``mv`` command (above) is not correct (yet)!!
-
 Server
 ------
 
+On the cloud server (first time only)::
+
+  sudo -i -u web
+  mkdir -p ~/repo/backup/files/
+
 Copy a recent backup from your workstation to the cloud server::
 
-  scp ~/repo/backup/files/hatherleigh_net_20130926_121358_patrick.tar.gz web@drop-temp:/home/web/repo/backup/files/
+  scp ~/repo/backup/files/hatherleigh_net_20130926_121358_patrick.tar.gz \
+    web@drop-temp:/home/web/repo/backup/files/
 
 .. note::
 
@@ -81,6 +72,22 @@ On the cloud server::
   sudo -i -u web
   cd /home/web/repo/files/
   tar xzf /home/web/repo/backup/files/drop_temp_20130926_121358_patrick.tar.gz
+
+Development
+-----------
+
+Extract a recent backup (from your workstation) to a temporary folder (in this
+example ``drop_a_20140426_133620_patrick`` is the name of the temporary
+folder and ``hatherleigh_info`` is the name of the site)::
+
+  mkdir ~/repo/temp/media/
+  cd ~/repo/temp/media/
+
+  tar xzf /home/patrick/repo/backup/files/drop_a_20140426_133620_patrick.tar.gz
+
+  mv hatherleigh_info/public/ ~/repo/dev/project/hatherleigh_info/media/
+
+.. warning:: The ``mv`` command (above) is not correct (yet)!!
 
 FTP
 ===

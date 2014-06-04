@@ -15,14 +15,40 @@ In your ``settings/base.py``, add ``mail`` to your apps e.g::
       ...
       'mail',
 
+And add the setting for the mail template type::
+
+  # See the list of constants at the top of 'mail.models'
+  MAIL_TEMPLATE_TYPE= = get_env_variable("MAIL_SYSTEM")
+
+Development
+-----------
+
 Check the list of constants at the top of ``mail.models`` and add the type of
-email you want to use e.g. for Mandrill::
+template you want to use to your ``.private`` file e.g. for Django:
 
-  # See constants at the top of 'mail.models'
-  MAIL_TYPE = 'mandrill'
+.. code-block:: bash
 
-.. warning:: Don't try importing the constant from ``mail.models`` because you
-             shouldn't import external modules into the settings file.
+  export MAIL_TEMPLATE_TYPE="django"
+
+Deploy
+======
+
+In the salt ``sls`` file for your site, add the ``mail_template_type`` and (if
+required) the ``mail_send`` cron command e.g::
+
+  sites:
+    my_site:
+      db_pass: password
+      domain: hatherleigh.info
+      mail_template_type: mandrill
+      ssl: False
+      uwsgi_port: 3038
+      cron:
+        mail_send:
+          schedule: "*/5    *       *       *       *"
+
+.. note:: The ``mail_template_type`` should be selected from the list of
+          constants at the top of the ``mail.models`` module.
 
 Usage
 =====
@@ -32,22 +58,6 @@ To send email, use the ``mail_send`` management command e.g:
 .. code-block:: bash
 
   django-admin.py mail_send
-
-Deploy
-======
-
-To set-up the ``cron`` command using ``salt``, add the ``cron`` command to
-your site configuration e.g::
-
-  sites:
-    my_site:
-      db_pass: password
-      domain: hatherleigh.info
-      ssl: False
-      uwsgi_port: 3038
-      cron:
-        mail_send:
-          schedule: "*/5    *       *       *       *"
 
 
 .. You will also need a way to run the app mail sending service.  One way to do
