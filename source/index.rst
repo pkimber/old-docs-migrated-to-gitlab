@@ -88,6 +88,7 @@ Apps
    app-login
    app-mail
    app-pay
+   app-search
 
 PHP
 
