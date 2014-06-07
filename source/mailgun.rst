@@ -67,9 +67,10 @@ e.g:
   sites:
     hatherleigh_net:
       domain: hatherleigh.net
-      mailgun_domain: mg.hatherleigh.net
-      mailgun_receive: True
-      mailgun_send: True
+      mail:
+        mailgun_domain: mg.hatherleigh.net
+        mailgun_receive: True
+        mailgun_send: True
 
 Receive email
 -------------

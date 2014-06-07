@@ -18,7 +18,15 @@ In your ``settings/base.py``, add ``mail`` to your apps e.g::
 And add the setting for the mail template type::
 
   # See the list of constants at the top of 'mail.models'
-  MAIL_TEMPLATE_TYPE= = get_env_variable("MAIL_SYSTEM")
+  MAIL_TEMPLATE_TYPE = get_env_variable('MAIL_TEMPLATE_TYPE')
+
+For Mandrill::
+
+  EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+  MANDRILL_API_KEY = get_env_variable('MANDRILL_API_KEY')
+  MANDRILL_USER_NAME = get_env_variable('MANDRILL_USER_NAME')
+
+.. warning:: Don't forget to set the ``EMAIL_BACKEND`` to use Mandrill.
 
 Development
 -----------
@@ -40,12 +48,15 @@ required) the ``mail_send`` cron command e.g::
     my_site:
       db_pass: password
       domain: hatherleigh.info
-      mail_template_type: mandrill
       ssl: False
       uwsgi_port: 3038
       cron:
         mail_send:
           schedule: "*/5    *       *       *       *"
+      mail:
+        mail_template_type: mandrill
+        mandrill_api_key: your-api-key
+        mandrill_user_name: notify@pkimber.net
 
 .. note:: The ``mail_template_type`` should be selected from the list of
           constants at the top of the ``mail.models`` module.

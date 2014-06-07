@@ -1,6 +1,23 @@
 Issues
 ******
 
+nginx
+=====
+
+502 Bad Gateway
+---------------
+
+This is a general error.  Find the cause by looking in the following files::
+
+  sudo -i -u web
+  # check the files in:
+  tail -f ~/repo/uwsgi/log/
+
+  sudo -i
+  tail -f /var/log/nginx/error.log
+  # check the log files in:
+  tail -f /var/log/supervisor/
+
 PostgreSQL
 ==========
 
