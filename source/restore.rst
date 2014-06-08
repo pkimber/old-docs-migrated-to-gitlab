@@ -38,7 +38,8 @@ MySQL
 
 ::
 
-  mysql --user=hatherleigh_info --password=mypassword --database=hatherleigh_net < /home/patrick/repo/backup/mysql/hatherleigh_net_20131230_125531_patrick.sql
+  mysql --user=hatherleigh_info --password=mypassword \
+    --database=hatherleigh_net < /home/patrick/repo/backup/mysql/hatherleigh_net_20131230_125531_patrick.sql
 
 Files
 =====

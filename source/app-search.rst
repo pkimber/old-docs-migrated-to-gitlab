@@ -10,7 +10,6 @@ ElasticSearch
 
 In your ``requirements/base.txt``, add the following::
 
-  ...
   django-haystack==2.1.0
   pyelasticsearch==0.6.1
 
@@ -29,4 +28,3 @@ and Tomcat before installing ElasticSearch::
 
   apt-get remove openjdk-7-jre-headless
   apt-get remove tomcat7
-
