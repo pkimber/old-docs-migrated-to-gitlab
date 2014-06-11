@@ -45,6 +45,7 @@ template you want to use to your ``.private`` file e.g. for Django:
 .. note:: When testing the password reset workflow, make sure you use a valid
           email address for a user.  On the standard demo data, this will be
           ``web@pkimber.net``
+
 Deploy
 ======
 
