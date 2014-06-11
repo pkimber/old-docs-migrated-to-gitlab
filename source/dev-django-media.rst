@@ -52,7 +52,9 @@ Private
 
 For private uploads/attachments I use https://github.com/johnsensible/django-sendfile
 
-Add ``django-sendfile`` to your ``base.txt`` requirements.
+Add ``django-sendfile`` to your ``base.txt`` requirements::
+
+  git+https://github.com/pkimber/django-sendfile#egg=sendfile
 
 The ``production.py`` settings file should contain the following::
 

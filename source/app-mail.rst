@@ -15,6 +15,10 @@ In your ``settings/base.py``, add ``mail`` to your apps e.g::
       ...
       'mail',
 
+And add the default from address::
+
+  DEFAULT_FROM_EMAIL = get_env_variable('DEFAULT_FROM_EMAIL')
+
 And add the setting for the mail template type::
 
   # See the list of constants at the top of 'mail.models'
@@ -38,6 +42,9 @@ template you want to use to your ``.private`` file e.g. for Django:
 
   export MAIL_TEMPLATE_TYPE="django"
 
+.. note:: When testing the password reset workflow, make sure you use a valid
+          email address for a user.  On the standard demo data, this will be
+          ``web@pkimber.net``
 Deploy
 ======
 
@@ -54,6 +61,7 @@ required) the ``mail_send`` cron command e.g::
         mail_send:
           schedule: "*/5    *       *       *       *"
       mail:
+        default_from_email: notify@pkimber.net
         mail_template_type: mandrill
         mandrill_api_key: your-api-key
         mandrill_user_name: notify@pkimber.net

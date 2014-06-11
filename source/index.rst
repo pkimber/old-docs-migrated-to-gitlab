@@ -83,6 +83,7 @@ Apps
 
    app-base
    app-block
+   app-crm
    app-enquiry
    app-invoice
    app-login

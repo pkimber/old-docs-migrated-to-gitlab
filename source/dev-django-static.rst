@@ -39,5 +39,9 @@ to be located in the following static folder within your project::
 
   static/ico/favicon.ico
 
+To use this icon on your site::
+
+  <link rel="shortcut icon" href="{% static 'ico/favicon.ico' %}">
+
 
 .. _staticfiles_urlpatterns: https://docs.djangoproject.com/en/1.5/ref/contrib/staticfiles/
