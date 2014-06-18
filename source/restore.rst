@@ -86,9 +86,10 @@ folder and ``hatherleigh_info`` is the name of the site)::
 
   tar xzf /home/patrick/repo/backup/files/drop_a_20140426_133620_patrick.tar.gz
 
-  mv hatherleigh_info/public/ ~/repo/dev/project/hatherleigh_info/media/
+  mv hatherleigh_info/public/* ~/repo/dev/project/hatherleigh_info/media/
 
-.. warning:: The ``mv`` command (above) is not correct (yet)!!
+.. note:: You will probably need to remove the contents of the
+          ``media/public`` folder in your project before moving the files.
 
 FTP
 ===
