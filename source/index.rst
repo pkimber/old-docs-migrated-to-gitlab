@@ -89,6 +89,7 @@ Apps
    app-enquiry
    app-invoice
    app-login
+   app-login
    app-mail
    app-pay
    app-search
