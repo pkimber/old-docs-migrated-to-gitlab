@@ -13,6 +13,13 @@ In your ``requirements/base.txt``, add the following::
   django-haystack==2.1.0
   pyelasticsearch==0.6.1
 
+Maintenance
+-----------
+
+The flush process of an index basically frees memory::
+
+  curl localhost:9200/_flush
+
 Test
 ----
 

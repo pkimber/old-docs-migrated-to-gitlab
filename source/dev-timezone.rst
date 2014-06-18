@@ -24,6 +24,18 @@ To get the time now in a format which is *aware*::
 
   td = timezone.now() - self.created
 
+Local
+-----
+
+To display a time in the local timezone, use ``localtime``::
+
+  from django.utils import timezone
+  alarm = timezone.now()
+  alarm
+  datetime.datetime(2014, 6, 17, 14, 19, 40, 607734, tzinfo=<UTC>)
+  timezone.localtime(alarm)
+  datetime.datetime(2014, 6, 17, 15, 19, 40, 607734, tzinfo=<DstTzInfo 'Europe/London' BST+1:00:00 DST>)
+
 Issues
 ======
 

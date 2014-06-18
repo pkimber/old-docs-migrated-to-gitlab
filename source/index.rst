@@ -74,6 +74,7 @@ Development
    dev-django-media
    dev-django-static
    dev-django-thumbnails
+   dev-logging
    dev-requirements
    dev-timezone
 

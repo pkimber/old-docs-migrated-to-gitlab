@@ -11,6 +11,8 @@ Register
 If you want to allow users to register on your site, add the following to
 ``urls.py``::
 
+  from login.views import RegisterCreateView
+
   url(regex=r'^accounts/register/$',
       view=RegisterCreateView.as_view(),
       name='register'
