@@ -1,6 +1,8 @@
 Development Environment
 ***********************
 
+.. highlight:: bash
+
 .. note:: For Ubuntu 14.04 LTS
 
 .bashrc
