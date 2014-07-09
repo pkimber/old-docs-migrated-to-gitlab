@@ -55,6 +55,7 @@ Site
    :maxdepth: 1
 
    site-config
+   salt-pillar
    auth
    ftp
    mailgun
