@@ -102,13 +102,42 @@ database IP address for your site when running the :doc:`fabric-deploy`
 command.  So, for example, if your prefix is ``pkimber``, you should have a
 file in your pillar called::
 
-  db/pkimber/settings.sls
+  db/settings.sls
 
 This file should contain the IP address of your server (or ``localhost`` if
 your database is installed on the same server as your site) e.g::
 
   postgres_settings:
     listen_address: localhost
+
+Users
+=====
+
+To create users on your server, add a ``users`` section to your pillar in the
+following format::
+
+  users:
+    patrick:
+      uid: 7501
+      fullname: Patrick Kimber
+      password: "abc"
+      sudo: True
+      keys:
+        - ssh-rsa AAAAB3...patrick@hamm
+        - ssh-rsa AAAAB3...patrick@rex
+    greg:
+      uid: 7504
+      fullname: Greg Smith
+      password: "xyz"
+      sudo: True
+      keys:
+        - ssh-rsa AAAAB3...greg@buzz
+
+To create the password hash (where ``<password>`` is your password)::
+
+  mkpasswd -m sha-512 <password>
+
+The ``keys`` are a list of public ssh keys.
 
 Validate
 ========
