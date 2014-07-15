@@ -39,6 +39,10 @@ For a project::
       ...
       'easy_thumbnails',
 
+  SOUTH_MIGRATION_MODULES = {
+      'easy_thumbnails': 'easy_thumbnails.south_migrations',
+  }
+
 In your templates:
 
 .. code-block:: html
