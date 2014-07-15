@@ -15,7 +15,13 @@ Development Environment
   # Uncomment - causes problems with pip and jython 2.5.2
   export PIP_USE_MIRRORS=false
 
-::
+It might be better to use the ``~/.pip/pip.conf`` file::
+
+  [install]
+  download-cache=~/.pip/cache
+
+A simple script for directory based environments (if a directory contains a
+``.env`` file it will automatically be executed when you ``cd`` into it)::
 
   git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
   echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
@@ -23,7 +29,10 @@ Development Environment
 Database
 ========
 
-Install PostgreSQL 9.3
+Install PostgreSQL 9.3 (and the client libraries)::
+
+  sudo apt-get install postgresql
+  sudo apt-get install libpq-dev
 
 Create a role for your user name (replace ``patrick`` with your linux user
 name)::
