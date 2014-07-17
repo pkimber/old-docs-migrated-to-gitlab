@@ -21,7 +21,31 @@ Replace:
 Site
 ====
 
-See :doc:`maintain`
+Also see :doc:`maintain`
+
+If the site isn't running (perhaps nginx is displaying a ``502 Bad Gateway``
+error):
+
+Check supervisor to see if uWSGI is running::
+
+  sudo -i
+  # supervisorctl
+  uwsgi                            RUNNING    pid 1104, uptime 0:04:01
+
+If the process is not running, check the supervisor logs e.g::
+
+  tail /var/log/supervisor/uwsgi-stderr---supervisor-IupGOf.log
+  tail /var/log/supervisor/uwsgi-stdout---supervisor-IEfygY.log
+
+If uWSGI is running without a problem, check the uWSGI logs for the project
+e.g::
+
+  sudo -i -u web
+  tail ~/repo/uwsgi/log/hatherleigh_info.log
+
+It is a good idea to check the application logs e.g::
+
+  tail ~/repo/project/hatherleigh_info/live/logfile
 
 SOLR
 ====

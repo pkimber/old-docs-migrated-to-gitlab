@@ -45,7 +45,7 @@ This is a general error.  Find the cause by looking in the following files::
 
   sudo -i -u web
   # check the files in:
-  tail -f ~/repo/uwsgi/log/
+  tail -f ~/repo/uwsgi/log/hatherleigh_info.log
 
   sudo -i
   tail -f /var/log/nginx/error.log
