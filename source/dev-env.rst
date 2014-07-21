@@ -76,16 +76,42 @@ Add the following to the ``~/.pip/pip.conf`` file::
   [install]
   download-cache=~/.pip/cache
 
-Virtual Environment
--------------------
+Source Code
+===========
 
-To create a virtual environment e.g. ``venv-name``::
+Check out your source code into this folder structure::
 
-  pyvenv-3.4 --without-pip venv-name
-  source venv-name/bin/activate
-  wget https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
-  python get-pip.py
+  ├── repo
+  │   ├── dev
+  │   │   ├── app
+  │   │   │   ├── base
+  │   │   │   ├── block
+  │   │   │   ├── booking
+  │   │   │   ├── crm
+  │   │   │   ├── enquiry
+  │   │   │   ├── holding
+  │   │   │   ├── invoice
+  │   │   │   ├── login
+  │   │   │   ├── mail
+  │   │   │   ├── pay
+  │   │   │   ├── search
+  │   │   │   └── stock
+  │   │   └── project
+  │   │       ├── hatherleigh_info
+  │   │       └── pkimber_net
 
-To activate a virtual environment::
+Put the source code for your customer into the ``project`` folder e.g:
+https://github.com/pkimber/pkimber_net
 
-  source venv-name/bin/activate
+The source code for the reusable apps go into the ``app`` folder.  The github
+URL and documentation for my open source apps are here:
+
+- :doc:`app-base`
+- :doc:`app-block`
+- :doc:`app-crm`
+- :doc:`app-enquiry`
+- :doc:`app-invoice`
+- :doc:`app-login`
+- :doc:`app-mail`
+- :doc:`app-pay`
+- :doc:`app-search`

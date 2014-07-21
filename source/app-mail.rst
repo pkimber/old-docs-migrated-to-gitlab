@@ -1,4 +1,4 @@
-Mail
+mail
 ****
 
 .. highlight:: python

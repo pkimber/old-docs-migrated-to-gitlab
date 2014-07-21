@@ -1,7 +1,9 @@
-Search
+search
 ******
 
 .. highlight:: bash
+
+https://github.com/pkimber/search
 
 ElasticSearch
 =============

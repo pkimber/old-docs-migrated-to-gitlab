@@ -1,4 +1,4 @@
-Enquiry
+enquiry
 *******
 
 .. highlight:: python

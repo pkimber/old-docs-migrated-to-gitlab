@@ -12,6 +12,7 @@ Process
    :maxdepth: 1
 
    process
+   dev-env
    checklist
 
 Master

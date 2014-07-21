@@ -1,7 +1,9 @@
-Invoice
+invoice
 *******
 
 .. highlight:: python
+
+https://github.com/pkimber/invoice
 
 Date
 ====

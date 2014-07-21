@@ -1,7 +1,9 @@
-CRM
+crm
 ***
 
 .. highlight:: python
+
+https://github.com/pkimber/crm
 
 Ticket
 ======

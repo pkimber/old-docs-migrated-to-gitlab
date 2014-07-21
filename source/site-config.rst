@@ -9,32 +9,32 @@ following folder structure::
   ├── module
   │   ├── deploy
   │   │   ├── pillar
-  |   |   │   ├── db
-  |   |   │   ├── global
-  |   |   │   ├── README.rst
-  |   |   |
+  │   │   │   ├── db
+  │   │   │   ├── global
+  │   │   │   ├── README.rst
+  │   │   │
   │   │   ├── post-deploy
   │   │   │   ├── hatherleigh_net.txt
   │   │   │   ├── pkimber_net.txt
-  |   |   |
+  │   │   │
   │   │   ├── salt-cloud
   │   │   │   ├── cloud.profiles
   │   │   │   ├── cloud.providers
   │   │   │
   │   │   ├── ssl-cert
   │   │   │   ├── hatherleigh.net
-  |   |   │   │   ├── server.key
-  |   |   │   │   └── ssl-unified.crt
-  |   |   │   ├── pkimber.net
-  |   |   │   │   ├── server.key
-  |   |   │   │   └── ssl-unified.crt
-  |   |   │
+  │   │   │   │   ├── server.key
+  │   │   │   │   └── ssl-unified.crt
+  │   │   │   ├── pkimber.net
+  │   │   │   │   ├── server.key
+  │   │   │   │   └── ssl-unified.crt
+  │   │   │
   │   │   └── upload
-  |   |
+  │   │
   │   ├── fabric
   │   │   ├── deploy.py
   │   │   ├── fabfile.py
-  |   |
+  │   │
   │   └── salt
   │       ├── db
   │       ├── default

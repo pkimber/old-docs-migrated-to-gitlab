@@ -1,7 +1,9 @@
-Pay
+pay
 ***
 
 .. highlight:: python
+
+https://github.com/pkimber/pay
 
 Stripe
 ======
