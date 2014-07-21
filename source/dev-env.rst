@@ -8,29 +8,29 @@ Development Environment
 Packages
 ========
 
-Install the following packages...
-
-::
+Install the following::
 
   sudo locale-gen en_GB.utf8
   sudo update-locale en_GB.utf8
 
 Development tools (install ``vim`` or an editor of your choosing)::
 
-  sudo apt-get install vim git wget
+  sudo apt-get install mercurial git vim wget
 
 python development::
 
   sudo apt-get install python3-dev
-
-The following packages are needed for ``pillow``::
-
+  # pillow
   sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
     libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
 
 Postgres::
 
   sudo apt-get install postgresql libpq-dev
+
+Redis::
+
+  sudo apt-get install redis-server
 
 bash
 ====
@@ -100,9 +100,6 @@ Check out your source code into this folder structure::
   │   │       ├── hatherleigh_info
   │   │       └── pkimber_net
 
-Put the source code for your customer into the ``project`` folder e.g:
-https://github.com/pkimber/pkimber_net
-
 The source code for the reusable apps go into the ``app`` folder.  The github
 URL and documentation for my open source apps are here:
 
@@ -115,3 +112,9 @@ URL and documentation for my open source apps are here:
 - :doc:`app-mail`
 - :doc:`app-pay`
 - :doc:`app-search`
+
+Put the source code for your customer into the ``project`` folder e.g:
+https://github.com/pkimber/pkimber_net
+
+Follow the instructions in the ``README.rst`` file in the app or project
+folder.
