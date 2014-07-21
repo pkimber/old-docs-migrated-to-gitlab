@@ -10,9 +10,14 @@ Packages
 
 Install the following packages...
 
+::
+
+  sudo locale-gen en_GB.utf8
+  sudo update-locale en_GB.utf8
+
 Development tools (install ``vim`` or an editor of your choosing)::
 
-  sudo apt-get install vim git
+  sudo apt-get install vim git wget
 
 python development::
 
@@ -40,14 +45,20 @@ Database
 ========
 
 Replace ``/etc/postgresql/9.3/main/pg_hba.conf``
-with :download:`misc/pg_hba.conf`
+with :download:`misc/pg_hba.conf`::
+
+  sudo chown postgres:postgres /etc/postgresql/9.3/main/pg_hba.conf
+  sudo chmod 640 /etc/postgresql/9.3/main/pg_hba.conf
 
 Replace ``/etc/postgresql/9.3/main/postgresql.conf``
-with :download:`misc/postgresql.conf`
+with :download:`misc/postgresql.conf`::
+
+   sudo chown postgres:postgres /etc/postgresql/9.3/main/postgresql.conf
+   sudo chmod 644 /etc/postgresql/9.3/main/postgresql.conf
 
 Re-start Postgres::
 
-  service postgres restart
+  sudo /etc/postgresql/9.3/main/service postgres restart
 
 Create a role for your user name (replace ``patrick`` with your linux user
 name)::
@@ -57,10 +68,18 @@ name)::
 python
 ======
 
+pip
+---
+
+Add the following to the ``~/.pip/pip.conf`` file::
+
+  [install]
+  download-cache=~/.pip/cache
+
 Virtual Environment
 -------------------
 
-To create a virtual environment::
+To create a virtual environment e.g. ``venv-name``::
 
   pyvenv-3.4 --without-pip venv-name
   source venv-name/bin/activate
@@ -70,11 +89,3 @@ To create a virtual environment::
 To activate a virtual environment::
 
   source venv-name/bin/activate
-
-pip
----
-
-Add the following to the ``~/.pip/pip.conf`` file::
-
-  [install]
-  download-cache=~/.pip/cache
