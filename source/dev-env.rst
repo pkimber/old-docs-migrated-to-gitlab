@@ -5,20 +5,30 @@ Development Environment
 
 .. note:: For Ubuntu 14.04 LTS
 
-.bashrc
-=======
+Packages
+========
 
-::
+Install the following packages::
 
-  export PIP_DOWNLOAD_CACHE=$HOME/.pip_download_cache
-  export PIP_RESPECT_VIRTUALENV=true
-  # Uncomment - causes problems with pip and jython 2.5.2
-  export PIP_USE_MIRRORS=false
+Development tools (install ``vim`` or an editor of your choosing)::
 
-It might be better to use the ``~/.pip/pip.conf`` file::
+  sudo apt-get install vim git
 
-  [install]
-  download-cache=~/.pip/cache
+python development::
+
+  sudo apt-get install python3-dev
+
+The following packages are needed for ``pillow``::
+
+  sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
+    libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
+
+Postgres::
+
+  sudo apt-get install postgresql libpq-dev
+
+bash
+====
 
 A simple script for directory based environments (if a directory contains a
 ``.env`` file it will automatically be executed when you ``cd`` into it)::
@@ -29,68 +39,16 @@ A simple script for directory based environments (if a directory contains a
 Database
 ========
 
-Install PostgreSQL 9.3 (and the client libraries)::
-
-  sudo apt-get install postgresql
-  sudo apt-get install libpq-dev
-
 Create a role for your user name (replace ``patrick`` with your linux user
 name)::
 
   psql -X -U postgres -c "CREATE ROLE patrick WITH NOSUPERUSER CREATEDB NOCREATEROLE LOGIN;"
 
-Packages
-========
+python
+======
 
-Check to make sure the following are **not** installed::
-
-  dpkg -l | grep python-virtualenv
-  dpkg -l | grep python-pip
-  dpkg -l | grep python-setuptools
-  dpkg -l | grep virtualenvwrapper
-
-python 2
---------
-
-Install the following (we need python 2 for ``fabric``)::
-
-  sudo apt-get install python-dev
-
-Download and install ``setuptools``::
-
-  wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python
-  sudo easy_install pip
-  sudo pip install virtualenv
-
-python 3
---------
-
-Install the following::
-
-  sudo apt-get install python3-dev
-
-The following packages are needed for ``pillow``::
-
-  sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
-    libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
-
-The following package is needed for SOLR/Haystack::
-
-  sudo apt-get install libxslt1-dev
-
-python Virtual Environment
-==========================
-
-python 2
---------
-
-To create and activate a virtual environment::
-
-  virtualenv venv-name
-  source venv-name/bin/activate
-
-python 3
---------
+Virtual Environment
+-------------------
 
 To create a virtual environment::
 
@@ -102,3 +60,11 @@ To create a virtual environment::
 To activate a virtual environment::
 
   source venv-name/bin/activate
+
+pip
+---
+
+Add the following to the ``~/.pip/pip.conf`` file::
+
+  [install]
+  download-cache=~/.pip/cache

@@ -3,6 +3,10 @@ Process
 
 .. highlight:: bash
 
+To set-up your workstation for development:
+
+:doc:`dev-env`
+
 To deploy a site from scratch:
 
 Domain

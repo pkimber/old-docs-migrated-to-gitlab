@@ -1,6 +1,13 @@
 SOLR
 ****
 
+Packages
+========
+
+The following package is needed for SOLR/Haystack::
+
+  sudo apt-get install libxslt1-dev
+
 Requirements
 ============
 
