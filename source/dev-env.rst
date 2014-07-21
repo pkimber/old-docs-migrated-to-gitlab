@@ -8,7 +8,7 @@ Development Environment
 Packages
 ========
 
-Install the following packages::
+Install the following packages...
 
 Development tools (install ``vim`` or an editor of your choosing)::
 
@@ -38,6 +38,16 @@ A simple script for directory based environments (if a directory contains a
 
 Database
 ========
+
+Replace ``/etc/postgresql/9.3/main/pg_hba.conf``
+with :download:`misc/pg_hba.conf`
+
+Replace ``/etc/postgresql/9.3/main/postgresql.conf``
+with :download:`misc/postgresql.conf`
+
+Re-start Postgres::
+
+  service postgres restart
 
 Create a role for your user name (replace ``patrick`` with your linux user
 name)::
