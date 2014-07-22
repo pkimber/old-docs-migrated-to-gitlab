@@ -1,5 +1,5 @@
-Restore - Development
-*********************
+Restore
+*******
 
 .. highlight:: bash
 

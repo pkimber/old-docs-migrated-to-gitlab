@@ -1,5 +1,5 @@
-Backup - Development
-********************
+Backup
+******
 
 .. highlight:: bash
 
