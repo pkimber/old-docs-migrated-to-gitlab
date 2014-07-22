@@ -1,5 +1,5 @@
-Restore
-*******
+Restore - Server
+****************
 
 .. highlight:: bash
 
@@ -10,8 +10,8 @@ On the cloud server (first time only)::
 
   mkdir -p ~/repo/backup/postgres/
 
-Copy a recent backup to the cloud server (replace ``patrick`` with your own
-user name)::
+Copy a recent backup from your workstation to the cloud server (replace
+``patrick`` with your own user name)::
 
   scp ~/repo/backup/postgres/hatherleigh_info_20130926_113531_patrick.sql \
     drop-temp:/home/patrick/repo/backup/postgres/
@@ -44,9 +44,6 @@ MySQL
 Files
 =====
 
-Server
-------
-
 On the cloud server (first time only)::
 
   sudo -i -u web
@@ -73,23 +70,6 @@ On the cloud server::
   sudo -i -u web
   cd /home/web/repo/files/
   tar xzf /home/web/repo/backup/files/drop_temp_20130926_121358_patrick.tar.gz
-
-Development
------------
-
-Extract a recent backup (from your workstation) to a temporary folder (in this
-example ``drop_a_20140426_133620_patrick`` is the name of the temporary
-folder and ``hatherleigh_info`` is the name of the site)::
-
-  mkdir ~/repo/temp/media/
-  cd ~/repo/temp/media/
-
-  tar xzf /home/patrick/repo/backup/files/drop_a_20140426_133620_patrick.tar.gz
-
-  mv hatherleigh_info/public/* ~/repo/dev/project/hatherleigh_info/media/
-
-.. note:: You will probably need to remove the contents of the
-          ``media/public`` folder in your project before moving the files.
 
 FTP
 ===

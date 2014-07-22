@@ -1,5 +1,5 @@
-Cloud Docs
-**********
+Deploy Django projects using SaltStack
+**************************************
 
 To build the documentation::
 
@@ -17,3 +17,10 @@ Build and open the documentation::
 On a mac::
 
   make html && open -a firefox build/html/index.html
+
+To deploy the site::
+
+  make html
+  rsync -av --delete --force --size-only \
+    ./build/html/ \
+    web@kb-a:/home/web/repo/project/pkimber_net/open/

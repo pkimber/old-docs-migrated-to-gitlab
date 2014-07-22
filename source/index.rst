@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Cloud Docs
-**********
+Deploy Django projects using SaltStack
+**************************************
 
 Process
 
@@ -71,6 +71,7 @@ Development
    :maxdepth: 1
 
    dev-env
+   dev-backup
    dev-captcha
    dev-ckeditor
    dev-django
@@ -79,6 +80,7 @@ Development
    dev-django-thumbnails
    dev-logging
    dev-requirements
+   dev-restore
    dev-timezone
 
 Apps
