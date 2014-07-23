@@ -78,3 +78,33 @@ For development, add the following to your ``local.py`` settings file::
 
   SENDFILE_BACKEND = 'sendfile.backends.development'
   SENDFILE_ROOT = 'media-private'
+
+The upload should *just work*.  For the download, you might like to try
+something like this::
+
+  # views.py
+  @login_required
+  def download_cv(request, pk):
+      """https://github.com/johnsensible/django-sendfile"""
+      if not request.user.is_staff:
+          raise PermissionDenied()
+      enrol = get_object_or_404(Enrol, pk=pk)
+      return sendfile(
+          request,
+          enrol.cv.path,
+          attachment=True,
+          # attachment_filename='{}.pdf'.format(enrol.pk)
+      )
+
+  # urls.py
+  url(regex=r'^cv/(?P<pk>\d+)/$',
+      view=download_cv,
+      name='enrol.download.cv'
+      ),
+
+.. code-block:: html
+
+  <a href="{% url 'enrol.download.cv' object.pk %}">
+    <i class="fa fa-download"></i>
+    CV
+  </a>
