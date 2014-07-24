@@ -1,10 +1,12 @@
 SSL
 ***
 
-.. note::
+.. note:: To validate the domain name using StartSSL, you will need to receive
+          an email.  To set-up MailGun follow the instructions in
+          :doc:`mailgun`
 
-  To validate the domain name using StartSSL, you will need to receive an
-  email.  To set-up MailGun follow the instructions in :doc:`mailgun`
+.. note:: Instructions for http://www.ssls.com/ are similar.  See the section
+          below.
 
 Using https://www.startssl.com/, enter the *Validations Wizard* and choose
 *Domain Name Validation*, enter the *Domain Name*, select a
@@ -40,10 +42,10 @@ Generate your certificate request and private key::
   A challenge password []:
   An optional company name []:
 
-.. note:: Country code for the UK should be ``GB``
+.. note:: Country code for the UK is ``GB``
 
-.. note:: Do not enter email address, challenge password or optional company
-          name).  Just press *Enter* to ignore...
+.. note:: Do not enter the email address, challenge password or optional
+          company name).  Just press *Enter* to ignore.
 
 This process will generate two files, ``server.csr`` (the certificate request)
 and ``server.key`` (the private key).
