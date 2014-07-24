@@ -27,21 +27,23 @@ Generate your certificate request and private key::
   For some fields there will be a default value,
   If you enter '.', the field will be left blank.
   -----
-  Country Name (2 letter code) [AU]:UK
+  Country Name (2 letter code) [AU]:GB
   State or Province Name (full name) [Some-State]:Devon
   Locality Name (eg, city) []:Okehampton
   Organization Name (eg, company) [Internet Widgits Pty Ltd]:pkimber.net
   Organizational Unit Name (eg, section) []:
   Common Name (e.g. server FQDN or YOUR name) []:pkimber.net
-  Email Address []:web@pkimber.net
+  Email Address []:
 
   Please enter the following 'extra' attributes
   to be sent with your certificate request
   A challenge password []:
   An optional company name []:
 
-Note: I did not use either of the extra attributes (challenge password or
-optional company name).  Just press *Enter* to ignore...
+.. note:: Country code for the UK should be ``GB``
+
+.. note:: Do not enter email address, challenge password or optional company
+          name).  Just press *Enter* to ignore...
 
 This process will generate two files, ``server.csr`` (the certificate request)
 and ``server.key`` (the private key).

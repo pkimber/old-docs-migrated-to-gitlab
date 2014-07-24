@@ -26,6 +26,28 @@ for serving static files during development::
 
   This helper function will only work if ``DEBUG`` is ``True``
 
+Compress
+========
+
+http://django-compressor.readthedocs.org/::
+
+  # requirements/base.txt
+  django-compressor==1.4
+
+  # base.py
+  STATICFILES_FINDERS = (
+      ...
+      'compressor.finders.CompressorFinder',
+  )
+
+  # base.py
+  THIRD_PARTY_APPS = (
+      'compressor',
+
+  # optional - to disable
+  # django-compressor
+  COMPRESS_ENABLED = False # defaults to the opposite of DEBUG
+
 Editor
 ======
 
