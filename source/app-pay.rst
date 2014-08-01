@@ -123,7 +123,13 @@ Links
 
 http://go.developer.ebay.com/devzone/articles/getting-started-paypal-django
 
-Integration
-===========
+Issues
+======
 
+To view a payment and it's status::
 
+  from pay.models import Payment
+  p = Payment.objects.get(pk=15)
+  p.state
+  p.created
+  p.content_object
