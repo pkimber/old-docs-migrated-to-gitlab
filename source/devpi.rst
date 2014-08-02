@@ -32,6 +32,38 @@ The second piece of information required in your pillar is the configuration of
 
 Just update the domain name in the URL to suit your install.
 
+Prerequisites
+=============
+
+.. note:: In the following examples, the new ``devpi`` server is called
+          ``devpi.hatherleigh.info`` and my user name is ``patrick``.
+
+Create an SSL certificate (:doc:`ssl`).
+
+Copy the SSL certificate from your workstation to the server::
+
+  scp server.key devpi.hatherleigh.info:/home/patrick/repo/temp/
+  scp ssl-unified.crt devpi.hatherleigh.info:/home/patrick/repo/temp/
+
+Create the folder for the certificates and update permissions::
+
+  ssh devpi.hatherleigh.info
+  sudo -i
+  mkdir -p /srv/ssl/devpi/
+  chown www-data:www-data /srv/ssl
+  chmod 0400 /srv/ssl
+  chown www-data:www-data /srv/ssl/devpi
+  chmod 0400 /srv/ssl/devpi
+
+  mv /home/patrick/repo/temp/server.key /srv/ssl/devpi/
+  mv /home/patrick/repo/temp/ssl-unified.crt /srv/ssl/devpi/
+  chown www-data:www-data /srv/ssl/devpi/*
+  chmod 0400 /srv/ssl/devpi/*
+
+Re-start the nginx server::
+
+  service nginx restart
+
 Initial Configuration
 =====================
 
@@ -60,9 +92,13 @@ To log in later::
 Development Index
 -----------------
 
-We need to create an index so we can upload our own packages::
+We need to create a user and an index for the user so we can upload our own
+packages (in this example, the user is ``kb``)::
 
   devpi login root --password "123"
+
+  devpi user -c kb password=123
+  devpi login kb --password "123"
   devpi index -c dev volatile=False
 
 Note: To delete the index: ``devpi index --delete dev``
@@ -77,7 +113,7 @@ To configure your workstation to use ``devpi`` as it's default index::
 ::
 
   [global]
-  index-url = http://your.server/root/dev/+simple/
+  index-url = https://your.server/kb/dev/+simple/
 
 To configure your workstation to upload packages to the ``devpi`` index you
 created above::
@@ -91,8 +127,8 @@ created above::
       dev
 
   [dev]
-  repository: http://your.server/root/dev/
-  username: root
+  repository: https://your.server/kb/dev/
+  username: kb
   password: 123
 
 Issues

@@ -36,13 +36,17 @@ If this is the first time you have released this package then the upload will
 fail.  You need to run the following before running the ``release`` command
 again::
 
-  cd /your/app/folder/
-  python setup.py register -r dev
+  devpi login kb --password "123"
+  devpi use --set-cfg kb/dev
+  devpi upload
 
-.. note::
+.. cd /your/app/folder/
+.. python setup.py register -r dev
 
-  Don't forget to commit your code to the version control system after running
-  this task
+.. note:: see :doc:`devpi` for help with the above commands.
+
+.. note:: Don't forget to commit your code to the version control system after
+          running this task
 
 Click here for :doc:`fabric-deploy` instructions...
 
