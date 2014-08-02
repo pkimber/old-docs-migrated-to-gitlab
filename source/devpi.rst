@@ -28,9 +28,10 @@ The second piece of information required in your pillar is the configuration of
 .. code-block:: yaml
 
   pip:
-    index_url: http://devpi.hatherleigh.info/root/dev/+simple/
+    index_url: http://devpi.hatherleigh.info/kb/dev/+simple/
 
-Just update the domain name in the URL to suit your install.
+.. note:: Update the domain (``devpi.hatherleigh.info``) and devpi user name
+          (``kb``) in the URL to suit your install.
 
 Prerequisites
 =============
@@ -161,7 +162,7 @@ If the release procedure (``python setup.py clean sdist upload -r dev``) starts
 to throw some weird errors e.g::
 
   running upload
-  Submitting dist/pkimber-my-app-0.0.03.tar.gz to http://your.server/root/dev/
+  Submitting dist/pkimber-my-app-0.0.03.tar.gz to http://your.server/kb/dev/
   error: None
 
 ... then check the nginx error logs on the server::
