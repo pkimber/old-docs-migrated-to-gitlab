@@ -23,7 +23,7 @@ switch to the ``fabric`` virtual environment which is using python
 (``fabric`` is currently not compatible with python 3)::
 
   cd /your/app/folder/
-  workon dev_fabric && \
+  source ~/repo/dev/module/fabric/venv-fabric/bin/activate && \
       fab -f ../../module/fabric/release.py dist:prefix=pkimber,pypirc=dev && \
       cd .
 
@@ -37,7 +37,7 @@ fail.  You need to run the following before running the ``release`` command
 again::
 
   devpi login kb --password "123"
-  devpi use --set-cfg kb/dev
+  # devpi use --set-cfg kb/dev
   devpi upload
 
 .. cd /your/app/folder/

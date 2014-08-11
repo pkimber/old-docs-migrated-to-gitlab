@@ -133,3 +133,16 @@ To view a payment and it's status::
   p.state
   p.created
   p.content_object
+
+Testing
+-------
+
+If you are using a **copy** of the live data set and you want to run test
+payments, then you might get a ``No such customer`` error.  This is because the
+customer numbers on the live system will not match the customer numbers on your
+test system.
+
+To remove the customer records on the live system::
+
+  from pay.models import StripeCustomer
+  StripeCustomer.objects.all().delete()
