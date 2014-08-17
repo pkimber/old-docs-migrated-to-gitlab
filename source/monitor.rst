@@ -3,10 +3,13 @@ Monitor
 
 .. highlight:: bash
 
+.. _monitor_server:
+
 Server
 ======
 
-Add a ``monitor`` section to the ``pillar``:
+To create a monitor (Graphite) server, start by adding a ``monitor`` section to
+the ``pillar``:
 
 .. code-block:: yaml
 
@@ -19,7 +22,7 @@ Add a ``monitor`` section to the ``pillar``:
 Note:
 
 - We normally install a monitor onto a separate server because our apps use
-  python 3 and Graphite uses python 3.  Not sure if they will work together.
+  python 3 and Graphite uses python 2 (not sure if they will work together).
 - To generate a unique secret key, see :ref:`generate_secret_key`
 - The ``domain`` is used to fill in the Django ``ALLOWED_HOSTS`` field.  You
   will probably want to copy this domain to the ``django`` pillar file (see
@@ -48,14 +51,14 @@ The monitor client is configured in the ``django`` pillar file e.g:
     monitor: monitor.hatherleigh.info
 
 .. note:: This will probably be the same as the domain name configured in the
-          server (see above).
+          server (see :ref:`monitor_server` above).
+
+Diagnostics
+===========
 
 To run ``statsd`` without ``supervisord``::
 
   /usr/bin/nodejs /opt/statsd/stats.js /opt/statsd/localConfig.js
-
-Diagnostics
-===========
 
 To view the messages received by ``statd``, edit ``/opt/statsd/localConfig.js``
 and add ``dumpMessages: true`` e.g::
