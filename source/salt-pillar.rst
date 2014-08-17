@@ -77,6 +77,8 @@ pip and devpi
 
 :doc:`devpi`
 
+.. _generate_secret_key:
+
 Secret Key
 ----------
 

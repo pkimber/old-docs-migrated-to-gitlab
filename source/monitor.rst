@@ -20,7 +20,7 @@ Note:
 
 - We normally install a monitor onto a separate server because our apps use
   python 3 and Graphite uses python 3.  Not sure if they will work together.
-- To generate a unique secret key, see :doc:`salt-pillar`
+- To generate a unique secret key, see :ref:`generate_secret_key`
 - The ``domain`` is used to fill in the Django ``ALLOWED_HOSTS`` field.  You
   will probably want to copy this domain to the ``django`` pillar file (see
   below).
