@@ -10,8 +10,32 @@ ElasticSearch
 
 In your ``requirements/base.txt``, add the following::
 
-  django-haystack==2.1.0
-  pyelasticsearch==0.6.1
+  django-haystack==2.2.0
+  elasticsearch==1.2.0
+
+In ``settings/local.py``:
+
+.. code-block:: python
+
+  HAYSTACK_CONNECTIONS = {
+      'default': {
+          'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+      },
+  }
+
+In ``settings/production.py``:
+
+.. code-block:: python
+
+  HAYSTACK_CONNECTIONS = {
+      'default': {
+          'BATCH_SIZE': 100,
+          'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+          'INDEX_NAME': '{}'.format(SITE_NAME),
+          'TIMEOUT': 60 * 5,
+          'URL': 'http://127.0.0.1:9200/',
+      },
+  }
 
 Diagnostics
 -----------

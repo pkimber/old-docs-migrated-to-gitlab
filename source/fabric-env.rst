@@ -1,6 +1,10 @@
 Fabric
 ******
 
+Clone https://github.com/pkimber/fabric into::
+
+  ~/repo/dev/module/fabric/
+
 Packages
 ========
 

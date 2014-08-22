@@ -96,9 +96,20 @@ Check out your source code into this folder structure::
   │   │   │   ├── pay
   │   │   │   ├── search
   │   │   │   └── stock
+  │   │   ├── module
+  │   │   │   ├── deploy
+  │   │   │   │   ├── pillar
+  │   │   │   │   ├── post-deploy
+  │   │   │   │   └── ssl-cert
+  │   │   │   ├── docs
+  │   │   │   ├── fabric
+  │   │   │   └── salt
   │   │   └── project
   │   │       ├── hatherleigh_info
   │   │       └── pkimber_net
+
+app
+---
 
 The source code for the reusable apps go into the ``app`` folder.  The github
 URL and documentation for my open source apps are here:
@@ -112,6 +123,27 @@ URL and documentation for my open source apps are here:
 - :doc:`app-mail`
 - :doc:`app-pay`
 - :doc:`app-search`
+
+deploy
+------
+
+``pillar``, :doc:`salt-pillar`
+
+``ssl-cert``, :doc:`ssl`
+
+docs
+----
+
+(This documentation)
+https://github.com/pkimber/docs
+
+fabric
+------
+
+:doc:`fabric-env`
+
+project
+-------
 
 Put the source code for your customer into the ``project`` folder e.g:
 https://github.com/pkimber/pkimber_net
