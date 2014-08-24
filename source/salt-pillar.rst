@@ -101,7 +101,7 @@ Database
 The fabric :doc:`fabric-release` task uses a ``prefix`` parameter for
 identifying your modules.  This ``prefix`` is also used to lookup the
 database IP address for your site when running the :doc:`fabric-deploy`
-command.  So, for example, if your prefix is ``pkimber``, you should have a
+command.  So, for example, if your prefix is ``kb``, you should have a
 file in your pillar called::
 
   db/settings.sls

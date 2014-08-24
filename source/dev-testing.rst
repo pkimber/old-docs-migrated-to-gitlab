@@ -48,6 +48,14 @@ Append the test domain to the pillar e.g::
 Code
 ====
 
+Add ``TESTING`` to ``settings/local.py``:
+
+.. code-block:: python
+
+  DEBUG = True
+  TEMPLATE_DEBUG = DEBUG
+  TESTING = False
+
 Add ``TESTING`` to ``settings/production.py`` and update the database ``NAME``:
 
 .. code-block:: python

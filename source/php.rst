@@ -55,7 +55,7 @@ version you want to install.
 To install Drupal and any modules listed in the ``packages`` section of the
 pillar file, run the fabric deploy command e.g::
 
-  fab -H web@drop-temp -f deploy.py deploy:server_name=drop-temp,site_name=hatherleigh_net,prefix=pkimber,version=1.0.01
+  fab -H web@drop-temp -f deploy.py deploy:server_name=drop-temp,site_name=hatherleigh_net,prefix=kb,version=1.0.01
 
 Use the fabric ``create_db`` task to create the database (see
 :doc:`fabric-database` for more information).

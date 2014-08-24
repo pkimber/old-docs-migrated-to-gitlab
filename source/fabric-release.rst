@@ -14,7 +14,7 @@ Release
   This task prefixes your application name with a name of your choosing.  This
   prevents name clashes with other packages on the python package index (PyPI).
 
-  I recommend choosing a short version of your company name e.g. ``pkimber``:
+  I recommend choosing a short version of your company name e.g. ``kb``:
 
 Start by committing your code to the version control system.
 
@@ -24,13 +24,13 @@ switch to the ``fabric`` virtual environment which is using python
 
   cd /your/app/folder/
   source ~/repo/dev/module/fabric/venv-fabric/bin/activate && \
-      fab -f ../../module/fabric/release.py dist:prefix=pkimber,pypirc=dev && \
+      fab -f ../../module/fabric/release.py dist:prefix=kb,pypirc=dev && \
       cd .
 
 If your projects are still using python 2::
 
   cd /your/app/folder/
-  fab -f ../../module/fabric/release.py dist:prefix=pkimber,pypirc=dev
+  fab -f ../../module/fabric/release.py dist:prefix=kb,pypirc=dev
 
 If this is the first time you have released this package then the upload will
 fail.  You need to run the following before running the ``release`` command
@@ -52,7 +52,7 @@ Click here for :doc:`fabric-deploy` instructions...
 
 To check the contents of the release::
 
-  tar -ztvf dist/pkimber-app-name-0.0.16.tar.gz
+  tar -ztvf dist/kb-app-name-0.0.16.tar.gz
 
 .. note::
 
