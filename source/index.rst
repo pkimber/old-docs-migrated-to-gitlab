@@ -82,6 +82,7 @@ Development
    dev-logging
    dev-requirements
    dev-restore
+   dev-testing
    dev-timezone
 
 Apps
