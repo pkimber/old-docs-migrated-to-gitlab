@@ -1,5 +1,7 @@
-SSL
-***
+Create SSL Certificate
+**********************
+
+To install an SSL certificate, see :doc:`fabric-ssl`...
 
 .. note:: To validate the domain name using StartSSL, you will need to receive
           an email.  To set-up MailGun follow the instructions in

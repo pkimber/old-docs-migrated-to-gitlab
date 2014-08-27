@@ -1,5 +1,7 @@
-SSL Certificate
-***************
+Install SSL Certificate
+***********************
+
+To create a certificate, see :doc:`ssl`...
 
 Configuration
 =============
