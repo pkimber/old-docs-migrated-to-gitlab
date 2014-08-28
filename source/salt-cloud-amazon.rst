@@ -3,7 +3,11 @@ Amazon
 
 .. highlight:: bash
 
-From `An Introduction to the AWS Command Line Tool`_
+Thank you to the authors of the following articles for their help:
+
+- `An Introduction to the AWS Command Line Tool Part 2`_
+- `An Introduction to the AWS Command Line Tool`_
+- `Using Security Groups`_
 
 Install
 =======
@@ -32,9 +36,6 @@ The following two commands will check the command line tool is running::
 
 Security Groups
 ===============
-
-From `Using Security Groups`_ and
-`An Introduction to the AWS Command Line Tool Part 2`_
 
 .. note:: The security groups need to be set-up once.  After setting up the
           security groups, we just assign them to instances.
@@ -132,7 +133,7 @@ Add a provider to ``~/repo/dev/module/deploy/salt-cloud/cloud.providers`` e.g:
 
 .. code-block:: yaml
 
-  kb_eu_west_1_private_ips:
+  kb_eu_west_1_public_ips:
     minion:
       master: master.pkimber.net
     ssh_interface: public_ips
@@ -156,6 +157,9 @@ Add a provider to ``~/repo/dev/module/deploy/salt-cloud/cloud.providers`` e.g:
 - Find the ``availability_zone`` for your ``location`` by running
   ``aws ec2 describe-availability-zones``
 - Make sure the ``securitygroup`` matches the name you chose.
+
+.. note:: For information on the above settings, see
+          http://salt-cloud.readthedocs.org/en/latest/topics/aws.html
 
 Profile
 -------
@@ -185,6 +189,11 @@ Create a test server::
     --profile base_ec2_private \
     test-ec2
 
+- Replace ``patrick`` with your user name on the workstation.
+- Replace ``test-ec2`` with the name of the server you want to create.
+
+Make a note of the ``publicIp`` and ``instanceId``.
+
 Log into your new server::
 
   sudo -i
@@ -192,12 +201,19 @@ Log into your new server::
   ssh-add /etc/salt/my_salt_cloud_key
   ssh ubuntu@54.77.12.170
 
-.. note:: The IP address of the new server will be displayed when the
-          ``salt-cloud`` command finishes.
+.. note:: The IP address of the new server is the ``publicIp`` (see above).
 
 To get root access (on this Ubuntu server)::
 
   sudo -i
+
+Security Groups
+---------------
+
+For a web server, we need to add the ``db`` security group:
+
+
+
 
 
 .. _`An Introduction to the AWS Command Line Tool Part 2`: http://www.linux.com/news/featured-blogs/206-rene-cunningham/764536-an-introduction-to-the-aws-command-line-tool-part-2
