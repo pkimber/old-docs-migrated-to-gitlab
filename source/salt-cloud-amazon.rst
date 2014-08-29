@@ -40,6 +40,20 @@ Security Groups
 .. note:: The security groups need to be set-up once.  After setting up the
           security groups, we just assign them to instances.
 
+Graphite
+--------
+
+Graphite carbon server needs to listen to messages on port 2003::
+
+  aws ec2 create-security-group \
+      --group-name graphite \
+      --description "Graphite Security Group"
+  aws ec2 authorize-security-group-ingress \
+      --group-name graphite \
+      --protocol tcp \
+      --cidr 0.0.0.0/0 \
+      --port 2003
+
 Web
 ---
 
@@ -48,16 +62,19 @@ Create security groups::
   aws ec2 create-security-group \
       --group-name web \
       --description "Web Security Group"
+  # ssh
   aws ec2 authorize-security-group-ingress \
       --group-name web \
       --protocol tcp \
       --cidr 0.0.0.0/0 \
       --port 22
+  # http
   aws ec2 authorize-security-group-ingress \
       --group-name web \
       --protocol tcp \
       --cidr 0.0.0.0/0 \
       --port 80
+  # https
   aws ec2 authorize-security-group-ingress \
       --group-name web \
       --protocol tcp \
