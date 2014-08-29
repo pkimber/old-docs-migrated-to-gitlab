@@ -43,7 +43,7 @@ Security Groups
 Web
 ---
 
-Create a security group::
+Create security groups::
 
   aws ec2 create-security-group \
       --group-name web \
@@ -88,22 +88,7 @@ Create the security group::
 Database
 --------
 
-Create a security group for the database::
-
-  aws ec2 create-security-group \
-    --group-name db \
-    --description "DB Security Group"
-
-Allow access::
-
-  aws ec2 authorize-security-group-ingress \
-    --group-name db \
-    --source-group db \
-    --protocol tcp --port 5432
-
-.. note:: The above rule allows any EC2 instance associated with the ``db``
-          security group to access any other EC2 or RDS instance associated
-          with the ``db`` security group on tbp port ``5432``.
+:doc:`database-amazon`
 
 Salt Cloud
 ==========
@@ -192,7 +177,12 @@ Create a test server::
 - Replace ``patrick`` with your user name on the workstation.
 - Replace ``test-ec2`` with the name of the server you want to create.
 
-Make a note of the ``publicIp`` and ``instanceId``.
+Make a note of the ``publicIp`` and ``instanceId``.  If you need to find the
+instance ID later::
+
+  aws ec2 describe-instances --filter Name=tag:Name,Values=test-ec2
+
+- replace ``test-ec2`` with the name of the server you are looing for.
 
 Log into your new server::
 
@@ -210,12 +200,42 @@ To get root access (on this Ubuntu server)::
 Security Groups
 ---------------
 
-For a web server, we need to add the ``db`` security group:
+For a web server, we need to add the ``db`` security group.  Make a note of the
+``GroupId`` for the ``web`` and ``db`` security groups::
 
+  aws ec2 describe-security-groups --group-names db
+  aws ec2 describe-security-groups --group-names web
 
+Add these two security groups to the web server you just created::
 
+  aws ec2 modify-instance-attribute \
+    --instance-id <instance id> \
+    --groups <security group id> <db security group id>
+
+- Replace ``<instance id>`` with the ``InstanceId`` of the server you just
+  created.
+- Replace ``<security group id>`` with the ID of the ``web`` security group
+  (see ``awscli``).
+- Replace ``<db security group id>`` with the ID of the ``db`` security group.
+
+Database
+--------
+
+To find the *Endpoint* *Address* for your database instance::
+
+  aws rds describe-db-instances
+
+You should be able to connect to your database instance using ``psql``::
+
+  psql \
+    --host=my-db-instance.cmf1ips9eg9s.eu-west-1.rds.amazonaws.com \
+    --username=postgres postgres
+
+- Enter the master user password when prompted (see ``apg`` in
+  `RDS, Create database`_).
 
 
 .. _`An Introduction to the AWS Command Line Tool Part 2`: http://www.linux.com/news/featured-blogs/206-rene-cunningham/764536-an-introduction-to-the-aws-command-line-tool-part-2
 .. _`An Introduction to the AWS Command Line Tool`: http://www.linux.com/learn/tutorials/761430-an-introduction-to-the-aws-command-line-tool
+.. _`RDS, Create database`: https://www.pkimber.net/howto/amazon/rds.html#create-database
 .. _`Using Security Groups`: http://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-sg.html

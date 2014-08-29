@@ -60,6 +60,7 @@ Site
    site-config
    salt-pillar
    auth
+   database-amazon
    ftp
    mailgun
    maintain
