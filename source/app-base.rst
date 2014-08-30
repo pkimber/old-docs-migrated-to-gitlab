@@ -3,6 +3,19 @@ base
 
 https://github.com/pkimber/base
 
+URL
+===
+
+We have a few *standard* URLs:
+
+- ``logout``
+- ``login``
+- ``project.home`` the home page of the web site.
+- ``project.dash`` the home page for a member of staff (or logged in user if
+  the project requires it).
+- ``project.settings``, the project settings.  Usually only accessible to a
+  member of staff.
+
 view_utils
 ==========
 

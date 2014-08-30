@@ -30,6 +30,7 @@ Minion
    :maxdepth: 1
 
    salt-cloud-install
+   salt-cloud-amazon
    salt-cloud-digitalocean
    salt-cloud-rackspace
    salt-provision
@@ -60,6 +61,7 @@ Site
    site-config
    salt-pillar
    auth
+   celery
    database-amazon
    ftp
    mailgun
