@@ -73,6 +73,26 @@ required) the ``mail_send`` cron command e.g::
 Usage
 =====
 
+To queue an email template::
+
+  context = {
+      email_address: {
+          "SUBJECT": "Re: {}".format(subject),
+          "BODY": description,
+          "DATE": created.strftime("%d-%b-%Y %H:%M:%S"),
+      },
+  }
+  queue_mail_template(
+      self.object,
+      'enquiry_acknowledgement',
+      context,
+  )
+
+To send queued emails::
+
+  from mail.tasks import process_mail
+  process_mail.delay()
+
 To send email, use the ``mail_send`` management command e.g:
 
 .. code-block:: bash

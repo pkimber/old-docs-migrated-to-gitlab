@@ -28,3 +28,24 @@ In your ``settings/production.py`` file::
           'PORT': '',
       }
   }
+
+.. _django_transactions:
+
+Transactions
+============
+
+I have started using ``transaction.atomic`` in several of the views.  Make sure
+the transaction is committed befire returning the HTTP response.
+
+This is the pattern I am using::
+
+  from django.http import HttpResponseRedirect
+
+  def form_valid(self, form):
+      with transaction.atomic():
+          self.object = form.save(commit=False)
+          self.object.deleted = True
+          self.object = form.save()
+      return HttpResponseRedirect(self.get_success_url())
+
+If you don't do this then queued tasks are called before the object is saved.
