@@ -23,6 +23,8 @@ python development::
   # pillow
   sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
     libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
+  # if you have issues with setuptools e.g. Requirement.parse('setuptools>=0.8'))
+  wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
 
 Postgres::
 

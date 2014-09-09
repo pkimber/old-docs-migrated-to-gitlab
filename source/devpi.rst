@@ -81,7 +81,7 @@ Security
 Create a password for the root user (change ``123`` to a password of your
 choice)::
 
-  devpi use http://your.server/root/pypi/
+  devpi use --set-cfg http://your.server/root/pypi/
   devpi login root --password ""
   devpi user -m root password=123
   devpi logoff
@@ -131,6 +131,21 @@ created above::
   repository: https://your.server/kb/dev/
   username: kb
   password: 123
+
+Upgrade
+=======
+
+To upgrade the index to a new version::
+
+  sudo -i -u web
+  cd /home/web/repo/devpi
+  source venv_devpi/bin/activate
+  devpi-server --export /home/web/repo/backup/devpi/ --serverdir=/home/web/repo/devpi/data
+  mv /home/web/repo/devpi/data /home/web/repo/temp/
+  devpi-server --import /home/web/repo/backup/devpi/ --serverdir=/home/web/repo/devpi/data
+
+.. note:: The ``data`` folder needs to be removed before running the ``import``
+          command.
 
 Issues
 ======

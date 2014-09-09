@@ -5,6 +5,7 @@ search
 
 https://github.com/pkimber/search
 
+
 ElasticSearch
 =============
 
@@ -73,6 +74,8 @@ In your ``search_indexes.py`` modules, inherit from ``CelerySearchIndex``:
   class ContactIndex(CelerySearchIndex, indexes.Indexable):
       # etc
 
+For further information, see `celery-haystack`_
+
 Diagnostics
 ===========
 
@@ -101,3 +104,7 @@ Search
 
 Replace ``hatherleigh_info`` with your site name.  In this example, we are
 searching for ``cloud``.
+
+
+.. _`celery-haystack`
+.. _`celery-haystack`: http://celery-haystack.readthedocs.org/en/latest/
