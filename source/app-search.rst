@@ -106,5 +106,4 @@ Replace ``hatherleigh_info`` with your site name.  In this example, we are
 searching for ``cloud``.
 
 
-.. _`celery-haystack`
 .. _`celery-haystack`: http://celery-haystack.readthedocs.org/en/latest/
