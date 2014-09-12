@@ -70,6 +70,8 @@ To add this task to the queue::
   from .tasks import my_task
   my_task.delay()
 
+.. _celery_cron:
+
 cron
 ====
 

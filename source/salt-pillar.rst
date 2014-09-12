@@ -35,6 +35,20 @@ details of the sites to be deployed onto this server e.g::
       ftp: True
       ftp_password: "generated-using-mkpasswd-see-ftp-notes"
 
+cron
+----
+
+.. warning:: Probably better to use Celery.  For details, see
+             :ref:`celery_cron`
+
+To create and run a cron task::
+
+  hatherleigh_info:
+    profile: django
+    cron:
+      prepare_graph_data:
+        schedule: "30     23      *       *       *"
+
 FTP
 ---
 
