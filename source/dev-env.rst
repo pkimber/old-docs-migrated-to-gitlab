@@ -55,8 +55,8 @@ with :download:`misc/pg_hba.conf`::
 Replace ``/etc/postgresql/9.3/main/postgresql.conf``
 with :download:`misc/postgresql.conf`::
 
-   sudo chown postgres:postgres /etc/postgresql/9.3/main/postgresql.conf
-   sudo chmod 644 /etc/postgresql/9.3/main/postgresql.conf
+  sudo chown postgres:postgres /etc/postgresql/9.3/main/postgresql.conf
+  sudo chmod 644 /etc/postgresql/9.3/main/postgresql.conf
 
 Re-start Postgres::
 

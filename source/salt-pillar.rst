@@ -41,7 +41,7 @@ cron
 .. warning:: Probably better to use Celery.  For details, see
              :ref:`celery_cron`
 
-To create and run a cron task::
+To create and run a Django management command as a cron task::
 
   hatherleigh_info:
     profile: django
