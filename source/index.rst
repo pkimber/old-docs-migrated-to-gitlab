@@ -58,11 +58,12 @@ Site
 .. toctree::
    :maxdepth: 1
 
+   amazon-database
+   amazon-s3
    site-config
    salt-pillar
    auth
    celery
-   database-amazon
    ftp
    mailgun
    maintain

@@ -105,7 +105,7 @@ Create the security group::
 Database
 --------
 
-:doc:`database-amazon`
+:doc:`amazon-database`
 
 Salt Cloud
 ==========
