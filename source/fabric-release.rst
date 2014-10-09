@@ -27,11 +27,6 @@ switch to the ``fabric`` virtual environment which is using python
       fab -f ../../module/fabric/release.py dist:prefix=kb,pypirc=dev && \
       cd .
 
-If your projects are still using python 2::
-
-  cd /your/app/folder/
-  fab -f ../../module/fabric/release.py dist:prefix=kb,pypirc=dev
-
 If this is the first time you have released this package then the upload will
 fail.  You need to run the following before running the ``release`` command
 again::

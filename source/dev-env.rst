@@ -73,10 +73,30 @@ python
 pip
 ---
 
+.. note:: Check out the ``--set-cfg`` parameter in
+          http://doc.devpi.net/latest/userman/devpi_commands.html
+
 Add the following to the ``~/.pip/pip.conf`` file::
 
   [install]
   download-cache=~/.pip/cache
+  index-url = https://devpi.pkimber.net/kb/dev/+simple/
+
+Add the following to the ``~/.pydistutils.cfg`` file::
+
+  [easy_install]
+  index_url = https://devpi.pkimber.net/kb/dev/+simple/
+
+Add the following to the ``~/.pypirc`` file::
+
+  [distutils]
+  index-servers =
+      dev
+
+  [dev]
+  repository: https://devpi.pkimber.net/kb/dev/
+  username: kb
+  password: m00dyBoney
 
 Source Code
 ===========
