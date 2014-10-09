@@ -80,12 +80,12 @@ Add the following to the ``~/.pip/pip.conf`` file::
 
   [install]
   download-cache=~/.pip/cache
-  index-url = https://devpi.pkimber.net/kb/dev/+simple/
+  index-url = https://devpi.hatherleigh.info/kb/dev/+simple/
 
 Add the following to the ``~/.pydistutils.cfg`` file::
 
   [easy_install]
-  index_url = https://devpi.pkimber.net/kb/dev/+simple/
+  index_url = https://devpi.hatherleigh.info/kb/dev/+simple/
 
 Add the following to the ``~/.pypirc`` file::
 
@@ -94,9 +94,9 @@ Add the following to the ``~/.pypirc`` file::
       dev
 
   [dev]
-  repository: https://devpi.pkimber.net/kb/dev/
+  repository: https://devpi.hatherleigh.info/kb/dev/
   username: kb
-  password: m00dyBoney
+  password: 123
 
 Source Code
 ===========
