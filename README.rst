@@ -23,4 +23,4 @@ To deploy the site::
   make html
   rsync -av --delete --force --size-only \
     ./build/html/ \
-    web@kb-a:/home/web/repo/project/pkimber_net/open/
+    web@pkimber.net:/home/web/repo/project/pkimber_net/open/
