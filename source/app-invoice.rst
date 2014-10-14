@@ -47,4 +47,5 @@ To create the PDF for an invoice::
 
   invoice = Invoice.objects.get(pk=invoice_number)
   invoice.contact.name
+  invoice.pdf = None
   InvoicePrint().create_pdf(invoice, header_image=None)
