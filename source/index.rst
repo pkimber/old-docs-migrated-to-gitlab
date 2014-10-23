@@ -60,6 +60,7 @@ Site
 
    amazon-database
    amazon-s3
+   backup
    site-config
    salt-pillar
    auth
