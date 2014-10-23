@@ -24,6 +24,19 @@ To get the time now in a format which is *aware*::
 
   td = timezone.now() - self.created
 
+Constuct
+--------
+
+To create a date/time for testing purposes::
+
+  from datetime import datetime
+  import pytz
+
+  d = datetime(2014, 10, 1, 6, 0, 0, tzinfo=pytz.utc)
+
+.. warning:: Only use ``utc`` for constructing dates.  For more information
+             see http://pytz.sourceforge.net/#example-usage
+
 Local
 -----
 

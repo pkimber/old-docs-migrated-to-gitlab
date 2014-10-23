@@ -83,6 +83,7 @@ Development
    dev-django-media
    dev-django-static
    dev-django-thumbnails
+   dev-icons
    dev-logging
    dev-requirements
    dev-restore
@@ -96,6 +97,7 @@ Apps
 
    app-base
    app-block
+   app-cms
    app-crm
    app-enquiry
    app-invoice

@@ -66,7 +66,7 @@ Transactions
 ============
 
 I have started using ``transaction.atomic`` in several of the views.  Make sure
-the transaction is committed befire returning the HTTP response.
+the transaction is committed before returning the HTTP response.
 
 This is the pattern I am using::
 
