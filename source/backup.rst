@@ -1,6 +1,10 @@
 Backup
 ******
 
+We are Using http://rsync.net/ for backups.  The process below can easily be
+adapted for use with any linux based storage system because we use Duplicity,
+ssh keys and gpg for encryption.
+
 Links
 =====
 
@@ -55,7 +59,15 @@ For database backups::
 Getting Started
 ===============
 
-Using http://rsync.net/ for backups...
+You will receive your account details from rsync.net.  Please refer to the
+:doc:`checklist` and fill in your own details.
+
+Create an SSH key on your laptop: `Generating SSH Keys for Automated Backups`_
+Follow the instructions up to and including *Testing Your Passwordless Login*
+
+.. Stopping here until next week
+
+
 
 To use SSH keys rather than passwords for login, create your key and then
 upload it to ``rsync.net`` using this command::
@@ -99,3 +111,6 @@ To export the *public* key::
 .. _`How To Use Duplicity with GPG to Securely Automate Backups on Ubuntu`: https://www.digitalocean.com/community/tutorials/how-to-use-duplicity-with-gpg-to-securely-automate-backups-on-ubuntu
 .. _`How-To: Import/Export GPG Key Pair`: http://www.debuntu.org/how-to-importexport-gpg-key-pair/
 .. _`Setting up Duplicity with GnuPG`: http://codegouge.blogspot.co.uk/2012/01/setting-up-duplicity-with-gnupg.html
+
+
+.. _`Generating SSH Keys for Automated Backups`: http://www.rsync.net/resources/howto/ssh_keys.html
