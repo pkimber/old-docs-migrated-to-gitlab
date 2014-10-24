@@ -88,6 +88,7 @@ Development
    dev-logging
    dev-requirements
    dev-restore
+   dev-sitemap
    dev-testing
    dev-timezone
 

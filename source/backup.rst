@@ -10,6 +10,48 @@ Links
 
 `Setting up Duplicity with GnuPG`_
 
+Strategy (draft)
+================
+
+http://duplicity.nongnu.org/duplicity.1.html
+
+Using the following commands::
+
+  remove-all-but-n-full
+  remove-all-inc-of-but-n-full
+
+We will run one backup which does weekly full, daily incremental, deleting full
+backups over 4 weeks, and incremental over 7 days.
+
+We will run another (separate) monthly full backup which is deleted after 3
+months.
+
+For database backups::
+
+  # put the database backups into a 'backup' folder on the cloud server e.g.
+  /home/web/repo/backup/pkimber_net/20141024_1700.sql
+  /home/web/repo/backup/hatherleigh_info/20141024_1704.sql
+
+  # cron task will remove the previous days backups after making todays e.g.
+  rm /home/web/repo/backup/pkimber_net/20141023_1600.sql
+  rm /home/web/repo/backup/hatherleigh_info/20141023_1604.sql
+
+  # duplicity will back this up to rsync.net
+  duplicity full --encrypt-key="ABCD0001" \
+    scp://123@tv-s009.rsync.net/pkimber_net/backup \
+    /home/web/repo/backup/pkimber_net
+  duplicity full --encrypt-key="ABCD0001" \
+    scp://123@tv-s009.rsync.net/hatherleigh_info/backup \
+    /home/web/repo/backup/hatherleigh_info
+
+  # duplicity will verify the backup
+  duplicity verify --encrypt-key="ABCD0001" \
+    scp://123@tv-s009.rsync.net/pkimber_net/backup \
+    /home/web/repo/backup/pkimber_net
+  duplicity verify --encrypt-key="ABCD0001" \
+    scp://123@tv-s009.rsync.net/hatherleigh_info/backup \
+    /home/web/repo/backup/hatherleigh_info
+
 Getting Started
 ===============
 
@@ -25,11 +67,14 @@ upload it to ``rsync.net`` using this command::
 
 To append SSH keys::
 
-  cat ~/.ssh/id_rsa.pub | ssh 123@tv-s009.rsync.net 'dd of=.ssh/authorized_keys oflag=append conv=notrunc'
+  cat ~/.ssh/id_rsa.pub | ssh 123@tv-s009.rsync.net \
+    'dd of=.ssh/authorized_keys oflag=append conv=notrunc'
 
 We will use ``Duplicity`` for backups.  To create a GPG key::
 
   gpg --gen-key
+
+**Put the private key on the server so we can verify**
 
 To export the *public* key::
 
