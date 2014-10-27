@@ -6,7 +6,7 @@ Service   Data          Example                 Your details
 ========= ============= ======================= ===============================
 rsync.net Host address  usw-s001.rsync.net
           Username      123
-          Password      ***
+          Password      \*\*\*\*
 ========= ============= ======================= ===============================
 
 Apps
