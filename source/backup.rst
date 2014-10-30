@@ -119,17 +119,26 @@ Edit the ``global/gpg.sls`` file so it is in the following format e.g::
 .. tip:: Multiline strings in YAML files are started with the ``|`` character
          and are indented two characters.
 
-Run Salt ``highstate`` on your server and the keys will be copied.  Now we
-import the keys::
+Run Salt ``highstate`` on your server and the keys will be copied.
+
+.. note:: The keys will only be copied to your server if the
+          ``/home/web/.gnupg`` does not exist.
+
+Now we import the keys::
 
   ssh server
   sudo -i -u web
   gpg --import ~/repo/temp/pub.gpg
   gpg --allow-secret-key-import --import ~/repo/temp/sec.gpg
 
+List the keys, and then mark the key as trusted::
 
+  gpg --edit-key ABCD1234
+  > trust
+  # Select option 5 = I trust ultimately
+  > q
 
-.. Stopping here until next week
+.. Stopping here until next time
 
 
 
