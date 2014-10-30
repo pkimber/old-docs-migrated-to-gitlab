@@ -65,6 +65,70 @@ You will receive your account details from rsync.net.  Please refer to the
 Create an SSH key on your laptop: `Generating SSH Keys for Automated Backups`_
 Follow the instructions up to and including *Testing Your Passwordless Login*
 
+.. warning:: Only use the ``scp`` command for the first key.  If you upload
+             more keys using this command, they will overwrite the first key.
+
+To encrypt the backups we need a gpg key.  This key will be shared with all the
+web servers and with any laptops which need to decrypt (and restore) the data.
+
+To create the gpg key::
+
+  gpg --gen-key
+
+  # defaults...
+  Please select what kind of key you want:
+  (1) RSA and RSA (default)
+  RSA keys may be between 1024 and 4096 bits long.
+  What keysize do you want? (2048)
+  Please specify how long the key should be valid.
+  0 = key does not expire
+  You need a Passphrase to protect your secret key.
+
+Accept the defaults (as above) and enter a passphrase for your gpg key.
+
+List the keys, and make a note of the key number (in this example, the key is
+``ABCD1234``)::
+
+  gpg --list-keys
+  # --------------------------------
+  # pub   2048R/ABCD1234 2014-10-30
+
+Export the public and private keys and add them to your pillar::
+
+  cd ~/repo/dev/module/deploy/pillar/
+  gpg --armor --export ABCD1234 >> global/gpg.sls
+  gpg --armor --export-secret-key ABCD1234 >> global/gpg.sls
+
+Edit the ``global/gpg.sls`` file so it is in the following format e.g::
+
+  gpg:
+    rsync.net:
+      public: |
+        -----BEGIN PGP PUBLIC KEY BLOCK-----
+        Version: GnuPG v1
+
+        ABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCA
+        -----END PGP PUBLIC KEY BLOCK-----
+      private: |
+        -----BEGIN PGP PRIVATE KEY BLOCK-----
+        Version: GnuPG v1
+
+        ABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCA
+        -----END PGP PRIVATE KEY BLOCK-----
+
+.. tip:: Multiline strings in YAML files are started with the ``|`` character
+         and are indented two characters.
+
+Run Salt ``highstate`` on your server and the keys will be copied.  Now we
+import the keys::
+
+  ssh server
+  sudo -i -u web
+  gpg --import ~/repo/temp/pub.gpg
+  gpg --allow-secret-key-import --import ~/repo/temp/sec.gpg
+
+
+
 .. Stopping here until next week
 
 
