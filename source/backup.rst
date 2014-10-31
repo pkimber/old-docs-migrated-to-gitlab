@@ -103,6 +103,9 @@ Edit the ``global/gpg.sls`` file so it is in the following format e.g::
 
   gpg:
     rsync.net:
+      user: 123
+      server: usw-s001.rsync.net
+      key: ABCD1234
       public: |
         -----BEGIN PGP PUBLIC KEY BLOCK-----
         Version: GnuPG v1
@@ -133,10 +136,20 @@ Now we import the keys::
 
 List the keys, and then mark the key as trusted::
 
+  gpg --list-keys
   gpg --edit-key ABCD1234
   > trust
   # Select option 5 = I trust ultimately
   > q
+
+Log into the Salt master and update your web server.  The backup and cron
+scripts will be created for each of the sites on the server.
+
+To list the backups::
+
+  duplicity list-current-files ssh://123@usw-s001.rsync.net/hatherleigh_info/backup
+  duplicity list-current-files ssh://123@usw-s001.rsync.net/hatherleigh_info/files
+
 
 .. Stopping here until next time
 
