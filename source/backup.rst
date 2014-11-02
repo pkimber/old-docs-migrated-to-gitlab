@@ -122,19 +122,34 @@ Edit the ``global/gpg.sls`` file so it is in the following format e.g::
 .. tip:: Multiline strings in YAML files are started with the ``|`` character
          and are indented two characters.
 
-Run Salt ``highstate`` on your server and the keys will be copied.
+Cloud Server
+------------
 
-.. note:: The keys will only be copied to your server if the
-          ``/home/web/.gnupg`` does not exist.
+Log into the Salt master and update your cloud server.  Salt will do the
+following tasks:
 
-Now we import the keys::
+- create an ``ssh`` key
+- copy the GPG keys to the ``~/repo/temp/`` folder.
+- create a backup script for each site on the server
+- create a cron script for each site on the server
+
+Add the ``ssh`` keys to the rsync.net server::
+
+  cat ~/.ssh/id_rsa.pub | ssh 123@usw-s001.rsync.net \
+    'dd of=.ssh/authorized_keys oflag=append conv=notrunc'
+
+Check that you can connect to the rsync.net server without a password::
+
+   ssh 123@usw-s001.rsync.net ls -la
+
+Import the GPG keys::
 
   ssh server
   sudo -i -u web
   gpg --import ~/repo/temp/pub.gpg
   gpg --allow-secret-key-import --import ~/repo/temp/sec.gpg
 
-List the keys, and then mark the key as trusted::
+List the keys, and then mark the rsync.net key as trusted::
 
   gpg --list-keys
   gpg --edit-key ABCD1234
@@ -142,8 +157,8 @@ List the keys, and then mark the key as trusted::
   # Select option 5 = I trust ultimately
   > q
 
-Log into the Salt master and update your web server.  The backup and cron
-scripts will be created for each of the sites on the server.
+Duplicity
+---------
 
 To list the backups::
 
@@ -151,52 +166,7 @@ To list the backups::
   duplicity list-current-files ssh://123@usw-s001.rsync.net/hatherleigh_info/files
 
 
-.. Stopping here until next time
-
-
-
-To use SSH keys rather than passwords for login, create your key and then
-upload it to ``rsync.net`` using this command::
-
-  scp ~/.ssh/id_rsa.pub 123@tv-s009.rsync.net:.ssh/authorized_keys
-
-.. warning:: Only use this command for the first key.  For more keys, use the
-             following command:
-
-To append SSH keys::
-
-  cat ~/.ssh/id_rsa.pub | ssh 123@tv-s009.rsync.net \
-    'dd of=.ssh/authorized_keys oflag=append conv=notrunc'
-
-We will use ``Duplicity`` for backups.  To create a GPG key::
-
-  gpg --gen-key
-
-**Put the private key on the server so we can verify**
-
-To export the *public* key::
-
-  gpg --list-keys
-  gpg --output key.gpg --armor --export ABCDFE01
-
-  # copy the key to your web server
-  scp key.gpg user@remote:~/
-
-  # log into the remote host and import the key
-  ssh user@remote
-  gpg --import ~/key.gpg
-  gpg --list-keys
-
-  # mark the key as trusted
-  gpg --edit-key [key]
-  > trust
-  # decide how much to trust it. duplicity requires 'ultimate'
-  > save
-
-
+.. _`Generating SSH Keys for Automated Backups`: http://www.rsync.net/resources/howto/ssh_keys.html
 .. _`How To Use Duplicity with GPG to Securely Automate Backups on Ubuntu`: https://www.digitalocean.com/community/tutorials/how-to-use-duplicity-with-gpg-to-securely-automate-backups-on-ubuntu
 .. _`How-To: Import/Export GPG Key Pair`: http://www.debuntu.org/how-to-importexport-gpg-key-pair/
 .. _`Setting up Duplicity with GnuPG`: http://codegouge.blogspot.co.uk/2012/01/setting-up-duplicity-with-gnupg.html
-
-
-.. _`Generating SSH Keys for Automated Backups`: http://www.rsync.net/resources/howto/ssh_keys.html
