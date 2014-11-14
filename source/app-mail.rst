@@ -66,12 +66,9 @@ Add the following to your ``.private`` file e.g::
   export MANDRILL_API_KEY="your-api-key"
   export MANDRILL_USER_NAME="notify@pkimber.net"
 
-.. note:: To choose the ``MAIL_TEMPLATE_TYPE``, check the list of constants at
-          the top of ``mail.models``
-
-.. note:: When testing the password reset workflow, make sure you use a valid
-          email address for a user.  On the standard demo data, this will be
-          ``web@pkimber.net``
+.. tip:: When testing the password reset workflow, make sure you use a valid
+         email address for a user.  On the standard demo data, this will be
+         ``web@pkimber.net``
 
 Deploy
 ======
