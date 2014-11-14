@@ -59,7 +59,7 @@ In ``settings/production.py`` (after ``CELERY_DEFAULT_QUEUE``) (see
 Development
 -----------
 
-Add the following to your ``.private`` file e.g::
+Add the following to your ``.private`` file e.g:
 
 .. code-block:: bash
 
