@@ -1,9 +1,7 @@
 Search
 ******
 
-.. note::
-
-  Don't forget to set-up :doc:`app-search`
+.. note:: Don't forget to set-up :doc:`app-search`
 
 To update the Haystack index for ``hatherleigh_info``::
 

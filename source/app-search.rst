@@ -5,7 +5,6 @@ search
 
 https://github.com/pkimber/search
 
-
 ElasticSearch
 =============
 
@@ -46,7 +45,17 @@ In ``settings/local.py``:
       },
   }
 
-In ``settings/production.py``:
+In ``settings/production.py`` (after ``CELERY_DEFAULT_QUEUE``)::
+
+  from celery.schedules import crontab
+  CELERYBEAT_SCHEDULE = {
+      'update_search_index': {
+          'task': 'member.tasks.update_search_index',
+          'schedule': crontab(minute='15', hour='*/1'),
+      },
+  }
+
+In ``settings/production.py`` (after ``FTP_STATIC_URL``):
 
 .. code-block:: python
 
@@ -83,6 +92,10 @@ For diagnostics, see :doc:`diagnostics`...
 
 Maintenance
 ===========
+
+To manually update the index::
+
+  django-admin.py update_index
 
 The flush process of an index basically frees memory::
 

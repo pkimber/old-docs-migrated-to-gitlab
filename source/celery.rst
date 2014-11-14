@@ -30,7 +30,8 @@ Add the following to you ``project/__init__.py`` file::
 
   from .celery import app as celery_app
 
-In your ``settings/base.py`` file, add the following::
+In your ``settings/production.py`` file (below ``DATABASES``), add the
+following::
 
   # Celery
   BROKER_URL = 'redis://localhost:6379/0'
