@@ -25,6 +25,7 @@ Install
 In your ``requirements/base.txt``, add the following::
 
   celery-haystack==0.8
+  django-celery-transactions==0.1.3
   django-haystack==2.2.0
   elasticsearch==1.2.0
 

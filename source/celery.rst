@@ -43,7 +43,7 @@ To start the task queue on your development system::
 
   celery -A project worker --loglevel=info
 
-To deploy, add ``celery`` to your pillar e.g:
+To deploy, add ``celery`` and ``redis`` to your pillar e.g:
 
 .. code-block:: yaml
 
@@ -51,6 +51,11 @@ To deploy, add ``celery`` to your pillar e.g:
     pkimber_net:
       profile: django
       celery: True
+
+.. code-block:: yaml
+
+  redis:
+    True
 
 Task
 ----
