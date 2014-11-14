@@ -47,15 +47,24 @@ To deploy, add ``celery`` and ``redis`` to your pillar e.g:
 
 .. code-block:: yaml
 
+  # sites/my.sls
   sites:
     pkimber_net:
       profile: django
       celery: True
 
-.. code-block:: yaml
+Create a ``redis`` ``sls``::
 
+  # config/redis.sls
   redis:
     True
+
+And add it to the config for the server e.g::
+
+  # top.sls
+  'test-a':
+    - config.redis
+    - sites.my
 
 Task
 ----
