@@ -38,6 +38,17 @@ Remove ``migrations`` folders... then create new version 1.7 migrations::
 
   django-admin.py makemigrations <app-name>
 
+Deploy
+------
+
+If you get the error::
+
+  relation "easy_thumbnails_thumbnaildimensions" already exists
+
+Then, just drop the table::
+
+  DROP TABLE easy_thumbnails_thumbnaildimensions;
+
 Settings
 ========
 
@@ -65,29 +76,85 @@ In your ``settings/production.py`` file::
 Migrations
 ==========
 
-Automatic Migration::
+Create an automatic migration::
 
   django-admin.py makemigrations yourappname
 
-Data Migration::
+Create a data migration::
 
-  python manage.py makemigrations --empty yourappname
+  django-admin.py makemigrations --empty yourappname
+
+Run::
+
+  django-admin.py migrate
 
 Tip
 ---
 
-To set-up default states for foreign keys:
+To set-up default states for foreign keys...
 
-- create the lookup model before creating the model which depends on it.
-- create migrations for the lookup model on it's own
-- create a data migration to create the state e.g.
+Create a ``default`` function e.g::
+
+  def default_payment_state():
+      return PaymentState.objects.get(slug=PaymentState.DUE).pk
+
+.. warning:: This **must** return an integer (the primary key) or it won't work
+             with migrations.
+
+Follow one of two strategies...
+
+1) Create all the models without defaults - then add the defaults later.
+
+- create your models and allow the foreign key to be set to ``null`` e.g::
+
+    class Payment(TimeStampedModel):
+        state = models.ForeignKey(
+            PaymentState,
+            #default=default_payment_state,
+            blank=True,
+            null=True
+        )
+
+- create the migrations for all your models
+- create a data migration and use it to set the defaults for your state model
+  e.g.
   https://github.com/pkimber/pay/blob/0200a679c9d8c69ef80612963744099fac450041/pay/migrations/0002_auto_20141114_2237.py
-- create the model which depends on the lookup model
-- create the migration for the model which depends on the lookup model.  The
-  model will need to get the primary key of the lookup model e.g.
-  https://github.com/pkimber/pay/blob/0200a679c9d8c69ef80612963744099fac450041/pay/migrations/0003_auto_20141115_0926.py#L31
-  and
-  https://github.com/pkimber/pay/blob/0200a679c9d8c69ef80612963744099fac450041/pay/models.py#L20
+- set the foreign key so it has a default and no longer accepts ``null`` e.g::
+
+    class Payment(TimeStampedModel):
+        state = models.ForeignKey(
+            PaymentState,
+            default=default_payment_state,
+            #blank=True,
+            #null=True
+        )
+
+- update the migrations so the default value is set.
+
+2) Create the lookup model - then add the dependant models later
+
+This strategy is simple and logical, but isn't suitable if you are moving from
+South and creating the first migration.  To move from South, all current models
+need to be in the ``0001_initial.py`` file.
+
+- create the model which will contain the default value (don't create the model
+  which depends on it) e.g::
+
+    class PaymentState(TimeStampedModel):
+        DUE = 'due'
+        name = models.CharField(max_length=100)
+        slug = models.SlugField(unique=True)
+
+- create migrations for this model
+- create a data migration and use it to set the defaults for your state model
+  e.g.
+  https://github.com/pkimber/pay/blob/0200a679c9d8c69ef80612963744099fac450041/pay/migrations/0002_auto_20141114_2237.py
+- create the model which uses the foreign key e.g::
+
+    class Payment(TimeStampedModel):
+        state = models.ForeignKey(PaymentState, default=default_payment_state)
+
+- create the migration for this model
 
 .. _django_transactions:
 
