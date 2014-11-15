@@ -79,16 +79,11 @@ the ``mail_send`` cron command e.g::
 
   sites:
     my_site:
-      db_pass: password
-      domain: hatherleigh.info
-      ssl: False
-      uwsgi_port: 3038
+      celery: True
       cron:
         mail_send:
           schedule: "*/5    *       *       *       *"
       mail:
-        default_from_email: notify@pkimber.net
-        mail_template_type: mandrill
         mandrill_api_key: your-api-key
         mandrill_user_name: notify@pkimber.net
 

@@ -14,8 +14,8 @@ Remove ``south`` from requirements and ``INSTALLED_APPS``
 
 Update django and reversion in the requirements::
 
-  django-reversion==1.8.4
-  Django==1.7
+  django-reversion==1.8.5
+  Django==1.7.1
 
 To get rid of ``(1_6.W001) Some project unittests may not execute as expected``
 remove the following from your settings::
@@ -36,7 +36,7 @@ remove the following from your settings::
 
 Remove ``migrations`` folders... then create new version 1.7 migrations::
 
-  django-admin.py makemigrations
+  django-admin.py makemigrations <app-name>
 
 Settings
 ========
@@ -59,6 +59,35 @@ In your ``settings/production.py`` file::
           'PORT': '',
       }
   }
+
+.. _django_migrations:
+
+Migrations
+==========
+
+Automatic Migration::
+
+  django-admin.py makemigrations yourappname
+
+Data Migration::
+
+  python manage.py makemigrations --empty yourappname
+
+Tip
+---
+
+To set-up default states for foreign keys:
+
+- create the lookup model before creating the model which depends on it.
+- create migrations for the lookup model on it's own
+- create a data migration to create the state e.g.
+  https://github.com/pkimber/pay/blob/0200a679c9d8c69ef80612963744099fac450041/pay/migrations/0002_auto_20141114_2237.py
+- create the model which depends on the lookup model
+- create the migration for the model which depends on the lookup model.  The
+  model will need to get the primary key of the lookup model e.g.
+  https://github.com/pkimber/pay/blob/0200a679c9d8c69ef80612963744099fac450041/pay/migrations/0003_auto_20141115_0926.py#L31
+  and
+  https://github.com/pkimber/pay/blob/0200a679c9d8c69ef80612963744099fac450041/pay/models.py#L20
 
 .. _django_transactions:
 

@@ -51,7 +51,7 @@ In ``settings/production.py`` (after ``CELERY_DEFAULT_QUEUE``)::
   from celery.schedules import crontab
   CELERYBEAT_SCHEDULE = {
       'update_search_index': {
-          'task': 'member.tasks.update_search_index',
+          'task': 'search.tasks.update_search_index',
           'schedule': crontab(minute='15', hour='*/1'),
       },
   }
