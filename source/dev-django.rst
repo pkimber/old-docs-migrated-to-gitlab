@@ -35,9 +35,8 @@ remove the following from your settings::
           ``Site`` in your project (I am using ``Site`` in
           ``hatherleigh_net``).
 
-Remove ``migrations`` folders... then create new version 1.7 migrations::
-
-  django-admin.py makemigrations <app-name>
+Remove ``migrations`` folders... then create new version 1.7 migrations:
+:doc:`dev-django-migrations`.
 
 Deploy
 ------
