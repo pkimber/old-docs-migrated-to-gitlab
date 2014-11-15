@@ -4,6 +4,7 @@ Django
 .. highlight:: python
 
 - :doc:`dev-django-media`
+- :doc:`dev-django-migrations`
 - :doc:`dev-django-static`
 - :doc:`dev-django-thumbnails`
 
@@ -71,90 +72,10 @@ In your ``settings/production.py`` file::
       }
   }
 
-.. _django_migrations:
-
 Migrations
 ==========
 
-Create an automatic migration::
-
-  django-admin.py makemigrations yourappname
-
-Create a data migration::
-
-  django-admin.py makemigrations --empty yourappname
-
-Run::
-
-  django-admin.py migrate
-
-Tip
----
-
-To set-up default states for foreign keys...
-
-Create a ``default`` function e.g::
-
-  def default_payment_state():
-      return PaymentState.objects.get(slug=PaymentState.DUE).pk
-
-.. warning:: This **must** return an integer (the primary key) or it won't work
-             with migrations.
-
-Follow one of two strategies...
-
-1) Create all the models without defaults - then add the defaults later.
-
-- create your models and allow the foreign key to be set to ``null`` e.g::
-
-    class Payment(TimeStampedModel):
-        state = models.ForeignKey(
-            PaymentState,
-            #default=default_payment_state,
-            blank=True,
-            null=True
-        )
-
-- create the migrations for all your models
-- create a data migration and use it to set the defaults for your state model
-  e.g.
-  https://github.com/pkimber/pay/blob/0200a679c9d8c69ef80612963744099fac450041/pay/migrations/0002_auto_20141114_2237.py
-- set the foreign key so it has a default and no longer accepts ``null`` e.g::
-
-    class Payment(TimeStampedModel):
-        state = models.ForeignKey(
-            PaymentState,
-            default=default_payment_state,
-            #blank=True,
-            #null=True
-        )
-
-- update the migrations so the default value is set.
-
-2) Create the lookup model - then add the dependant models later
-
-This strategy is simple and logical, but isn't suitable if you are moving from
-South and creating the first migration.  To move from South, all current models
-need to be in the ``0001_initial.py`` file.
-
-- create the model which will contain the default value (don't create the model
-  which depends on it) e.g::
-
-    class PaymentState(TimeStampedModel):
-        DUE = 'due'
-        name = models.CharField(max_length=100)
-        slug = models.SlugField(unique=True)
-
-- create migrations for this model
-- create a data migration and use it to set the defaults for your state model
-  e.g.
-  https://github.com/pkimber/pay/blob/0200a679c9d8c69ef80612963744099fac450041/pay/migrations/0002_auto_20141114_2237.py
-- create the model which uses the foreign key e.g::
-
-    class Payment(TimeStampedModel):
-        state = models.ForeignKey(PaymentState, default=default_payment_state)
-
-- create the migration for this model
+:doc:`dev-django-migrations`
 
 .. _django_transactions:
 

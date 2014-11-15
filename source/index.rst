@@ -83,6 +83,7 @@ Development
    dev-ckeditor
    dev-django
    dev-django-media
+   dev-django-migrations
    dev-django-static
    dev-django-thumbnails
    dev-icons
