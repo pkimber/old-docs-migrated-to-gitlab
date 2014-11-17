@@ -29,6 +29,9 @@ for serving static files during development::
 Compress
 ========
 
+.. note:: The fabric deploy task runs the ``compress`` management command for
+          all projects which use Amazon web services.
+
 http://django-compressor.readthedocs.org/::
 
   # requirements/base.txt
