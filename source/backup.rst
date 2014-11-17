@@ -56,6 +56,26 @@ For database backups::
     scp://123@tv-s009.rsync.net/hatherleigh_info/backup \
     /home/web/repo/backup/hatherleigh_info
 
+What can we do?
+---------------
+
+Delete *all* backups older than *x* days (weeks or months)
+
+Remove *all* backups older than *count* full backups
+
+Remove all incrementals older than *count* full backups
+
+::
+
+  F   1st Sept
+  I
+  I
+  F   15th Sept
+  I
+  I
+  F   1st Oct
+  I
+
 Getting Started
 ===============
 
@@ -160,10 +180,26 @@ List the keys, and then mark the rsync.net key as trusted::
 Duplicity
 ---------
 
+To list backup dates::
+
+  duplicity collection-status ssh://123@usw-s001.rsync.net/hatherleigh_info/backup
+
 To list the backups::
 
   duplicity list-current-files ssh://123@usw-s001.rsync.net/hatherleigh_info/backup
   duplicity list-current-files ssh://123@usw-s001.rsync.net/hatherleigh_info/files
+
+Duplicity makes restoring easy. You can restore by simply reversing the remote
+and local parameters.
+
+To restore a single file::
+
+  PASSPHRASE="gpg-password" \
+    duplicity \
+    --file-to-restore \
+    /path/to/file \
+    ssh://123@usw-s001.rsync.net/hatherleigh_info/files \
+    /path/to/restore/file
 
 
 .. _`Generating SSH Keys for Automated Backups`: http://www.rsync.net/resources/howto/ssh_keys.html
