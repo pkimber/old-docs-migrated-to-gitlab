@@ -3,9 +3,47 @@ Amazon S3
 
 .. highlight:: python
 
-Just making a note of my initial settings:
+Configuration
+=============
 
-::
+You will receive your access keys from Amazon.  Please refer to the
+:doc:`checklist` and fill in your own details.
+
+In your Salt pillar...
+
+Create an ``amazon`` ``sls`` replacing the access and secret key with your
+own (see :doc:`checklist`):
+
+.. code-block:: yaml
+
+  # global/amazon.sls
+  amazon:
+    aws_s3_access_key_id: ABCDEFG
+    aws_s3_secret_access_key: 1a2b3c
+
+And add it to the config for the server e.g:
+
+.. code-block:: yaml
+
+  # top.sls
+  'test-a':
+    - global.amazon
+
+For each site which uses Amazon web service, add ``amazon`` to the config for
+the server e.g:
+
+.. code-block:: yaml
+
+  # sites/my.sls
+  sites:
+    hatherleigh_info:
+      amazon: True
+      profile: django
+
+WIP
+===
+
+Just making a note of my initial settings::
 
   # settings/base.py
 
@@ -26,3 +64,4 @@ Just making a note of my initial settings:
       SITE_NAME.replace('_', '-'),
       '-test' if TESTING else '',
   )
+

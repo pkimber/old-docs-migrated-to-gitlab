@@ -53,13 +53,17 @@ To deploy, add ``celery`` and ``redis`` to your pillar e.g:
       profile: django
       celery: True
 
-Create a ``redis`` ``sls``::
+Create a ``redis`` ``sls``:
+
+.. code-block:: yaml
 
   # config/redis.sls
   redis:
     True
 
-And add it to the config for the server e.g::
+And add it to the config for the server e.g:
+
+.. code-block:: yaml
 
   # top.sls
   'test-a':
