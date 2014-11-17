@@ -10,11 +10,6 @@ To install an SSL certificate, see :doc:`fabric-ssl`...
 .. note:: Instructions for http://www.ssls.com/ are similar.  See the section
           below.
 
-Using https://www.startssl.com/, enter the *Validations Wizard* and choose
-*Domain Name Validation*, enter the *Domain Name*, select a
-*Verification Email* and then enter the verification code sent to the selected
-email address.
-
 Generate your certificate request and private key::
 
   openssl req -new -newkey rsa:2048 -nodes -keyout server.key -out server.csr
@@ -52,6 +47,14 @@ Generate your certificate request and private key::
 This process will generate two files, ``server.csr`` (the certificate request)
 and ``server.key`` (the private key).
 
+StartSSL
+========
+
+Using https://www.startssl.com/, enter the *Validations Wizard* and choose
+*Domain Name Validation*, enter the *Domain Name*, select a
+*Verification Email* and then enter the verification code sent to the selected
+email address.
+
 Enter the *Certificates Wizard*, select *Web Server SSL/TLS Certificate*,
 then click *Skip*.
 
@@ -77,9 +80,18 @@ Concatenate the three certificates to create a unified certificate::
 
   cat ssl.crt sub.class1.server.ca.pem ca.pem > ssl-unified.crt
 
+SSLS
+====
+
+.. note:: For a reissue, copy the *Web Server CERTIFICATE* into ``ssl.crt`` and
+          the *INTERMEDIATE CA* into ``intermediate.crt``.
+
 For ssls::
 
   cat ssl.crt intermediate.crt > ssl-unified.crt
+
+Install
+=======
 
 To copy the certificate to the server, refer to the :doc:`fabric-ssl` notes...
 

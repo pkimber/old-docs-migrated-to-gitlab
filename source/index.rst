@@ -93,6 +93,7 @@ Development
    dev-sitemap
    dev-testing
    dev-timezone
+   domain
 
 Apps
 

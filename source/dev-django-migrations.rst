@@ -34,8 +34,8 @@ Create a ``default`` function e.g::
   def default_payment_state():
       return PaymentState.objects.get(slug=PaymentState.DUE).pk
 
-.. warning:: This **must** return an integer (the primary key) or it won't work
-             with migrations.
+.. warning:: This function **must** return an integer (the primary key) or it
+             won't work with migrations.
 
 Then... follow one of two strategies...
 
