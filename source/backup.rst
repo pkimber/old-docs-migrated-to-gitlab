@@ -1,6 +1,8 @@
 Backup
 ******
 
+.. highlight:: bash
+
 We are Using http://rsync.net/ for backups.  The process below can easily be
 adapted for use with any linux based storage system because we use Duplicity,
 ssh keys and gpg for encryption.
@@ -119,7 +121,9 @@ Export the public and private keys and add them to your pillar::
   gpg --armor --export ABCD1234 >> global/gpg.sls
   gpg --armor --export-secret-key ABCD1234 >> global/gpg.sls
 
-Edit the ``global/gpg.sls`` file so it is in the following format e.g::
+Edit the ``global/gpg.sls`` file so it is in the following format e.g:
+
+.. code-block:: yaml
 
   gpg:
     rsync.net:
@@ -142,6 +146,15 @@ Edit the ``global/gpg.sls`` file so it is in the following format e.g::
 .. tip:: Multiline strings in YAML files are started with the ``|`` character
          and are indented two characters.
 
+To enable backups for a server, add the following to the pillar config for your
+server e.g:
+
+.. code-block:: yaml
+
+  # top.sls
+  'test-a':
+    - global.gpg
+
 Cloud Server
 ------------
 
@@ -155,8 +168,11 @@ following tasks:
 
 Add the ``ssh`` keys to the rsync.net server::
 
+  ssh server
+  sudo -i -u web
   cat ~/.ssh/id_rsa.pub | ssh 123@usw-s001.rsync.net \
     'dd of=.ssh/authorized_keys oflag=append conv=notrunc'
+  # enter your rsync.net password
 
 Check that you can connect to the rsync.net server without a password::
 
@@ -176,6 +192,14 @@ List the keys, and then mark the rsync.net key as trusted::
   > trust
   # Select option 5 = I trust ultimately
   > q
+
+Do an initial ``full`` backup.  The Salt states will create a backup script in
+the ``/home/web/opt/`` folder
+e.g:: ``/home/web/opt/backup_hatherleigh_info.sh``.
+
+To initialise the backup run the script with the ``full`` argument e.g::
+
+  /home/web/opt/backup_hatherleigh_info.sh full
 
 Duplicity
 ---------
