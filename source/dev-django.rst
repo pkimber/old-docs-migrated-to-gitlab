@@ -82,7 +82,8 @@ Transactions
 ============
 
 I have started using ``transaction.atomic`` in several of the views.  Make sure
-the transaction is committed before returning the HTTP response.
+the transaction is committed before adding a task to the queue or returning the
+HTTP response.
 
 This is the pattern I am using::
 
@@ -93,6 +94,7 @@ This is the pattern I am using::
           self.object = form.save(commit=False)
           self.object.deleted = True
           self.object = form.save()
+      # return the response or add a task to the queue
       return HttpResponseRedirect(self.get_success_url())
 
-If you don't do this then queued tasks are called before the object is saved.
+If we don't do this then queued tasks are called before the object is saved.
