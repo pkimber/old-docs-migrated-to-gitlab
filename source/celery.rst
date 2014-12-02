@@ -26,18 +26,20 @@ Create a ``celery.py`` file in the ``project`` folder::
   app.config_from_object('django.conf:settings')
   app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
-Add the following to you ``project/__init__.py`` file::
+Add the following to your ``project/__init__.py`` file::
 
   from .celery import app as celery_app
 
-In your ``settings/production.py`` file (below ``DATABASES``), add the
-following::
+In your ``settings/production.py`` or ``settings/base.py`` file (below
+``DATABASES``), add the following::
 
   # Celery
   BROKER_URL = 'redis://localhost:6379/0'
   CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
   # https://kfalck.net/2013/02/21/run-multiple-celeries-on-a-single-redis
   CELERY_DEFAULT_QUEUE = '{}'.format(SITE_NAME)
+  # http://celery.readthedocs.org/en/latest/userguide/tasks.html#disable-rate-limits-if-they-re-not-used
+  CELERY_DISABLE_RATE_LIMITS = True
 
 To start the task queue on your development system::
 
@@ -88,6 +90,9 @@ To add this task to the queue::
 
   from .tasks import my_task
   my_task.delay()
+
+.. warning:: Remember to use the correct pattern for transactions when adding
+             tasks to the queue.  For details, see :ref:`django_transactions`
 
 .. _celery_cron:
 
