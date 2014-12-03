@@ -39,5 +39,5 @@ pattern*...
           debug on errors.
 
 
-.. _`Coding Conventions`: http://readthedocs.org/docs/django-party-pack/en/latest/conventions.html#using-the-url-function
+.. _`Coding Conventions`: https://django-party-pack.readthedocs.org/en/latest/conventions.html#using-the-url-function
 .. _`Django models, encapsulation and data integrity`: http://www.dabapps.com/blog/django-models-and-encapsulation/
