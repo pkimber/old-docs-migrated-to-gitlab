@@ -41,6 +41,12 @@ In your ``settings/production.py`` or ``settings/base.py`` file (below
   # http://celery.readthedocs.org/en/latest/userguide/tasks.html#disable-rate-limits-if-they-re-not-used
   CELERY_DISABLE_RATE_LIMITS = True
 
+In your ``settings/dev_test.py`` file (below ``DATABASES``), add the
+following::
+
+  # http://docs.celeryproject.org/en/2.5/django/unit-testing.html
+  CELERY_ALWAYS_EAGER = True
+
 To start the task queue on your development system::
 
   celery -A project worker --loglevel=info
@@ -94,6 +100,14 @@ To add this task to the queue::
 .. warning:: Remember to use the correct pattern for transactions when adding
              tasks to the queue.  For details, see :ref:`django_transactions`
 
+To get the ID of the current task (from `How do I get the task ID`_)::
+
+  @app.task(bind=True)
+  def mytask(self):
+      # self.request.id is the ID of the current task
+      cache.set(self.request.id, "Running")
+
+
 .. _celery_cron:
 
 cron
@@ -121,4 +135,5 @@ In your ``settings/base.py`` file, set-up the schedule e.g::
   }
 
 
+.. _`How do I get the task ID`: http://celery.readthedocs.org/en/latest/faq.html#how-can-i-get-the-task-id-of-the-current-task
 .. _`Using Celery with Django`: http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html#using-celery-with-django

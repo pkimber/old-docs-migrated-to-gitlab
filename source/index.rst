@@ -15,6 +15,7 @@ Process
    dev-env
    checklist
    monitor
+   standards
 
 Master
 

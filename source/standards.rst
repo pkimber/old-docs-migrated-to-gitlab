@@ -1,0 +1,43 @@
+Standards
+*********
+
+.. highlight:: python
+
+This document is a **very** good starting point:
+`Django models, encapsulation and data integrity`_
+
+Model
+=====
+
+The order of model inner classes and standard methods should be as follows
+(these are not all required):
+
+- All database fields
+- Custom manager attributes
+- ``class Meta``
+- ``def __unicode__()``
+- ``def __str__()``
+- ``def save()``
+- ``def get_absolute_url()``
+- Any custom methods
+
+URL
+===
+
+From `Coding Conventions`_::
+
+  url(regex=r'^$',
+      view=views.poll_list,
+      name='poll_list',
+  ),
+
+... *the preferred and wonderfully explicit Jacob Kaplan-Moss / Frank Wiles
+pattern*...
+
+.. note:: Probably best to use the actual view class rather than just the name,
+          using ``view='polls.views.standard.poll_list',``, makes it harder to
+          debug on errors.
+
+
+.. _`Coding Conventions`: http://readthedocs.org/docs/django-party-pack/en/latest/conventions.html#using-the-url-function
+.. _`Django models, encapsulation and data integrity`: http://www.dabapps.com/blog/django-models-and-encapsulation/
