@@ -3,12 +3,15 @@ Create SSL Certificate
 
 To install an SSL certificate, see :doc:`fabric-ssl`...
 
-.. note:: To validate the domain name using StartSSL, you will need to receive
-          an email.  To set-up MailGun follow the instructions in
-          :doc:`mailgun`
+.. note:: To validate the domain name, you will need to receive an email.
+          To set-up MailGun follow the instructions in :doc:`mailgun`
 
 .. note:: Instructions for http://www.ssls.com/ are similar.  See the section
           below.
+
+.. warning:: When using ``ssls.com`` the *Common Name* **must** include the
+             ``www``
+             i.e. ``www.hatherleigh.info`` rather than ``hatherleigh.info``.
 
 Generate your certificate request and private key::
 
@@ -29,9 +32,9 @@ Generate your certificate request and private key::
   Country Name (2 letter code) [AU]:GB
   State or Province Name (full name) [Some-State]:Devon
   Locality Name (eg, city) []:Okehampton
-  Organization Name (eg, company) [Internet Widgits Pty Ltd]:pkimber.net
+  Organization Name (eg, company) [Internet Widgits Pty Ltd]:www.hatherleigh.info
   Organizational Unit Name (eg, section) []:
-  Common Name (e.g. server FQDN or YOUR name) []:pkimber.net
+  Common Name (e.g. server FQDN or YOUR name) []:www.hatherleigh.info
   Email Address []:
 
   Please enter the following 'extra' attributes

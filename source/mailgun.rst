@@ -21,12 +21,17 @@ Using https://mailgun.com/cp/routes, create a route for your Mailgun domain
 (change ``pkimber.net`` to the domain name of your own site)::
 
   Priority              0
-  Filter Expressions    match_recipient(".*@pkimber.net")
-  Actions               forward("http://pkimber.net/mailgun/incoming/")
+  Filter Expressions    match_recipient(".*@hatherleigh.info")
+  Actions               forward("http://www.hatherleigh.info/mailgun/incoming/")
 
 .. note::
 
   As shown above, append ``/mailgun/incoming/`` to your domain name.
+
+If you want to forward the email to an existing account, just replace the
+action above with a simple forward to your email address e.g::
+
+  Actions               forward("patrick@gmail.com")
 
 Project
 =======
