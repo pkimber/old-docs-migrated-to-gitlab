@@ -1,13 +1,18 @@
 Create SSL Certificate
 **********************
 
+.. highlight:: bash
+
 To install an SSL certificate, see :doc:`fabric-ssl`...
 
 .. note:: To validate the domain name, you will need to receive an email.
           To set-up MailGun follow the instructions in :doc:`mailgun`
 
-.. note:: Instructions for http://www.ssls.com/ are similar.  See the section
-          below.
+We use two companies for SSL certificates, SSLs.com and StartSSL.  The
+certificates from StartSSL are free, but the web site is complicated to use.
+
+SSLs.com
+========
 
 .. warning:: When using ``ssls.com`` the *Common Name* **must** include the
              ``www``
@@ -50,8 +55,29 @@ Generate your certificate request and private key::
 This process will generate two files, ``server.csr`` (the certificate request)
 and ``server.key`` (the private key).
 
+Use the certificate request (``server.csr``) file to request a certificate from
+https://www.ssls.com/
+
+When the certificate is approved, you will be sent an email containing a couple
+of certificates.
+
+Copy the *Web Server CERTIFICATE* into a file called ``ssl.crt``.  The
+certificate is the text starting with ``-----BEGIN CERTIFICATE-----`` and
+ending with ``-----END CERTIFICATE-----``.
+
+Copy the *INTERMEDIATE CA* into a file called ``intermediate.crt``.  The
+certificate is the text starting with ``-----BEGIN CERTIFICATE-----`` and
+ending with ``-----END CERTIFICATE-----``.
+
+Concatenate the two certificates to create a unified certificate::
+
+  cat ssl.crt intermediate.crt > ssl-unified.crt
+
 StartSSL
 ========
+
+.. note:: Instructions for http://www.ssls.com/ are similar.  See the section
+          above for instructions on generating a certificate request.
 
 Using https://www.startssl.com/, enter the *Validations Wizard* and choose
 *Domain Name Validation*, enter the *Domain Name*, select a
@@ -82,16 +108,6 @@ Complete the process and then *Save Certificate* into a file named ``ssl.crt``
 Concatenate the three certificates to create a unified certificate::
 
   cat ssl.crt sub.class1.server.ca.pem ca.pem > ssl-unified.crt
-
-SSLS
-====
-
-.. note:: For a reissue, copy the *Web Server CERTIFICATE* into ``ssl.crt`` and
-          the *INTERMEDIATE CA* into ``intermediate.crt``.
-
-For ssls::
-
-  cat ssl.crt intermediate.crt > ssl-unified.crt
 
 Install
 =======

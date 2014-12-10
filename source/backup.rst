@@ -204,6 +204,13 @@ To initialise the backup run the script with the ``full`` argument e.g::
 Duplicity
 ---------
 
+To list the files on ``rsync.net``::
+
+  # database backup (and any files in the backup folder)
+  ssh 123@usw-s001.rsync.net ls -la hatherleigh_info/backup
+  # files backup
+  ssh 123@usw-s001.rsync.net ls -la hatherleigh_info/files
+
 To list backup dates::
 
   duplicity collection-status ssh://123@usw-s001.rsync.net/hatherleigh_info/backup

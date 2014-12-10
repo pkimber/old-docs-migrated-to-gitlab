@@ -46,9 +46,19 @@ below the ``include`` section e.g::
 
   {% block script_extra %}
     {% include 'base/_ckeditor.html' %}
-    CKEDITOR.replace('id_footer_left');
-    CKEDITOR.replace('id_footer_right');
+    <script type="text/javascript">
+      CKEDITOR.replace('id_footer_left');
+      CKEDITOR.replace('id_footer_right');
+    </script>
   {% endblock script_extra %}
+
+If you don't have a text field with the ID of ``id_description``, you can
+change the ID e.g::
+
+  {% block script_extra %}
+    {% include 'base/_ckeditor.html' with id_textarea='id_notes' %}
+    <!-- ...
+
 
 Template
 --------
