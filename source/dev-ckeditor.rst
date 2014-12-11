@@ -1,6 +1,8 @@
 CKEditor
 ********
 
+.. highlight:: javascript
+
 Configure
 =========
 
