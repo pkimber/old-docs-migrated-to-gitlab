@@ -1,6 +1,26 @@
 Issues
 ******
 
+Duplicity
+=========
+
+gio
+---
+
+If you get this error::
+
+  No module named gio
+
+Then::
+
+  apt-get install python-gobject-2
+
+Symbolic Links
+--------------
+
+Duplicity does **NOT** backup symbolic links... or the contents of symbolic
+links.
+
 ElasticSearch
 =============
 
