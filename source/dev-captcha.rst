@@ -3,86 +3,90 @@ Captcha
 
 .. highlight:: python
 
-Sign up to reCAPTCHA on http://www.google.com/recaptcha
+Sign up to reCAPTCHA on https://www.google.com/recaptcha/admin.  You will
+receive a site key and a secret key...
 
-  I created a global key.
-
-  You will receive a private key and a public key...
-
-Make sure your pillar includes an ``sls`` file containing the public and
-private keys e.g:
+Make sure your pillar includes an ``sls`` file containing the site and secret
+keys e.g:
 
 .. code-block:: yaml
 
   captcha:
-    recaptcha_private_key: 1234567890
-    recaptcha_public_key: 1234567890
+    norecaptcha_site_key: <your site key>
+    norecaptcha_secret_key: <your secret key>
+
+.. note:: Replace ``<your site key>`` and ``<your secret key>`` with the
+          actual reCAPTCHA keys.
 
 Add the following to ``requirements/base.txt``::
 
-  git+https://github.com/pkimber/django-recaptcha.git#egg=captcha
-
-.. note::
-
-  This is a fork of
-  https://github.com/insttrack/django-recaptcha
-  which is a fork of
-  https://github.com/praekelt/django-recaptcha.
-
-  The fork by ``insttrack`` appear to be compatible with python 3.
-
+  django-nocaptcha-recaptcha==0.0.15
 
 Add the following to ``settings/base.py``::
 
   THIRD_PARTY_APPS = (
-      'captcha',
+      'nocaptcha_recaptcha',
       # ...
   )
 
-  # https://github.com/insttrack/django-recaptcha
-  RECAPTCHA_PRIVATE_KEY = get_env_variable('RECAPTCHA_PRIVATE_KEY')
-  RECAPTCHA_PUBLIC_KEY = get_env_variable('RECAPTCHA_PUBLIC_KEY')
-  RECAPTCHA_USE_SSL = True
+  # https://github.com/ImaginaryLandscape/django-nocaptcha-recaptcha
+  NORECAPTCHA_SITE_KEY = get_env_variable('NORECAPTCHA_SITE_KEY')
+  NORECAPTCHA_SECRET_KEY = get_env_variable('NORECAPTCHA_SECRET_KEY')
 
 When setting up your project for local development, you will need to set-up the
-environment variables as follows (this can be added to ``README.rst``):
+environment variables as follows (can be added to ``.private``):
 
 .. code-block:: bash
 
-  echo "export RECAPTCHA_PRIVATE_KEY=\"your private key\"" >> $VIRTUAL_ENV/bin/postactivate
-  echo "export RECAPTCHA_PUBLIC_KEY=\"your public key\"" >> $VIRTUAL_ENV/bin/postactivate
+  export NORECAPTCHA_SITE_KEY="<your site key>"
+  export NORECAPTCHA_SECRET_KEY="<your secret key>"
 
-  echo "unset RECAPTCHA_PRIVATE_KEY" >> $VIRTUAL_ENV/bin/postdeactivate
-  echo "unset RECAPTCHA_PUBLIC_KEY" >> $VIRTUAL_ENV/bin/postdeactivate
-
-.. note:: Replace ``your private key`` and ``your public key`` with the actual
-          reCAPTCHA keys.
+.. note:: Replace ``<your site key>`` and ``<your secret key>`` with the
+          actual reCAPTCHA keys.
 
 To add a captcha field to your form::
 
-  from captcha.fields import ReCaptchaField
+  from nocaptcha_recaptcha.fields import NoReCaptchaField
 
   class EnquiryForm(RequiredFieldForm):
 
-      captcha = ReCaptchaField(attrs={'theme' : 'clean'})
+      captcha = NoReCaptchaField()
+
+Add the following JavaScript to the template:
+
+.. code-block:: javascript
+
+  {% block script_extra %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  {% endblock script_extra %}
 
 To test a view containing a form::
 
-  class TestView(TestCase):
+  # copied from:
+  # https://github.com/ImaginaryLandscape/django-nocaptcha-recaptcha/blob/master/nocaptcha_recaptcha/tests.py
+  import os
+  from django.forms import Form
+  from django.test import TestCase
+  from . import fields
+
+  class TestForm(Form):
+      captcha = fields.NoReCaptchaField(gtag_attrs={'data-theme': 'dark'})
+
+  class TestCase(TestCase):
 
       def setUp(self):
-          os.environ['RECAPTCHA_TESTING'] = 'True'
+          os.environ['NORECAPTCHA_TESTING'] = 'True'
+
+      def test_envvar_enabled(self):
+          form_params = {'g-recaptcha-response': 'PASSED'}
+          form = TestForm(form_params)
+          self.assertTrue(form.is_valid())
+
+      def test_envvar_disabled(self):
+          os.environ['NORECAPTCHA_TESTING'] = 'False'
+          form_params = {'g-recaptcha-response': 'PASSED'}
+          form = TestForm(form_params)
+          self.assertFalse(form.is_valid())
 
       def tearDown(self):
-          del os.environ['RECAPTCHA_TESTING']
-
-      def test_create(self):
-          response = self.client.post(
-              reverse('enquiry.create'),
-              dict(
-                  name='Richard',
-                  description='Do you sell hay and straw?',
-                  email='richard@pkimber.net',
-                  recaptcha_response_field='PASSED',
-              )
-          )
+          del os.environ['NORECAPTCHA_TESTING']
