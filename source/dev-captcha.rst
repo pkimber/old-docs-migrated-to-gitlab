@@ -3,17 +3,22 @@ Captcha
 
 .. highlight:: python
 
-Sign up to reCAPTCHA on https://www.google.com/recaptcha/admin.  You will
-receive a site key and a secret key...
+Sign up to reCAPTCHA on https://www.google.com/recaptcha/admin.
 
-Make sure your pillar includes an ``sls`` file containing the site and secret
-keys e.g:
+You will receive a site key and a secret key...
+
+In the salt ``sls`` file for your site, add the ``norecaptcha_site_key`` and
+the ``norecaptcha_secret_key`` for your live site and (if required) the ``test``
+site (remember - a test site might have a different domain name e.g:
 
 .. code-block:: yaml
 
-  captcha:
+  recaptcha:
     norecaptcha_site_key: <your site key>
     norecaptcha_secret_key: <your secret key>
+  test:
+    norecaptcha_site_key: <your test site key>
+    norecaptcha_secret_key: <your test secret key>
 
 .. note:: Replace ``<your site key>`` and ``<your secret key>`` with the
           actual reCAPTCHA keys.

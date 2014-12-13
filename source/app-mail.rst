@@ -15,7 +15,7 @@ Requirements
 
 Add the following to ``requirements/base.txt``::
 
-  git+https://github.com/pkimber/Djrill.git#egg=djrill
+  djrill==1.2.0
 
 Settings
 ========
@@ -118,36 +118,3 @@ To send email, use the ``mail_send`` management command e.g:
 .. code-block:: bash
 
   django-admin.py mail_send
-
-
-.. You will also need a way to run the app mail sending service.  One way to do
-.. this is to create a python run script called ``run_mail_service.py``.  This
-.. can then be run from a bash script.  This should contain::
-..
-..   from mail.service import (send_mail, send_messages_via_mandrill)
-..
-..   # uncomment the next line if you are using mandrill
-..   # send_message_via_mandrill()
-..
-..   # uncomment the next line if you are using the default django mail backend
-..   # send_mail()
-..
-.. You will also need to create a shell script to run from ``cron``.  Here is an
-.. example:
-..
-..   #!/bin/bash
-..   cd <directory where you installed the application that contains you app>
-..
-..   source .env
-..
-..   python <full path to run_mail_service.py script>
-..
-..
-..   This app provides several API functions, these are accessed as follows:
-..
-..   from mail.service import (
-..       queue_mail,
-..       send_mail,
-..       sned_mail_via_mandrill,
-..       render_mail_template
-..   )

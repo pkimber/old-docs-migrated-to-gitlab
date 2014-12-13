@@ -86,6 +86,13 @@ you might need to completely remove the old version::
 
   sudo apt-get purge postgresql-9.1
 
+Selenium
+========
+
+If you have issues with Selenium and Firefox, then try the following::
+
+  pip install -U selenium
+
 SOLR
 ====
 

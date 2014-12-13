@@ -9,9 +9,9 @@ To use a Celery queue in your project...
 
 Add the following to ``requirements/base.txt``::
 
-  celery==3.1.13
-  django-redis==3.7.0
-  redis==2.10.1
+  celery==3.1.16
+  django-redis==3.7.2
+  redis==2.10.3
 
 Create a ``celery.py`` file in the ``project`` folder::
 
@@ -40,6 +40,9 @@ In your ``settings/production.py`` or ``settings/base.py`` file (below
   CELERY_DEFAULT_QUEUE = '{}'.format(SITE_NAME)
   # http://celery.readthedocs.org/en/latest/userguide/tasks.html#disable-rate-limits-if-they-re-not-used
   CELERY_DISABLE_RATE_LIMITS = True
+
+.. note:: If you are writing an example application, then just use
+          ``CELERY_ALWAYS_EAGER`` (as shown below).
 
 In your ``settings/dev_test.py`` file (below ``DATABASES``), add the
 following::
