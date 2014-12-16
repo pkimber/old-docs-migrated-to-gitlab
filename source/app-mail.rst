@@ -17,6 +17,10 @@ Add the following to ``requirements/base.txt``::
 
   djrill==1.2.0
 
+Add the mail app to ``requirements/local.txt``::
+
+  -e ../../app/mail
+
 Settings
 ========
 
