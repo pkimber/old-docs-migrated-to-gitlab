@@ -1,6 +1,8 @@
 booking
 *******
 
+.. highlight:: python
+
 https://github.com/pkimber/booking
 
 Definitions
@@ -41,3 +43,62 @@ The default permission level is ``public``.  If your site uses the other
 permission levels, then enable the highlighted display of the levels by
 browsing to the Django admin site, click on *Booking settings* and tick the
 *Display permissions* check box.
+
+Usage
+=====
+
+The ``booking`` app was built as a simple availability page for
+`Wyckhams Lodge`_.
+
+  For editing simple bookings we have a ``BookingForm``.
+
+  The app has now been extended so it can be used as a simple calendar for an
+  organisation wanting to track upcoming events.
+
+  For editing simple events, we have a ``BookingEventForm``.
+
+We need to customise the form used for creating and updating bookings (events).
+To do this, add a ``create`` and ``update`` view to your ``urls.py`` and set
+the ``form_class`` as required e.g. for a cottage booking::
+
+  from booking.forms import BookingForm
+  from booking.views import (
+      BookingCreateView,
+      BookingUpdateView,
+  )
+
+  urlpatterns = patterns(
+      '',
+      # ...
+      url(regex=r'^booking/create/$',
+          view=BookingCreateView.as_view(form_class=BookingForm),
+          name='booking.create'
+          ),
+      url(regex=r'^booking/(?P<pk>\d+)/update/$',
+          view=BookingUpdateView.as_view(form_class=BookingForm),
+          name='booking.update'
+          ),
+
+Or, for a simple event::
+
+  from booking.forms import BookingEventForm
+  from booking.views import (
+      BookingCreateView,
+      BookingUpdateView,
+  )
+
+  urlpatterns = patterns(
+      '',
+      # ...
+      url(regex=r'^booking/create/$',
+          view=BookingCreateView.as_view(form_class=BookingEventForm),
+          name='booking.create'
+          ),
+      url(regex=r'^booking/(?P<pk>\d+)/update/$',
+          view=BookingUpdateView.as_view(form_class=BookingEventForm),
+          name='booking.update'
+          ),
+
+If you prefer, you can create your own forms.
+
+.. _`Wyckhams Lodge`: https://www.wyckhamslodge.co.uk/availability/
