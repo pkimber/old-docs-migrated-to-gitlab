@@ -103,6 +103,7 @@ Apps
 
    app-base
    app-block
+   app-booking
    app-cms
    app-crm
    app-enquiry
