@@ -6,6 +6,29 @@ Standards
 This document is a **very** good starting point:
 `Django models, encapsulation and data integrity`_
 
+Icons
+=====
+
+http://fontawesome.io/icon/reply/::
+
+  usage         dash (back)
+  icon          <i class="fa fa-reply"></i>
+
+http://fontawesome.io/icon/pencil-square-o/::
+
+  usage         edit
+  icon          <i class="fa fa-edit"></i>
+
+http://fontawesome.io/icon/external-link/::
+
+  usage         external link
+  icon          <i class="fa fa-external-link"></i>
+
+http://fontawesome.io/icon/home/::
+
+  usage         home
+  icon          <i class="fa fa-home"></i>
+
 Model
 =====
 

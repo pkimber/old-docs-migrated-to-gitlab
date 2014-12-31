@@ -17,9 +17,8 @@ For an app::
   # example/base.py
 
   THUMBNAIL_DEBUG = DEBUG
-  INSTALLED_APPS = (
+  THIRD_PARTY_APPS = (
       ...
-      'django.contrib.staticfiles',
       'easy_thumbnails',
 
 For a project::

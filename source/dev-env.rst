@@ -98,6 +98,15 @@ Add the following to the ``~/.pypirc`` file::
   username: kb
   password: 123
 
+Tools
+=====
+
+These are tools that I like (they are not required to build these projects):
+
+- https://www.pkimber.net/howto/linux/apps/ack.html
+- https://www.pkimber.net/howto/linux/apps/autojump.html
+- https://www.pkimber.net/howto/linux/apps/tmux.html
+
 Source Code
 ===========
 
@@ -109,9 +118,9 @@ Check out your source code into this folder structure::
   │   │   │   ├── base
   │   │   │   ├── block
   │   │   │   ├── booking
+  │   │   │   ├── cms
   │   │   │   ├── crm
   │   │   │   ├── enquiry
-  │   │   │   ├── holding
   │   │   │   ├── invoice
   │   │   │   ├── login
   │   │   │   ├── mail
@@ -138,6 +147,8 @@ URL and documentation for my open source apps are here:
 
 - :doc:`app-base`
 - :doc:`app-block`
+- :doc:`app-booking`
+- :doc:`app-cms`
 - :doc:`app-crm`
 - :doc:`app-enquiry`
 - :doc:`app-invoice`

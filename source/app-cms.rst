@@ -1,12 +1,25 @@
-holding
-*******
+cms
+***
 
 .. highlight:: python
 
-https://github.com/pkimber/holding
+https://github.com/pkimber/cms
 
-We want to use this app to build simple web sites quickly.
+The ``cms`` app extends the :doc:`app-block` app and allows an administrator to
+create new pages and sections.
 
-- Is ``holding`` a good name for the app?
-- Should we include a few block and content models?
-- Should we allow the user (a member of staff) to create new pages?
+URL
+===
+
+To use the Django ``url`` tag to link to a page:
+
+.. code-block:: html
+
+  <a href="{% url 'project.page' 'contact' %}">
+    You can find our contact details by clicking here...
+  </a>
+
+.. tip:: The URL name (``project.page``) is in the ``cms.urls.page`` module.
+
+.. note:: The URL parameter (in this example ``contact``) is the ``slug`` of
+          the page.
