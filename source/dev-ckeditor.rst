@@ -38,6 +38,7 @@ Add the following to your form template (probably below the
 ``{% endblock content %}`` block)::
 
   {% block script_extra %}
+    {{ block.super }}
     {% include 'base/_ckeditor.html' %}
   {% endblock script_extra %}
 
@@ -47,6 +48,7 @@ To make any other text field into rich text, add ``CKEDITOR.replace`` sections
 below the ``include`` section e.g::
 
   {% block script_extra %}
+    {{ block.super }}
     {% include 'base/_ckeditor.html' %}
     <script type="text/javascript">
       CKEDITOR.replace('id_footer_left');

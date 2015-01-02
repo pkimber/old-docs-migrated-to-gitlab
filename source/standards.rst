@@ -6,6 +6,27 @@ Standards
 This document is a **very** good starting point:
 `Django models, encapsulation and data integrity`_
 
+Dashboard
+=========
+
+Every project will have a dashboard.  The URL for this dashboard must be named
+``project.dash`` e.g::
+
+  url(regex=r'^$',
+      view=HomeView.as_view(),
+      name='project.dash'
+      ),
+
+An app can make it easy for a developer to add items to the dashboard by making
+an ``<app-name>/_dash.html`` template e.g:
+
+.. code-block:: html
+
+  {% include 'cms/_dash.html' %}
+
+See https://github.com/pkimber/cms/blob/master/cms/templates/cms/_dash.html for
+an example.
+
 Icons
 =====
 
@@ -44,6 +65,15 @@ The order of model inner classes and standard methods should be as follows
 - ``def get_absolute_url()``
 - Any custom methods
 
+Template
+========
+
+Tags
+----
+
+From `Two Scoops of Django`_, *the convention we follow is*
+``<app_name>_tags.py`` e.g. ``cms_tags.py``.
+
 URL
 ===
 
@@ -64,3 +94,4 @@ pattern*...
 
 .. _`Coding Conventions`: https://django-party-pack.readthedocs.org/en/latest/conventions.html#using-the-url-function
 .. _`Django models, encapsulation and data integrity`: http://www.dabapps.com/blog/django-models-and-encapsulation/
+.. _`Two Scoops of Django`: http://twoscoopspress.org/products/two-scoops-of-django-1-6

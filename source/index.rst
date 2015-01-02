@@ -92,6 +92,7 @@ Development
    dev-requirements
    dev-restore
    dev-sitemap
+   dev-social
    dev-testing
    dev-timezone
    domain
