@@ -30,6 +30,11 @@ an example.
 Icons
 =====
 
+http://fontawesome.io/icon/cloud-download/::
+
+  usage         download
+  icon          <i class="fa fa-cloud-download"></i>
+
 http://fontawesome.io/icon/reply/::
 
   usage         dash (back)
@@ -49,6 +54,11 @@ http://fontawesome.io/icon/home/::
 
   usage         home
   icon          <i class="fa fa-home"></i>
+
+http://fontawesome.io/icon/plus/::
+
+  usage         add
+  icon          <i class="fa fa-plus"></i>
 
 Model
 =====

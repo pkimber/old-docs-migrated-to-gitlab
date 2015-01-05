@@ -37,6 +37,12 @@ To use the Django ``url`` tag to link to a page::
     You can find our contact details by clicking here...
   </a>
 
+And to ``reverse``:
+
+.. code-block:: python
+
+  url = reverse('project.page', kwargs=dict(page='thank-you'))
+
 .. tip:: The URL name (``project.page``) is in the ``cms.urls.page`` module.
 
 .. note:: The URL parameter (in this example ``contact``) is the ``slug`` of

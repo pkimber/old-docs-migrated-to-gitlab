@@ -77,9 +77,9 @@ Add the following to your ``.private`` file e.g:
 Deploy
 ======
 
-In the salt ``sls`` file for your site, add the ``mail_template_type``,
-``mandrill_api_key``, ``mandrill_user_name`` and (if you are not using Celery)
-the ``mail_send`` cron command e.g::
+In the salt pillar ``sls`` file for your site, add the ``mandrill_api_key``,
+``mandrill_user_name`` and (if you are **not** using Celery) the ``mail_send``
+cron command e.g::
 
   sites:
     my_site:
@@ -90,9 +90,6 @@ the ``mail_send`` cron command e.g::
       mail:
         mandrill_api_key: your-api-key
         mandrill_user_name: notify@pkimber.net
-
-.. note:: The ``mail_template_type`` should be selected from the list of
-          constants at the top of the ``mail.models`` module.
 
 Usage
 =====
