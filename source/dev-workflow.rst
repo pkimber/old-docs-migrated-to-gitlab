@@ -1,7 +1,7 @@
 Workflow
 ********
 
-.. highlight::
+.. highlight:: bash
 
 GitHub Flow
 ===========
