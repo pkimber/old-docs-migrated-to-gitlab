@@ -32,12 +32,14 @@ Development
 Do your development for this feature on this branch.  Commit and push as often
 as you like e.g::
 
-
+  # when you try a push the first time, you might be asked to set the origin
+  git push --set-upstream origin 508-dev-workflow
 
 Review
 ------
 
-When 
+When you would like some help, or you are ready for the code to be reviewed,
+then create a pull request on GitHub.
 
 
 .. _`git branching`: https://www.pkimber.net/howto/git/branch.html
