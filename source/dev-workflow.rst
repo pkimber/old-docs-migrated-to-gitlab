@@ -41,6 +41,11 @@ Review
 When you would like some help, or you are ready for the code to be reviewed,
 then create a pull request on GitHub.
 
+Go to the repository.  I found a button saying *Compare and pull request* which
+I clicked and filled in the details.
+
+  You can add the user name to notify a particular user e.g. ``@pkimber``.
+
 
 .. _`git branching`: https://www.pkimber.net/howto/git/branch.html
 .. _`How GitHub Uses GitHub to Build GitHub by Zach Holman`: https://www.youtube.com/watch?v=qyz3jkOBbQY
