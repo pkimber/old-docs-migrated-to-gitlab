@@ -50,7 +50,8 @@ The ``static`` method will only be active when ``DEBUG`` is ``False``.
 Private
 =======
 
-For private uploads/attachments I use https://github.com/johnsensible/django-sendfile
+For private uploads/attachments we use
+https://github.com/johnsensible/django-sendfile
 
 Add ``django-sendfile`` to your ``base.txt`` requirements::
 

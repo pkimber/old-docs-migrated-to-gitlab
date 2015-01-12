@@ -64,4 +64,3 @@ Just making a note of my initial settings::
       SITE_NAME.replace('_', '-'),
       '-test' if TESTING else '',
   )
-

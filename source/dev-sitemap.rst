@@ -8,8 +8,10 @@ SiteMap
   # project/urls.py
   from django.contrib.sitemaps import GenericSitemap
 
+  from block.models import Page
+
   info_dict = {
-    'queryset': Page.objects.all(),
+    'queryset': Page.objects.pages(),
     'date_field': 'modified',
   }
 
