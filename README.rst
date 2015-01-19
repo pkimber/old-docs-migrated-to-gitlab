@@ -1,5 +1,5 @@
-Deploy Django projects using SaltStack
-**************************************
+Documentation
+*************
 
 To build the documentation::
 
