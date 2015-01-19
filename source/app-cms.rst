@@ -8,6 +8,47 @@ https://github.com/pkimber/cms
 The ``cms`` app extends the :doc:`app-block` app and allows an administrator to
 create new pages and sections.
 
+Contact
+=======
+
+To use the contact form (the ``enquiry`` app):
+
+.. code-block:: python
+
+  # views.py
+  from block.views import (
+      ContentPageMixin,
+      PageMixin,
+  )
+  from enquiry.forms import EnquiryForm
+  from enquiry.models import Enquiry
+
+  class ContactView(PageMixin, ContentPageMixin, CreateView):
+
+      form_class = EnquiryForm
+      model = Enquiry
+      template_name = 'compose/contact.html'
+
+      def get_form_kwargs(self):
+          kwargs = super(ContactView, self).get_form_kwargs()
+          kwargs.update(dict(
+              request=self.request,
+              user=self.request.user,
+          ))
+          return kwargs
+
+      def get_success_url(self):
+          return reverse('project.page', kwargs=dict(page='contact-thank-you'))
+
+  # urls.py
+  url(regex=r'^contact/$',
+      view=ContactView.as_view(),
+      kwargs=dict(page='contact'),
+      name='project.contact'
+      ),
+
+You will need to create a new page (``contact-thank-you``).
+
 Template
 ========
 
