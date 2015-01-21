@@ -108,6 +108,57 @@ Edit the code so that it matches the fixed version on GitHub i.e::
 
   for field in model._meta.fields:
 
+Ubuntu
+======
+
+Clearing "System Problem Detected" messages
+-------------------------------------------
+
+Sometimes historical "System Problem Detected" message re-appear when Ubuntu is
+started.
+
+For example a problem with the chrome browser may not be reported to Ubuntu
+because the Chrome is not a supported package.
+
+These message are from files stored in the ``/var/crash`` directory.
+
+Investigate old crash messages
+
+Change to the crash reporting directory as follows::
+
+  cd /var/crash
+
+View the files in the directory as follows::
+
+  ls -al
+
+Files that end with ``.crash`` are ascii files containing the crash report
+detail.  You can view them with your favourite editor (e.g. vim, nano or
+gedit).  Some crash reports are readable by root only so you may need to use
+``sudo`` to be able to view them.
+
+To use vim type::
+
+  sudo vim *.crash
+
+To use nano type::
+
+  sudo nano *.crash
+
+To use gedit type::
+
+  gksu gedit *.crash
+
+You'll be prompted for your password and on successful entry go to your editor
+
+Delete historical crash messages
+
+To delete historical crash messages type ::
+
+  sudo rm /var/crash/*
+
+Any new crash messages that appear after that should be investigated.
+
 uwsgi
 =====
 
