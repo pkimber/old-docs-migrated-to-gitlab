@@ -8,6 +8,8 @@ Checklist
 +-----------+-------------------+----------------------+----------------------+
 | Server    |                   | server               |                      |
 +-----------+-------------------+----------------------+----------------------+
+| Minion    | ``id``            | cloud-a              |                      |
++-----------+-------------------+----------------------+----------------------+
 | Site      | Name              | hatherleigh_info     |                      |
 +-----------+-------------------+----------------------+----------------------+
 | Amazon    | Access key        | ABCDEFG              |                      |
@@ -32,3 +34,13 @@ Enquiry
 -------
 
 List of people to be notified when an enquiry is received.
+
+Project
+=======
+
+Before Initial Deploy
+---------------------
+
+Create a ``favicon.ico`` file in::
+
+  project/static/ico/favicon.ico

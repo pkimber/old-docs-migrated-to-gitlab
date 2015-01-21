@@ -86,6 +86,21 @@ you might need to completely remove the old version::
 
   sudo apt-get purge postgresql-9.1
 
+Salt
+====
+
+To set the minion id::
+
+  # /etc/salt/minion
+  id: cloud-a
+
+  # re-start the minion and accept the key on the master
+  service salt-minion restart
+
+.. note:: Might be worth checking out this article instead of editing the
+          minion id:
+          http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-hostname.html
+
 Selenium
 ========
 
