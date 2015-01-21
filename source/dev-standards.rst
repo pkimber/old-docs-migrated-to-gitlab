@@ -27,6 +27,21 @@ an ``<app-name>/_dash.html`` template e.g:
 See https://github.com/pkimber/cms/blob/master/cms/templates/cms/_dash.html for
 an example.
 
+Documentation
+=============
+
+From `PEP 257 - Docstring Conventions - Multi-line Docstrings`_::
+
+  def complex(real=0.0, imag=0.0):
+      """Form a complex number.
+
+      Keyword arguments:
+      real -- the real part (default 0.0)
+      imag -- the imaginary part (default 0.0)
+      """
+      if imag == 0.0 and real == 0.0:
+          return complex_zero
+
 Icons
 =====
 
@@ -104,4 +119,5 @@ pattern*...
 
 .. _`Coding Conventions`: https://django-party-pack.readthedocs.org/en/latest/conventions.html#using-the-url-function
 .. _`Django models, encapsulation and data integrity`: http://www.dabapps.com/blog/django-models-and-encapsulation/
+.. _`PEP 257 - Docstring Conventions - Multi-line Docstrings`: https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings
 .. _`Two Scoops of Django`: http://twoscoopspress.org/products/two-scoops-of-django-1-6
