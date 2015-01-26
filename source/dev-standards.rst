@@ -45,6 +45,11 @@ From `PEP 257 - Docstring Conventions - Multi-line Docstrings`_::
 Icons
 =====
 
+http://fontawesome.io/icon/calendar/::
+
+  usage         calendar/booking
+  icon          <i class="fa fa-calendar"></i>
+
 http://fontawesome.io/icon/cloud-download/::
 
   usage         download
