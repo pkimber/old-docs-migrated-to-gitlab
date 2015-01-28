@@ -9,6 +9,11 @@ This document is a **very** good starting point:
 Dashboard
 =========
 
+.. note:: The ``dash`` app is generally for pages where the user has to be
+          logged in.  Public pages will normally be in the ``web`` app.  This
+          is not a hard and fast rule.  We will often want other apps where the
+          user needs to be logged in.
+
 Every project will have a dashboard.  The URL for this dashboard must be named
 ``project.dash`` e.g::
 
