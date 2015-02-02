@@ -70,6 +70,10 @@ name)::
 python
 ======
 
+.. note:: Refer to your company :doc:`checklist` and replace
+          ``devpi.yourbiz.co.uk`` with the name of your ``devpi`` server.
+          Do the same for the username and password.
+
 pip
 ---
 
@@ -80,12 +84,12 @@ Add the following to the ``~/.pip/pip.conf`` file::
 
   [install]
   download-cache=~/.pip/cache
-  index-url = https://devpi.hatherleigh.info/kb/dev/+simple/
+  index-url = https://devpi.yourbiz.co.uk/kb/dev/+simple/
 
 Add the following to the ``~/.pydistutils.cfg`` file::
 
   [easy_install]
-  index_url = https://devpi.hatherleigh.info/kb/dev/+simple/
+  index_url = https://devpi.yourbiz.co.uk/kb/dev/+simple/
 
 Add the following to the ``~/.pypirc`` file::
 
@@ -94,9 +98,9 @@ Add the following to the ``~/.pypirc`` file::
       dev
 
   [dev]
-  repository: https://devpi.hatherleigh.info/kb/dev/
-  username: kb
-  password: 123
+  repository: https://devpi.yourbiz.co.uk/kb/dev/
+  username: bz
+  password: 789
 
 Tools
 =====
