@@ -70,15 +70,16 @@ name)::
 python
 ======
 
+pip
+---
+
 .. note:: Refer to your company :doc:`checklist` and replace
           ``devpi.yourbiz.co.uk`` with the name of your ``devpi`` server.
           Do the same for the username and password.
 
-pip
----
-
-.. note:: Check out the ``--set-cfg`` parameter in
+.. note:: (to myself) Check out the ``--set-cfg`` parameter in
           http://doc.devpi.net/latest/userman/devpi_commands.html
+          It might do the following automatically.
 
 Add the following to the ``~/.pip/pip.conf`` file::
 
