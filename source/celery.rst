@@ -9,8 +9,8 @@ To use a Celery queue in your project...
 
 Add the following to ``requirements/base.txt``::
 
-  celery==3.1.16
-  django-redis==3.7.2
+  celery==3.1.17
+  django-redis==3.8.2
   redis==2.10.3
 
 Create a ``celery.py`` file in the ``project`` folder::
@@ -136,6 +136,17 @@ In your ``settings/base.py`` file, set-up the schedule e.g::
           'schedule': crontab(minute='*/1'),
       },
   }
+
+To start the cron queue on your development system::
+
+  celery -A project beat --loglevel=info
+
+Development
+-----------
+
+To purge existing tasks::
+
+  celery -A project purge
 
 
 .. _`How do I get the task ID`: http://celery.readthedocs.org/en/latest/faq.html#how-can-i-get-the-task-id-of-the-current-task

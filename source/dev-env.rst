@@ -34,14 +34,22 @@ Redis::
 
   sudo apt-get install redis-server
 
-bash
-====
+bash and zsh
+============
 
 A simple script for directory based environments (if a directory contains a
 ``.env`` file it will automatically be executed when you ``cd`` into it)::
 
   git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
+
+::
+
+  # bash
   echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
+
+  # for zsh use the 'autoenv' plugin
+  # vim ~/.zshrc
+  # plugins=(autoenv autojump git history-substring-search mercurial python tmux virtualenv)
 
 Database
 ========
@@ -81,10 +89,14 @@ pip
           http://doc.devpi.net/latest/userman/devpi_commands.html
           It might do the following automatically.
 
-Add the following to the ``~/.pip/pip.conf`` file::
+.. warning:: According to the latest ``pip`` documentation
+          (https://pip.pypa.io/en/latest/user_guide.html#configuration), there
+          is a config file at ``~/.config/pip/pip.conf``.  (``~/.pip/pip.conf``
+          is now a **legacy** per-user configuration file).
+
+Add the following to the ``~/.config/pip/pip.conf`` file::
 
   [install]
-  download-cache=~/.pip/cache
   index-url = https://devpi.yourbiz.co.uk/kb/dev/+simple/
 
 Add the following to the ``~/.pydistutils.cfg`` file::

@@ -9,28 +9,44 @@ This document is a **very** good starting point:
 Dashboard
 =========
 
-.. note:: The ``dash`` app is generally for pages where the user has to be
-          logged in.  Public pages will normally be in the ``web`` app.  This
-          is not a hard and fast rule.  We will often want other apps where the
-          user needs to be logged in.
+.. note:: Public pages will normally be in the ``web`` app.
 
-Every project will have a dashboard.  The URL for this dashboard must be named
-``project.dash`` e.g::
+          The ``dash`` app is generally for pages where the user has to be
+          logged in.
 
+          The ``settings`` app is generally for pages where a member of staff
+          can configure settings, add records to look-up tables etc.
+
+          These are not a hard and fast rules.  We will often want other apps
+          where the user needs to be logged in.
+
+Projects will normally have a dashboard and a settings page.  The URL for the
+dashboard must be named ``project.dash`` and the URL for the settings page must
+be named ``project.settings`` e.g::
+
+  # from 'dash/urls.py'
   url(regex=r'^$',
-      view=HomeView.as_view(),
+      view=DashView.as_view(),
       name='project.dash'
       ),
+  url(regex=r'^settings/$',
+      view=SettingsView.as_view(),
+      name='project.settings'
+      ),
 
-An app can make it easy for a developer to add items to the dashboard by making
-an ``<app-name>/_dash.html`` template e.g:
+An app can make it easy for a developer to add items to the dashboard or
+settings template by making an ``<app-name>/_dash.html`` or
+``<app-name>/_settings.html`` template e.g:
 
 .. code-block:: html
 
   {% include 'cms/_dash.html' %}
+  {% include 'cms/_settings.html' %}
 
-See https://github.com/pkimber/cms/blob/master/cms/templates/cms/_dash.html for
-an example.
+For example code, see:
+
+- https://github.com/pkimber/cms/blob/master/cms/templates/cms/_dash.html
+- https://github.com/pkimber/cms/blob/master/cms/templates/cms/_settings.html
 
 Documentation
 =============
@@ -46,6 +62,9 @@ From `PEP 257 - Docstring Conventions - Multi-line Docstrings`_::
       """
       if imag == 0.0 and real == 0.0:
           return complex_zero
+
+I think I agree with most of the examples in this document:
+:download:`misc/pep8_cheat.pdf`
 
 Icons
 =====

@@ -73,6 +73,14 @@ details of the sites to be deployed onto this server e.g::
       ftp: True
       ftp_password: "generated-using-mkpasswd-see-ftp-notes"
 
+If your Django project does **not** use a database, then set ``db_type`` to an
+empty string e.g::
+
+  sites:
+    pkimber_net:
+      profile: django
+      db_type: ''
+
 cron
 ----
 

@@ -1,6 +1,8 @@
 Database
 ********
 
+.. highlight:: bash
+
 If you are ready to deploy a Django site, start by creating a database...
 
 Create
@@ -13,26 +15,26 @@ Create
 
   For details, see :doc:`site-config`
 
-To create a database for a site (in this example for the server ``drop-temp``
-and the site ``hatherleigh_net``)::
+To create a database for a site::
 
   cd fabric
-  fab site:hatherleigh_info create_db
+  fab test:hatherleigh_info create_db
 
   # if your would like to use a Postgres table space name
-  fab site:hatherleigh_info create_db:table_space=cbs
+  fab test:hatherleigh_info create_db:cbs
 
 You are now ready to :doc:`fabric-deploy` your site...
+
+Drop/Delete
+===========
+
+To drop a database, you will need to append the current date and time e.g::
+
+  fab test:hatherleigh_info drop_db:02/02/2015-16:54
 
 Maintenance
 ===========
 
-- :doc:`fabric-backup`
+- :doc:`backup`
+- :doc:`dev-restore`
 - :doc:`restore`
-
-Version
--------
-
-::
-
-  fab db_version

@@ -58,7 +58,6 @@ Project
 
   # amazon (see 'base.py' for id and key)
   AWS_STORAGE_BUCKET_NAME = '{}-dev'.format(SITE_NAME.replace('_', '-'))
-  STATIC_URL = '/static/'
 
 ::
 
@@ -69,7 +68,6 @@ Project
       SITE_NAME.replace('_', '-'),
       '-test' if TESTING else '',
   )
-  STATIC_URL = 'http://{}.s3.amazonaws.com/'.format(SITE_NAME.replace('_', '-'))
   # http://stackoverflow.com/questions/10929418/django-compressor-with-s3-url-heroku
   AWS_QUERYSTRING_AUTH = False
   AWS_PRELOAD_METADATA = True
