@@ -37,6 +37,28 @@ as you like::
   # when you try a push the first time, you might be asked to set the origin
   git push --set-upstream origin 508-dev-workflow
 
+If you want to switch back to the ``master`` branch::
+
+  # commit your changes, then...
+  git checkout master
+
+To list branches::
+
+  git branch -a
+
+If you want to switch back to the branch::
+
+  # commit your changes, then...
+  git checkout 508-dev-workflow
+
+To pull the latest changes from ``master`` into your branch::
+
+  git checkout master
+  git pull
+  git checkout 508-dev-workflow
+  git rebase master
+  # not sure if we need to commit after this?
+
 Review
 ------
 
