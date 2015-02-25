@@ -104,6 +104,11 @@ http://fontawesome.io/icon/plus/::
   usage         add
   icon          <i class="fa fa-plus"></i>
 
+http://fontawesome.io/icon/exclamation-triangle/::
+
+  usage         warning
+  icon          <i class="fa fa-warning"></i>
+
 Model
 =====
 
