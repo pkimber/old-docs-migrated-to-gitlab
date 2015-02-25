@@ -74,3 +74,7 @@ with the ``MEDIA_URL`` and path e.g:
 
   <!-- with -->
   <img src="{{ MEDIA_URL }}{{ c.picture }}">
+
+.. warning:: If you are using ``runserver``, make sure you are running it from
+             the project folder.  If you don't, it won't be able to find the
+             media!
