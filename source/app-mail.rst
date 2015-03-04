@@ -94,8 +94,8 @@ cron command e.g::
 Usage
 =====
 
-.. information:: In the examples below, ``self.object`` is an object which the
-                 email address will be linked to.
+.. note:: In the examples below, ``self.object`` is an object which the email
+          address will be linked to.
 
 To queue an email without using a template::
 
