@@ -15,7 +15,7 @@ Requirements
 
 Add the following to ``requirements/base.txt``::
 
-  djrill==1.2.0
+  djrill==1.3.0
 
 Add the mail app to ``requirements/local.txt``::
 
@@ -94,10 +94,34 @@ cron command e.g::
 Usage
 =====
 
+.. information:: In the examples below, ``self.object`` is an object which the
+                 email address will be linked to.
+
+To queue an email without using a template::
+
+  from mail.models import Notify
+  from mail.service import queue_mail_message
+
+  email_addresses = [n.email for n in Notify.objects.all()]
+  if email_addresses:
+      queue_mail_message(
+          self.object,
+          email_addresses,
+          subject,
+          message,
+      )
+  else:
+      logging.error(
+          "Cannot send email notification of payment.  "
+          "No email addresses set-up in 'mail.models.Notify'"
+      )
+
 To queue an email template::
 
+  from mail.service import queue_mail_template
+
   context = {
-      email_address: {
+      'test@pkimber.net': {
           "SUBJECT": "Re: {}".format(subject),
           "BODY": description,
           "DATE": created.strftime("%d-%b-%Y %H:%M:%S"),

@@ -10,14 +10,12 @@ To use a Celery queue in your project...
 Add the following to ``requirements/base.txt``::
 
   celery==3.1.17
-  django-redis==3.8.2
+  django-redis==3.8.3
   redis==2.10.3
 
 Create a ``celery.py`` file in the ``project`` folder::
 
   # -*- encoding: utf-8 -*-
-  from __future__ import unicode_literals
-
   from celery import Celery
 
   from django.conf import settings

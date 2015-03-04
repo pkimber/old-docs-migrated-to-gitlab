@@ -5,6 +5,17 @@ invoice
 
 https://github.com/pkimber/invoice
 
+Credit Note
+===========
+
+To create a credit note, list invoices for a contact, click *Create draft
+invoice (without time records)*, enter the date for the credit note.  Click
+*Add line*, enter a **negative quantity** and a *positive price*.
+
+.. warning:: It is **not** possible to mix invoice and credit lines on one
+             document.  If you want to credit a customer, then create a
+             separate credit note.
+
 Date
 ====
 
