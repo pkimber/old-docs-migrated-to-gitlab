@@ -113,7 +113,7 @@ Model
 =====
 
 The order of model inner classes and standard methods should be as follows
-(these are not all required):
+(they are not all required):
 
 - All database fields
 - Custom manager attributes
@@ -123,6 +123,15 @@ The order of model inner classes and standard methods should be as follows
 - ``def save()``
 - ``def get_absolute_url()``
 - Any custom methods
+
+Test
+----
+
+Create a ``DjangoModelFactory`` for the model using `Factory Boy`_ and test the
+following (these are a common source of hard to diagnose issues):
+
+- ``ordering``
+- ``str``
 
 Template
 ========
@@ -155,3 +164,4 @@ pattern*...
 .. _`Django models, encapsulation and data integrity`: http://www.dabapps.com/blog/django-models-and-encapsulation/
 .. _`PEP 257 - Docstring Conventions - Multi-line Docstrings`: https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings
 .. _`Two Scoops of Django`: http://twoscoopspress.org/products/two-scoops-of-django-1-6
+.. _`Factory Boy`: https://github.com/rbarrois/factory_boy
