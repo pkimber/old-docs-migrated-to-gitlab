@@ -11,9 +11,14 @@ Latest::
 
   bleach==1.4.1
   boto==2.36.0
+  celery-haystack==0.8
   celery==3.1.17
+  cssselect==0.9.1
   django-braces==1.4.0
+  # version 0.2.0 does not work with python 3
+  django-celery-transactions==0.1.3
   django-compressor==1.4
+  django-haystack==2.3.1
   django-nocaptcha-recaptcha==0.0.18
   django-redis==3.8.3
   django-reversion==1.8.5
@@ -25,6 +30,7 @@ Latest::
   djrill==1.3.0
   docutils==0.12
   easy-thumbnails==2.2
+  elasticsearch==1.4.0
   hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
   iso8601==0.1.10
   pillow==2.7.0
@@ -34,3 +40,4 @@ Latest::
   PyYAML==3.11
   redis==2.10.3
   statsd==3.0.1
+  stripe==1.21.0
