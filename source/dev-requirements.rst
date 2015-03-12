@@ -1,6 +1,36 @@
 Requirements
 ************
 
+.. highlight:: bash
+
 To update the version of a dependency in ``base.txt``::
 
   find . -name "base.txt" | xargs sed -i 's/Django==1.6.1/Django==1.6.2/g'
+
+Latest::
+
+  bleach==1.4.1
+  boto==2.36.0
+  celery==3.1.17
+  django-braces==1.4.0
+  django-compressor==1.4
+  django-nocaptcha-recaptcha==0.0.18
+  django-redis==3.8.3
+  django-reversion==1.8.5
+  django-sendfile==0.3.6
+  django-statsd-mozilla==0.3.14
+  django-storages-redux
+  Django==1.7.6
+  djangorestframework==3.1.0
+  djrill==1.3.0
+  docutils==0.12
+  easy-thumbnails==2.2
+  hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
+  iso8601==0.1.10
+  pillow==2.7.0
+  psycopg2==2.6
+  python-dateutil==2.4.1
+  pytz==2014.10
+  PyYAML==3.11
+  redis==2.10.3
+  statsd==3.0.1
