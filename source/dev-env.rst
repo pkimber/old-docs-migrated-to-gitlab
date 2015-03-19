@@ -21,10 +21,16 @@ python development::
 
   sudo apt-get install python3-dev
   # pillow
-  sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
-    libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
+  sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev
+  sudo apt-get install liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
+
+  # for ubuntu 14.04
+  sudo apt-get install libtiff4-dev
+  # for ubuntu 14.10
+  sudo apt-get install libtiff5-dev
+
   # if you have issues with setuptools e.g. Requirement.parse('setuptools>=0.8'))
-  wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
+  sudo wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
 
 Postgres::
 
@@ -54,6 +60,8 @@ A simple script for directory based environments (if a directory contains a
 Database
 ========
 
+.. important:: For ubuntu 14.10, replace ``9.3`` with ``9.4``
+
 Replace ``/etc/postgresql/9.3/main/pg_hba.conf``
 with :download:`misc/pg_hba.conf`::
 
@@ -68,7 +76,7 @@ with :download:`misc/postgresql.conf`::
 
 Re-start Postgres::
 
-  sudo /etc/postgresql/9.3/main/service postgres restart
+  sudo service postgresql restart
 
 Create a role for your user name (replace ``patrick`` with your linux user
 name)::

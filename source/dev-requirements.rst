@@ -39,5 +39,8 @@ Latest::
   pytz==2014.10
   PyYAML==3.11
   redis==2.10.3
+  reportlab==3.1.44
+  requests==2.6.0
   statsd==3.0.1
   stripe==1.21.0
+  Yapsy==1.10.423

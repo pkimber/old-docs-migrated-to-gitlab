@@ -33,6 +33,8 @@ Compress
           all projects which use Amazon web services (unless you use the
           ``compress`` setting in your pillar).
 
+.. tip:: For issues, see :doc:`issues`
+
 Setup your site to use Amazon S3, :doc:`amazon-s3`.
 
 http://django-compressor.readthedocs.org/::
