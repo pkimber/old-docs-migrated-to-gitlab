@@ -68,8 +68,10 @@ with :download:`misc/pg_hba.conf`::
   sudo chown postgres:postgres /etc/postgresql/9.3/main/pg_hba.conf
   sudo chmod 640 /etc/postgresql/9.3/main/pg_hba.conf
 
-Replace ``/etc/postgresql/9.3/main/postgresql.conf``
-with :download:`misc/postgresql.conf`::
+Replace ``/etc/postgresql/9.3/main/postgresql.conf`` with
+:download:`misc/9.3/postgresql.conf` for ``9.3``
+and
+:download:`misc/9.4/postgresql.conf` for ``9.4``::
 
   sudo chown postgres:postgres /etc/postgresql/9.3/main/postgresql.conf
   sudo chmod 644 /etc/postgresql/9.3/main/postgresql.conf
