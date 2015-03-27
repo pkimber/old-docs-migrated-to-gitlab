@@ -81,14 +81,45 @@ Remove all incrementals older than *count* full backups
 Getting Started
 ===============
 
+Install Duplicity::
+
+  sudo apt-get install duplicity python-paramiko
+
 You will receive your account details from rsync.net.  Please refer to the
 :doc:`checklist` and fill in your own details.
 
-Create an SSH key on your laptop: `Generating SSH Keys for Automated Backups`_
-Follow the instructions up to and including *Testing Your Passwordless Login*
+SSH Key
+-------
 
-.. warning:: Only use the ``scp`` command for the first key.  If you upload
-             more keys using this command, they will overwrite the first key.
+Create an SSH key on your laptop::
+
+  ssh-keygen -t rsa
+
+.. note:: Do not enter a password here.
+
+Upload your key to the rsync.net server::
+
+  cat ~/.ssh/id_rsa.pub | ssh 123@usw-s001.rsync.net 'dd of=.ssh/authorized_keys oflag=append conv=notrunc'
+
+If you are setting up the rsync.net server for the *first time ever*:
+
+.. danger:: Do not run the following command unless you are the first person
+            (or computer) to use this rsync.net server.  If you upload another
+            key using this command, they will overwrite the first key.
+
+::
+
+  scp ~/.ssh/id_rsa.pub 123@usw-s001.rsync.net:.ssh/authorized_keys
+
+Test your ssh login to the server::
+
+  ssh 123@usw-s001.rsync.net ls
+
+These instructions are copied from `Generating SSH Keys for Automated Backups`_
+(up to and including *Testing Your Passwordless Login*).
+
+GPG Key
+-------
 
 To encrypt the backups we need a gpg key.  This key will be shared with all the
 web servers and with any laptops which need to decrypt (and restore) the data.
