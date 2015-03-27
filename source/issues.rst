@@ -123,6 +123,18 @@ you might need to completely remove the old version::
 Salt
 ====
 
+Firewall
+--------
+
+.. note:: For Ubuntu only...
+
+On the master and minion, open the Firewall for Salt::
+
+  ufw allow salt
+
+Minion ID
+---------
+
 To set the minion id::
 
   # /etc/salt/minion
