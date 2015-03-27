@@ -63,6 +63,7 @@ Site
    amazon-database
    amazon-s3
    backup
+   backup-dropbox
    cache
    site-config
    salt-pillar
