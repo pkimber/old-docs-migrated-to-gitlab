@@ -186,6 +186,8 @@ server e.g:
   'test-a':
     - global.gpg
 
+.. _backup_cloud_server_gpg:
+
 Cloud Server
 ------------
 
