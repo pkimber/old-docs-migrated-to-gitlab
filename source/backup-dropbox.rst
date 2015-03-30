@@ -66,6 +66,10 @@ required)::
   sudo -i -u web
   ls -l /home/web/repo/files/dropbox/pat_hatherleigh_info/Dropbox/
 
+To initialise the backup run the backup script with the ``full`` argument e.g::
+
+  /home/web/opt/backup_dropbox_pat_hatherleigh_info.sh full
+
 WIP
 ===
 
