@@ -49,6 +49,28 @@ To display a time in the local timezone, use ``localtime``::
   timezone.localtime(alarm)
   datetime.datetime(2014, 6, 17, 15, 19, 40, 607734, tzinfo=<DstTzInfo 'Europe/London' BST+1:00:00 DST>)
 
+TimeField
+---------
+
+If a user enters a time into a ``TimeField``, they will enter it in their local
+timezone.  To convert this to a UTC ``datetime``::
+
+  import pytz
+  from django.conf import settings
+
+  start_date = self.cleaned_data.get('start_date')
+  start_time = self.cleaned_data.get('start_time')
+
+  start_date_time = datetime.combine(start_date, start_time)
+  local_tz = pytz.timezone(settings.TIME_ZONE)
+  start_date_time = local_tz.localize(start_date_time)
+  start_date_time = start_date_time.astimezone(pytz.utc)
+
+  # json post
+  {
+      'start_date': start_date_time.isoformat(),
+  }
+
 Issues
 ======
 
