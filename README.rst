@@ -18,9 +18,6 @@ On a mac::
 
   make html && open -a firefox build/html/index.html
 
-To deploy the site::
+To deploy the site to my web server::
 
-  make html
-  rsync -av --delete --force --size-only \
-    ./build/html/ \
-    web@pkimber.net:/home/web/repo/project/pkimber_net/open/
+  ./deploy.sh
