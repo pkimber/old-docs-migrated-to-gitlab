@@ -26,14 +26,14 @@ Latest::
   django-statsd-mozilla==0.3.14
   django-storages-redux
   Django==1.7.6
-  djangorestframework==3.1.0
+  djangorestframework==3.1.1
   djrill==1.3.0
   docutils==0.12
   easy-thumbnails==2.2
   elasticsearch==1.4.0
   hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
   iso8601==0.1.10
-  pillow==2.7.0
+  pillow==2.8.1
   psycopg2==2.6
   python-dateutil==2.4.1
   pytz==2014.10
@@ -44,3 +44,7 @@ Latest::
   statsd==3.0.1
   stripe==1.21.0
   Yapsy==1.10.423
+
+.. note:: For Django 1.8, you will need to run:
+          ``pip install --upgrade -r requirements/local.txt``.
+          There are alot of warnings... so no rush to do this.

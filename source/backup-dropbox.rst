@@ -45,6 +45,13 @@ Find the log file for the supervisor task for your account::
 
   ls -l /var/log/supervisor/
 
+.. note:: If the file is empty (0 bytes), then log into the supervisor console
+          (``supervisorctl``) and check the status of the process.  If you see
+          this message,
+          ``can't find command '/home/web/.dropbox-dist/dropboxd'``
+          then DropBox was probably installed after the supervisor script was
+          created.  Just re-start the process to resolve this issue.
+
 Follow the file e.g::
 
   tail -f /var/log/supervisor/dropbox_pat_hatherleigh_infok-stdout---supervisor-NI0cjP.log

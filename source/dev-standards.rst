@@ -84,6 +84,11 @@ http://fontawesome.io/icon/reply/::
   usage         dash (back)
   icon          <i class="fa fa-reply"></i>
 
+http://fontawesome.io/icon/trash-o/::
+
+  usage         delete
+  icon          <i class="fa fa-trash-o"></i>
+
 http://fontawesome.io/icon/pencil-square-o/::
 
   usage         edit
