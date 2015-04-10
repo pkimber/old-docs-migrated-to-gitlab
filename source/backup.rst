@@ -260,14 +260,19 @@ and local parameters.
           Duplicity attempting to restore owner and group permissions on the
           files.
 
-To restore a single file::
+To restore a folder::
 
   PASSPHRASE="gpg-password" \
     duplicity \
     --file-to-restore \
-    /path/to/file \
+    "path/to/folder/" \
     ssh://123@usw-s001.rsync.net/hatherleigh_info/files \
-    /path/to/restore/file
+    /path/to/restore/folder/
+
+.. note:: When restoring a folder, ``/path/to/restore/folder/`` must not exist.
+          It will be created by Duplicity.
+
+To restore a single file::
 
   PASSPHRASE="gpg-password" \
     duplicity \
