@@ -35,6 +35,18 @@ was OK.
 
          ... but I don't think that made a difference?!
 
+Dropbox
+=======
+
+When testing the scripts::
+
+  No protocol specified
+  !! (Qt:Fatal) QXcbConnection: Could not connect to display :0
+
+To stop this error, use a headless connection i.e. ssh into the computer or use
+a separate console.  This will still be an issue if you have a GUI and you
+``sudo`` to a user who is *not* running a GUI.
+
 Duplicity
 =========
 

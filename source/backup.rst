@@ -234,6 +234,8 @@ To initialise the backup run the script with the ``full`` argument e.g::
 
   /home/web/opt/backup_hatherleigh_info.sh full
 
+.. _duplicity_command_examples:
+
 Duplicity
 ---------
 
@@ -272,7 +274,8 @@ To restore a folder::
 .. note:: When restoring a folder, ``/path/to/restore/folder/`` must not exist.
           It will be created by Duplicity.
 
-To restore a single file::
+To restore a single file (in this example we are restoring from a ``Dropbox``
+backup)::
 
   PASSPHRASE="gpg-password" \
     duplicity \
