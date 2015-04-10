@@ -282,7 +282,7 @@ backup)::
     --file-to-restore \
     "Dropbox/Contact/Cycle Policy.docx" \
     ssh://123@usw-s001.rsync.net/dropbox/web_hatherleigh_info/files \
-    /path/to/restore/policy.docx
+    "/path/to/restore/Cycle Policy.docx"
 
 .. note:: When restoring a single file, ``/path/to/restore/policy.docx`` is the
           file name **NOT** the folder name.
