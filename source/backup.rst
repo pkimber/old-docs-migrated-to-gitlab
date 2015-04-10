@@ -276,8 +276,8 @@ To restore a single file::
     ssh://123@usw-s001.rsync.net/dropbox/web_hatherleigh_info/files \
     /path/to/restore/policy.docx
 
-.. note:: When restoring a single file, ``/path/to/restore/file`` is the file
-          name NOT the folder name.
+.. note:: When restoring a single file, ``/path/to/restore/policy.docx`` is the
+          file name **NOT** the folder name.
 
 
 .. _`Generating SSH Keys for Automated Backups`: http://www.rsync.net/resources/howto/ssh_keys.html
