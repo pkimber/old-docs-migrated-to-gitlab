@@ -256,6 +256,10 @@ To list the backups::
 Duplicity makes restoring easy. You can restore by simply reversing the remote
 and local parameters.
 
+.. note:: You will probably see ``Operation not permitted`` errors.  This is
+          Duplicity attempting to restore owner and group permissions on the
+          files.
+
 To restore a single file::
 
   PASSPHRASE="gpg-password" \
@@ -264,6 +268,16 @@ To restore a single file::
     /path/to/file \
     ssh://123@usw-s001.rsync.net/hatherleigh_info/files \
     /path/to/restore/file
+
+  PASSPHRASE="gpg-password" \
+    duplicity \
+    --file-to-restore \
+    "Dropbox/Contact/Cycle Policy.docx" \
+    ssh://123@usw-s001.rsync.net/dropbox/web_hatherleigh_info/files \
+    /path/to/restore/policy.docx
+
+.. note:: When restoring a single file, ``/path/to/restore/file`` is the file
+          name NOT the folder name.
 
 
 .. _`Generating SSH Keys for Automated Backups`: http://www.rsync.net/resources/howto/ssh_keys.html
