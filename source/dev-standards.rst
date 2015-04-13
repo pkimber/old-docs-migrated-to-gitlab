@@ -138,6 +138,29 @@ following (these are a common source of hard to diagnose issues):
 - ``ordering``
 - ``str``
 
+Pure
+====
+
+Horizontal Menu
+---------------
+
+.. code-block:: html
+
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <div class="pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item">
+            <a href="{% url 'booking.list' %}" class="pure-menu-link">
+              <i class="fa fa-calendar"></i>
+              Bookings
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 Template
 ========
 
