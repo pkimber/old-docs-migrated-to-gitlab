@@ -46,6 +46,11 @@ Who do I need to invoice::
   qs = TimeRecord.objects.filter(invoice_line__isnull=True, billable=True).order_by('ticket__contact__slug').distinct('ticket__contact__slug')
   for t in qs: print(t.ticket.contact.slug)
 
+How much time have I spent on a ticket::
+
+  # edit the ticket numbers in the source code
+  django-admin.py ticket_time_csv
+
 PDF
 ===
 

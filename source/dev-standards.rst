@@ -141,8 +141,21 @@ following (these are a common source of hard to diagnose issues):
 Pure
 ====
 
-Horizontal Menu
----------------
+Grid
+----
+
+Two columns
+
+.. code-block:: html
+
+  <div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-2">
+      <!-- spacing -->
+      <div class="l-box">
+      <div class="r-box">
+
+Menu
+----
 
 .. code-block:: html
 
@@ -160,6 +173,26 @@ Horizontal Menu
       </div>
     </div>
   </div>
+
+Table
+-----
+
+.. code-block:: html
+
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr valign="top">
+        <th>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr valign="top">
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 Template
 ========
