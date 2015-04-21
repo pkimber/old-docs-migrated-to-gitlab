@@ -35,8 +35,6 @@ Compress
 
 .. tip:: For issues, see :doc:`issues`
 
-Setup your site to use Amazon S3, :doc:`amazon-s3`.
-
 http://django-compressor.readthedocs.org/::
 
   # requirements/base.txt
@@ -60,6 +58,8 @@ http://django-compressor.readthedocs.org/::
   # settings/local.py
 
   STATIC_URL = '/static/'
+
+Setup your site to use Amazon S3, :doc:`amazon-s3`.
 
 ::
 
