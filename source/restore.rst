@@ -1,6 +1,8 @@
 Restore
 *******
 
+.. highlight:: bash
+
 Click here for the :doc:`backup` notes...
 
 .. note:: In the examples below, I am restoring a ``test`` server.  The
