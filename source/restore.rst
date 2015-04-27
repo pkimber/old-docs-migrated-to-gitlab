@@ -5,16 +5,16 @@ Restore
 
 Click here for the :doc:`backup` notes...
 
-.. note:: In the examples below, I am restoring a ``test`` server.  The
-          procedure is more or less the same for a live site.  Just be more
-          careful!!
+.. note:: In the examples below, I am restoring to a ``test`` server.  The
+          procedure is more or less the same for a live site.  **Just be more
+          careful!!**
 
-.. note:: I am restoring to a date folder in the ``~/repo/temp/`` folder
+.. note:: I am restoring to date folders in the ``~/repo/temp/`` folder
           (``~/repo/temp/2015-04-27-backup/`` and
           ``~/repo/temp/2015-04-27-files/``).  Please change the date to the
-          day when you do the work!
+          day when you do the work.
 
-.. note:: ``20150427_0100.sql`` is the database dump file used in this example.
+.. note:: The database dump file used in this example, ``20150427_0100.sql``.
           Please select the most recent file for your restore.
 
 Database
