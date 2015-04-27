@@ -234,6 +234,11 @@ To initialise the backup run the script with the ``full`` argument e.g::
 
   /home/web/opt/backup_hatherleigh_info.sh full
 
+Restore
+-------
+
+:doc:`restore`
+
 .. _duplicity_command_examples:
 
 Duplicity

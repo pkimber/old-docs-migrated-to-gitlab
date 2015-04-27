@@ -69,6 +69,7 @@ Site
    ftp
    mailgun
    maintain
+   restore
    solr
    ssl
 
