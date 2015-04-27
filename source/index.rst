@@ -111,6 +111,7 @@ Apps
    app-crm
    app-enquiry
    app-invoice
+   app-job
    app-login
    app-mail
    app-pay

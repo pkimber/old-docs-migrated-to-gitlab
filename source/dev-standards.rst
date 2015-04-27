@@ -129,15 +129,6 @@ The order of model inner classes and standard methods should be as follows
 - ``def get_absolute_url()``
 - Any custom methods
 
-Test
-----
-
-Create a ``DjangoModelFactory`` for the model using `Factory Boy`_ and test the
-following (these are a common source of hard to diagnose issues):
-
-- ``ordering``
-- ``str``
-
 Pure
 ====
 
@@ -202,6 +193,29 @@ Tags
 
 From `Two Scoops of Django`_, *the convention we follow is*
 ``<app_name>_tags.py`` e.g. ``cms_tags.py``.
+
+Testing
+=======
+
+Factories
+---------
+
+Model factories should create the minimum required to construct a valid object
+e.g. a product will probably need to create a product category, but a contact
+will not need to fill in the date of birth.
+
+.. note:: I am not 100% sure about this... but I am sure a factory which does
+          more than it needs to will make it feel like magic is going on and
+          cause confusion.
+
+Model
+-----
+
+Create a ``DjangoModelFactory`` for the model using `Factory Boy`_ and test the
+following (these are a common source of hard to diagnose issues):
+
+- ``ordering``
+- ``str``
 
 URL
 ===

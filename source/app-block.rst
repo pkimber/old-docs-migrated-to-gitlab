@@ -62,8 +62,7 @@ Or to add a form::
       ),
 
   # views.py
-  class EnquiryCreateView(
-          PageMixin, PageTemplateMixin, ContentPageMixin, CreateView):
+  class EnquiryCreateView(PageFormMixin, CreateView):
 
       form_class = EnquiryForm
       model = Enquiry
