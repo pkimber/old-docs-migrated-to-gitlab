@@ -38,14 +38,11 @@ Minion
    salt-provision
 
    fabric-env
-   fabric-backup
    fabric-database
    fabric-deploy
    fabric-release
    fabric-search
    fabric-ssl
-
-   restore
 
 Diagnostics
 
@@ -81,7 +78,6 @@ Development
    :maxdepth: 1
 
    dev-env
-   dev-backup
    dev-captcha
    dev-ckeditor
    dev-django
@@ -131,6 +127,16 @@ PHP
 
    php
 
+Old/Legacy Notes
+****************
+
+.. toctree::
+   :maxdepth: 1
+
+   old/dev-backup
+   old/dev-restore
+   old/fabric-backup
+   old/restore
 
 Indices and tables
 ==================
