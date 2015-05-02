@@ -14,7 +14,7 @@ Click here for the :doc:`backup` notes...
           ``~/repo/temp/2015-04-27-files/``).  Please change the date to the
           day when you do the work.
 
-.. note:: The database dump file used in this example, ``20150427_0100.sql``.
+.. note:: The database dump file used in this example is ``20150427_0100.sql``.
           Please select the most recent file for your restore.
 
 Database
@@ -40,6 +40,8 @@ On the server as user ``web``::
   # restore the duplicity files to the database
   psql -U postgres -d hatherleigh_info_test \
     -f ~/repo/temp/2015-04-27-backup/20150427_0100.sql 2> out.log
+
+.. tip:: Check the ``out.log`` file for import issues.
 
 Files
 =====
