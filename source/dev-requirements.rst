@@ -18,6 +18,7 @@ Latest::
   # version 0.2.0 does not work with python 3
   django-celery-transactions==0.1.3
   django-compressor==1.4
+  django-formtools==1.0
   django-haystack==2.3.1
   django-nocaptcha-recaptcha==0.0.18
   django-redis==3.8.3
@@ -25,7 +26,7 @@ Latest::
   django-sendfile==0.3.6
   django-statsd-mozilla==0.3.14
   django-storages-redux
-  Django==1.7.6
+  Django==1.8.1
   djangorestframework==3.1.1
   djrill==1.3.0
   docutils==0.12
@@ -47,4 +48,3 @@ Latest::
 
 .. note:: For Django 1.8, you will need to run:
           ``pip install --upgrade -r requirements/local.txt``.
-          There are alot of warnings... so no rush to do this.

@@ -49,6 +49,58 @@ Then, just drop the table::
 
   DROP TABLE easy_thumbnails_thumbnaildimensions;
 
+Django 1.8
+==========
+
+Remove ``TEMPLATE_DIRS`` and replace with::
+
+  TEMPLATES = [
+      {
+          'BACKEND': 'django.template.backends.django.DjangoTemplates',
+          'DIRS': [],
+          'APP_DIRS': True,
+          'OPTIONS': {
+              'context_processors': [
+                  'django.contrib.auth.context_processors.auth',
+                  'django.template.context_processors.debug',
+                  'django.template.context_processors.i18n',
+                  'django.template.context_processors.media',
+                  'django.template.context_processors.static',
+                  'django.template.context_processors.tz',
+                  'django.contrib.messages.context_processors.messages',
+              ],
+              'string_if_invalid': '**** INVALID EXPRESSION: %s ****',
+          },
+      },
+  ]
+
+Remove::
+
+  TEMPLATE_DEBUG = DEBUG
+  TEMPLATE_STRING_IF_INVALID = '**** INVALID EXPRESSION: %s ****'
+
+``formtools``
+-------------
+
+The ``formtools`` package has been removed, so replace::
+
+  from django.contrib.formtools.wizard.views import SessionWizardView
+
+with::
+
+  from formtools.wizard.views import SessionWizardView
+
+Install::
+
+  django-formtools
+
+Add ``formtools`` to ``INSTALLED_APPS``:
+
+  INSTALLED_APPS = (
+      # ...
+      'formtools',
+  )
+
 Settings
 ========
 
