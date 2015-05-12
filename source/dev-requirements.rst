@@ -12,11 +12,10 @@ Latest::
   bleach==1.4.1
   boto==2.36.0
   celery-haystack==0.8
-  celery==3.1.17
+  celery==3.1.18
   cssselect==0.9.1
   django-braces==1.4.0
-  # version 0.2.0 does not work with python 3
-  django-celery-transactions==0.1.3
+  django-celery-transactions==0.3.1
   django-compressor==1.4
   django-formtools==1.0
   django-haystack==2.3.1
@@ -32,6 +31,8 @@ Latest::
   docutils==0.12
   easy-thumbnails==2.2
   elasticsearch==1.4.0
+  # awaiting a release https://github.com/django-haystack/celery-haystack/pull/37
+  git+https://github.com/django-haystack/celery-haystack.git@0ca54a6a8b6f794f88a1c28b8c79cdacef994cc7#egg=celery_haystack
   hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
   iso8601==0.1.10
   pillow==2.8.1
@@ -43,8 +44,10 @@ Latest::
   reportlab==3.1.44
   requests==2.6.0
   statsd==3.0.1
-  stripe==1.21.0
+  stripe==1.22.2
   Yapsy==1.10.423
 
 .. note:: For Django 1.8, you will need to run:
+          ``pip uninstall celery_haystack``
+          and
           ``pip install --upgrade -r requirements/local.txt``.

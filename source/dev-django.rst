@@ -94,12 +94,28 @@ Install::
 
   django-formtools
 
-Add ``formtools`` to ``INSTALLED_APPS``:
+Add ``formtools`` to ``INSTALLED_APPS``::
 
   INSTALLED_APPS = (
       # ...
       'formtools',
   )
+
+Management Commands
+-------------------
+
+Django 1.8 uses ``argparse`` rather than ``optparse``.  For details, see
+`Custom Management Commands`_ and `Argparse Tutorial`.  You are encouraged to
+exclusively use ``**options`` for new commands::
+
+  def add_arguments(self, parser):
+      parser.add_argument(
+          '--path',
+          help="path to the 'name.csv' file"
+      )
+
+  def handle(self, *args, **options):
+      file_name = options['path']
 
 Settings
 ========
@@ -150,3 +166,7 @@ This is the pattern I am using::
       return HttpResponseRedirect(self.get_success_url())
 
 If we don't do this then queued tasks are called before the object is saved.
+
+
+.. _`Argparse Tutorial`: https://docs.python.org/3/howto/argparse.html#argparse-tutorial
+.. _`Custom Management Commands`: https://docs.djangoproject.com/en/1.8/howto/custom-management-commands/
