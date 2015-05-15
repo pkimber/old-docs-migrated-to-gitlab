@@ -1,6 +1,15 @@
 Issues
 ******
 
+Celery
+======
+
+If you find Celery wants to use AMQP (``amqp/transport.py``,
+``Connection refused``), then check you created ``celery.py`` in your
+``project`` (or ``example_appname``) folder, and that your ``__init__.py``
+contains ``from .celery import app as celery_app``.  For more information, see
+:doc:`celery`.
+
 Django Compressor
 =================
 

@@ -27,7 +27,7 @@ Latest::
   django-storages-redux
   Django==1.8.1
   djangorestframework==3.1.1
-  djrill==1.3.0
+  djrill==1.4.0
   docutils==0.12
   easy-thumbnails==2.2
   elasticsearch==1.4.0
@@ -45,6 +45,7 @@ Latest::
   requests==2.6.0
   statsd==3.0.1
   stripe==1.22.2
+  xmltodict==0.9.2
   Yapsy==1.10.423
 
 .. note:: For Django 1.8, you will need to run:
