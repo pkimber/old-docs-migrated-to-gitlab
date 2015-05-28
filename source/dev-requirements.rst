@@ -25,7 +25,7 @@ Latest::
   django-sendfile==0.3.6
   django-statsd-mozilla==0.3.14
   django-storages-redux
-  Django==1.8.1
+  Django==1.8.2
   djangorestframework==3.1.1
   djrill==1.4.0
   docutils==0.12

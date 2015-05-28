@@ -5,6 +5,26 @@ invoice
 
 https://github.com/pkimber/invoice
 
+Plan
+====
+
+I am trying to use the ``VatCode`` model in the ``invoice`` app, but we have a
+problem with the ``Contact`` record in the ``crm``.  The ``job`` app uses
+``settings.CONTACT_MODEL``, and the ``crm`` app has it's own ``Contact``.
+
+  I think the proper solution is to move ``Contact`` from the ``crm`` app and
+  put it into a ``contact`` app.
+
+  Move ``TimeRecord`` from ``invoice`` to ``crm``.
+
+  Update the invoice routines so they can invoice a *generic* line type.  One
+  of these types would be ``TimeRecord``.
+
+  Create a new ``account`` app.  Move ``VatCode`` into this ``account`` app.
+
+  At a later date, move the code from ``invoice`` and ``pay`` into the
+  ``account`` app.
+
 Credit Note
 ===========
 

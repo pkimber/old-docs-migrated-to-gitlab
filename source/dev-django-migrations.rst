@@ -3,6 +3,26 @@ Django Migrations
 
 .. highlight:: python
 
+Swappable Dependency
+====================
+
+To use a swappable dependency in a migration, e.g. ``CONTACT_MODEL``::
+
+  dependencies = [
+      migrations.swappable_dependency(settings.CONTACT_MODEL),
+  ]
+
+  operations = [
+      migrations.CreateModel(
+          name='Candidate',
+          fields=[
+              ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+              # ...
+              ('contact', models.OneToOneField(to=settings.CONTACT_MODEL)),
+          ],
+          # ...
+      ),
+
 Workflow
 ========
 
