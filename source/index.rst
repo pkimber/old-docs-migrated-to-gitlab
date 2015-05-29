@@ -89,6 +89,7 @@ Development
    dev-django-thumbnails
    dev-icons
    dev-logging
+   dev-pagination
    dev-requirements
    dev-restore
    dev-sitemap

@@ -79,20 +79,10 @@ http://fontawesome.io/icon/cloud-download/::
   usage         download
   icon          <i class="fa fa-cloud-download"></i>
 
-http://fontawesome.io/icon/reply/::
+http://fontawesome.io/icon/exclamation-triangle/::
 
-  usage         dash (back)
-  icon          <i class="fa fa-reply"></i>
-
-http://fontawesome.io/icon/trash-o/::
-
-  usage         delete
-  icon          <i class="fa fa-trash-o"></i>
-
-http://fontawesome.io/icon/pencil-square-o/::
-
-  usage         edit
-  icon          <i class="fa fa-edit"></i>
+  usage         warning
+  icon          <i class="fa fa-warning"></i>
 
 http://fontawesome.io/icon/external-link/::
 
@@ -104,15 +94,30 @@ http://fontawesome.io/icon/home/::
   usage         home
   icon          <i class="fa fa-home"></i>
 
+http://fontawesome.io/icon/pencil-square-o/::
+
+  usage         edit
+  icon          <i class="fa fa-edit"></i>
+
 http://fontawesome.io/icon/plus/::
 
   usage         add
   icon          <i class="fa fa-plus"></i>
 
-http://fontawesome.io/icon/exclamation-triangle/::
+http://fontawesome.io/icon/reply/::
 
-  usage         warning
-  icon          <i class="fa fa-warning"></i>
+  usage         dash (back)
+  icon          <i class="fa fa-reply"></i>
+
+http://fontawesome.io/icon/shopping-cart/::
+
+  usage         money/payments
+  icon          <i class="fa fa-shopping-cart"></i>
+
+http://fontawesome.io/icon/trash-o/::
+
+  usage         delete
+  icon          <i class="fa fa-trash-o"></i>
 
 Model
 =====
