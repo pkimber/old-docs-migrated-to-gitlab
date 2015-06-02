@@ -9,9 +9,11 @@ To use a Celery queue in your project...
 
 Add the following to ``requirements/base.txt``::
 
-  celery==3.1.17
-  django-redis==3.8.3
-  redis==2.10.3
+  celery
+  django-redis
+  redis
+
+.. tip: See :doc:`requirements` for the current version.
 
 Create a ``celery.py`` file in the ``project`` folder::
 

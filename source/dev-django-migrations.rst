@@ -8,6 +8,8 @@ Swappable Dependency
 
 To use a swappable dependency in a migration, e.g. ``CONTACT_MODEL``::
 
+  from django.conf import settings
+
   dependencies = [
       migrations.swappable_dependency(settings.CONTACT_MODEL),
   ]
@@ -18,6 +20,9 @@ To use a swappable dependency in a migration, e.g. ``CONTACT_MODEL``::
           fields=[
               ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
               # ...
+              # replace:
+              # ('contact', models.OneToOneField(to='example_job.Contact')),
+              # with:
               ('contact', models.OneToOneField(to=settings.CONTACT_MODEL)),
           ],
           # ...
