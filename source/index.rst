@@ -90,6 +90,7 @@ Development
    dev-icons
    dev-logging
    dev-pagination
+   dev-rest-framework
    dev-requirements
    dev-restore
    dev-sitemap

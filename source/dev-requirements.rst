@@ -26,7 +26,7 @@ Latest::
   django-statsd-mozilla==0.3.14
   django-storages-redux
   Django==1.8.2
-  djangorestframework==3.1.1
+  djangorestframework==3.1.3
   djrill==1.4.0
   docutils==0.12
   easy-thumbnails==2.2
@@ -45,6 +45,7 @@ Latest::
   requests==2.6.0
   statsd==3.0.1
   stripe==1.22.2
+  tasklib==0.9.0
   xmltodict==0.9.2
   Yapsy==1.10.423
 
