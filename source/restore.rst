@@ -31,7 +31,7 @@ On the workstation::
 
 On the server as user ``web``::
 
-  # download the files from duplicity
+  # download the backup from duplicity
   PASSPHRASE="****" \
   duplicity \
     ssh://123@usw-s011.rsync.net/hatherleigh_info/backup \
