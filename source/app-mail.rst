@@ -15,7 +15,11 @@ Requirements
 
 Add the following to ``requirements/base.txt``::
 
-  git+https://github.com/pkimber/Djrill.git#egg=djrill
+  djrill==1.3.0
+
+Add the mail app to ``requirements/local.txt``::
+
+  -e ../../app/mail
 
 Settings
 ========
@@ -40,6 +44,7 @@ For Mandrill::
 
   # mandrill
   EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+  MAIL_TEMPLATE_TYPE = 'mandrill'
   MANDRILL_API_KEY = get_env_variable('MANDRILL_API_KEY')
   MANDRILL_USER_NAME = get_env_variable('MANDRILL_USER_NAME')
 
@@ -73,9 +78,9 @@ Add the following to your ``.private`` file e.g:
 Deploy
 ======
 
-In the salt ``sls`` file for your site, add the ``mail_template_type``,
-``mandrill_api_key``, ``mandrill_user_name`` and (if you are not using Celery)
-the ``mail_send`` cron command e.g::
+In the salt pillar ``sls`` file for your site, add the ``mandrill_api_key``,
+``mandrill_user_name`` and (if you are **not** using Celery) the ``mail_send``
+cron command e.g::
 
   sites:
     my_site:
@@ -87,19 +92,67 @@ the ``mail_send`` cron command e.g::
         mandrill_api_key: your-api-key
         mandrill_user_name: notify@pkimber.net
 
-.. note:: The ``mail_template_type`` should be selected from the list of
-          constants at the top of the ``mail.models`` module.
-
 Usage
 =====
 
+Create a mail template::
+
+  from django.conf import settings
+  from mail.models import MailTemplate
+
+  # slug for the email template
+  PAYMENT_THANKYOU = 'payment_thankyou'
+
+  MailTemplate.objects.init_mail_template(
+      PAYMENT_THANKYOU,
+      'Thank you for your payment',
+      (
+          "You can add the following variables to the template:\n"
+          "{{ NAME }} name of the customer.\n"
+          "{{ DATE }} date of the transaction.\n"
+          "{{ DESCRIPTION }} transaction detail.\n"
+          "{{ TOTAL }} total value of the transaction."
+      ),
+      False,
+      settings.MAIL_TEMPLATE_TYPE,
+      subject='Thank you for your payment',
+      description="We will send you the course materials.",
+  )
+
+Queue the email:
+
+.. note:: In the examples below, ``self.object`` is an object which the email
+          address will be linked to.
+
+To queue an email without using a template::
+
+  from mail.models import Notify
+  from mail.service import queue_mail_message
+
+  email_addresses = [n.email for n in Notify.objects.all()]
+  if email_addresses:
+      queue_mail_message(
+          self.object,
+          email_addresses,
+          subject,
+          message,
+      )
+  else:
+      logging.error(
+          "Cannot send email notification of payment.  "
+          "No email addresses set-up in 'mail.models.Notify'"
+      )
+
 To queue an email template::
 
+  from mail.service import queue_mail_template
+
   context = {
-      email_address: {
-          "SUBJECT": "Re: {}".format(subject),
-          "BODY": description,
+      'test@pkimber.net': {
           "DATE": created.strftime("%d-%b-%Y %H:%M:%S"),
+          "DESCRIPTION": description,
+          "NAME": "Re: {}".format(subject),
+          "TOTAL": "123.34",
       },
   }
   queue_mail_template(
@@ -118,36 +171,3 @@ To send email, use the ``mail_send`` management command e.g:
 .. code-block:: bash
 
   django-admin.py mail_send
-
-
-.. You will also need a way to run the app mail sending service.  One way to do
-.. this is to create a python run script called ``run_mail_service.py``.  This
-.. can then be run from a bash script.  This should contain::
-..
-..   from mail.service import (send_mail, send_messages_via_mandrill)
-..
-..   # uncomment the next line if you are using mandrill
-..   # send_message_via_mandrill()
-..
-..   # uncomment the next line if you are using the default django mail backend
-..   # send_mail()
-..
-.. You will also need to create a shell script to run from ``cron``.  Here is an
-.. example:
-..
-..   #!/bin/bash
-..   cd <directory where you installed the application that contains you app>
-..
-..   source .env
-..
-..   python <full path to run_mail_service.py script>
-..
-..
-..   This app provides several API functions, these are accessed as follows:
-..
-..   from mail.service import (
-..       queue_mail,
-..       send_mail,
-..       sned_mail_via_mandrill,
-..       render_mail_template
-..   )

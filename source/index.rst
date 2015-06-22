@@ -15,6 +15,8 @@ Process
    dev-env
    checklist
    monitor
+   dev-standards
+   dev-workflow
 
 Master
 
@@ -36,14 +38,11 @@ Minion
    salt-provision
 
    fabric-env
-   fabric-backup
    fabric-database
    fabric-deploy
    fabric-release
    fabric-search
    fabric-ssl
-
-   restore
 
 Diagnostics
 
@@ -61,6 +60,7 @@ Site
    amazon-database
    amazon-s3
    backup
+   backup-dropbox
    cache
    site-config
    salt-pillar
@@ -69,6 +69,7 @@ Site
    ftp
    mailgun
    maintain
+   restore
    solr
    ssl
 
@@ -78,9 +79,9 @@ Development
    :maxdepth: 1
 
    dev-env
-   dev-backup
    dev-captcha
    dev-ckeditor
+   dev-debug-toolbar
    dev-django
    dev-django-media
    dev-django-migrations
@@ -88,9 +89,12 @@ Development
    dev-django-thumbnails
    dev-icons
    dev-logging
+   dev-pagination
+   dev-rest-framework
    dev-requirements
    dev-restore
    dev-sitemap
+   dev-social
    dev-testing
    dev-timezone
    domain
@@ -102,14 +106,23 @@ Apps
 
    app-base
    app-block
+   app-booking
    app-cms
    app-crm
    app-enquiry
    app-invoice
+   app-job
    app-login
    app-mail
    app-pay
    app-search
+
+PC/Laptop Repair
+
+.. toctree::
+   :maxdepth: 1
+
+   sys-backup
 
 PHP
 
@@ -118,6 +131,16 @@ PHP
 
    php
 
+Old/Legacy Notes
+****************
+
+.. toctree::
+   :maxdepth: 1
+
+   old/dev-backup
+   old/dev-restore
+   old/fabric-backup
+   old/restore
 
 Indices and tables
 ==================

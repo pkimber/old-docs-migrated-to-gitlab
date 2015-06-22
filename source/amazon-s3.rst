@@ -40,10 +40,10 @@ the server e.g:
       amazon: True
       profile: django
 
-WIP
-===
+Project
+=======
 
-Just making a note of my initial settings::
+::
 
   # settings/base.py
 
@@ -52,10 +52,14 @@ Just making a note of my initial settings::
   AWS_S3_SECRET_ACCESS_KEY = get_env_variable('AWS_S3_SECRET_ACCESS_KEY')
   DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
+::
+
   # settings/local.py
 
   # amazon (see 'base.py' for id and key)
   AWS_STORAGE_BUCKET_NAME = '{}-dev'.format(SITE_NAME.replace('_', '-'))
+
+::
 
   # settings/production.py
 
@@ -64,4 +68,6 @@ Just making a note of my initial settings::
       SITE_NAME.replace('_', '-'),
       '-test' if TESTING else '',
   )
-
+  # http://stackoverflow.com/questions/10929418/django-compressor-with-s3-url-heroku
+  AWS_QUERYSTRING_AUTH = False
+  AWS_PRELOAD_METADATA = True

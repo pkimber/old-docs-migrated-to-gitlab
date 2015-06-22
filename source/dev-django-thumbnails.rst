@@ -9,7 +9,7 @@ Requirements:
 
   requirements/base.txt
 
-  easy-thumbnails
+  easy-thumbnails==2.2
   pillow
 
 For an app::
@@ -17,9 +17,8 @@ For an app::
   # example/base.py
 
   THUMBNAIL_DEBUG = DEBUG
-  INSTALLED_APPS = (
+  THIRD_PARTY_APPS = (
       ...
-      'django.contrib.staticfiles',
       'easy_thumbnails',
 
 For a project::
@@ -39,9 +38,10 @@ For a project::
       ...
       'easy_thumbnails',
 
-  SOUTH_MIGRATION_MODULES = {
-      'easy_thumbnails': 'easy_thumbnails.south_migrations',
-  }
+If you are using :doc:`amazon-s3` storage::
+
+  # settings/production.py - below 'DEFAULT_FILE_STORAGE'
+  THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 In your templates:
 
@@ -74,3 +74,7 @@ with the ``MEDIA_URL`` and path e.g:
 
   <!-- with -->
   <img src="{{ MEDIA_URL }}{{ c.picture }}">
+
+.. warning:: If you are using ``runserver``, make sure you are running it from
+             the project folder.  If you don't, it won't be able to find the
+             media!

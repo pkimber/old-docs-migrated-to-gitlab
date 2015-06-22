@@ -8,6 +8,44 @@ Pillar
   The Salt pillar data must be kept secure.  Do not push to a public repository
   such as GitHub or BitBucket
 
+SSL
+===
+
+Our nginx configuration includes ``default_server`` for port 80 and 443.  For
+the SSL port (443), we need to create a default certificate.  To create the
+default certificate, run the following in a *temporary* folder.
+
+.. code-block:: bash
+
+  openssl req -x509 -nodes -days 20000 -newkey rsa:2048 -keyout default.key -out default.crt
+
+.. note:: I entered a ``Country Name`` of ``GB``, our town and county for the
+          ``State`` and ``Locality``, our company name for the
+          ``Organization Name``, a ``Common Name`` of ``default.co.uk`` and my
+          own email address for the ``Email Address``.
+
+In your pillar, create a file called ``config/nginx.sls`` and copy the contents
+of the ``default.key`` and ``default.crt`` into the ``crt`` and ``key``
+sections e.g::
+
+  nginx:
+    http:
+      - server_names_hash_bucket_size 64
+      - types_hash_max_size 2048
+    ssl:
+      crt: |
+        -----BEGIN CERTIFICATE-----
+        MIID7zCCAtegAwIBAgIJAIMVRGYrFqHoMA0GCSqGSIb3DQEBCwUAMIGNMQswCQYD
+        ...
+        -----END CERTIFICATE-----
+      key: |
+        -----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDAZYErdinl7Ju9
+        ...
+        -----END PRIVATE KEY-----
+
+You can now delete the ``default.key`` and ``default.crt`` files.
+
 Sites
 =====
 
@@ -34,6 +72,14 @@ details of the sites to be deployed onto this server e.g::
       uwsgi_port: 3036
       ftp: True
       ftp_password: "generated-using-mkpasswd-see-ftp-notes"
+
+If your Django project does **not** use a database, then set ``db_type`` to an
+empty string e.g::
+
+  sites:
+    pkimber_net:
+      profile: django
+      db_type: ''
 
 cron
 ----

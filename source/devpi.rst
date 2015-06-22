@@ -3,6 +3,10 @@ devpi
 
 .. highlight:: bash
 
+.. note:: Refer to your company :doc:`checklist` and replace
+          ``devpi.yourbiz.co.uk`` with the name of your ``devpi`` server.
+          Do the same for the username and password.
+
 Salt
 ====
 
@@ -12,7 +16,7 @@ the server configuration.  Here is an example file:
 .. code-block:: yaml
 
   devpi:
-    domain: devpi.hatherleigh.info
+    domain: devpi.yourbiz.co.uk
     port: 4040
 
 The ``domain`` name is the server where your ``devpi`` service is running.
@@ -28,27 +32,21 @@ The second piece of information required in your pillar is the configuration of
 .. code-block:: yaml
 
   pip:
-    index_url: http://devpi.hatherleigh.info/kb/dev/+simple/
-
-.. note:: Update the domain (``devpi.hatherleigh.info``) and devpi user name
-          (``kb``) in the URL to suit your install.
+    index_url: http://devpi.yourbiz.co.uk/kb/dev/+simple/
 
 Prerequisites
 =============
-
-.. note:: In the following examples, the new ``devpi`` server is called
-          ``devpi.hatherleigh.info`` and my user name is ``patrick``.
 
 Create an SSL certificate (:doc:`ssl`).
 
 Copy the SSL certificate from your workstation to the server::
 
-  scp server.key devpi.hatherleigh.info:/home/patrick/repo/temp/
-  scp ssl-unified.crt devpi.hatherleigh.info:/home/patrick/repo/temp/
+  scp server.key devpi.yourbiz.co.uk:/home/patrick/repo/temp/
+  scp ssl-unified.crt devpi.yourbiz.co.uk:/home/patrick/repo/temp/
 
 Create the folder for the certificates and update permissions::
 
-  ssh devpi.hatherleigh.info
+  ssh devpi.yourbiz.co.uk
   sudo -i
   mkdir -p /srv/ssl/devpi/
   chown www-data:www-data /srv/ssl
@@ -79,27 +77,27 @@ Security
 --------
 
 Create a password for the root user (change ``123`` to a password of your
-choice)::
+choice before adding to the :doc:`checklist`)::
 
-  devpi use --set-cfg http://your.server/root/pypi/
+  devpi use --set-cfg https://devpi.yourbiz.co.uk/root/pypi/
   devpi login root --password ""
-  devpi user -m root password=123
+  devpi user -m root password=789
   devpi logoff
 
 To log in later::
 
-  devpi login root --password "123"
+  devpi login root --password "789"
 
 Development Index
 -----------------
 
 We need to create a user and an index for the user so we can upload our own
-packages (in this example, the user is ``kb``)::
+packages (in this example, the user is ``bz``)::
 
-  devpi login root --password "123"
+  devpi login root --password "789"
 
-  devpi user -c kb password=123
-  devpi login kb --password "123"
+  devpi user -c bz password=789
+  devpi login bz --password "789"
   devpi index -c dev volatile=False
 
 Note: To delete the index: ``devpi index --delete dev``
@@ -114,7 +112,7 @@ To configure your workstation to use ``devpi`` as it's default index::
 ::
 
   [global]
-  index-url = https://your.server/kb/dev/+simple/
+  index-url = https://devpi.yourbiz.co.uk/kb/dev/+simple/
 
 To configure your workstation to upload packages to the ``devpi`` index you
 created above::
@@ -128,9 +126,9 @@ created above::
       dev
 
   [dev]
-  repository: https://your.server/kb/dev/
-  username: kb
-  password: 123
+  repository: https://devpi.yourbiz.co.uk/kb/dev/
+  username: bz
+  password: 789
 
 Upgrade
 =======

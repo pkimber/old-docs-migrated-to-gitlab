@@ -5,6 +5,37 @@ invoice
 
 https://github.com/pkimber/invoice
 
+Plan
+====
+
+I am trying to use the ``VatCode`` model in the ``invoice`` app, but we have a
+problem with the ``Contact`` record in the ``crm``.  The ``job`` app uses
+``settings.CONTACT_MODEL``, and the ``crm`` app has it's own ``Contact``.
+
+  I think the proper solution is to move ``Contact`` from the ``crm`` app and
+  put it into a ``contact`` app.
+
+  Move ``TimeRecord`` from ``invoice`` to ``crm``.
+
+  Update the invoice routines so they can invoice a *generic* line type.  One
+  of these types would be ``TimeRecord``.
+
+  Create a new ``account`` app.  Move ``VatCode`` into this ``account`` app.
+
+  At a later date, move the code from ``invoice`` and ``pay`` into the
+  ``account`` app.
+
+Credit Note
+===========
+
+To create a credit note, list invoices for a contact, click *Create draft
+invoice (without time records)*, enter the date for the credit note.  Click
+*Add line*, enter a **negative quantity** and a *positive price*.
+
+.. warning:: It is **not** possible to mix invoice and credit lines on one
+             document.  If you want to credit a customer, then create a
+             separate credit note.
+
 Date
 ====
 
@@ -34,6 +65,11 @@ Who do I need to invoice::
   from invoice.models import TimeRecord
   qs = TimeRecord.objects.filter(invoice_line__isnull=True, billable=True).order_by('ticket__contact__slug').distinct('ticket__contact__slug')
   for t in qs: print(t.ticket.contact.slug)
+
+How much time have I spent on a ticket::
+
+  # edit the ticket numbers in the source code
+  django-admin.py ticket_time_csv
 
 PDF
 ===

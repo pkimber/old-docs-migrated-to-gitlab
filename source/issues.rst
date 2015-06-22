@@ -1,6 +1,81 @@
 Issues
 ******
 
+Celery
+======
+
+If you find Celery wants to use AMQP (``amqp/transport.py``,
+``Connection refused``), then check you created ``celery.py`` in your
+``project`` (or ``example_appname``) folder, and that your ``__init__.py``
+contains ``from .celery import app as celery_app``.  For more information, see
+:doc:`celery`.
+
+Django Compressor
+=================
+
+I had an issue where relative images in css files were not being found e.g::
+
+  url(../img/logo-fill.png)
+
+Django Compressor is supposed to convert relative URLs to absolute e.g::
+
+  url('https://hatherleigh-info-test.s3.amazonaws.com/dash/img/logo-fill.png?ae4f8b52c99c')
+
+The ``compress`` management command creates a manifest file listing the files
+it creates.  On the web server this can be found in::
+
+  ./web_static/CACHE/manifest.json
+
+On Amazon S3 it is in the ``CACHE`` folder.
+
+  You can look at the manifest files to find the name of the generated CSS file
+  and look in this file to see if the relative URLs are converted to absolute.
+
+  You can use the browser developer tools to see which CSS file is being used.
+
+To solve the issue, I checked the generated CSS file and the links were not
+relative.  I then ran ``compress`` and checked the generated CSS file again and
+the links were absolute.  I re-started the Django project on the server and all
+was OK.
+
+.. tip:: I also uninstalled ``django-storages-redux`` and reinstalled the old
+         version:
+         (``git+https://github.com/pkimber/django-storages-py3.git@py3#egg=storages``)
+
+         ... but I don't think that made a difference?!
+
+Dropbox
+=======
+
+When testing the scripts::
+
+  No protocol specified
+  !! (Qt:Fatal) QXcbConnection: Could not connect to display :0
+
+To stop this error, use a headless connection i.e. ssh into the computer or use
+a separate console.  This will still be an issue if you have a GUI and you
+``sudo`` to a user who is *not* running a GUI.
+
+Duplicity
+=========
+
+gio
+---
+
+If you get this error::
+
+  No module named gio
+
+Then::
+
+  apt-get install python-gobject-2
+
+Symbolic Links
+--------------
+
+Duplicity does **NOT** backup symbolic links... or the contents of symbolic
+links.
+
 ElasticSearch
 =============
 
@@ -66,6 +141,40 @@ you might need to completely remove the old version::
 
   sudo apt-get purge postgresql-9.1
 
+Salt
+====
+
+Firewall
+--------
+
+.. note:: For Ubuntu only...
+
+On the master and minion, open the Firewall for Salt::
+
+  ufw allow salt
+
+Minion ID
+---------
+
+To set the minion id::
+
+  # /etc/salt/minion
+  id: cloud-a
+
+  # re-start the minion and accept the key on the master
+  service salt-minion restart
+
+.. note:: Might be worth checking out this article instead of editing the
+          minion id:
+          http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-hostname.html
+
+Selenium
+========
+
+If you have issues with Selenium and Firefox, then try the following::
+
+  pip install -U selenium
+
 SOLR
 ====
 
@@ -80,6 +189,57 @@ To temporarily fix the issue::
 Edit the code so that it matches the fixed version on GitHub i.e::
 
   for field in model._meta.fields:
+
+Ubuntu
+======
+
+Clearing "System Problem Detected" messages
+-------------------------------------------
+
+Sometimes historical "System Problem Detected" message re-appear when Ubuntu is
+started.
+
+For example a problem with the chrome browser may not be reported to Ubuntu
+because the Chrome is not a supported package.
+
+These message are from files stored in the ``/var/crash`` directory.
+
+Investigate old crash messages
+
+Change to the crash reporting directory as follows::
+
+  cd /var/crash
+
+View the files in the directory as follows::
+
+  ls -al
+
+Files that end with ``.crash`` are ascii files containing the crash report
+detail.  You can view them with your favourite editor (e.g. vim, nano or
+gedit).  Some crash reports are readable by root only so you may need to use
+``sudo`` to be able to view them.
+
+To use vim type::
+
+  sudo vim *.crash
+
+To use nano type::
+
+  sudo nano *.crash
+
+To use gedit type::
+
+  gksu gedit *.crash
+
+You'll be prompted for your password and on successful entry go to your editor
+
+Delete historical crash messages
+
+To delete historical crash messages type ::
+
+  sudo rm /var/crash/*
+
+Any new crash messages that appear after that should be investigated.
 
 uwsgi
 =====

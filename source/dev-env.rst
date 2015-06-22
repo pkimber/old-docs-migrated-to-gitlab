@@ -21,10 +21,16 @@ python development::
 
   sudo apt-get install python3-dev
   # pillow
-  sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev \
-    libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
+  sudo apt-get install libtiff4-dev libjpeg8-dev zlib1g-dev libfreetype6-dev
+  sudo apt-get install liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev python-tk
+
+  # for ubuntu 14.04
+  sudo apt-get install libtiff4-dev
+  # for ubuntu 14.10
+  sudo apt-get install libtiff5-dev
+
   # if you have issues with setuptools e.g. Requirement.parse('setuptools>=0.8'))
-  wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
+  sudo wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
 
 Postgres::
 
@@ -34,17 +40,27 @@ Redis::
 
   sudo apt-get install redis-server
 
-bash
-====
+bash and zsh
+============
 
 A simple script for directory based environments (if a directory contains a
 ``.env`` file it will automatically be executed when you ``cd`` into it)::
 
   git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv
+
+::
+
+  # bash
   echo 'source ~/.autoenv/activate.sh' >> ~/.bashrc
+
+  # for zsh use the 'autoenv' plugin
+  # vim ~/.zshrc
+  # plugins=(autoenv autojump git history-substring-search mercurial python tmux virtualenv)
 
 Database
 ========
+
+.. important:: For ubuntu 14.10, replace ``9.3`` with ``9.4``
 
 Replace ``/etc/postgresql/9.3/main/pg_hba.conf``
 with :download:`misc/pg_hba.conf`::
@@ -52,15 +68,17 @@ with :download:`misc/pg_hba.conf`::
   sudo chown postgres:postgres /etc/postgresql/9.3/main/pg_hba.conf
   sudo chmod 640 /etc/postgresql/9.3/main/pg_hba.conf
 
-Replace ``/etc/postgresql/9.3/main/postgresql.conf``
-with :download:`misc/postgresql.conf`::
+Replace ``/etc/postgresql/9.3/main/postgresql.conf`` with
+:download:`misc/9.3/postgresql.conf` for ``9.3``
+and
+:download:`misc/9.4/postgresql.conf` for ``9.4``::
 
   sudo chown postgres:postgres /etc/postgresql/9.3/main/postgresql.conf
   sudo chmod 644 /etc/postgresql/9.3/main/postgresql.conf
 
 Re-start Postgres::
 
-  sudo /etc/postgresql/9.3/main/service postgres restart
+  sudo service postgresql restart
 
 Create a role for your user name (replace ``patrick`` with your linux user
 name)::
@@ -73,19 +91,28 @@ python
 pip
 ---
 
-.. note:: Check out the ``--set-cfg`` parameter in
-          http://doc.devpi.net/latest/userman/devpi_commands.html
+.. note:: Refer to your company :doc:`checklist` and replace
+          ``devpi.yourbiz.co.uk`` with the name of your ``devpi`` server.
+          Do the same for the username and password.
 
-Add the following to the ``~/.pip/pip.conf`` file::
+.. note:: (to myself) Check out the ``--set-cfg`` parameter in
+          http://doc.devpi.net/latest/userman/devpi_commands.html
+          It might do the following automatically.
+
+.. warning:: According to the latest ``pip`` documentation
+          (https://pip.pypa.io/en/latest/user_guide.html#configuration), there
+          is a config file at ``~/.config/pip/pip.conf``.  (``~/.pip/pip.conf``
+          is now a **legacy** per-user configuration file).
+
+Add the following to the ``~/.config/pip/pip.conf`` file::
 
   [install]
-  download-cache=~/.pip/cache
-  index-url = https://devpi.hatherleigh.info/kb/dev/+simple/
+  index-url = https://devpi.yourbiz.co.uk/kb/dev/+simple/
 
 Add the following to the ``~/.pydistutils.cfg`` file::
 
   [easy_install]
-  index_url = https://devpi.hatherleigh.info/kb/dev/+simple/
+  index_url = https://devpi.yourbiz.co.uk/kb/dev/+simple/
 
 Add the following to the ``~/.pypirc`` file::
 
@@ -94,9 +121,18 @@ Add the following to the ``~/.pypirc`` file::
       dev
 
   [dev]
-  repository: https://devpi.hatherleigh.info/kb/dev/
-  username: kb
-  password: 123
+  repository: https://devpi.yourbiz.co.uk/kb/dev/
+  username: bz
+  password: 789
+
+Tools
+=====
+
+These are tools that I like (they are not required to build these projects):
+
+- https://www.pkimber.net/howto/linux/apps/ack.html
+- https://www.pkimber.net/howto/linux/apps/autojump.html
+- https://www.pkimber.net/howto/linux/apps/tmux.html
 
 Source Code
 ===========
@@ -109,9 +145,9 @@ Check out your source code into this folder structure::
   │   │   │   ├── base
   │   │   │   ├── block
   │   │   │   ├── booking
+  │   │   │   ├── cms
   │   │   │   ├── crm
   │   │   │   ├── enquiry
-  │   │   │   ├── holding
   │   │   │   ├── invoice
   │   │   │   ├── login
   │   │   │   ├── mail
@@ -138,6 +174,8 @@ URL and documentation for my open source apps are here:
 
 - :doc:`app-base`
 - :doc:`app-block`
+- :doc:`app-booking`
+- :doc:`app-cms`
 - :doc:`app-crm`
 - :doc:`app-enquiry`
 - :doc:`app-invoice`

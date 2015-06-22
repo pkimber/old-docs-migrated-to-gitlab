@@ -81,14 +81,45 @@ Remove all incrementals older than *count* full backups
 Getting Started
 ===============
 
+Install Duplicity::
+
+  sudo apt-get install duplicity python-paramiko
+
 You will receive your account details from rsync.net.  Please refer to the
 :doc:`checklist` and fill in your own details.
 
-Create an SSH key on your laptop: `Generating SSH Keys for Automated Backups`_
-Follow the instructions up to and including *Testing Your Passwordless Login*
+SSH Key
+-------
 
-.. warning:: Only use the ``scp`` command for the first key.  If you upload
-             more keys using this command, they will overwrite the first key.
+Create an SSH key on your laptop::
+
+  ssh-keygen -t rsa
+
+.. note:: Do not enter a password here.
+
+Upload your key to the rsync.net server::
+
+  cat ~/.ssh/id_rsa.pub | ssh 123@usw-s001.rsync.net 'dd of=.ssh/authorized_keys oflag=append conv=notrunc'
+
+If you are setting up the rsync.net server for the *first time ever*:
+
+.. danger:: Do not run the following command unless you are the first person
+            (or computer) to use this rsync.net server.  If you upload another
+            key using this command, they will overwrite the first key.
+
+::
+
+  scp ~/.ssh/id_rsa.pub 123@usw-s001.rsync.net:.ssh/authorized_keys
+
+Test your ssh login to the server::
+
+  ssh 123@usw-s001.rsync.net ls
+
+These instructions are copied from `Generating SSH Keys for Automated Backups`_
+(up to and including *Testing Your Passwordless Login*).
+
+GPG Key
+-------
 
 To encrypt the backups we need a gpg key.  This key will be shared with all the
 web servers and with any laptops which need to decrypt (and restore) the data.
@@ -155,6 +186,8 @@ server e.g:
   'test-a':
     - global.gpg
 
+.. _backup_cloud_server_gpg:
+
 Cloud Server
 ------------
 
@@ -201,8 +234,22 @@ To initialise the backup run the script with the ``full`` argument e.g::
 
   /home/web/opt/backup_hatherleigh_info.sh full
 
+Restore
+-------
+
+:doc:`restore`
+
+.. _duplicity_command_examples:
+
 Duplicity
 ---------
+
+To list the files on ``rsync.net``::
+
+  # database backup (and any files in the backup folder)
+  ssh 123@usw-s001.rsync.net ls -la hatherleigh_info/backup
+  # files backup
+  ssh 123@usw-s001.rsync.net ls -la hatherleigh_info/files
 
 To list backup dates::
 
@@ -216,15 +263,37 @@ To list the backups::
 Duplicity makes restoring easy. You can restore by simply reversing the remote
 and local parameters.
 
-To restore a single file::
+.. note:: You will probably see ``Operation not permitted`` errors.  This is
+          Duplicity attempting to restore owner and group permissions on the
+          files.
+
+To restore a folder::
 
   PASSPHRASE="gpg-password" \
     duplicity \
     --file-to-restore \
-    /path/to/file \
+    "path/to/folder/" \
     ssh://123@usw-s001.rsync.net/hatherleigh_info/files \
-    /path/to/restore/file
-    
+    /path/to/restore/folder/
+
+.. note:: When restoring a folder, ``/path/to/restore/folder/`` must not exist.
+          It will be created by Duplicity.
+
+To restore a single file (in this example we are restoring from a ``Dropbox``
+backup)::
+
+  PASSPHRASE="gpg-password" \
+    duplicity \
+    --file-to-restore \
+    "Dropbox/Contact/Cycle Policy.docx" \
+    ssh://123@usw-s001.rsync.net/dropbox/web_hatherleigh_info/files \
+    "/path/to/restore/Cycle Policy.docx"
+
+.. note:: When restoring a single file, ``/path/to/restore/policy.docx`` is the
+          file name **NOT** the folder name.
+
+To restore by date or time::
+
 To restore a full set of files from 2 days ago (note you can omit the 
 "restore")::
 

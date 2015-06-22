@@ -3,6 +3,21 @@ Process
 
 .. highlight:: bash
 
+Prerequisites
+=============
+
+devpi
+-----
+
+Your team will need a http://doc.devpi.net/ server.  To set one up, follow the
+*Prerequisites* instructions in the :doc:`devpi` document.
+
+If your team already has a ``devpi`` server, then it should be listed in the
+:doc`checklist`.
+
+Workstation
+===========
+
 To set-up your workstation for development:
 
 :doc:`dev-env`
