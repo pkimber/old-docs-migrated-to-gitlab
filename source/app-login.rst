@@ -5,6 +5,21 @@ login
 
 https://github.com/pkimber/login
 
+Password Reset
+==============
+
+When a user (or non-user) attemps to reset their password, the ``Notify`` users
+are emailed.  For logic, see:
+https://github.com/pkimber/login/blob/master/login/forms.py
+
+I think this is a potential risk for a DOS attack.  If we get a DOS attack
+then we could use the ``PasswordResetAudit`` model to limit the number of
+notification emails we send:
+https://github.com/pkimber/login/blob/master/login/models.py
+
+To see an audit of password reset attempts, browse to
+``/accounts/password/reset/audit/report/``
+
 Register
 ========
 

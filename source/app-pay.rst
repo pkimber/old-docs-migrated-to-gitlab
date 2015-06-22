@@ -5,6 +5,18 @@ pay
 
 https://github.com/pkimber/pay
 
+Design
+======
+
+Are the class names in this app correct?  Should we be checking out a cart?
+i.e.  Should the ``Payment`` class be called ``Cart`` and the ``PaymentLine``
+class be the items in the cart?
+
+Workflow - Payment Plans
+------------------------
+
+The ``Payment`` class will create a ``PaymentPlan`` record.
+
 Stripe
 ======
 

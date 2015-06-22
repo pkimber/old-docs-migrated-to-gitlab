@@ -37,4 +37,3 @@ Maintenance
 
 - :doc:`backup`
 - :doc:`dev-restore`
-- :doc:`restore`

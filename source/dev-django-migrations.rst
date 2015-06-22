@@ -3,6 +3,31 @@ Django Migrations
 
 .. highlight:: python
 
+Swappable Dependency
+====================
+
+To use a swappable dependency in a migration, e.g. ``CONTACT_MODEL``::
+
+  from django.conf import settings
+
+  dependencies = [
+      migrations.swappable_dependency(settings.CONTACT_MODEL),
+  ]
+
+  operations = [
+      migrations.CreateModel(
+          name='Candidate',
+          fields=[
+              ('id', models.AutoField(serialize=False, verbose_name='ID', auto_created=True, primary_key=True)),
+              # ...
+              # replace:
+              # ('contact', models.OneToOneField(to='example_job.Contact')),
+              # with:
+              ('contact', models.OneToOneField(to=settings.CONTACT_MODEL)),
+          ],
+          # ...
+      ),
+
 Workflow
 ========
 
@@ -61,7 +86,7 @@ Create the migrations for all your models
 Create a data migration and use it to set-up the defaults for your state model
 e.g::
 
-  def _init_state(model, name, slug):
+  def _init_state(model, slug, name):
       try:
           model.objects.get(slug=slug)
       except model.DoesNotExist:
@@ -70,13 +95,16 @@ e.g::
           instance.full_clean()
 
   def default_state(apps, schema_editor):
-      PaymentState = apps.get_model('pay', 'PaymentState')
-      _init_state(PaymentState, 'Due', 'due')
-      _init_state(PaymentState, 'Paid', 'paid')
+      state = apps.get_model('pay', 'PaymentState')
+      _init_state(state, 'approved', 'Approved')
+      _init_state(state, 'pending', 'Pending')
+      _init_state(state, 'rejected', 'Rejected')
 
   class Migration(migrations.Migration):
+
       dependencies = [
       ]
+
       operations = [
           migrations.RunPython(default_state),
       ]

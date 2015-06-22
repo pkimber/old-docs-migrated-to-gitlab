@@ -79,15 +79,10 @@ http://fontawesome.io/icon/cloud-download/::
   usage         download
   icon          <i class="fa fa-cloud-download"></i>
 
-http://fontawesome.io/icon/reply/::
+http://fontawesome.io/icon/exclamation-triangle/::
 
-  usage         dash (back)
-  icon          <i class="fa fa-reply"></i>
-
-http://fontawesome.io/icon/pencil-square-o/::
-
-  usage         edit
-  icon          <i class="fa fa-edit"></i>
+  usage         warning
+  icon          <i class="fa fa-warning"></i>
 
 http://fontawesome.io/icon/external-link/::
 
@@ -99,16 +94,36 @@ http://fontawesome.io/icon/home/::
   usage         home
   icon          <i class="fa fa-home"></i>
 
+http://fontawesome.io/icon/pencil-square-o/::
+
+  usage         edit
+  icon          <i class="fa fa-edit"></i>
+
 http://fontawesome.io/icon/plus/::
 
   usage         add
   icon          <i class="fa fa-plus"></i>
 
+http://fontawesome.io/icon/reply/::
+
+  usage         dash (back)
+  icon          <i class="fa fa-reply"></i>
+
+http://fontawesome.io/icon/shopping-cart/::
+
+  usage         money/payments
+  icon          <i class="fa fa-shopping-cart"></i>
+
+http://fontawesome.io/icon/trash-o/::
+
+  usage         delete
+  icon          <i class="fa fa-trash-o"></i>
+
 Model
 =====
 
 The order of model inner classes and standard methods should be as follows
-(these are not all required):
+(they are not all required):
 
 - All database fields
 - Custom manager attributes
@@ -119,6 +134,62 @@ The order of model inner classes and standard methods should be as follows
 - ``def get_absolute_url()``
 - Any custom methods
 
+Pure
+====
+
+Grid
+----
+
+Two columns
+
+.. code-block:: html
+
+  <div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-2">
+      <!-- spacing -->
+      <div class="l-box">
+      <div class="r-box">
+
+Menu
+----
+
+.. code-block:: html
+
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <div class="pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item">
+            <a href="{% url 'booking.list' %}" class="pure-menu-link">
+              <i class="fa fa-calendar"></i>
+              Bookings
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+Table
+-----
+
+.. code-block:: html
+
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr valign="top">
+        <th>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr valign="top">
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 Template
 ========
 
@@ -127,6 +198,29 @@ Tags
 
 From `Two Scoops of Django`_, *the convention we follow is*
 ``<app_name>_tags.py`` e.g. ``cms_tags.py``.
+
+Testing
+=======
+
+Factories
+---------
+
+Model factories should create the minimum required to construct a valid object
+e.g. a product will probably need to create a product category, but a contact
+will not need to fill in the date of birth.
+
+.. note:: I am not 100% sure about this... but I am sure a factory which does
+          more than it needs to will make it feel like magic is going on and
+          cause confusion.
+
+Model
+-----
+
+Create a ``DjangoModelFactory`` for the model using `Factory Boy`_ and test the
+following (these are a common source of hard to diagnose issues):
+
+- ``ordering``
+- ``str``
 
 URL
 ===
@@ -150,3 +244,4 @@ pattern*...
 .. _`Django models, encapsulation and data integrity`: http://www.dabapps.com/blog/django-models-and-encapsulation/
 .. _`PEP 257 - Docstring Conventions - Multi-line Docstrings`: https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings
 .. _`Two Scoops of Django`: http://twoscoopspress.org/products/two-scoops-of-django-1-6
+.. _`Factory Boy`: https://github.com/rbarrois/factory_boy

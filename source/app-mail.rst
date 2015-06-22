@@ -15,7 +15,7 @@ Requirements
 
 Add the following to ``requirements/base.txt``::
 
-  djrill==1.2.0
+  djrill==1.3.0
 
 Add the mail app to ``requirements/local.txt``::
 
@@ -44,6 +44,7 @@ For Mandrill::
 
   # mandrill
   EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
+  MAIL_TEMPLATE_TYPE = 'mandrill'
   MANDRILL_API_KEY = get_env_variable('MANDRILL_API_KEY')
   MANDRILL_USER_NAME = get_env_variable('MANDRILL_USER_NAME')
 
@@ -94,13 +95,64 @@ cron command e.g::
 Usage
 =====
 
+Create a mail template::
+
+  from django.conf import settings
+  from mail.models import MailTemplate
+
+  # slug for the email template
+  PAYMENT_THANKYOU = 'payment_thankyou'
+
+  MailTemplate.objects.init_mail_template(
+      PAYMENT_THANKYOU,
+      'Thank you for your payment',
+      (
+          "You can add the following variables to the template:\n"
+          "{{ NAME }} name of the customer.\n"
+          "{{ DATE }} date of the transaction.\n"
+          "{{ DESCRIPTION }} transaction detail.\n"
+          "{{ TOTAL }} total value of the transaction."
+      ),
+      False,
+      settings.MAIL_TEMPLATE_TYPE,
+      subject='Thank you for your payment',
+      description="We will send you the course materials.",
+  )
+
+Queue the email:
+
+.. note:: In the examples below, ``self.object`` is an object which the email
+          address will be linked to.
+
+To queue an email without using a template::
+
+  from mail.models import Notify
+  from mail.service import queue_mail_message
+
+  email_addresses = [n.email for n in Notify.objects.all()]
+  if email_addresses:
+      queue_mail_message(
+          self.object,
+          email_addresses,
+          subject,
+          message,
+      )
+  else:
+      logging.error(
+          "Cannot send email notification of payment.  "
+          "No email addresses set-up in 'mail.models.Notify'"
+      )
+
 To queue an email template::
 
+  from mail.service import queue_mail_template
+
   context = {
-      email_address: {
-          "SUBJECT": "Re: {}".format(subject),
-          "BODY": description,
+      'test@pkimber.net': {
           "DATE": created.strftime("%d-%b-%Y %H:%M:%S"),
+          "DESCRIPTION": description,
+          "NAME": "Re: {}".format(subject),
+          "TOTAL": "123.34",
       },
   }
   queue_mail_template(

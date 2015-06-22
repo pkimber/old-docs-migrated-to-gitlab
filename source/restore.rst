@@ -1,91 +1,62 @@
-Restore - Server
-****************
+Restore
+*******
 
 .. highlight:: bash
+
+Click here for the :doc:`backup` notes...
+
+.. note:: In the examples below, I am restoring to a ``test`` server.  The
+          procedure is more or less the same for a live site.  **Just be more
+          careful!!**
+
+.. note:: I am restoring to date folders in the ``~/repo/temp/`` folder
+          (``~/repo/temp/2015-04-27-backup/`` and
+          ``~/repo/temp/2015-04-27-files/``).  Please change the date to the
+          day when you do the work.
+
+.. note:: The database dump file used in this example is ``20150427_0100.sql``.
+          Please select the most recent file for your restore.
 
 Database
 ========
 
-On the cloud server (first time only)::
+On the server as user ``web``::
 
-  mkdir -p ~/repo/backup/postgres/
+  psql -U postgres
+  drop database hatherleigh_info_test;
 
-Copy a recent backup from your workstation to the cloud server (replace
-``patrick`` with your own user name)::
+On the workstation::
 
-  scp ~/repo/backup/postgres/hatherleigh_info_20130926_113531_patrick.sql \
-    drop-temp:/home/patrick/repo/backup/postgres/
+  fab test:hatherleigh_info create_db
 
-On the cloud server::
+On the server as user ``web``::
 
-  cd ~/repo/backup/postgres/
-  psql -X -U postgres -c "DROP DATABASE hatherleigh_info"
+  # download the backup from duplicity
+  PASSPHRASE="****" \
+  duplicity \
+    ssh://123@usw-s011.rsync.net/hatherleigh_info/backup \
+    /home/web/repo/temp/2015-04-27-backup/
 
-On your workstation, re-create the database.  See :doc:`fabric-database`
+  # restore the duplicity files to the database
+  psql -U postgres -d hatherleigh_info_test \
+    -f ~/repo/temp/2015-04-27-backup/20150427_0100.sql 2> out.log
 
-.. note::
-
-  You will need to comment out the ``CREATE ROLE`` command in the fabric script.
-
-On the cloud server::
-
-  psql -U postgres -d hatherleigh_info -f hatherleigh_info_20130926_113531_patrick.sql 2> out.log
-
-Check the contents of ``out.log`` to make sure the restore succeeded.
-
-MySQL
------
-
-::
-
-  mysql --user=hatherleigh_info --password=mypassword \
-    --database=hatherleigh_net < /home/patrick/repo/backup/mysql/hatherleigh_net_20131230_125531_patrick.sql
+.. tip:: Check the ``out.log`` file for import issues.
 
 Files
 =====
 
-On the cloud server (first time only)::
+On the server as user ``web``::
 
-  sudo -i -u web
-  mkdir -p ~/repo/backup/files/
+  # download the files from duplicity
+  PASSPHRASE="****" \
+  duplicity \
+    ssh://123@usw-s011.rsync.net/hatherleigh_info/files \
+    /home/web/repo/temp/2015-04-27-files/
 
-Copy a recent backup from your workstation to the cloud server::
-
-  scp ~/repo/backup/files/hatherleigh_net_20130926_121358_patrick.tar.gz \
-    web@drop-temp:/home/web/repo/backup/files/
-
-.. note::
-
-  We are copying the files as user ``web``.  We should get the correct
-  permissions if we extract the files as the ``web`` user.
-
-.. warning::
-
-  The next step will restore *all* files for *all* the sites.
-  You might not want this!!
-  You probably DO NOT WANT TO OVERWRITE ALL THE FILES FOR THE OTHER SITES
-
-On the cloud server::
-
-  sudo -i -u web
-  cd /home/web/repo/files/
-  tar xzf /home/web/repo/backup/files/drop_temp_20130926_121358_patrick.tar.gz
-
-FTP
-===
-
-.. note::
-
-  In this example, we are restoring files for the ``hatherleigh_net`` site.
-  Please replace any references to ``hatherleigh_net`` with the correct site
-  name.
-
-Copy a recent backup from your workstation to the cloud server::
-
-  scp /home/patrick/repo/backup/ftp/hatherleigh_net_20140319_165906_patrick.ftp.tar.gz web@drop-f:/home/web/repo/temp/
-
-On the cloud server::
-
-  sudo -i -u hatherleigh_net
-  cd ~/site/
-  tar xzf /home/web/repo/temp/hatherleigh_net_20140319_165906_patrick.ftp.tar.gz
+  # restore the duplicity files
+  cd ~/repo/files/hatherleigh_info/
+  # move (or remove) the existing public and private folders before replacing
+  # with the restored folders:
+  mv ~/repo/temp/2015-04-27-files/private .
+  mv ~/repo/temp/2015-04-27-files/public .

@@ -1,6 +1,61 @@
 Issues
 ******
 
+Celery
+======
+
+If you find Celery wants to use AMQP (``amqp/transport.py``,
+``Connection refused``), then check you created ``celery.py`` in your
+``project`` (or ``example_appname``) folder, and that your ``__init__.py``
+contains ``from .celery import app as celery_app``.  For more information, see
+:doc:`celery`.
+
+Django Compressor
+=================
+
+I had an issue where relative images in css files were not being found e.g::
+
+  url(../img/logo-fill.png)
+
+Django Compressor is supposed to convert relative URLs to absolute e.g::
+
+  url('https://hatherleigh-info-test.s3.amazonaws.com/dash/img/logo-fill.png?ae4f8b52c99c')
+
+The ``compress`` management command creates a manifest file listing the files
+it creates.  On the web server this can be found in::
+
+  ./web_static/CACHE/manifest.json
+
+On Amazon S3 it is in the ``CACHE`` folder.
+
+  You can look at the manifest files to find the name of the generated CSS file
+  and look in this file to see if the relative URLs are converted to absolute.
+
+  You can use the browser developer tools to see which CSS file is being used.
+
+To solve the issue, I checked the generated CSS file and the links were not
+relative.  I then ran ``compress`` and checked the generated CSS file again and
+the links were absolute.  I re-started the Django project on the server and all
+was OK.
+
+.. tip:: I also uninstalled ``django-storages-redux`` and reinstalled the old
+         version:
+         (``git+https://github.com/pkimber/django-storages-py3.git@py3#egg=storages``)
+
+         ... but I don't think that made a difference?!
+
+Dropbox
+=======
+
+When testing the scripts::
+
+  No protocol specified
+  !! (Qt:Fatal) QXcbConnection: Could not connect to display :0
+
+To stop this error, use a headless connection i.e. ssh into the computer or use
+a separate console.  This will still be an issue if you have a GUI and you
+``sudo`` to a user who is *not* running a GUI.
+
 Duplicity
 =========
 
@@ -88,6 +143,18 @@ you might need to completely remove the old version::
 
 Salt
 ====
+
+Firewall
+--------
+
+.. note:: For Ubuntu only...
+
+On the master and minion, open the Firewall for Salt::
+
+  ufw allow salt
+
+Minion ID
+---------
 
 To set the minion id::
 

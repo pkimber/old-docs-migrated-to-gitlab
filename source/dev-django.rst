@@ -49,6 +49,74 @@ Then, just drop the table::
 
   DROP TABLE easy_thumbnails_thumbnaildimensions;
 
+Django 1.8
+==========
+
+Remove ``TEMPLATE_DIRS`` and replace with::
+
+  TEMPLATES = [
+      {
+          'BACKEND': 'django.template.backends.django.DjangoTemplates',
+          'DIRS': [],
+          'APP_DIRS': True,
+          'OPTIONS': {
+              'context_processors': [
+                  'django.contrib.auth.context_processors.auth',
+                  'django.template.context_processors.debug',
+                  'django.template.context_processors.i18n',
+                  'django.template.context_processors.media',
+                  'django.template.context_processors.static',
+                  'django.template.context_processors.tz',
+                  'django.contrib.messages.context_processors.messages',
+              ],
+              'string_if_invalid': '**** INVALID EXPRESSION: %s ****',
+          },
+      },
+  ]
+
+Remove::
+
+  TEMPLATE_DEBUG = DEBUG
+  TEMPLATE_STRING_IF_INVALID = '**** INVALID EXPRESSION: %s ****'
+
+``formtools``
+-------------
+
+The ``formtools`` package has been removed, so replace::
+
+  from django.contrib.formtools.wizard.views import SessionWizardView
+
+with::
+
+  from formtools.wizard.views import SessionWizardView
+
+Install::
+
+  django-formtools
+
+Add ``formtools`` to ``INSTALLED_APPS``::
+
+  INSTALLED_APPS = (
+      # ...
+      'formtools',
+  )
+
+Management Commands
+-------------------
+
+Django 1.8 uses ``argparse`` rather than ``optparse``.  For details, see
+`Custom Management Commands`_ and `Argparse Tutorial`.  You are encouraged to
+exclusively use ``**options`` for new commands::
+
+  def add_arguments(self, parser):
+      parser.add_argument(
+          '--path',
+          help="path to the 'name.csv' file"
+      )
+
+  def handle(self, *args, **options):
+      file_name = options['path']
+
 Settings
 ========
 
@@ -98,3 +166,7 @@ This is the pattern I am using::
       return HttpResponseRedirect(self.get_success_url())
 
 If we don't do this then queued tasks are called before the object is saved.
+
+
+.. _`Argparse Tutorial`: https://docs.python.org/3/howto/argparse.html#argparse-tutorial
+.. _`Custom Management Commands`: https://docs.djangoproject.com/en/1.8/howto/custom-management-commands/

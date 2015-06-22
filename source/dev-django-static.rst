@@ -33,7 +33,7 @@ Compress
           all projects which use Amazon web services (unless you use the
           ``compress`` setting in your pillar).
 
-Setup your site to use Amazon S3, :doc:`amazon-s3`.
+.. tip:: For issues, see :doc:`issues`
 
 http://django-compressor.readthedocs.org/::
 
@@ -58,6 +58,8 @@ http://django-compressor.readthedocs.org/::
   # settings/local.py
 
   STATIC_URL = '/static/'
+
+Setup your site to use Amazon S3, :doc:`amazon-s3`.
 
 ::
 

@@ -8,6 +8,16 @@ https://github.com/pkimber/cms
 The ``cms`` app extends the :doc:`app-block` app and allows an administrator to
 create new pages and sections.
 
+Compose
+=======
+
+Update the compose app to support different ``Article`` types::
+
+  picture_only
+  text_left
+  text_only
+  text_right
+
 Contact
 =======
 
