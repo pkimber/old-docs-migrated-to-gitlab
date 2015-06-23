@@ -63,6 +63,10 @@ change the ID e.g::
     {% include 'base/_ckeditor.html' with id_textarea='id_notes' %}
     <!-- ...
 
+Spell Check
+-----------
+
+Hold down the ``Ctrl`` key to view the browser spell check options.
 
 Template
 --------
@@ -72,6 +76,7 @@ To display the rich text on an HTML template::
   {% autoescape off %}
     {{ c.description }}
   {% endautoescape %}
+
 
 .. warning:: This by-passes the Django auto-escaping and it therefore a
              security risk.  Don't display user input using this method.
