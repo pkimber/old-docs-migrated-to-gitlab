@@ -8,15 +8,14 @@ Configure
 
 To build:
 
-Browse to http://ckeditor.com/builder
+Browse to http://ckeditor.com/download
 
-Choose the ``Basic`` preset.
+Choose 'Or let me customise CKEditor' and click 'Customise and Download CKEditor'
+
+Choose the ``Standard`` preset.
 
 Select the following from ``Available plugins``::
 
-  Image
-  Paste from Word
-  Paste As Plain Text
   Youtube Plugin
 
 Select ``Moono`` from available skins.
@@ -25,11 +24,36 @@ Download the ``Optimized`` version of the CKEditor.
 
 Remove the current ``ckeditor`` folder from the ``base`` app::
 
-  base/static/base/js/ckeditor/
+  base/static/vendor/js/ckeditor/
 
 Extract the archive to the ``ckeditor`` folder::
 
-  base/static/base/js/ckeditor
+  base/static/vendor/js/ckeditor
+
+``config.js`` configuration
+---------------------------
+
+Edit the ``config.js`` file (located in the ``base/static/vendor/js/ckeditor``
+directory) as follows:
+
+Add plugin for youtube (above the toolbarGroups)::
+
+  config.extraPlugins = 'youtube';
+
+Remove the spellchecker button from the toolbar - the ``editing`` line of
+toolbarGroups should look like this::
+
+  { name: 'editing',     groups: [ 'find', 'selection' ] },
+
+The removeButtons line should look like this::
+
+  config.removeButtons = 'About,Anchor,Blockquote,Format,HorizontalRule,Source,Strike,Styles,Subscript,Superscript,Table';
+
+Enable the native browser spellchecker as follows::
+
+  config.disableNativeSpellChecker = false;
+
+Save the file
 
 Usage
 =====
@@ -63,10 +87,38 @@ change the ID e.g::
     {% include 'base/_ckeditor.html' with id_textarea='id_notes' %}
     <!-- ...
 
-Spell Check
------------
+More limited user ckeditor toolbar
+----------------------------------
 
-Hold down the ``Ctrl`` key to view the browser spell check options.
+To create a more limited ckeditor for use by users of your django site include
+the ``_ckeditor_user.html`` snippet as follows: ::
+
+  {% block script_extra %}
+    {{ block.super }}
+    {% include 'base/_ckeditor_user.html' %}
+  {% endblock script_extra %}
+
+or alternatively add the following to your template::
+
+  {% load staticfiles %}
+  <script src="{% static 'vendor/js/ckeditor/ckeditor.js' %}" type="text/javascript"></script>
+  <script type="text/javascript">
+    CKEDITOR.replace('id_description',{
+      removePlugins : 'elementspath', 
+      resize_enabled : false,
+      toolbar: [
+        { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+        { name: 'editing', groups: [ 'find', 'selection', ], items: [ 'Find', 'Replace', '-', 'SelectAll' ] },
+        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', '-', 'RemoveFormat' ] },
+        { name: 'paragraph', groups: [ 'list', 'indent' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent' ] }
+      ]
+    });
+  </script>
+
+
+.. note:: Either method of including the user template add the configuration
+          from your ``config.js`` but provides a more limited set of options in
+          toolbar e.g. it restricts the use or links and embeded content etc.
 
 Template
 --------
@@ -76,6 +128,14 @@ To display the rich text on an HTML template::
   {% autoescape off %}
     {{ c.description }}
   {% endautoescape %}
+
+User Documentation
+==================
+
+Spell Check
+-----------
+
+Hold down the ``Ctrl`` key to view the browser spell check options.
 
 
 .. warning:: This by-passes the Django auto-escaping and it therefore a
