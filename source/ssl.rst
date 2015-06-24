@@ -6,7 +6,8 @@ Create SSL Certificate
 To install an SSL certificate, see :doc:`fabric-ssl`...
 
 .. note:: To validate the domain name, you will need to receive an email.
-          To set-up MailGun follow the instructions in :doc:`mailgun`
+          If you are not using Google Mail, then set-up MailGun by following
+          the instructions in :doc:`mailgun`
 
 We use two companies for SSL certificates, SSLs.com and StartSSL.  The
 certificates from StartSSL are free, but the web site is complicated to use.

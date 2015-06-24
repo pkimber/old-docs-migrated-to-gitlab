@@ -30,11 +30,10 @@ Extract the archive to the ``ckeditor`` folder::
 
   base/static/vendor/js/ckeditor
 
+``config.js`` configuration
+---------------------------
 
-Config.js configuration
------------------------
-
-Edit the config.js file (located in the base/static/vendor/js/ckeditor
+Edit the ``config.js`` file (located in the ``base/static/vendor/js/ckeditor``
 directory) as follows:
 
 Add plugin for youtube (above the toolbarGroups)::
@@ -117,9 +116,9 @@ or alternatively add the following to your template::
   </script>
 
 
-NB either method of including the user template add the configuration from your
-config.js but provides a more limited set of options in toolbar e.g. it
-restricts the use or links and embeded content etc.
+.. note:: Either method of including the user template add the configuration
+          from your ``config.js`` but provides a more limited set of options in
+          toolbar e.g. it restricts the use or links and embeded content etc.
 
 Template
 --------
@@ -129,6 +128,15 @@ To display the rich text on an HTML template::
   {% autoescape off %}
     {{ c.description }}
   {% endautoescape %}
+
+User Documentation
+==================
+
+Spell Check
+-----------
+
+Hold down the ``Ctrl`` key to view the browser spell check options.
+
 
 .. warning:: This by-passes the Django auto-escaping and it therefore a
              security risk.  Don't display user input using this method.

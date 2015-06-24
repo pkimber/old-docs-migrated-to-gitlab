@@ -292,36 +292,38 @@ backup)::
 .. note:: When restoring a single file, ``/path/to/restore/policy.docx`` is the
           file name **NOT** the folder name.
 
-To restore by date or time::
+To restore by date or time:
 
-To restore a full set of files from 2 days ago (note you can omit the 
-"restore")::
+To restore a full set of files from 2 days ago (note you can omit the
+``restore``)::
 
   duplicity restore -t 2D ssh://123@usw-s001.rsync.net/hatherleigh_info/backup
     /path/to/restore/file
-    
+
 To restore a full set of files from a specific time (note you can omit the
-"restore")::
+``restore``):
 
-  The --time format is YYYYMMDDTHHMMSSZ and Duplicity will pull the restore 
-    from the next backup older than the time entered. E.g. collection-status
-    shows a backup dated 20141125T112710Z and one dated 20141125T122710Z enter
-    --time as 20141125T113000Z and retrieve data from 20141125T112710Z:
-      
-    duplicity restore --time 20141125T113000Z \
-      ssh://123@usw-s001.rsync.net/hatherleigh_info/backup \
-      /path/to/restore/file
+The ``--time`` format is ``YYYYMMDDTHHMMSSZ`` and Duplicity will pull the
+restore from the next backup older than the time entered e.g.
+``collection-status`` shows a backup dated ``20141125T112710Z`` and one dated
+``20141125T122710Z`` enter ``--time`` as ``20141125T113000Z`` and retrieve data
+from ``20141125T112710Z``::
 
-.. info::
+  duplicity restore --time 20141125T113000Z \
+    ssh://123@usw-s001.rsync.net/hatherleigh_info/backup \
+    /path/to/restore/file
 
-  Restoring from rsync.net back to any location other than the original location
-  will result in an "Error '[Errno 1] Operation not permitted:" prefix to each
-  restored file although the files will restore and be available... this is a 
-  known bug with Duplicity to do with permissions. See:
-  http://askubuntu.com/questions/266877/why-do-i-get-an-operation-not-permitted-error-when-running-duplicity-as-sudo
+.. warning::
+
+   Restoring from rsync.net back to any location other than the original
+   location will result in an ``Error '[Errno 1] Operation not permitted:``
+   prefix to each restored file although the files will restore and be
+   available... this is a known bug with Duplicity to do with permissions. See:
+   `Why do I get an 'Operation not permitted'`_
 
 
 .. _`Generating SSH Keys for Automated Backups`: http://www.rsync.net/resources/howto/ssh_keys.html
 .. _`How To Use Duplicity with GPG to Securely Automate Backups on Ubuntu`: https://www.digitalocean.com/community/tutorials/how-to-use-duplicity-with-gpg-to-securely-automate-backups-on-ubuntu
 .. _`How-To: Import/Export GPG Key Pair`: http://www.debuntu.org/how-to-importexport-gpg-key-pair/
 .. _`Setting up Duplicity with GnuPG`: http://codegouge.blogspot.co.uk/2012/01/setting-up-duplicity-with-gnupg.html
+.. _`Why do I get an 'Operation not permitted'`: http://askubuntu.com/questions/266877/why-do-i-get-an-operation-not-permitted-error-when-running-duplicity-as-sudo
