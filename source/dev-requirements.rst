@@ -36,6 +36,7 @@ Latest::
   hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
   iso8601==0.1.10
   lxml==3.4.4
+  opbeat==2.1.1
   pillow==2.8.1
   psycopg2==2.6
   python-dateutil==2.4.1

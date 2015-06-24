@@ -3,10 +3,102 @@ Monitor
 
 .. highlight:: bash
 
+You can use our own Graphite monitoring solution, or use https://opbeat.com/
+
+Opbeat
+======
+
+Requirements:
+
+.. code-block:: text
+
+  # requirements/base.txt
+  opbeat
+
+.. tip:: Find the version number in :doc:`dev-requirements`
+
+In ``settings/base.py`` for a project::
+
+  THIRD_PARTY_APPS = (
+      'opbeat.contrib.django',
+
+  MIDDLEWARE_CLASSES = (
+      'opbeat.contrib.django.middleware.OpbeatAPMMiddleware',
+
+  OPBEAT = {
+      'ORGANIZATION_ID': get_env_variable('OPBEAT_ORGANIZATION_ID'),
+      'APP_ID': get_env_variable('OPBEAT_APP_ID'),
+      'SECRET_TOKEN': get_env_variable('OPBEAT_SECRET_TOKEN'),
+  }
+
+  LOGGING = {
+      'version': 1,
+      'disable_existing_loggers': True,
+      'formatters': {
+          'verbose': {
+              'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+          },
+      },
+      'handlers': {
+          'opbeat': {
+              'level': 'WARNING',
+              'class': 'opbeat.contrib.django.handlers.OpbeatHandler',
+          },
+          'console': {
+              'level': 'DEBUG',
+              'class': 'logging.StreamHandler',
+              'formatter': 'verbose'
+          }
+      },
+      'loggers': {
+          'django.db.backends': {
+              'level': 'ERROR',
+              'handlers': ['console'],
+              'propagate': False,
+          },
+          'mysite': {
+              'level': 'WARNING',
+              'handlers': ['opbeat'],
+              'propagate': False,
+          },
+          # Log errors from the Opbeat module to the console (recommended)
+          'opbeat.errors': {
+              'level': 'ERROR',
+              'handlers': ['console'],
+              'propagate': False,
+          },
+      },
+  }
+
+.. note:: The ``OpbeatAPMMiddleware`` in the ``MIDDLEWARE_CLASSES`` must come
+          first in the list.
+
+In ``settings/dev_test.py``::
+
+  OPBEAT['APP_ID'] = None
+
+The Opbeat monitor is configured in the pillar file for the site e.g:
+
+.. code-block:: yaml
+
+  hatherleigh_info:
+    profile: django
+    domain: hatherleigh.info
+    opbeat:
+      app_id: 1234
+      organization_id: 1234
+      secret_token: 1234
+
+.. note:: Find the ``APP_ID``, ``ORGANIZATION_ID`` and ``SECRET_TOKEN`` on the
+          Opbeat app set-up wizard.
+
+Graphite
+========
+
 .. _monitor_server:
 
 Server
-======
+------
 
 To create a monitor (Graphite) server, start by adding a ``monitor`` section to
 the ``pillar``:
@@ -34,14 +126,14 @@ Note:
   psql -X -U postgres -c "CREATE DATABASE graphite WITH OWNER=graphite TEMPLATE=template0 ENCODING='utf-8';"
 
 Diagnostics
-===========
+-----------
 
 Check storage schema::
 
   /opt/graphite/bin/validate-storage-schemas.py
 
 Client
-======
+------
 
 The monitor client is configured in the ``django`` pillar file e.g:
 
@@ -54,7 +146,7 @@ The monitor client is configured in the ``django`` pillar file e.g:
           server (see :ref:`monitor_server` above).
 
 Diagnostics
-===========
+-----------
 
 To run ``statsd`` without ``supervisord``::
 
