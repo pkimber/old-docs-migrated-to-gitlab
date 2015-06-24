@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# backup jobs_institutelegalsecretaries_com
+
+# exit immediately if a command exits with a nonzero exit status.
+set -e
+# treat unset variables as an error when substituting.
+set -u
+
+copy files from  rsync
+
+
+
+
+
+
+
+# Ensure restore-db is run before proceeding...
+
+# Run Firefox in local host and check everthing works Ok!
+cd ~/repo/dev/project/institutelegalsecretaries_com/
+django-admin.py runserver
+http://localhost:8000/
