@@ -1,0 +1,122 @@
+#!/bin/bash
+
+# backup jobs_institutelegalsecretaries_com
+
+# exit immediately if a command exits with a nonzero exit status.
+set -e
+# treat unset variables as an error when substituting.
+set -u
+
+# Check available backups
+duplicity list-current-files ssh://17182@ch-s011.rsync.net/institutelegalsecretaries_com/backup
+# Need PassPhrase to access
+# Get:
+"""
+Local and Remote metadata are synchronized, no sync needed.
+Last full backup date: Mon Dec 15 01:00:08 2014
+Thu Dec 18 01:00:01 2014 .
+Thu Dec 11 12:47:12 2014 20141211_1247.sql
+Thu Dec 11 13:04:42 2014 20141211_1304.sql
+Thu Dec 11 13:53:47 2014 20141211_1353.sql
+Thu Dec 18 01:00:02 2014 20141218_0100.sql
+"""
+# OR
+duplicity collection-status ssh://17182@ch-s011.rsync.net/legalsecretaryjournal_com/backup
+# Need PassPhrase to access
+# Get:
+"""
+Local and Remote metadata are synchronized, no sync needed.
+Last full backup date: Mon Dec 15 01:00:08 2014
+Collection Status
+-----------------
+Connecting with backend: SSHParamikoBackend
+Archive directory: /home/greg/.cache/duplicity/588d7d51b38f0b4b12ae632751adb8e0
+
+Found 4 secondary backup chains.
+Secondary chain 1 of 4:
+-------------------------
+Chain start time: Thu Dec 11 13:54:04 2014
+Chain end time: Thu Dec 11 13:54:04 2014
+Number of contained backup sets: 1
+Total number of contained volumes: 1
+ Type of backup set:                            Time:   Number of volumes:
+                Full         Thu Dec 11 13:54:04 2014                 1
+-------------------------
+
+Secondary chain 2 of 4:
+-------------------------
+Chain start time: Thu Dec 11 14:03:53 2014
+Chain end time: Thu Dec 11 14:03:53 2014
+Number of contained backup sets: 1
+Total number of contained volumes: 2
+ Type of backup set:                            Time:   Number of volumes:
+                Full         Thu Dec 11 14:03:53 2014                 2
+-------------------------
+
+Secondary chain 3 of 4:
+-------------------------
+Chain start time: Thu Dec 11 14:33:03 2014
+Chain end time: Thu Dec 11 14:33:03 2014
+Number of contained backup sets: 1
+Total number of contained volumes: 2
+ Type of backup set:                            Time:   Number of volumes:
+                Full         Thu Dec 11 14:33:03 2014                 2
+-------------------------
+
+Secondary chain 4 of 4:
+-------------------------
+Chain start time: Thu Dec 11 14:52:24 2014
+Chain end time: Sun Dec 14 01:00:05 2014
+Number of contained backup sets: 4
+Total number of contained volumes: 5
+ Type of backup set:                            Time:   Number of volumes:
+                Full         Thu Dec 11 14:52:24 2014                 2
+         Incremental         Fri Dec 12 01:00:05 2014                 1
+         Incremental         Sat Dec 13 01:00:06 2014                 1
+         Incremental         Sun Dec 14 01:00:05 2014                 1
+-------------------------
+
+
+Found primary backup chain with matching signature chain:
+-------------------------
+Chain start time: Mon Dec 15 01:00:08 2014
+Chain end time: Thu Dec 18 01:00:06 2014
+Number of contained backup sets: 4
+Total number of contained volumes: 5
+ Type of backup set:                            Time:   Number of volumes:
+                Full         Mon Dec 15 01:00:08 2014                 2
+         Incremental         Tue Dec 16 01:00:05 2014                 1
+         Incremental         Wed Dec 17 01:00:06 2014                 1
+         Incremental         Thu Dec 18 01:00:06 2014                 1
+-------------------------
+No orphaned or incomplete backup sets found.ity collection-status ssh://17182@ch-s011.rsync.net/legalsecretaryjournal_com/backup
+"""
+
+# Restore files from rsync
+duplicity restore -t 20141129T170100Z ssh://17182@ch-s011.rsync.net/institutelegalsecretaries_com/files ~/repo/temp/institutelegalsecretaries_com_restores/backup/
+# OR
+duplicity restore -t 1D ssh://17182@ch-s011.rsync.net/institutelegalsecretaries_com/files ~/repo/temp/institutelegalsecretaries_com_restores/backup/
+
+# Create temp restore directory
+mkdir /home/greg/repo/temp/institutelegalsecretaries_com_restores/backup
+# OR
+rm /home/greg/repo/temp/institutelegalsecretaries_com_restores/backup/
+# Then create
+
+# Delete old local db and recreate new db
+psql -X -U postgres -c "DROP DATABASE test_institutelegalsecretaries_com_greg"
+psql -X -U postgres -c "CREATE DATABASE test_institutelegalsecretaries_com_greg TEMPLATE=template0 ENCODING='utf-8';"
+psql -X --set ON_ERROR_STOP=on -U postgres -d test_institutelegalsecretaries_com_greg --file /home/greg/repo/temp/institutelegalsecretaries_com_restores/backup/institutelegalsecretaries_com_.sql
+psql -X -U postgres -d test_institutelegalsecretaries_com_greg -c "REASSIGN OWNED BY institutelegalsecretaries_com TO greg"
+
+# Ensure restore-files is run before proceeding...
+
+# Run Firefox in local host and check everthing works Ok!
+cd ~/repo/dev/project/institutelegalsecretaries_com/
+pull-apps
+git status
+git push
+git pull
+django-admin.py runserver
+http://localhost:8000/
+
