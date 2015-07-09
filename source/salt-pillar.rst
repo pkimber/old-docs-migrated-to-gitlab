@@ -54,7 +54,7 @@ pillar, ``sites`` folder e.g. ``sites/mysites.sls``.  The file should contain
 details of the sites to be deployed onto this server e.g::
 
   sites:
-    pkimber_net:
+    hatherleigh_info:
       profile: django
       db_pass: password
       db_type: psql
@@ -77,7 +77,7 @@ If your Django project does **not** use a database, then set ``db_type`` to an
 empty string e.g::
 
   sites:
-    pkimber_net:
+    hatherleigh_info:
       profile: django
       db_type: ''
 
@@ -107,7 +107,7 @@ If you want to install a site to your local area network, then add the
 ``lan`` option to your site configuration e.g::
 
   sites:
-    my_site:
+    hatherleigh_info:
       db_pass: password
       domain: pkimber.net
       lan: True

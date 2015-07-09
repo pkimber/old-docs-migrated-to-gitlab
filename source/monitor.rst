@@ -3,7 +3,8 @@ Monitor
 
 .. highlight:: bash
 
-You can use our own Graphite monitoring solution, or use https://opbeat.com/
+You can use https://opbeat.com/ (or you could use our own Graphite monitoring
+solution - which doesn't really work properly yet)!
 
 Opbeat
 ======
@@ -31,47 +32,12 @@ In ``settings/base.py`` for a project::
       'SECRET_TOKEN': get_env_variable('OPBEAT_SECRET_TOKEN'),
   }
 
-  LOGGING = {
-      'version': 1,
-      'disable_existing_loggers': True,
-      'formatters': {
-          'verbose': {
-              'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-          },
-      },
-      'handlers': {
-          'opbeat': {
-              'level': 'WARNING',
-              'class': 'opbeat.contrib.django.handlers.OpbeatHandler',
-          },
-          'console': {
-              'level': 'DEBUG',
-              'class': 'logging.StreamHandler',
-              'formatter': 'verbose'
-          }
-      },
-      'loggers': {
-          'django.db.backends': {
-              'level': 'ERROR',
-              'handlers': ['console'],
-              'propagate': False,
-          },
-          'mysite': {
-              'level': 'WARNING',
-              'handlers': ['opbeat'],
-              'propagate': False,
-          },
-          # Log errors from the Opbeat module to the console (recommended)
-          'opbeat.errors': {
-              'level': 'ERROR',
-              'handlers': ['console'],
-              'propagate': False,
-          },
-      },
-  }
-
 .. note:: The ``OpbeatAPMMiddleware`` in the ``MIDDLEWARE_CLASSES`` must come
           first in the list.
+
+.. note:: I thought about using the Opbeat logging config, but it doesn't have
+          the same file handlers and has a ``mysite`` section (which I don't
+          understand).
 
 In ``settings/dev_test.py``::
 

@@ -49,6 +49,10 @@ Project
 Before Initial Deploy
 ---------------------
 
-Create a ``favicon.ico`` file in::
+Create a ``favicon.ico``.  See :ref:`static_favicon`
 
-  project/static/ico/favicon.ico
+Enable the sitemap.  See :doc:`dev-sitemap`
+
+Add to Google Analytics tools.
+
+Add to Google WebMaster tools.

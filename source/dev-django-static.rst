@@ -102,6 +102,8 @@ Editor
 
 :doc:`dev-ckeditor`
 
+.. _static_favicon:
+
 favicon.ico
 ===========
 
@@ -109,6 +111,8 @@ In order for nginx to serve your applications favicon.ico file, it will need
 to be located in the following static folder within your project::
 
   static/ico/favicon.ico
+  # e.g.
+  project/static/ico/favicon.ico
 
 To use this icon on your site::
 

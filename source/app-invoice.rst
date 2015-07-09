@@ -85,3 +85,24 @@ To create the PDF for an invoice::
   invoice.contact.name
   invoice.pdf = None
   InvoicePrint().create_pdf(invoice, header_image=None)
+
+Ticket Time
+===========
+
+This is a temporary management command which will download all the time records
+for a list of tickets.
+
+To use this command, start by restoring a backup of the data for your site.
+
+Then edit the source code for the management command::
+
+  ~/repo/dev/app/invoice/invoice/management/commands/ticket_time_csv.py
+
+Update the list of numbers to include the tickets you want in your CSV file::
+
+  tickets = (
+    732,
+
+Run the management command::
+
+  django-admin.py ticket_time_csv

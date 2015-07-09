@@ -31,3 +31,7 @@ SiteMap
       # ...
       'django.contrib.sitemaps',
   )
+
+To look at the site map using ``httpie``::
+
+  http GET http://localhost:8000/sitemap.xml
