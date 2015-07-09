@@ -12,6 +12,9 @@ To install an SSL certificate, see :doc:`fabric-ssl`...
 We use two companies for SSL certificates, SSLs.com and StartSSL.  The
 certificates from StartSSL are free, but the web site is complicated to use.
 
+Create a domain folder within the ``ssl-cert`` folder e.g. :doc:`site-config`.
+Run the following commands in that folder.
+
 SSLs.com
 ========
 
@@ -58,6 +61,8 @@ and ``server.key`` (the private key).
 
 Use the certificate request (``server.csr``) file to request a certificate from
 https://www.ssls.com/
+
+Confirm Domain ownership by receiving an email - choose webmaster@hatherleigh.info
 
 When the certificate is approved, you will be sent an email containing a couple
 of certificates.
@@ -127,6 +132,8 @@ To make sure your certificate matches the private key::
 Issues
 ======
 
+The nginx log showed:
+
 ::
 
   Starting nginx:
@@ -136,8 +143,23 @@ Issues
   routines:SSL_CTX_use_certificate_chain_file:PEM lib)
   nginx: configuration file /etc/nginx/nginx.conf test failed
 
-This is an issue with the line breaks in the concatenated files.  For help
-solving this issue, see `Fixing PEM routines:PEM_read_bio:bad end line error`_.
+This was an issue with the line breaks in the concatenated files.
+
+They looked thus::
+
+-----END CERTIFICATE----------BEGIN CERTIFICATE-----
+
+
+and it should have looked like this::
+
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+
+To acheieve this we added a blank line to the ``ssl.crt`` file, re-concatenated,
+used ``fab live:hatherleigh.info ssl`` to place the new file on the server and
+then re-started nginx with ``service nginx restart`` on the server as root.
+
+For further help solving this issue, see `Fixing PEM routines:PEM_read_bio:bad end line error`_.
 
 
 .. _`Fixing PEM routines:PEM_read_bio:bad end line error`: http://drewsymo.com/how-to/pem-routinespem_read_biobad-end-line-error/
