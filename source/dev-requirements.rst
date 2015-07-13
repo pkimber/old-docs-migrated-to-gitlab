@@ -19,13 +19,14 @@ Latest::
   django-compressor==1.4
   django-formtools==1.0
   django-haystack==2.3.1
+  django-mptt==0.7.4
   django-nocaptcha-recaptcha==0.0.18
   django-redis==3.8.3
   django-reversion==1.8.7
   django-sendfile==0.3.6
   django-statsd-mozilla==0.3.14
   django-storages-redux
-  Django==1.8.2
+  Django==1.8.3
   djangorestframework==3.1.3
   djrill==1.4.0
   docutils==0.12
@@ -37,13 +38,13 @@ Latest::
   iso8601==0.1.10
   lxml==3.4.4
   opbeat==2.1.1
-  pillow==2.8.1
+  pillow==2.9.0
   psycopg2==2.6
   python-dateutil==2.4.1
   pytz==2014.10
   PyYAML==3.11
   redis==2.10.3
-  reportlab==3.1.44
+  reportlab==3.2.0
   requests==2.6.0
   spyne==2.11.0
   statsd==3.0.1
