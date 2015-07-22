@@ -110,6 +110,7 @@ Apps
    app-cms
    app-crm
    app-enquiry
+   app-finance
    app-invoice
    app-job
    app-login

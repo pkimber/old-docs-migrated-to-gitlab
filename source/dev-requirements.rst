@@ -48,7 +48,7 @@ Latest::
   requests==2.6.0
   spyne==2.11.0
   statsd==3.0.1
-  stripe==1.22.2
+  stripe==1.23.0
   tasklib==0.9.0
   xmltodict==0.9.2
   Yapsy==1.10.423
