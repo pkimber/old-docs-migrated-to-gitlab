@@ -25,8 +25,9 @@ The configuration files are kept securely and should
 (replace ``patrick`` with your own name)::
 
   sudo -i
-  cd /etc/salt/
+  cd /etc/salt/cloud.profiles.d/
   sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles .
+  cd /etc/salt/cloud.providers.d/
   sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers .
 
 Create a Server
@@ -35,5 +36,6 @@ Create a Server
 You can now follow the appropriate instructions for creating your own cloud
 server:
 
+- :doc:`salt-cloud-amazon`
 - :doc:`salt-cloud-digitalocean`
 - :doc:`salt-cloud-rackspace`

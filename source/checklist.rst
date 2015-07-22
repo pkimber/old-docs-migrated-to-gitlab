@@ -46,6 +46,11 @@ List of people to be notified when an enquiry is received.
 Project
 =======
 
+After Order
+-----------
+
+Find out who owns and controls the name servers and DNS.
+
 Before Initial Deploy
 ---------------------
 

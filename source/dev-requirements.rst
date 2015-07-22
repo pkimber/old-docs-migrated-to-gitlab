@@ -16,7 +16,7 @@ Latest::
   cssselect==0.9.1
   django-braces==1.8.0
   django-celery-transactions==0.3.1
-  django-compressor==1.4
+  django-compressor==1.5
   django-formtools==1.0
   django-haystack==2.3.1
   django-mptt==0.7.4

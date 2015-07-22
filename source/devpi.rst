@@ -107,28 +107,35 @@ Client
 
 To configure your workstation to use ``devpi`` as it's default index::
 
-  vim ~/.pip/pip.conf
+  devpi use https://devpi.yourbiz.co.uk/kb/dev/ --set-cfg
 
-::
+.. note:: I don't know how to set the ``username`` or ``password``
 
-  [global]
-  index-url = https://devpi.yourbiz.co.uk/kb/dev/+simple/
 
-To configure your workstation to upload packages to the ``devpi`` index you
-created above::
-
-  vim ~/.pypirc
-
-::
-
-  [distutils]
-  index-servers =
-      dev
-
-  [dev]
-  repository: https://devpi.yourbiz.co.uk/kb/dev/
-  username: bz
-  password: 789
+.. To configure your workstation to use ``devpi`` as it's default index::
+..
+..   vim ~/.pip/pip.conf
+..
+.. ::
+..
+..   [global]
+..   index-url = https://devpi.yourbiz.co.uk/kb/dev/+simple/
+..
+.. To configure your workstation to upload packages to the ``devpi`` index you
+.. created above::
+..
+..   vim ~/.pypirc
+..
+.. ::
+..
+..   [distutils]
+..   index-servers =
+..       dev
+..
+..   [dev]
+..   repository: https://devpi.yourbiz.co.uk/kb/dev/
+..   username: bz
+..   password: 789
 
 Upgrade
 =======
