@@ -50,13 +50,21 @@ The Opbeat monitor is configured in the pillar file for the site e.g:
   hatherleigh_info:
     profile: django
     domain: hatherleigh.info
-    opbeat:
-      app_id: 1234
-      organization_id: 1234
-      secret_token: 1234
+    opbeat: 1234
 
 .. note:: Find the ``APP_ID``, ``ORGANIZATION_ID`` and ``SECRET_TOKEN`` on the
           Opbeat app set-up wizard.
+
+.. note:: Add the ``APP_ID`` to the site config.
+
+Add the ``ORGANIZATION_ID`` and ``SECRET_TOKEN`` to the ``config/opbeat.sls``
+file in the pillar e.g.
+
+.. code-block:: yaml
+
+  opbeat:
+    organization_id: 1234
+    secret_token: 1234
 
 Graphite
 ========
