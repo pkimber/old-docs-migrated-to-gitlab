@@ -62,7 +62,8 @@ and ``server.key`` (the private key).
 Use the certificate request (``server.csr``) file to request a certificate from
 https://www.ssls.com/
 
-Confirm Domain ownership by receiving an email - choose webmaster@hatherleigh.info
+Confirm Domain ownership by receiving an email - choose
+webmaster@hatherleigh.info
 
 When the certificate is approved, you will be sent an email containing a couple
 of certificates.

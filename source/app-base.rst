@@ -1,7 +1,20 @@
 base
 ****
 
+.. highlight:: python
+
 https://github.com/pkimber/base
+
+``RequiredFieldForm``
+=====================
+
+https://github.com/pkimber/base/blob/master/base/form_utils.py
+
+e.g::
+
+  class SnippetForm(RequiredFieldForm):
+
+To mark a field as *not* required::
 
 URL
 ===
