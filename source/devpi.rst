@@ -69,9 +69,15 @@ Initial Configuration
 To configure http://doc.devpi.net/ after Salt has installed it on your server,
 run the following commands on your workstation::
 
-  mkvirtualenv devpi-client
-  pip install nose
+  # virtual environment
+  pyvenv-3.4 --without-pip venv-devpi-client
+  source venv-devpi-client/bin/activate
+  wget https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
+  python get-pip.py
+
   pip install devpi-client
+
+.. warning:: Use python 3 for ``devpi`` or you might get SSL certificate errors
 
 Security
 --------
@@ -110,6 +116,10 @@ To configure your workstation to use ``devpi`` as it's default index::
   devpi use https://devpi.yourbiz.co.uk/kb/dev/ --set-cfg
 
 .. note:: I don't know how to set the ``username`` or ``password``
+
+To remove the index (not sure if this works)::
+
+  devpi use https://devpi.yourbiz.co.uk/kb/dev/ --delete
 
 
 .. To configure your workstation to use ``devpi`` as it's default index::

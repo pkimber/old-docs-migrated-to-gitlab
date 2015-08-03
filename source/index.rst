@@ -81,6 +81,7 @@ Development
    dev-env
    dev-captcha
    dev-ckeditor
+   dev-codemirror
    dev-debug-toolbar
    dev-django
    dev-django-media

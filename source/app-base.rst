@@ -14,8 +14,6 @@ e.g::
 
   class SnippetForm(RequiredFieldForm):
 
-To mark a field as *not* required::
-
 URL
 ===
 

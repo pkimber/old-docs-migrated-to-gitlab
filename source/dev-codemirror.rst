@@ -1,6 +1,8 @@
 CodeMirror Editor
 *****************
 
+.. highlight:: html
+
 Usage
 =====
 
@@ -17,8 +19,8 @@ Any element with an ID of ``id_code`` will become a code editor.
 Example
 -------
 
-- `Example Template`
-- `Example View`
+- `Example Template`_
+- `Example View`_
 
 
 .. _`Example Template`: https://github.com/pkimber/cms/blob/975-try-code-mirror/example_cms/templates/example/dash.html

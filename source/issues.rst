@@ -10,6 +10,13 @@ If you find Celery wants to use AMQP (``amqp/transport.py``,
 contains ``from .celery import app as celery_app``.  For more information, see
 :doc:`celery`.
 
+devpi
+=====
+
+I was getting SSL ``certificate verify failed`` errors when using ``devpi``
+(which uses ``httpie`` and ``requests``).  To solve the issue, use ``devpi``
+with a python 3 virtual environment (not python 3).
+
 Django Compressor
 =================
 
