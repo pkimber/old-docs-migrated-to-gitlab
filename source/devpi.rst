@@ -77,7 +77,8 @@ run the following commands on your workstation::
 
   pip install devpi-client
 
-.. warning:: Use python 3 for ``devpi`` or you might get SSL certificate errors
+.. important:: Use python 3 for ``devpi`` or you might get SSL certificate
+               errors.
 
 Security
 --------
