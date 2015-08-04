@@ -64,11 +64,18 @@ Header
 
 Provides a page section that displays a header.
 
-See the template ``page_feature.html``. In addition to the steps above
+See the template ``page_feature.html``.  In addition to the steps above...
 
-Create a section with a slug of ``header_a`` (*Dashboard* | *Section*) Add this
-section to the template ``compose/page_feature.html`` created above (*Dashboard
-| *Template*)
+Create a section (*Dashboard* | *Section*)::
+
+  Name          Header A
+  Slug          header_a
+  Block app     compose
+  Block model   Header
+  Create url    compose.header.create
+
+Add this section to the template ``compose/page_feature.html`` created above
+(*Dashboard | *Template*)
 
 You can now manage the content on this page using design mode.
 
