@@ -101,6 +101,14 @@ Add ``formtools`` to ``INSTALLED_APPS``::
       'formtools',
   )
 
+``get_model``
+-------------
+
+::
+
+  from django.apps import apps
+  model = apps.get_model('compose', 'Article')
+
 Management Commands
 -------------------
 

@@ -94,6 +94,7 @@ Development
    dev-rest-framework
    dev-requirements
    dev-restore
+   dev-s3
    dev-sitemap
    dev-social
    dev-testing
