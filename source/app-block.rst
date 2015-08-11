@@ -203,5 +203,8 @@ The field names are returned as a ``list`` to the ``block`` app in a
           Wizard('references', Wizard.LINK, Wizard.MULTI),
       ]
 
+If you want the user to be able to link a single image (or link), then specify
+``Wizard.SINGLE``.  For multi-links or images, use ``Wizard.MULTI``.
+
 The urls for these fields are rendered in the
 ``block/block/templates/block/_moderate.html`` template.
