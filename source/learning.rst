@@ -6,6 +6,9 @@ Useful resources...
 Development
 ===========
 
+Debugger - Clayton Parker - So you think you can PDB? - PyCon 2015:
+https://www.youtube.com/watch?v=P0pIW5tJrRM
+
 Documentation
 -------------
 
@@ -20,5 +23,8 @@ Standards
 Sys-Admin
 =========
 
-DynEdu: DNS Explained
+DynEdu - DNS Explained:
 http://dyn.com/dynedu-what-is-dns/
+
+How DNS Works:
+https://howdns.works/
