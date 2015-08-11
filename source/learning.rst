@@ -12,6 +12,11 @@ Documentation
 reStructuredText Primer:
 http://sphinx-doc.org/rest.html#rst-primer
 
+Standards
+---------
+
+:doc:`dev-standards`
+
 Sys-Admin
 =========
 
