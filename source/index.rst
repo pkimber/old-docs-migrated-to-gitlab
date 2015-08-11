@@ -109,7 +109,7 @@ Apps
    app-base
    app-block
    app-booking
-   app-cms
+   app-compose
    app-crm
    app-enquiry
    app-finance
