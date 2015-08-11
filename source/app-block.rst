@@ -80,9 +80,7 @@ Or to add a form::
 Enquiry Form
 ============
 
-To use the contact form (the ``enquiry`` app):
-
-.. code-block:: python
+To use the contact form (the ``enquiry`` app)::
 
   # views.py
   from block.views import (
@@ -173,3 +171,37 @@ And to ``reverse``:
 
 .. note:: The URL parameter (in this example ``contact``) is the ``slug`` of
           the page.
+
+Wizard
+======
+
+We have a link and an image wizard.  The following field types are available
+for use in a ``ContentModel``::
+
+  link = models.ForeignKey(
+      Link,
+      related_name='article_link',
+      blank=True, null=True
+  )
+  references = models.ManyToManyField(Link)
+  picture = models.ForeignKey(
+      Image,
+      related_name='article_picture',
+      blank=True, null=True
+  )
+  carousel = models.ManyToManyField(Image)
+
+The field names are returned as a ``list`` to the ``block`` app in a
+``wizard_fields`` method e.g::
+
+  @property
+  def wizard_fields(self):
+      return [
+          Wizard('picture', Wizard.IMAGE, Wizard.SINGLE),
+          Wizard('link', Wizard.LINK, Wizard.SINGLE),
+          Wizard('carousel', Wizard.IMAGE, Wizard.MULTI),
+          Wizard('references', Wizard.LINK, Wizard.MULTI),
+      ]
+
+The urls for these fields are rendered in the
+``block/block/templates/block/_moderate.html`` template.
