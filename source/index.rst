@@ -78,6 +78,7 @@ Development
 .. toctree::
    :maxdepth: 1
 
+   learning
    dev-env
    dev-captcha
    dev-ckeditor
@@ -108,7 +109,9 @@ Apps
 
    app-base
    app-block
+   app-blog
    app-booking
+   app-checkout
    app-compose
    app-crm
    app-enquiry
