@@ -11,16 +11,17 @@ Latest::
 
   bleach==1.4.1
   boto==2.36.0
-  celery-haystack==0.8
+  celery-haystack==0.9
   celery==3.1.18
   cssselect==0.9.1
   django-braces==1.8.0
-  django-celery-transactions==0.3.1
+  django-celery-transactions==0.3.2
   django-compressor==1.5
   django-formtools==1.0
-  django-haystack==2.3.1
+  django-haystack==2.4.0
   django-mptt==0.7.4
-  django-nocaptcha-recaptcha==0.0.18
+  # remove this one: django-nocaptcha-recaptcha==0.0.18
+  django-recaptcha==1.0.4
   django-redis==3.8.3
   django-reversion==1.8.7
   django-sendfile==0.3.6
@@ -32,8 +33,6 @@ Latest::
   docutils==0.12
   easy-thumbnails==2.2
   elasticsearch==1.4.0
-  # awaiting a release https://github.com/django-haystack/celery-haystack/pull/37
-  git+https://github.com/django-haystack/celery-haystack.git@0ca54a6a8b6f794f88a1c28b8c79cdacef994cc7#egg=celery_haystack
   hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
   iso8601==0.1.10
   lxml==3.4.4

@@ -6,6 +6,15 @@ Useful resources...
 Development
 ===========
 
+Django
+------
+
+Django Girls Tutorial:
+http://tutorial.djangogirls.org/en/index.html
+
+python
+------
+
 Debugger - Clayton Parker - So you think you can PDB? - PyCon 2015:
 https://www.youtube.com/watch?v=P0pIW5tJrRM
 
