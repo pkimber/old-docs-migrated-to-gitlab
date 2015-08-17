@@ -48,7 +48,7 @@ Create a custom page for the enquiry form (probably best to do this in the
       'contact',
       'Contact',
       3,
-      'compose/page_article_contact.html',
+      'compose/page_contact.html',
       is_custom=True,
   )
   PageSection.objects.init_page_section(contact, body)
