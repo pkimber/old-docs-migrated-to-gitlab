@@ -1,7 +1,7 @@
 compose
 *******
 
-.. highlight:: html
+.. highlight:: python
 
 https://github.com/pkimber/compose
 
@@ -10,6 +10,13 @@ administrator to create new pages and sections.
 
 Compose
 =======
+
+To use the predefined content models in the ``compose`` app, add the following
+to ``project/urls.py``::
+
+  url(regex=r'^compose/',
+      view=include('compose.urls.compose')
+      ),
 
 Article
 -------

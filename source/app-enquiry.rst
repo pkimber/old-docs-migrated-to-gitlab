@@ -62,6 +62,7 @@ Create a custom page for the enquiry form (probably best to do this in the
   PageSection.objects.init_page_section(thankyou, body)
 
 Create a URL for your custom page::
+
   url(regex=r'^contact/$',
       view=EnquiryCreateView.as_view(),
       kwargs=dict(page=Page.CUSTOM, menu='contact'),

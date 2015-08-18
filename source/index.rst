@@ -89,7 +89,6 @@ Development
    dev-django-migrations
    dev-django-static
    dev-django-thumbnails
-   dev-icons
    dev-logging
    dev-pagination
    dev-rest-framework

@@ -22,7 +22,7 @@ To use the block system as a CMS::
       view=include('block.urls.block')
       ),
   url(regex=r'^compose/',
-      view=include('compose.urls')
+      view=include('compose.urls.compose')
       ),
   # this url include should come last
   url(regex=r'^',
@@ -113,8 +113,8 @@ And to ``reverse``:
 Wizard
 ======
 
-We have a link and an image wizard.  The following field types are available
-for use in a ``ContentModel``::
+We have a *link* and an *image* wizard.  The following field types are
+available for use in a ``ContentModel``::
 
   link = models.ForeignKey(
       Link,

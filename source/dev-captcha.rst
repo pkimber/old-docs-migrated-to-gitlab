@@ -38,8 +38,8 @@ Add the following to ``settings/base.py``::
 
   # https://github.com/praekelt/django-recaptcha
   NOCAPTCHA = True
-  RECAPTCHA_PUBLIC_KEY = get_env_variable('NORECAPTCHA_SITE_KEY')
   RECAPTCHA_PRIVATE_KEY = get_env_variable('NORECAPTCHA_SECRET_KEY')
+  RECAPTCHA_PUBLIC_KEY = get_env_variable('NORECAPTCHA_SITE_KEY')
 
 When setting up your project for local development, you will need to set-up the
 environment variables as follows (can be added to ``.private``):

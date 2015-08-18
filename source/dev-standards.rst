@@ -89,6 +89,16 @@ http://fontawesome.io/icon/external-link/::
   usage         external link
   icon          <i class="fa fa-external-link"></i>
 
+http://fontawesome.io/icon/file-code-o/::
+
+  usage         template - html
+  icon          <i class="fa fa-file-code-o"></i>
+
+http://fontawesome.io/icon/header/::
+
+  usage         header/footer
+  icon          <i class="fa fa-header"></i>
+
 http://fontawesome.io/icon/home/::
 
   usage         home
@@ -114,10 +124,16 @@ http://fontawesome.io/icon/shopping-cart/::
   usage         money/payments
   icon          <i class="fa fa-shopping-cart"></i>
 
+http://fontawesome.io/icon/file-text-o/::
+
+  usage         page
+  icon          <i class="fa fa-file-text-o"></i>
+
 http://fontawesome.io/icon/trash-o/::
 
   usage         delete
   icon          <i class="fa fa-trash-o"></i>
+  or...         <i class="fa fa-times"></i>
 
 Model
 =====
