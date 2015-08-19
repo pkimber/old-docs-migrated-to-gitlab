@@ -17,6 +17,11 @@ the DNS records e.g:
 
 .. image:: ./misc/mailgun-dns.jpg
 
+.. warning:: If Mailgun asks you to create a ``TXT`` record with your domain
+             name appended e.g. ``k1._domainkey.hatherleigh.info``, then the
+             name should be entered without the domain name
+             e.g. ``k1._domainkey``.
+
 Using https://mailgun.com/cp/routes, create a route for your Mailgun domain
 (change ``pkimber.net`` to the domain name of your own site)::
 
