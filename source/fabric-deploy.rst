@@ -6,11 +6,9 @@ Deploy
 .. note:: Before deploying your site, you need to release the code.  If you
           have not done this, check out the :doc:`fabric-release` instructions.
 
-Prerequisites:
-
-  The fabric ``deploy`` command opens the pages on the web site using the
-  Chrome browser.  For this to work you need to install the Chrome web driver:
-  `Chrome WebDriver for Selenium`_
+.. note:: The fabric ``deploy`` command opens the pages on the web site using
+          the Chrome browser.  For this to work you need to install the Chrome
+          web driver: `Chrome WebDriver for Selenium`_
 
 .. _`Chrome WebDriver for Selenium`: https://www.pkimber.net/howto/testing/selenium/chrome.html
 
@@ -33,7 +31,7 @@ The ``deploy`` command will open the pages in the site map in the Chrome
 browser.  To open additional pages, add them to the ``deploy/test/`` folder for
 the site e.g::
 
-  # ~/repo/dev/module/deploy/test/hatherleigh_info.yaml
+  ~/repo/dev/module/deploy/test/hatherleigh_info.yaml
 
 .. code-block:: yaml
 
