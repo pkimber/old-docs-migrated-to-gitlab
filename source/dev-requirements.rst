@@ -12,7 +12,7 @@ Branches::
   # cms
   git checkout 1043-convert-from-cms-models-to-block
 
-Latest::
+Requirements::
 
   bleach==1.4.1
   boto==2.36.0
