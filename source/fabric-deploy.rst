@@ -28,8 +28,14 @@ Test
 ====
 
 The ``deploy`` command will open the pages in the site map in the Chrome
-browser.  To open additional pages, add them to the ``deploy/test/`` folder for
-the site e.g::
+browser.
+
+To run these tests without deploying the site::
+
+  fab live:hatherleigh_info ok
+
+To open additional pages, add them to the ``deploy/test/`` folder for the site
+e.g::
 
   ~/repo/dev/module/deploy/test/hatherleigh_info.yaml
 

@@ -3,9 +3,14 @@ Requirements
 
 .. highlight:: bash
 
-To update the version of a dependency in ``base.txt``::
+Branches::
 
-  find . -name "base.txt" | xargs sed -i 's/Django==1.6.1/Django==1.6.2/g'
+  # base
+  git checkout 1005-menu-li-not-ul
+  # block
+  git checkout 961-linking-wizard
+  # cms
+  git checkout 1043-convert-from-cms-models-to-block
 
 Latest::
 
@@ -27,7 +32,7 @@ Latest::
   django-sendfile==0.3.6
   django-statsd-mozilla==0.3.14
   django-storages-redux
-  Django==1.8.3
+  Django==1.8.4
   djangorestframework==3.1.3
   djrill==1.4.0
   docutils==0.12
@@ -56,3 +61,7 @@ Latest::
           ``pip uninstall celery_haystack``
           and
           ``pip install --upgrade -r requirements/local.txt``.
+
+To update the version of a dependency in ``base.txt``::
+
+  find . -name "base.txt" | xargs sed -i 's/Django==1.6.1/Django==1.6.2/g'
