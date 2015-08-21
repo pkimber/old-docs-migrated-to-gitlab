@@ -5,12 +5,20 @@ Requirements
 
 Branches::
 
+  # link wizard release
+  #
   # base
   git checkout 1005-menu-li-not-ul
   # block
   git checkout 961-linking-wizard
   # cms
   git checkout 1043-convert-from-cms-models-to-block
+
+
+  # *payment plan* release
+  #
+  # job
+  git checkout 644-checkout
 
 Requirements::
 
