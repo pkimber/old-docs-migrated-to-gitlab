@@ -55,7 +55,9 @@ https://github.com/johnsensible/django-sendfile
 
 Add ``django-sendfile`` to your ``base.txt`` requirements::
 
-  git+https://github.com/pkimber/django-sendfile#egg=sendfile
+  django-sendfile
+
+.. tip: See :doc:`requirements` for the current version.
 
 The ``production.py`` settings file should contain the following::
 

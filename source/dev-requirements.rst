@@ -62,6 +62,7 @@ Requirements::
   statsd==3.0.1
   stripe==1.23.0
   tasklib==0.9.0
+  transitions==0.2.8
   xmltodict==0.9.2
   Yapsy==1.10.423
 
