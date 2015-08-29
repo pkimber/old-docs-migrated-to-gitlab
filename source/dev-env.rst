@@ -178,10 +178,13 @@ URL and documentation for my open source apps are here:
 - :doc:`app-base`
 - :doc:`app-block`
 - :doc:`app-booking`
-- :doc:`app-cms`
+- :doc:`app-checkout`
+- :doc:`app-compose`
 - :doc:`app-crm`
 - :doc:`app-enquiry`
+- :doc:`app-finance`
 - :doc:`app-invoice`
+- :doc:`app-job`
 - :doc:`app-login`
 - :doc:`app-mail`
 - :doc:`app-pay`
