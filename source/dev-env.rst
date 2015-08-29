@@ -28,9 +28,12 @@ python development::
   sudo apt-get install libtiff4-dev
   # for ubuntu 14.10
   sudo apt-get install libtiff5-dev
+  # for readline
+  sudo apt-get install libncurses5-dev
 
   # if you have issues with setuptools e.g. Requirement.parse('setuptools>=0.8'))
   sudo wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
+
 
 Postgres::
 

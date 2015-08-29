@@ -27,17 +27,18 @@ Requirements::
   celery-haystack==0.9
   celery==3.1.18
   cssselect==0.9.1
-  django-braces==1.8.0
+  django-braces==1.8.1
   django-celery-transactions==0.3.2
   django-compressor==1.5
+  django-extensions==1.5.5
   django-formtools==1.0
   django-haystack==2.4.0
   django-mptt==0.7.4
   # remove this one: django-nocaptcha-recaptcha==0.0.18
   django-recaptcha==1.0.4
   django-redis==3.8.3
-  django-reversion==1.8.7
-  django-sendfile==0.3.6
+  django-reversion==1.9.3
+  django-sendfile==0.3.9
   django-statsd-mozilla==0.3.14
   django-storages-redux
   Django==1.8.4
@@ -51,7 +52,7 @@ Requirements::
   lxml==3.4.4
   opbeat==3.0.2
   pillow==2.9.0
-  psycopg2==2.6
+  psycopg2==2.6.1
   python-dateutil==2.4.1
   pytz==2014.10
   PyYAML==3.11

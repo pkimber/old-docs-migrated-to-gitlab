@@ -6,6 +6,12 @@
 Deploy Django projects using SaltStack
 **************************************
 
+.. important:: Our aim is to create simple step-by-step documentation for
+               implementing a feature or service in the *KB* way.  The notes
+               should not try and explain the *reason why* or alternative
+               strategies.  They will assume basic competency in development,
+               the linux command line and sys-admin.
+
 Process
 
 .. toctree::
