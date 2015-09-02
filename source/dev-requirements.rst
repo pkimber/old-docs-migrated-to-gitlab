@@ -46,7 +46,7 @@ Requirements::
   djrill==1.4.0
   docutils==0.12
   easy-thumbnails==2.2
-  elasticsearch==1.4.0
+  elasticsearch==1.6.0
   hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
   iso8601==0.1.10
   lxml==3.4.4

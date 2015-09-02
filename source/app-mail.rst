@@ -15,7 +15,9 @@ Requirements
 
 Add the following to ``requirements/base.txt``::
 
-  djrill==1.3.0
+  djrill
+
+.. tip: See :doc:`requirements` for the current version.
 
 Add the mail app to ``requirements/local.txt``::
 
@@ -40,7 +42,7 @@ And add the setting for the mail template type::
   # See the list of constants at the top of 'mail.models'
   MAIL_TEMPLATE_TYPE = 'django'
 
-For Mandrill::
+For Mandrill, add the following to ``settings/production.py``::
 
   # mandrill
   EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'

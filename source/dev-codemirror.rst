@@ -23,5 +23,5 @@ Example
 - `Example View`_
 
 
-.. _`Example Template`: https://github.com/pkimber/cms/blob/975-try-code-mirror/example_cms/templates/example/dash.html
-.. _`Example View`: https://github.com/pkimber/cms/blob/975-try-code-mirror/example_cms/views.py
+.. _`Example Template`: https://github.com/pkimber/compose/blob/master/example_compose/templates/example/dash.html
+.. _`Example View`: https://github.com/pkimber/compose/blob/master/example_compose/views.py
