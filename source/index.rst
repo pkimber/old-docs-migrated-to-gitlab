@@ -84,6 +84,8 @@ Development
 .. toctree::
    :maxdepth: 1
 
+   dev-journal
+
    learning
    dev-env
    dev-captcha
