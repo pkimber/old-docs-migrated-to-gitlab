@@ -20,15 +20,20 @@ On OSX::
 Configuration files
 -------------------
 
-The configuration files are kept securely and should
-**never be copied to a public repository e.g. DropBox, GitHub or BitBucket**
-(replace ``patrick`` with your own name)::
+.. warning:: The configuration files are kept securely and should **never be
+             copied to a public repository e.g. DropBox, GitHub or BitBucket**
+
+.. note:: Replace ``patrick`` with your *User Name* (:doc:`checklist`)
+
+.. note:: Replace ``yb`` with your *Company Abbreviation* (:doc:`checklist`)
+
+::
 
   sudo -i
   cd /etc/salt/cloud.profiles.d/
-  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles .
+  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/yb.profiles.conf .
   cd /etc/salt/cloud.providers.d/
-  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers .
+  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/yb.providers.conf .
 
 Create a Server
 ===============

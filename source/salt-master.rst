@@ -38,13 +38,9 @@ Configuration
 Then re-start the salt master::
 
   restart salt-master
-  # or:
-  sudo /etc/init.d/salt-master restart
 
 Check out the ``sls`` and pillar files from your repository so they are in the
-following folder structure:
-
-::
+following folder structure::
 
   ├── srv
   │   ├── pillar
