@@ -209,6 +209,13 @@ Table
 Template
 ========
 
+Date
+----
+
+Short date e.g. ``05/09/2015 13:30``::
+
+  {{ item.checkout_date|date:'d/m/Y H:i' }}
+
 Tags
 ----
 
