@@ -6,6 +6,8 @@ have started using pdbpp_.
 
 I think you might like it...
 
+.. image:: ./misc/pdbpp.png
+
 Add the following to ``requirements/local.txt``::
 
   pdbpp
