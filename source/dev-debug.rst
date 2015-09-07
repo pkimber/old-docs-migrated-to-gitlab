@@ -10,10 +10,15 @@ I think you might like it...
 
 Add the following to ``requirements/local.txt``::
 
-  pdbpp
   setuptools_scm
+  # must come after ``setuptools_scm``
+  pdbpp
 
 .. note:: You might need to remove ``ipdb`` and ``ipython``
+
+.. note:: If you get a ``setuptools_scm`` error when installing ``pdbpp``, then
+          manually install ``setuptools_scm``
+          i.e. ``pip install setuptools_scm``
 
 Download a nice looking ``.pdbrc.py`` file and copy to your home folder.
 I downloaded this one:
