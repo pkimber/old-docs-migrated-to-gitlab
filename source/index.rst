@@ -91,6 +91,7 @@ Development
    dev-captcha
    dev-ckeditor
    dev-codemirror
+   dev-debug
    dev-debug-toolbar
    dev-django
    dev-django-media
