@@ -5,28 +5,17 @@ Requirements
 
 Branches::
 
-  # link wizard release
-  #
-  # base
-  git checkout 1005-menu-li-not-ul
-  # block
-  git checkout 961-linking-wizard
   # cms
   git checkout 1043-convert-from-cms-models-to-block
 
-
-  # *payment plan* release
-  #
-  # job
-  git checkout 644-checkout
-
 Requirements::
 
-  bleach==1.4.1
+  bleach==1.4.2
   boto==2.36.0
   celery-haystack==0.9
   celery==3.1.18
   cssselect==0.9.1
+  d2to1==0.2.12
   django-braces==1.8.1
   django-celery-transactions==0.3.2
   django-compressor==1.5
@@ -34,9 +23,10 @@ Requirements::
   django-formtools==1.0
   django-haystack==2.4.0
   django-mptt==0.7.4
-  # remove this one: django-nocaptcha-recaptcha==0.0.18
+  django-nvd3==0.8.2
+  # remove: django-nocaptcha-recaptcha==0.0.18
   django-recaptcha==1.0.4
-  django-redis==3.8.3
+  django-redis==4.2.0
   django-reversion==1.9.3
   django-sendfile==0.3.9
   django-statsd-mozilla==0.3.14
@@ -46,22 +36,22 @@ Requirements::
   djrill==1.4.0
   docutils==0.12
   easy-thumbnails==2.2
-  elasticsearch==1.6.0
+  elasticsearch==1.7.0
   hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
   iso8601==0.1.10
   lxml==3.4.4
-  opbeat==3.0.2
+  opbeat==3.1.1
   pillow==2.9.0
   psycopg2==2.6.1
-  python-dateutil==2.4.1
-  pytz==2014.10
+  python-dateutil==2.4.2
+  pytz==2015.06
   PyYAML==3.11
   redis==2.10.3
   reportlab==3.2.0
   requests==2.6.0
   spyne==2.11.0
   statsd==3.0.1
-  stripe==1.23.0
+  stripe==1.27.0
   tasklib==0.9.0
   transitions==0.2.8
   xmltodict==0.9.2

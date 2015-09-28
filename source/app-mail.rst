@@ -35,18 +35,12 @@ In your ``settings/base.py``, add ``mail`` to your apps e.g::
 
 And add the default from address::
 
-  DEFAULT_FROM_EMAIL = 'notify@pkimber.net'
-
-And add the setting for the mail template type::
-
-  # See the list of constants at the top of 'mail.models'
-  MAIL_TEMPLATE_TYPE = 'django'
+  DEFAULT_FROM_EMAIL = 'patrick@kbsoftware.co.uk'
 
 For Mandrill, add the following to ``settings/production.py``::
 
   # mandrill
   EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
-  MAIL_TEMPLATE_TYPE = 'mandrill'
   MANDRILL_API_KEY = get_env_variable('MANDRILL_API_KEY')
   MANDRILL_USER_NAME = get_env_variable('MANDRILL_USER_NAME')
 
@@ -116,7 +110,7 @@ Create a mail template::
           "{{ TOTAL }} total value of the transaction."
       ),
       False,
-      settings.MAIL_TEMPLATE_TYPE,
+      MailTemplate.MANDRILL,
       subject='Thank you for your payment',
       description="We will send you the course materials.",
   )
@@ -124,7 +118,7 @@ Create a mail template::
 Queue the email:
 
 .. note:: In the examples below, ``self.object`` is an object which the email
-          address will be linked to.
+          will be linked to.
 
 To queue an email without using a template::
 

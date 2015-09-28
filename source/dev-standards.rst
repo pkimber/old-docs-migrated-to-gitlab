@@ -129,6 +129,11 @@ http://fontawesome.io/icon/file-text-o/::
   usage         page
   icon          <i class="fa fa-file-text-o"></i>
 
+http://fontawesome.io/icon/tachometer/::
+
+  usage         dashboard
+  icon          <i class="fa fa-tachometer"></i>
+
 http://fontawesome.io/icon/trash-o/::
 
   usage         delete
