@@ -167,3 +167,16 @@ To send email, use the ``mail_send`` management command e.g:
 .. code-block:: bash
 
   django-admin.py mail_send
+
+Testing
+=======
+
+.. warning:: Only run the following command on a test site.  It will **mark all
+             emails as sent** (which you wouldn't want on a live site)!
+
+This will mark **all emails as sent**::
+
+  from django.utils import timezone
+  from mail.models import Mail
+
+  Mail.objects.filter(sent__isnull=True).update(sent=timezone.now())
