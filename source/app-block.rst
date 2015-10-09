@@ -98,7 +98,7 @@ URL
 
 To use the Django ``url`` tag to link to a page::
 
-  <a href="{% url 'custom' 'contact' %}">
+  <a href="{% url 'project.page' 'custom' 'contact' %}">
     You can find our contact details by clicking here...
   </a>
 
