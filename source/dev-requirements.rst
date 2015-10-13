@@ -41,7 +41,7 @@ Requirements::
   iso8601==0.1.10
   lxml==3.4.4
   opbeat==3.1.1
-  pillow==2.9.0
+  pillow==3.0.0
   psycopg2==2.6.1
   python-dateutil==2.4.2
   pytz==2015.06

@@ -6,6 +6,19 @@ Standards
 This document is a **very** good starting point:
 `Django models, encapsulation and data integrity`_
 
+Code
+====
+
+Add the following to ``requirements/local.txt``::
+
+  pytest-flakes
+  pytest-pep8
+
+To check the code::
+
+  py.test --flakes
+  py.test --pep8
+
 Dashboard
 =========
 
