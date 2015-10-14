@@ -12,6 +12,13 @@ Deploy Django projects using SaltStack
                strategies.  They will assume basic competency in development,
                the linux command line and sys-admin.
 
+Sales
+
+.. toctree::
+   :maxdepth: 1
+
+   sales
+
 Process
 
 .. toctree::
