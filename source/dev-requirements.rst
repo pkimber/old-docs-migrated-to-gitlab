@@ -19,7 +19,7 @@ Requirements::
   django-braces==1.8.1
   django-celery-transactions==0.3.2
   django-compressor==1.5
-  django-extensions==1.5.5
+  django-extensions==1.5.7
   django-formtools==1.0
   django-haystack==2.4.0
   django-mptt==0.7.4

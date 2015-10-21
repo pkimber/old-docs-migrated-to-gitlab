@@ -70,5 +70,5 @@ Add to Google Analytics tools.
 
 Add to Google WebMaster tools.
 
-Add to Google My Business, for businesses with a physical business location:
+Add to Google My Business (for businesses with a physical business location):
 https://www.google.co.uk/business/
