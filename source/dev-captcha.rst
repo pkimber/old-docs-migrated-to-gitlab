@@ -27,7 +27,9 @@ site (remember - a test site might have a different domain name e.g:
 
 Add the following to ``requirements/base.txt``::
 
-  django-recaptcha==1.0.4
+  django-recaptcha
+
+.. tip: See :doc:`requirements` for the current version.
 
 Add the following to ``settings/base.py``::
 

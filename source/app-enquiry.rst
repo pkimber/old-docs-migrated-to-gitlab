@@ -43,23 +43,40 @@ Usage
 Create a custom page for the enquiry form (probably best to do this in the
 ``init_project`` management command for your project)::
 
-  contact = Page.objects.init_page(
-      Page.CUSTOM,
-      'contact',
-      'Contact',
-      3,
-      'compose/page_contact.html',
-      is_custom=True,
-  )
-  PageSection.objects.init_page_section(contact, body)
-  thankyou = Page.objects.init_page(
-      'contact',
-      'thankyou',
-      'Thank you',
-      0,
-      'compose/page_article.html',
-  )
-  PageSection.objects.init_page_section(thankyou, body)
+
+  def handle(self, *args, **options):
+      """These sections should already exist."""
+      body = Section.objects.get(slug=SECTION_BODY)
+      card = Section.objects.get(slug=SECTION_CARD)
+      slideshow = Section.objects.get(slug=SECTION_SLIDESHOW)
+      # contact pages
+      contact = Page.objects.init_page(
+          Page.CUSTOM,
+          'contact',
+          'Contact',
+          7,
+          'compose/page_article.html',
+          is_custom=True,
+      )
+      thankyou = Page.objects.init_page(
+          'contact',
+          'thankyou',
+          'Thank you',
+          8,
+          'compose/page_article.html',
+      )
+      PageSection.objects.init_page_section(contact, body)
+      PageSection.objects.init_page_section(contact, card)
+      PageSection.objects.init_page_section(contact, slideshow)
+      PageSection.objects.init_page_section(thankyou, body)
+      PageSection.objects.init_page_section(thankyou, card)
+      PageSection.objects.init_page_section(thankyou, slideshow)
+      Url.objects.init_reverse_url(
+          'Contact',
+          'web.contact',
+      )
+      Url.objects.init_pages()
+      print("Project initialised...")
 
 Create a URL for your custom page::
 
@@ -78,20 +95,13 @@ The enquiry form needs to *know* the current user.  In your view, add the
   from block.views import  PageFormMixin
   from enquiry.forms import EnquiryForm
   from enquiry.models import Enquiry
+  from enquiry.views import EnquiryCreateMixin
 
-  class EnquiryCreateView(PageFormMixin, CreateView):
+  class EnquiryCreateView(PageFormMixin, EnquiryCreateMixin, CreateView):
       """Save an enquiry in the database."""
 
       form_class = EnquiryForm
       model = Enquiry
-
-      def get_form_kwargs(self):
-          kwargs = super().get_form_kwargs()
-          kwargs.update(dict(
-              request=self.request,
-              user=self.request.user,
-          ))
-          return kwargs
 
       def get_success_url(self):
           page = Page.objects.get(slug='contact', slug_menu='thankyou')
