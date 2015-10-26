@@ -82,7 +82,7 @@ Remove::
 ``formtools``
 -------------
 
-The ``formtools`` package has been removed, so replace::
+The ``formtools`` package has been removed, so if you need wizards replace::
 
   from django.contrib.formtools.wizard.views import SessionWizardView
 
