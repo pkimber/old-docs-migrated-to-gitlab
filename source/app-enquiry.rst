@@ -41,8 +41,8 @@ Usage
           page (using our :doc:`app-block` app).
 
 Create a custom page for the enquiry form (probably best to do this in the
-``init_project`` management command for your project)::
-
+``init_project`` management command for your project) (this example is a
+management command using page sections from the ``compose`` app::
 
   def handle(self, *args, **options):
       """These sections should already exist."""
