@@ -23,7 +23,7 @@ Requirements::
   django-formtools==1.0
   django-haystack==2.4.0
   django-mptt==0.7.4
-  django-nvd3==0.8.2
+  django-nvd3==0.9.4
   # remove: django-nocaptcha-recaptcha==0.0.18
   django-recaptcha==1.0.4
   django-redis==4.2.0
@@ -31,7 +31,7 @@ Requirements::
   django-sendfile==0.3.9
   django-statsd-mozilla==0.3.14
   django-storages-redux
-  Django==1.8.5
+  Django==1.8.6
   djangorestframework==3.1.3
   djrill==1.4.0
   docutils==0.12

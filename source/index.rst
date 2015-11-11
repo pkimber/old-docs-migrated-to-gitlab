@@ -112,6 +112,7 @@ Development
    dev-requirements
    dev-restore
    dev-s3
+   dev-scripts
    dev-sitemap
    dev-social
    dev-testing

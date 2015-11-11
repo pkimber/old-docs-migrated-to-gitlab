@@ -24,12 +24,16 @@ To use the block system as a CMS::
   url(regex=r'^compose/',
       view=include('compose.urls.compose')
       ),
+  url(regex=r'^wizard/',
+      view=include('block.urls.wizard')
+      ),
   # this url include should come last
   url(regex=r'^',
       view=include('block.urls.cms')
       ),
 
 .. note:: The ``block.urls.cms`` URLs add a header and footer to the page.
+          The ``block.urls.wizard`` URLs add the image and link wizard.
 
 Custom Pages
 ============
