@@ -36,7 +36,7 @@ Requirements::
   djrill==1.4.0
   docutils==0.12
   easy-thumbnails==2.2
-  elasticsearch==1.7.0
+  elasticsearch==2.1.0
   hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
   iso8601==0.1.10
   lxml==3.4.4
@@ -51,7 +51,7 @@ Requirements::
   requests==2.6.0
   spyne==2.11.0
   statsd==3.0.1
-  stripe==1.27.0
+  stripe==1.27.1
   tasklib==0.9.0
   transitions==0.2.8
   xmltodict==0.9.2
