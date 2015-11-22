@@ -32,8 +32,7 @@ python development::
   sudo apt-get install libncurses5-dev
 
   # if you have issues with setuptools e.g. Requirement.parse('setuptools>=0.8'))
-  sudo wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
-
+  wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 
 Postgres::
 
@@ -42,6 +41,19 @@ Postgres::
 Redis::
 
   sudo apt-get install redis-server
+
+python
+======
+
+::
+
+  sudo easy_install pip
+  sudo pip install virtualenv
+
+To create a ``virtualenv``::
+
+  virtualenv --python=python3.4 myvenv
+  source myvenv/bin/activate
 
 bash and zsh
 ============
