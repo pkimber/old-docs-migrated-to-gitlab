@@ -82,7 +82,14 @@ You can now manage the content on this page using design mode.
 News (including Twitter)
 ========================
 
-To add the news section to the article template::
+To add the news section to the article template...
+
+Add ``humanize`` to ``DJANGO_APPS``::
+
+  DJANGO_APPS = (
+      'django.contrib.humanize',
+
+Add the news section to the article template::
 
   django-admin.py init_app_compose_news
 
