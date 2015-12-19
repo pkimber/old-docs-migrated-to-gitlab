@@ -1,6 +1,8 @@
 Digital Ocean
 *************
 
+.. important:: These instructions are for version 2015.8.3 (Beryllium)
+
 Configuration
 =============
 
@@ -29,13 +31,18 @@ Profile
 
   droplet_512:
     provider: digitalocean
-    size: 512MB
-    image: Ubuntu 14.04 x32
+    size: 1GB
+    image: ubuntu-14-04-x32
+    location: London 1
 
 Providers
 ---------
 
 .. note:: Replace ``yb`` with your *Company Abbreviation* (:doc:`checklist`)
+
+Log into your Digital Ocean Control Panel and *Generate new token* in the *API*
+section.  The *Personal Access Token* is used in the ``personal_access_token``
+field (see below).
 
 ::
 
@@ -44,9 +51,8 @@ Providers
 ::
 
   digitalocean:
-    client_key: the-client-key
-    api_key: the-api-key
-    provider: digital_ocean
+    driver: digital_ocean
+    personal_access_token: your-personal-access-token
     location: London 1
     ssh_key_file: /root/.ssh/id_rsa.pub
     ssh_key_name: name-of-my-key.pub

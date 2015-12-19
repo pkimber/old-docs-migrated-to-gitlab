@@ -11,6 +11,9 @@ These documents are **very** good starting points:
 Code
 ====
 
+.. important:: We are going to start by aiming for 70% test coverage for an app
+               and 50% for a project.
+
 Add the following to ``requirements/local.txt``::
 
   pytest-cov
@@ -37,6 +40,11 @@ To check the code::
 
   py.test --flakes
   py.test --pep8
+
+Release
+
+- (not sure if this project is any good).  If it is... check with
+  https://github.com/mgedmin/check-manifest
 
 Dashboard
 =========

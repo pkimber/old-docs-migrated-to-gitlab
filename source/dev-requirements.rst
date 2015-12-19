@@ -31,7 +31,7 @@ Requirements::
   django-sendfile==0.3.9
   django-statsd-mozilla==0.3.14
   django-storages-redux
-  Django==1.8.6
+  Django==1.8.7
   djangorestframework==3.1.3
   djrill==1.4.0
   docutils==0.12
@@ -53,7 +53,7 @@ Requirements::
   statsd==3.0.1
   stripe==1.27.1
   tasklib==0.9.0
-  transitions==0.2.8
+  transitions==0.2.9
   xmltodict==0.9.2
   Yapsy==1.10.423
 
