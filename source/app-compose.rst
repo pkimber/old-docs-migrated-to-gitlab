@@ -78,3 +78,25 @@ Add this section to the template ``compose/page_feature.html`` created above
 (*Dashboard | *Template*)
 
 You can now manage the content on this page using design mode.
+
+News (including Twitter)
+========================
+
+To add the news section to the article template::
+
+  django-admin.py init_app_compose_news
+
+Override the view where you want to display the news and Twitter feed.  Return
+your ``twitter`` user name e.g::
+
+  from block.views import (
+      CmsMixin,
+      PageTemplateView,
+  )
+
+  class CmsHomePageView(CmsMixin, PageTemplateView):
+
+      def get_context_data(self, **kwargs):
+          context = super().get_context_data(**kwargs)
+          context.update(dict(twitter='pkimber'))
+          return context
