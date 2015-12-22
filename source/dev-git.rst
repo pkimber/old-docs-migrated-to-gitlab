@@ -1,6 +1,8 @@
 git
 ***
 
+.. highlight:: bash
+
 GitLab
 ======
 
