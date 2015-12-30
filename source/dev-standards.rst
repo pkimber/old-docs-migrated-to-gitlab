@@ -114,10 +114,20 @@ http://fontawesome.io/icon/calendar/::
   usage         calendar/booking
   icon          <i class="fa fa-calendar"></i>
 
+http://fontawesome.io/icon/check/::
+
+  usage         tick
+  icon          <i class="fa fa-check"></i>
+
 http://fontawesome.io/icon/cloud-download/::
 
   usage         download
   icon          <i class="fa fa-cloud-download"></i>
+
+http://fontawesome.io/icon/envelope-o/::
+
+  usage         mail
+  icon          <i class="fa fa-envelope-o"></i>
 
 http://fontawesome.io/icon/exclamation-triangle/::
 
@@ -149,10 +159,20 @@ http://fontawesome.io/icon/pencil-square-o/::
   usage         edit
   icon          <i class="fa fa-edit"></i>
 
+http://fontawesome.io/icon/phone/::
+
+  usage         phone
+  icon          <i class="fa fa-phone"></i>
+
 http://fontawesome.io/icon/plus/::
 
   usage         add
   icon          <i class="fa fa-plus"></i>
+
+http://fontawesome.io/icon/refresh/::
+
+  usage         retry
+  icon          <i class="fa fa-refresh"></i>
 
 http://fontawesome.io/icon/reply/::
 
