@@ -31,7 +31,7 @@ Requirements::
   django-sendfile==0.3.9
   django-statsd-mozilla==0.3.14
   django-storages-redux
-  Django==1.8.7
+  Django==1.8.8
   djangorestframework==3.1.3
   djrill==1.4.0
   docutils==0.12

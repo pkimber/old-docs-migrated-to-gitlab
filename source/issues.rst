@@ -10,6 +10,12 @@ If you find Celery wants to use AMQP (``amqp/transport.py``,
 contains ``from .celery import app as celery_app``.  For more information, see
 :doc:`celery`.
 
+cron
+====
+
+If a cron script in ``/etc/cron.d`` has a ``.`` in the file name, then it will
+not run! (`configs with dots in file name not working in /etc/cron.d`_)
+
 devpi
 =====
 
@@ -271,3 +277,6 @@ Then::
 
 The version of ``uwsgi`` can be found in
 https://github.com/pkimber/salt/blob/master/uwsgi/requirements3.txt
+
+
+.. _`configs with dots in file name not working in /etc/cron.d`: https://bugs.launchpad.net/ubuntu/+source/cron/+bug/706565
