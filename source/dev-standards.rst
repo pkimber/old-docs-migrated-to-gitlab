@@ -13,6 +13,7 @@ Code
 
 .. important:: We are going to start by aiming for 70% test coverage for an app
                and 50% for a project.
+               Useful to bear this in mind `Changing the Metrics Conversation`_
 
 Add the following to ``requirements/local.txt``::
 
@@ -104,7 +105,10 @@ From `PEP 257 - Docstring Conventions - Multi-line Docstrings`_::
           return complex_zero
 
 I think I agree with most of the examples in this document:
-:download:`misc/pep8_cheat.pdf`
+:download:`misc/pep8_cheat.pdf`.
+
+I also like some of the ideas in `Elements of Python Style`_.  We can watch and
+see if it becomes accepted.
 
 Icons
 =====
@@ -328,8 +332,10 @@ pattern*...
           debug on errors.
 
 
+.. _`Changing the Metrics Conversation`: https://www.thoughtworks.com/insights/blog/changing-metrics-conversation
 .. _`Coding Conventions`: https://django-party-pack.readthedocs.org/en/latest/conventions.html#using-the-url-function
 .. _`Django models, encapsulation and data integrity`: http://www.dabapps.com/blog/django-models-and-encapsulation/
+.. _`Elements of Python Style`: https://github.com/amontalenti/elements-of-python-style
 .. _`Factory Boy`: https://github.com/rbarrois/factory_boy
 .. _`Open Sourcing a Python Project the Right Way`: http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/
 .. _`PEP 257 - Docstring Conventions - Multi-line Docstrings`: https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings
