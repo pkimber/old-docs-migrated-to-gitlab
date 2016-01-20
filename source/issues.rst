@@ -21,7 +21,15 @@ devpi
 
 I was getting SSL ``certificate verify failed`` errors when using ``devpi``
 (which uses ``httpie`` and ``requests``).  To solve the issue, use ``devpi``
-with a python 3 virtual environment (not python 3).
+with a python 3 virtual environment (not python 2).
+
+Index
+-----
+
+If you have a local PyPI server, and you **do not** want to use it, then
+comment out ``index-url`` in::
+
+  ~/.pip/pip.conf
 
 Django Compressor
 =================
