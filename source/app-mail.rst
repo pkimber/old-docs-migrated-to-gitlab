@@ -91,6 +91,10 @@ cron command e.g::
 Usage
 =====
 
+.. important:: The ``slug`` value for the template name should always be in
+               lower case.  We will make all Mandrill template names lower case
+               - using underscores instead of a space.
+
 Create a mail template::
 
   from django.conf import settings
