@@ -105,6 +105,7 @@ Development
    dev-django-migrations
    dev-django-static
    dev-django-thumbnails
+   dev-elasticsearch
    dev-git
    dev-grunt
    dev-logging
