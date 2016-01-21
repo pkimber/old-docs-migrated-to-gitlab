@@ -83,6 +83,34 @@ Restore
 To restore a document or folder, follow the example commands in
 :ref:`duplicity_command_examples`.
 
+.. _rsync_usage:
+
+Usage
+=====
+
+.. note:: For the following, refer to your company :doc:`checklist` and replace
+          ``123@tv-s009.rsync.net`` with your rsync.net Host address.
+
+To check the rsync.net usage (by domain), create a script for in your ``~/bin``
+as follows.  At your command prompt type the following::
+
+  gedit ~/bin/rsync-usage
+
+Then type or paste the following 2 lines  (Please note: the backslash before
+the asterisk is important::
+
+
+  #!/bin/bash
+  ssh 123@tv-s009.rsync.net du -sh \*
+
+Save the file and close gedit. Then type the following at your command prompt::
+
+  chmod 755 ~/bin/rsync-usage
+
+Now to get the analysis of usage on our rsync account, you can type::
+
+  rsync-usage
+
 
 .. _`Headless Dropbox`: http://rkulla.blogspot.co.uk/2014/03/headless-dropbox.html
 .. _`Run Multiple Instances of Dropbox Simultaneously`: http://www.dropboxwiki.com/tips-and-tricks/run-multiple-instances-of-dropbox-simultaneously-on-linux-or-mac-os-x#On_Ubuntu
