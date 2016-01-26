@@ -16,14 +16,15 @@ Requirements::
   celery==3.1.18
   cssselect==0.9.1
   d2to1==0.2.12
+  django-bootstrap3==6.2.2
   django-braces==1.8.1
   django-celery-transactions==0.3.6
   django-compressor==1.5
   django-extensions==1.5.7
   django-formtools==1.0
   django-haystack==2.4.1
-  django-mptt==0.7.4
-  django-nvd3==0.9.4
+  django-mptt==0.8.0
+  django-nvd3==0.9.7
   # remove: django-nocaptcha-recaptcha==0.0.18
   django-recaptcha==1.0.4
   django-redis==4.2.0
