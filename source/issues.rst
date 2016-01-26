@@ -149,7 +149,7 @@ This is a general error.  Find the cause by looking in the following files::
   tail -f /var/log/supervisor/
 
 ``bind() to 0.0.0.0:80 failed``
-------------------------------
+-------------------------------
 
 ``nginx`` won't start and ``/var/log/nginx/error.log`` shows::
 
