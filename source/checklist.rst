@@ -43,6 +43,21 @@ Enquiry
 
 List of people to be notified when an enquiry is received.
 
+Email
+=====
+
+Standard Aliases
+----------------
+
+::  
+  
+  abuse
+  admin
+  info
+  postmaster
+  security
+  webmaster
+
 Project
 =======
 

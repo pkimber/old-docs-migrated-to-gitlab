@@ -60,7 +60,7 @@ To create the invoice PDF, follow the *PDF* instructions below...
 Outstanding
 ===========
 
-Who do I need to invoice::
+Who do I need to invoice (run from project folder using ``django-admin shell``)::
 
   from invoice.models import TimeRecord
   qs = TimeRecord.objects.filter(invoice_line__isnull=True, billable=True).order_by('ticket__contact__slug').distinct('ticket__contact__slug')
