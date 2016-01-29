@@ -1,15 +1,17 @@
 Digital Ocean
 *************
 
+.. important:: These instructions are for version 2015.8.3 (Beryllium)
+
 Configuration
 =============
 
 .. note::
 
   Upload the public key for your root user to
-  https://www.digitalocean.com/ssh_keys
+  https://cloud.digitalocean.com/settings/security
 
-  Give the key a name (e.g. ``name-of-my-key.pub``) and add to
+  Give the key a *Name* (e.g. ``name-of-my-key.pub``) and add to
   ``ssh_key_name`` in ``cloud.providers`` (see below).
 
   It took me a while to understand this.  Thank you to Russell Ballestrini for
@@ -19,62 +21,62 @@ Configuration
 Profile
 -------
 
+.. note:: Replace ``yb`` with your *Company Abbreviation* (:doc:`checklist`)
+
 ::
 
-  vim ~/repo/dev/module/deploy/salt-cloud/cloud.profiles
+  vim ~/repo/dev/module/deploy/salt-cloud/yb.profiles.conf
 
 ::
 
   droplet_512:
     provider: digitalocean
-    size: 512MB
-    image: Ubuntu 14.04 x32
+    size: 1GB
+    image: ubuntu-14-04-x32
+    location: London 1
 
 Providers
 ---------
 
+.. note:: Replace ``yb`` with your *Company Abbreviation* (:doc:`checklist`)
+
+Log into your Digital Ocean Control Panel and *Generate new token* in the *API*
+section.  The *Personal Access Token* is used in the ``personal_access_token``
+field (see below).
+
 ::
 
-  vim ~/repo/dev/module/deploy/salt-cloud/cloud.providers
+  vim ~/repo/dev/module/deploy/salt-cloud/yb.providers.conf
 
 ::
 
   digitalocean:
-    client_key: the-client-key
-    api_key: the-api-key
-    provider: digital_ocean
-    location: Amsterdam 1
+    driver: digital_ocean
+    personal_access_token: your-personal-access-token
+    location: London 1
+    ssh_key_file: /root/.ssh/id_rsa.pub
     ssh_key_name: name-of-my-key.pub
 
-The ``name-of-my-key.pub`` will look similar to this:: ``root@euston.pub`` (where
-``euston`` is the host name of my workstation.
+The ``name-of-my-key.pub`` is the same name as you entered in the Digital Ocean
+Control Panel (see above).
 
 .. warning::
 
   The actual **name** must match... so if the name of the key in the Digital
-  Ocean GUI is ``name-of-my-key.pub``, then this must match the value contained
-  in ``ssh_key_name`` in ``cloud.providers``.
+  Ocean Control Panel is ``name-of-my-key.pub``, then this must match the value
+  contained in ``ssh_key_name`` in ``yb.providers.conf``.
 
 Usage
 =====
 
-To create a server called ``drop-temp`` (replace ``patrick`` with your own
-name)::
+To create a server called ``drop-temp``::
 
   sudo -i
-  salt-cloud \
-      --profiles=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles \
-      --providers-config=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers \
-      --profile droplet_512 \
-      drop-temp
+  salt-cloud -p droplet_512 drop-temp
 
-.. tip::
+.. tip:: For logging, add ``--log-level=debug`` to the ``salt-cloud`` command.
 
-  To get some logging, add ``--log-level=debug`` to the ``salt-cloud`` command.
-
-.. note::
-
-  Take a note of the IP address of the newly created server
+.. note:: Take a note of the IP address of the newly created server
 
 To log into the server::
 
@@ -95,11 +97,7 @@ Locations
 To list all locations for a provider (in this example for ``digitalocean``)::
 
   sudo -i
-  salt-cloud \
-    --profiles=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles \
-    --providers-config=/home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers \
-    --list-location \
-    digitalocean
+  salt-cloud --list-location digitalocean
 
 .. note::
 

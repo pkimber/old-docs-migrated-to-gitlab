@@ -3,6 +3,8 @@ Salt Cloud - Install
 
 .. highlight:: bash
 
+.. important:: These instructions should install version 2015.8.3 (Beryllium)
+
 Install::
 
   sudo apt-get install build-essential python-m2crypto sshpass python-software-properties
@@ -10,25 +12,36 @@ Install::
   sudo apt-get update
   sudo apt-get install salt-cloud
 
-On OSX::
+If the instructions above do not install version 2015.8.3, then try this::
 
-  brew install swig
-  mkvirtualenv create_cloud_server
-  pip install M2Crypto
-  brew install https://raw.github.com/eugeneoden/homebrew/eca9de1/Library/Formula/sshpass.rb
+  sudo -i
+  wget -O - https://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+
+Add the following line to ``/etc/apt/sources.list``::
+
+  # vim /etc/apt/sources.list
+  deb http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest trusty main
+
+  sudo apt-get update
+  sudo apt-get install salt-cloud
 
 Configuration files
 -------------------
 
-The configuration files are kept securely and should
-**never be copied to a public repository e.g. DropBox, GitHub or BitBucket**
-(replace ``patrick`` with your own name)::
+.. warning:: The configuration files are kept securely and should **never be
+             copied to a public repository e.g. DropBox, GitHub or BitBucket**
+
+.. note:: Replace ``patrick`` with your *User Name* (:doc:`checklist`)
+
+.. note:: Replace ``yb`` with your *Company Abbreviation* (:doc:`checklist`)
+
+::
 
   sudo -i
   cd /etc/salt/cloud.profiles.d/
-  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/cloud.profiles .
+  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/yb.profiles.conf .
   cd /etc/salt/cloud.providers.d/
-  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/cloud.providers .
+  sudo ln -s /home/patrick/repo/dev/module/deploy/salt-cloud/yb.providers.conf .
 
 Create a Server
 ===============

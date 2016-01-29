@@ -6,6 +6,19 @@
 Deploy Django projects using SaltStack
 **************************************
 
+.. important:: Our aim is to create simple step-by-step documentation for
+               implementing a feature or service in the *KB* way.  The notes
+               should not try and explain the *reason why* or alternative
+               strategies.  They will assume basic competency in development,
+               the linux command line and sys-admin.
+
+Sales
+
+.. toctree::
+   :maxdepth: 1
+
+   sales
+
 Process
 
 .. toctree::
@@ -78,23 +91,30 @@ Development
 .. toctree::
    :maxdepth: 1
 
+   dev-journal
+
+   learning
    dev-env
    dev-captcha
    dev-ckeditor
    dev-codemirror
+   dev-debug
    dev-debug-toolbar
    dev-django
    dev-django-media
    dev-django-migrations
    dev-django-static
    dev-django-thumbnails
-   dev-icons
+   dev-elasticsearch
+   dev-git
+   dev-grunt
    dev-logging
    dev-pagination
    dev-rest-framework
    dev-requirements
    dev-restore
    dev-s3
+   dev-scripts
    dev-sitemap
    dev-social
    dev-testing
@@ -108,7 +128,9 @@ Apps
 
    app-base
    app-block
+   app-blog
    app-booking
+   app-checkout
    app-compose
    app-crm
    app-enquiry

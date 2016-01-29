@@ -1,9 +1,7 @@
 Salt Master
 ***********
 
-.. note::
-
-  A Salt master starts life as a minion.
+.. note:: A Salt master starts life as a minion.
 
 To create the minion (which will become a master), follow the instructions in
 :doc:`salt-cloud-install`, followed by :doc:`salt-cloud-digitalocean` or
@@ -38,34 +36,30 @@ Configuration
 Then re-start the salt master::
 
   restart salt-master
-  # or:
-  sudo /etc/init.d/salt-master restart
 
 Check out the ``sls`` and pillar files from your repository so they are in the
-following folder structure:
-
-::
+following folder structure::
 
   ├── srv
   │   ├── pillar
-  |   │   ├── db
-  |   │   ├── global
-  |   │   ├── README.rst
-  |   │   ├── service
-  |   │   ├── sites
-  |   │   └── top.sls
+  │   │   ├── db
+  │   │   ├── global
+  │   │   ├── README.rst
+  │   │   ├── service
+  │   │   ├── sites
+  │   │   └── top.sls
   │   ├── salt
-  |   │   ├── db
-  |   │   ├── default
-  |   │   ├── devpi
-  |   │   ├── nginx
-  |   │   ├── README.rst
-  |   │   ├── solr
-  |   │   ├── ssh
-  |   │   ├── supervisor
-  |   │   ├── top.sls
-  |   │   ├── uwsgi
-  |   │   └── web
+  │   │   ├── db
+  │   │   ├── default
+  │   │   ├── devpi
+  │   │   ├── nginx
+  │   │   ├── README.rst
+  │   │   ├── solr
+  │   │   ├── ssh
+  │   │   ├── supervisor
+  │   │   ├── top.sls
+  │   │   ├── uwsgi
+  │   │   └── web
   │   └── ssl
 
 Provision

@@ -43,6 +43,10 @@ On the server as user ``web``::
 
 .. tip:: Check the ``out.log`` file for import issues.
 
+If required, set the owner of the database tables::
+
+  psql -X -U postgres -d hatherleigh_info_test -c "REASSIGN OWNED BY another_owner TO hatherleigh_info"
+
 Files
 =====
 

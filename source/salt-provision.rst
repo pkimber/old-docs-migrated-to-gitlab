@@ -22,15 +22,15 @@ Add the IP address of your master::
 
   1.2.3.4 salt
 
-Restart the minion::
-
-  stop salt-minion
-  start salt-minion
-
 .. note::
 
   If your server is going to be a master, then the master IP address will be
   ``localhost``.
+
+Restart the minion::
+
+  stop salt-minion
+  start salt-minion
 
 Log into your Salt Master as yourself (make sure you exit the ``root`` session
 from the previous step).  Accept the key for the new minion and make sure the

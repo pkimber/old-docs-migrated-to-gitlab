@@ -18,13 +18,36 @@ Add the following to ``requirements/base.txt``::
 Create a ``celery.py`` file in the ``project`` folder::
 
   # -*- encoding: utf-8 -*-
+  from __future__ import absolute_import
+
+  import os
+
   from celery import Celery
+
+  # set the default Django settings module for the 'celery' program.
+  os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 
   from django.conf import settings
 
   app = Celery('project')
+
+  # Using a string here means the worker will not have to
+  # pickle the object when using Windows.
   app.config_from_object('django.conf:settings')
   app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+
+If you are using Opbeat in your project (see :doc:`monitor` and
+`Opbeat and Celery`_), then add the following to your ``celery.py`` file::
+
+  from opbeat.contrib.django.models import client, logger, register_handlers
+  from opbeat.contrib.celery import register_signal
+
+  try:
+      register_signal(client)
+  except Exception as e:
+      logger.exception('Failed installing celery hook: %s' % e)
+      if 'opbeat.contrib.django' in settings.INSTALLED_APPS:
+          register_handlers()
 
 Add the following to your ``project/__init__.py`` file::
 
@@ -150,4 +173,5 @@ To purge existing tasks::
 
 
 .. _`How do I get the task ID`: http://celery.readthedocs.org/en/latest/faq.html#how-can-i-get-the-task-id-of-the-current-task
-.. _`Using Celery with Django`: http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html#using-celery-with-django
+.. _`Opbeat and Celery`: https://opbeat.com/docs/articles/get-started-with-django/#celery
+.. _`Using Celery with Django`: http://celery.readthedocs.org/en/latest/django/first-steps-with-django.html#django-first-steps

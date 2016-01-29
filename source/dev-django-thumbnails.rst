@@ -50,6 +50,10 @@ In your templates:
   {% load thumbnail %}
   <img src="{% thumbnail story.picture 100x100 crop %}" />
 
+.. tip:: We have found that ``crop='center'`` works consistently to fix the
+         size given - whereas ``autocrop`` does not always seem to do that
+         e.g. ``{% thumbnail picture.image 1024x340  crop='center' %}``.
+
 The easy thumbnail module creates a new image alongside your current image
 e.g:
 

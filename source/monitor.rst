@@ -18,7 +18,7 @@ Requirements:
 
 .. tip:: Find the version number in :doc:`dev-requirements`
 
-In ``settings/base.py`` for a project::
+In ``settings/base.py`` for the project::
 
   THIRD_PARTY_APPS = (
       'opbeat.contrib.django',
@@ -39,7 +39,7 @@ In ``settings/base.py`` for a project::
           the same file handlers and has a ``mysite`` section (which I don't
           understand).
 
-In ``settings/dev_test.py``::
+In ``settings/local.py``::
 
   OPBEAT['APP_ID'] = None
 

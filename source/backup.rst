@@ -321,6 +321,12 @@ from ``20141125T112710Z``::
    available... this is a known bug with Duplicity to do with permissions. See:
    `Why do I get an 'Operation not permitted'`_
 
+Usage
+=====
+
+To check the usage on your rsync.net account, follow the :ref:`rsync_usage`
+instructions...
+
 
 .. _`Generating SSH Keys for Automated Backups`: http://www.rsync.net/resources/howto/ssh_keys.html
 .. _`How To Use Duplicity with GPG to Securely Automate Backups on Ubuntu`: https://www.digitalocean.com/community/tutorials/how-to-use-duplicity-with-gpg-to-securely-automate-backups-on-ubuntu

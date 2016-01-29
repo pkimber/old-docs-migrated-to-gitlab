@@ -10,12 +10,26 @@ If you find Celery wants to use AMQP (``amqp/transport.py``,
 contains ``from .celery import app as celery_app``.  For more information, see
 :doc:`celery`.
 
+cron
+====
+
+If a cron script in ``/etc/cron.d`` has a ``.`` in the file name, then it will
+not run! (`configs with dots in file name not working in /etc/cron.d`_)
+
 devpi
 =====
 
 I was getting SSL ``certificate verify failed`` errors when using ``devpi``
 (which uses ``httpie`` and ``requests``).  To solve the issue, use ``devpi``
-with a python 3 virtual environment (not python 3).
+with a python 3 virtual environment (not python 2).
+
+Index
+-----
+
+If you have a local PyPI server, and you **do not** want to use it, then
+comment out ``index-url`` in::
+
+  ~/.pip/pip.conf
 
 Django Compressor
 =================
@@ -133,6 +147,28 @@ This is a general error.  Find the cause by looking in the following files::
   tail -f /var/log/nginx/error.log
   # check the log files in:
   tail -f /var/log/supervisor/
+
+``bind() to 0.0.0.0:80 failed``
+-------------------------------
+
+``nginx`` won't start and ``/var/log/nginx/error.log`` shows::
+
+  [emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)
+  [emerg] 15405#0: bind() to 0.0.0.0:443 failed (98: Address already in use)
+
+When I stopped the nginx service, I could still see the ports being used::
+
+  lsof -i :80
+  lsof -i :443
+
+From `bind() to 0.0.0.0:80 failed`_, killing the users of the port, sorted the
+issue::
+
+  sudo fuser -k 80/tcp
+  sudo fuser -k 443/tcp
+
+.. note:: I am not over happy about this solution.  But... I guess the
+          processes were started somehow and had not been stopped?
 
 PostgreSQL
 ==========
@@ -271,3 +307,9 @@ Then::
 
 The version of ``uwsgi`` can be found in
 https://github.com/pkimber/salt/blob/master/uwsgi/requirements3.txt
+
+
+.. _`configs with dots in file name not working in /etc/cron.d`: https://bugs.launchpad.net/ubuntu/+source/cron/+bug/706565
+
+`bind() to 0.0.0.0:80 failed`
+https://easyengine.io/tutorials/nginx/troubleshooting/emerg-bind-failed-98-address-already-in-use/

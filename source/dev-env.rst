@@ -28,9 +28,11 @@ python development::
   sudo apt-get install libtiff4-dev
   # for ubuntu 14.10
   sudo apt-get install libtiff5-dev
+  # for readline
+  sudo apt-get install libncurses5-dev
 
   # if you have issues with setuptools e.g. Requirement.parse('setuptools>=0.8'))
-  sudo wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python
+  wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 
 Postgres::
 
@@ -39,6 +41,19 @@ Postgres::
 Redis::
 
   sudo apt-get install redis-server
+
+python
+======
+
+::
+
+  sudo easy_install pip
+  sudo pip install virtualenv
+
+To create a ``virtualenv``::
+
+  virtualenv --python=python3.4 myvenv
+  source myvenv/bin/activate
 
 bash and zsh
 ============
@@ -175,10 +190,13 @@ URL and documentation for my open source apps are here:
 - :doc:`app-base`
 - :doc:`app-block`
 - :doc:`app-booking`
-- :doc:`app-cms`
+- :doc:`app-checkout`
+- :doc:`app-compose`
 - :doc:`app-crm`
 - :doc:`app-enquiry`
+- :doc:`app-finance`
 - :doc:`app-invoice`
+- :doc:`app-job`
 - :doc:`app-login`
 - :doc:`app-mail`
 - :doc:`app-pay`

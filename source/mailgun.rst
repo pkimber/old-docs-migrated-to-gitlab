@@ -17,8 +17,13 @@ the DNS records e.g:
 
 .. image:: ./misc/mailgun-dns.jpg
 
+.. warning:: If Mailgun asks you to create a ``TXT`` record with your domain
+             name appended e.g. ``k1._domainkey.hatherleigh.info``, then the
+             name should be entered without the domain name
+             e.g. ``k1._domainkey``.
+
 Using https://mailgun.com/cp/routes, create a route for your Mailgun domain
-(change ``pkimber.net`` to the domain name of your own site)::
+(change ``hatherleigh.info`` to the domain name of your own site)::
 
   Priority              0
   Filter Expressions    match_recipient(".*@hatherleigh.info")
@@ -31,7 +36,7 @@ Using https://mailgun.com/cp/routes, create a route for your Mailgun domain
 If you want to forward the email to an existing account, just replace the
 action above with a simple forward to your email address e.g::
 
-  Actions               forward("patrick@gmail.com")
+  Actions               forward("you@yourbiz.co.uk")
 
 Project
 =======

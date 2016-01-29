@@ -3,20 +3,49 @@ Deploy
 
 .. highlight:: bash
 
-.. note::
+.. note:: Before deploying your site, you need to release the code.  If you
+          have not done this, check out the :doc:`fabric-release` instructions.
 
-  Before deploying your site, you need to release the code.  If you have not
-  done this, check out the :doc:`fabric-release` instructions...
+.. note:: The fabric ``deploy`` command opens the pages on the web site using
+          the Chrome browser.  For this to work you need to install the Chrome
+          web driver: `Chrome WebDriver for Selenium`_
 
-To deploy your project to a test site (in this example for the site ``hatherleigh_info``)::
+.. _`Chrome WebDriver for Selenium`: https://www.pkimber.net/howto/testing/selenium/chrome.html
+
+To deploy your project to a test site (in this example for the site
+``hatherleigh_info``)::
 
   cd fabric
   fab test:hatherleigh_info deploy:0.0.19
 
-To deploy your project to a live site (in this example for the site ``hatherleigh_info``)::
+To deploy your project to a live site (in this example for the site
+``hatherleigh_info``)::
 
   cd fabric
   fab live:hatherleigh_info deploy:0.0.19
+
+Test
+====
+
+The ``deploy`` command will open the pages in the site map in the Chrome
+browser.
+
+To run these tests without deploying the site::
+
+  fab live:hatherleigh_info ok
+
+To open additional pages, add them to the ``deploy/test/`` folder for the site
+e.g::
+
+  ~/repo/dev/module/deploy/test/hatherleigh_info.yaml
+
+.. code-block:: yaml
+
+  urls:
+  - url:
+    title: Hatherleigh Information
+  - url: accounts/login
+    title: Login
 
 Issues
 ======

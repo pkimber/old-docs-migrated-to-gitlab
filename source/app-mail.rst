@@ -15,7 +15,9 @@ Requirements
 
 Add the following to ``requirements/base.txt``::
 
-  djrill==1.3.0
+  djrill
+
+.. tip: See :doc:`requirements` for the current version.
 
 Add the mail app to ``requirements/local.txt``::
 
@@ -33,18 +35,12 @@ In your ``settings/base.py``, add ``mail`` to your apps e.g::
 
 And add the default from address::
 
-  DEFAULT_FROM_EMAIL = 'notify@pkimber.net'
+  DEFAULT_FROM_EMAIL = 'patrick@kbsoftware.co.uk'
 
-And add the setting for the mail template type::
-
-  # See the list of constants at the top of 'mail.models'
-  MAIL_TEMPLATE_TYPE = 'django'
-
-For Mandrill::
+For Mandrill, add the following to ``settings/production.py``::
 
   # mandrill
   EMAIL_BACKEND = 'djrill.mail.backends.djrill.DjrillBackend'
-  MAIL_TEMPLATE_TYPE = 'mandrill'
   MANDRILL_API_KEY = get_env_variable('MANDRILL_API_KEY')
   MANDRILL_USER_NAME = get_env_variable('MANDRILL_USER_NAME')
 
@@ -95,6 +91,10 @@ cron command e.g::
 Usage
 =====
 
+.. important:: The ``slug`` value for the template name should always be in
+               lower case.  We will make all Mandrill template names lower case
+               - using underscores instead of a space.
+
 Create a mail template::
 
   from django.conf import settings
@@ -114,7 +114,7 @@ Create a mail template::
           "{{ TOTAL }} total value of the transaction."
       ),
       False,
-      settings.MAIL_TEMPLATE_TYPE,
+      MailTemplate.MANDRILL,
       subject='Thank you for your payment',
       description="We will send you the course materials.",
   )
@@ -122,7 +122,7 @@ Create a mail template::
 Queue the email:
 
 .. note:: In the examples below, ``self.object`` is an object which the email
-          address will be linked to.
+          will be linked to.
 
 To queue an email without using a template::
 
@@ -171,3 +171,16 @@ To send email, use the ``mail_send`` management command e.g:
 .. code-block:: bash
 
   django-admin.py mail_send
+
+Testing
+=======
+
+.. warning:: Only run the following command on a test site.  It will **mark all
+             emails as sent** (which you wouldn't want on a live site)!
+
+This will mark **all emails as sent**::
+
+  from django.utils import timezone
+  from mail.models import Mail
+
+  Mail.objects.filter(sent__isnull=True).update(sent=timezone.now())

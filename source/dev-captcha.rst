@@ -3,6 +3,8 @@ Captcha
 
 .. highlight:: python
 
+For documentation, see https://github.com/praekelt/django-recaptcha
+
 Sign up to reCAPTCHA on https://www.google.com/recaptcha/admin.
 
 You will receive a site key and a secret key...
@@ -25,18 +27,21 @@ site (remember - a test site might have a different domain name e.g:
 
 Add the following to ``requirements/base.txt``::
 
-  django-nocaptcha-recaptcha==0.0.15
+  django-recaptcha
+
+.. tip: See :doc:`requirements` for the current version.
 
 Add the following to ``settings/base.py``::
 
   THIRD_PARTY_APPS = (
-      'nocaptcha_recaptcha',
+      'captcha',
       # ...
   )
 
-  # https://github.com/ImaginaryLandscape/django-nocaptcha-recaptcha
-  NORECAPTCHA_SITE_KEY = get_env_variable('NORECAPTCHA_SITE_KEY')
-  NORECAPTCHA_SECRET_KEY = get_env_variable('NORECAPTCHA_SECRET_KEY')
+  # https://github.com/praekelt/django-recaptcha
+  NOCAPTCHA = True
+  RECAPTCHA_PRIVATE_KEY = get_env_variable('NORECAPTCHA_SECRET_KEY')
+  RECAPTCHA_PUBLIC_KEY = get_env_variable('NORECAPTCHA_SITE_KEY')
 
 When setting up your project for local development, you will need to set-up the
 environment variables as follows (can be added to ``.private``):
@@ -51,19 +56,11 @@ environment variables as follows (can be added to ``.private``):
 
 To add a captcha field to your form::
 
-  from nocaptcha_recaptcha.fields import NoReCaptchaField
+  from captcha.fields import ReCaptchaField
 
   class EnquiryForm(RequiredFieldForm):
 
-      captcha = NoReCaptchaField()
-
-Add the following JavaScript to the template:
-
-.. code-block:: javascript
-
-  {% block script_extra %}
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  {% endblock script_extra %}
+      captcha = ReCaptchaField()
 
 To test a view containing a form::
 
@@ -80,7 +77,7 @@ To test a view containing a form::
   class TestCase(TestCase):
 
       def setUp(self):
-          os.environ['NORECAPTCHA_TESTING'] = 'True'
+          os.environ['RECAPTCHA_TESTING'] = 'True'
 
       def test_envvar_enabled(self):
           form_params = {'g-recaptcha-response': 'PASSED'}
@@ -88,10 +85,10 @@ To test a view containing a form::
           self.assertTrue(form.is_valid())
 
       def test_envvar_disabled(self):
-          os.environ['NORECAPTCHA_TESTING'] = 'False'
+          os.environ['RECAPTCHA_TESTING'] = 'False'
           form_params = {'g-recaptcha-response': 'PASSED'}
           form = TestForm(form_params)
           self.assertFalse(form.is_valid())
 
       def tearDown(self):
-          del os.environ['NORECAPTCHA_TESTING']
+          del os.environ['RECAPTCHA_TESTING']

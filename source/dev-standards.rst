@@ -3,8 +3,49 @@ Standards
 
 .. highlight:: python
 
-This document is a **very** good starting point:
-`Django models, encapsulation and data integrity`_
+These documents are **very** good starting points:
+
+- `Django models, encapsulation and data integrity`_
+- `Open Sourcing a Python Project the Right Way`_
+
+Code
+====
+
+.. important:: We are going to start by aiming for 70% test coverage for an app
+               and 50% for a project.
+               Useful to bear this in mind `Changing the Metrics Conversation`_
+
+Add the following to ``requirements/local.txt``::
+
+  pytest-cov
+  pytest-flakes
+  pytest-pep8
+
+Add configuration for flakes e.g in ``setup.cfg``::
+
+  [pytest]
+  addopts= --cov-report html --reuse-db
+  DJANGO_SETTINGS_MODULE = settings.dev_test
+  norecursedirs = .git venv-*
+  # 1. migrations always import models
+  # 2. custom settings files e.g. 'dev_patrick.py' do 'from .base import *'
+  # 3. 'test_view_perm.py' py.test fixtures conflict with pyflakes
+  flakes-ignore =
+      block/migrations/* UnusedImport
+      example_block/dev_*.py ImportStarUsed
+      test_view_perm.py UnusedImport RedefinedWhileUnused
+
+.. important:: Change ``block`` to the correct path for your app or project.
+
+To check the code::
+
+  py.test --flakes
+  py.test --pep8
+
+Release
+
+- (not sure if this project is any good).  If it is... check with
+  https://github.com/mgedmin/check-manifest
 
 Dashboard
 =========
@@ -64,7 +105,10 @@ From `PEP 257 - Docstring Conventions - Multi-line Docstrings`_::
           return complex_zero
 
 I think I agree with most of the examples in this document:
-:download:`misc/pep8_cheat.pdf`
+:download:`misc/pep8_cheat.pdf`.
+
+I also like some of the ideas in `Elements of Python Style`_.  We can watch and
+see if it becomes accepted.
 
 Icons
 =====
@@ -74,10 +118,20 @@ http://fontawesome.io/icon/calendar/::
   usage         calendar/booking
   icon          <i class="fa fa-calendar"></i>
 
+http://fontawesome.io/icon/check/::
+
+  usage         tick
+  icon          <i class="fa fa-check"></i>
+
 http://fontawesome.io/icon/cloud-download/::
 
   usage         download
   icon          <i class="fa fa-cloud-download"></i>
+
+http://fontawesome.io/icon/envelope-o/::
+
+  usage         mail
+  icon          <i class="fa fa-envelope-o"></i>
 
 http://fontawesome.io/icon/exclamation-triangle/::
 
@@ -89,6 +143,16 @@ http://fontawesome.io/icon/external-link/::
   usage         external link
   icon          <i class="fa fa-external-link"></i>
 
+http://fontawesome.io/icon/file-code-o/::
+
+  usage         template - html
+  icon          <i class="fa fa-file-code-o"></i>
+
+http://fontawesome.io/icon/header/::
+
+  usage         header/footer
+  icon          <i class="fa fa-header"></i>
+
 http://fontawesome.io/icon/home/::
 
   usage         home
@@ -99,10 +163,20 @@ http://fontawesome.io/icon/pencil-square-o/::
   usage         edit
   icon          <i class="fa fa-edit"></i>
 
+http://fontawesome.io/icon/phone/::
+
+  usage         phone
+  icon          <i class="fa fa-phone"></i>
+
 http://fontawesome.io/icon/plus/::
 
   usage         add
   icon          <i class="fa fa-plus"></i>
+
+http://fontawesome.io/icon/refresh/::
+
+  usage         retry
+  icon          <i class="fa fa-refresh"></i>
 
 http://fontawesome.io/icon/reply/::
 
@@ -114,10 +188,21 @@ http://fontawesome.io/icon/shopping-cart/::
   usage         money/payments
   icon          <i class="fa fa-shopping-cart"></i>
 
+http://fontawesome.io/icon/file-text-o/::
+
+  usage         page
+  icon          <i class="fa fa-file-text-o"></i>
+
+http://fontawesome.io/icon/tachometer/::
+
+  usage         dashboard
+  icon          <i class="fa fa-tachometer"></i>
+
 http://fontawesome.io/icon/trash-o/::
 
   usage         delete
   icon          <i class="fa fa-trash-o"></i>
+  or...         <i class="fa fa-times"></i>
 
 Model
 =====
@@ -193,6 +278,13 @@ Table
 Template
 ========
 
+Date
+----
+
+Short date e.g. ``05/09/2015 13:30``::
+
+  {{ item.checkout_date|date:'d/m/Y H:i' }}
+
 Tags
 ----
 
@@ -240,8 +332,11 @@ pattern*...
           debug on errors.
 
 
+.. _`Changing the Metrics Conversation`: https://www.thoughtworks.com/insights/blog/changing-metrics-conversation
 .. _`Coding Conventions`: https://django-party-pack.readthedocs.org/en/latest/conventions.html#using-the-url-function
 .. _`Django models, encapsulation and data integrity`: http://www.dabapps.com/blog/django-models-and-encapsulation/
+.. _`Elements of Python Style`: https://github.com/amontalenti/elements-of-python-style
+.. _`Factory Boy`: https://github.com/rbarrois/factory_boy
+.. _`Open Sourcing a Python Project the Right Way`: http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/
 .. _`PEP 257 - Docstring Conventions - Multi-line Docstrings`: https://www.python.org/dev/peps/pep-0257/#multi-line-docstrings
 .. _`Two Scoops of Django`: http://twoscoopspress.org/products/two-scoops-of-django-1-6
-.. _`Factory Boy`: https://github.com/rbarrois/factory_boy

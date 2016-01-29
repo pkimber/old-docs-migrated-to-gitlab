@@ -1,7 +1,7 @@
 compose
 *******
 
-.. highlight:: html
+.. highlight:: python
 
 https://github.com/pkimber/compose
 
@@ -10,6 +10,13 @@ administrator to create new pages and sections.
 
 Compose
 =======
+
+To use the predefined content models in the ``compose`` app, add the following
+to ``project/urls.py``::
+
+  url(regex=r'^compose/',
+      view=include('compose.urls.compose')
+      ),
 
 Article
 -------
@@ -71,3 +78,32 @@ Add this section to the template ``compose/page_feature.html`` created above
 (*Dashboard | *Template*)
 
 You can now manage the content on this page using design mode.
+
+News (including Twitter)
+========================
+
+To add the news section to the article template...
+
+Add ``humanize`` to ``DJANGO_APPS``::
+
+  DJANGO_APPS = (
+      'django.contrib.humanize',
+
+Add the news section to the article template::
+
+  django-admin.py init_app_compose_news
+
+Override the view where you want to display the news and Twitter feed.  Return
+your ``twitter`` user name e.g::
+
+  from block.views import (
+      CmsMixin,
+      PageTemplateView,
+  )
+
+  class CmsHomePageView(CmsMixin, PageTemplateView):
+
+      def get_context_data(self, **kwargs):
+          context = super().get_context_data(**kwargs)
+          context.update(dict(twitter='pkimber'))
+          return context
