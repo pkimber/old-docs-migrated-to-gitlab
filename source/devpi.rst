@@ -32,7 +32,7 @@ The second piece of information required in your pillar is the configuration of
 .. code-block:: yaml
 
   pip:
-    index_url: http://devpi.yourbiz.co.uk/kb/dev/+simple/
+    index_url: http://devpi.yourbiz.co.uk/bz/dev/+simple/
 
 Prerequisites
 =============
@@ -70,10 +70,9 @@ To configure http://doc.devpi.net/ after Salt has installed it on your server,
 run the following commands on your workstation::
 
   # virtual environment
-  pyvenv-3.4 --without-pip venv-devpi-client
+  virtualenv --python=python3.4 venv-devpi-client
   source venv-devpi-client/bin/activate
-  wget https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
-  python get-pip.py
+  pip install --upgrade pip
 
   pip install devpi-client
 
@@ -98,6 +97,9 @@ To log in later::
 Development Index
 -----------------
 
+.. note:: The user you create is used in the devpi URL e.g. for user ``bz`` the
+          devpi URL will be https://devpi.yourbiz.co.uk/bz/dev
+
 We need to create a user and an index for the user so we can upload our own
 packages (in this example, the user is ``bz``)::
 
@@ -107,20 +109,20 @@ packages (in this example, the user is ``bz``)::
   devpi login bz --password "789"
   devpi index -c dev volatile=False
 
-Note: To delete the index: ``devpi index --delete dev``
+.. note:: To delete the index: ``devpi index --delete dev``
 
 Client
 ======
 
 To configure your workstation to use ``devpi`` as it's default index::
 
-  devpi use https://devpi.yourbiz.co.uk/kb/dev/ --set-cfg
+  devpi use https://devpi.yourbiz.co.uk/bz/dev/ --set-cfg
 
 .. note:: I don't know how to set the ``username`` or ``password``
 
 To remove the index (not sure if this works)::
 
-  devpi use https://devpi.yourbiz.co.uk/kb/dev/ --delete
+  devpi use https://devpi.yourbiz.co.uk/bz/dev/ --delete
 
 
 .. To configure your workstation to use ``devpi`` as it's default index::
@@ -130,7 +132,7 @@ To remove the index (not sure if this works)::
 .. ::
 ..
 ..   [global]
-..   index-url = https://devpi.yourbiz.co.uk/kb/dev/+simple/
+..   index-url = https://devpi.yourbiz.co.uk/bz/dev/+simple/
 ..
 .. To configure your workstation to upload packages to the ``devpi`` index you
 .. created above::
@@ -144,7 +146,7 @@ To remove the index (not sure if this works)::
 ..       dev
 ..
 ..   [dev]
-..   repository: https://devpi.yourbiz.co.uk/kb/dev/
+..   repository: https://devpi.yourbiz.co.uk/bz/dev/
 ..   username: bz
 ..   password: 789
 
@@ -193,7 +195,7 @@ If the release procedure (``python setup.py clean sdist upload -r dev``) starts
 to throw some weird errors e.g::
 
   running upload
-  Submitting dist/pkimber-my-app-0.0.03.tar.gz to http://your.server/kb/dev/
+  Submitting dist/pkimber-my-app-0.0.03.tar.gz to http://your.server/bz/dev/
   error: None
 
 ... then check the nginx error logs on the server::
