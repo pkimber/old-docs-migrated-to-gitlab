@@ -5,6 +5,9 @@ enquiry
 
 https://github.com/pkimber/enquiry
 
+.. note:: The ``enquiry`` app will send emails to the list of users set-up in
+          the notify list in admin.
+
 Install
 =======
 
