@@ -97,6 +97,37 @@ To extend the block menu in your project::
   <!-- this block will below the pages and above logout-->
   {% block menu_extra %}
 
+Testing
+=======
+
+To test a view with a custom page with this URL::
+
+  url(regex=r'^contact/$',
+      view=EnquiryCreateView.as_view(),
+      kwargs=dict(page=Page.CUSTOM, menu='contact'),
+      name='web.contact'
+      ),
+
+You need to create the ``Page`` with a factory e.g::
+
+  from block.models import Page
+  from block.tests.factories import (
+      PageFactory,
+      TemplateFactory,
+  )
+
+  @pytest.mark.django_db
+  def test_contact(client):
+      PageFactory(
+          is_custom=True,
+          slug=Page.CUSTOM,
+          slug_menu='contact',
+          template=TemplateFactory(template_name='web/page_panelled.html'),
+      )
+      url = reverse('web.contact')
+      r = client.get(url)
+      assert 200 == r.status_code
+
 URL
 ===
 
