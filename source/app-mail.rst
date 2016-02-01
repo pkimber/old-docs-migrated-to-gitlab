@@ -175,6 +175,32 @@ To send email, use the ``mail_send`` management command e.g:
 Testing
 =======
 
+Unit Testing
+------------
+
+Pick some code from the following (just a quick reference)::
+
+  from mail.models import Message
+
+  MailTemplateFactory(slug=Enrol.MAIL_TEMPLATE_CHARGE)
+  NotifyFactory()
+
+  # check email template context
+  assert 1 == Message.objects.count()
+  message = Message.objects.first()
+  assert 1 == message.mail_set.count()
+  mail = message.mail_set.first()
+  assert 4 == mail.mailfield_set.count()
+  assert {
+      'description': '2 of 3 instalments',
+      'enrol_description': '1 x Apple @ 100.00',
+      'name': enrol.checkout_name,
+      'total': '£{:.2f}'.format(Decimal('50.00')),
+  } == {f.key: f.value for f in mail.mailfield_set.all()}
+
+Maintenance
+-----------
+
 .. warning:: Only run the following command on a test site.  It will **mark all
              emails as sent** (which you wouldn't want on a live site)!
 

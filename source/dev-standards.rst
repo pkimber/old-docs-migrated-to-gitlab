@@ -219,6 +219,19 @@ The order of model inner classes and standard methods should be as follows
 - ``def get_absolute_url()``
 - Any custom methods
 
+Delete
+------
+
+Use a boolean field e.g::
+
+  deleted = models.BooleanField(default=False)
+
+With an option ``set_deleted`` method::
+
+  def set_deleted(self):
+      self.deleted = True
+      self.save()
+
 Pure
 ====
 

@@ -159,6 +159,9 @@ In your ``settings/base.py`` file, set-up the schedule e.g::
       },
   }
 
+.. warning:: If the tasks should only be run on a production system, then add
+             to ``settings/production.py``
+
 To start the cron queue on your development system::
 
   celery -A project beat --loglevel=info
