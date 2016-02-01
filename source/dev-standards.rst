@@ -225,11 +225,18 @@ Delete
 Use a boolean field e.g::
 
   deleted = models.BooleanField(default=False)
+  # optional date and user fields
+  date_deleted = models.DateTimeField(blank=True, null=True)
+  user_deleted = models.ForeignKey(
+      settings.AUTH_USER_MODEL, blank=True, null=True
+  )
 
 With an option ``set_deleted`` method::
 
-  def set_deleted(self):
+  def set_deleted(self, user):
       self.deleted = True
+      self.date_deleted = timezone.now()
+      self.user_deleted = user
       self.save()
 
 Pure
