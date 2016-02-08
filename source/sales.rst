@@ -4,6 +4,8 @@ Sales
 Pre-sales
 =========
 
+If possible, get a screen recording of the demo of any existing product.
+
 Design
 ------
 

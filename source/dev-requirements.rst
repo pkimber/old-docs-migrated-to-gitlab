@@ -33,12 +33,13 @@ Requirements::
   django-sendfile==0.3.9
   django-statsd-mozilla==0.3.14
   django-storages-redux
-  Django==1.8.8
+  Django==1.8.9
   djangorestframework==3.1.3
   djrill==1.4.0
   docutils==0.12
-  easy-thumbnails==2.2
+  easy-thumbnails==2.3
   elasticsearch==2.1.0
+  Flask==0.10.1
   hg+https://bitbucket.org/schinckel/django-jsonfield#egg=jsonfield
   iso8601==0.1.10
   lxml==3.4.4

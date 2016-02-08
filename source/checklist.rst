@@ -57,8 +57,8 @@ Email
 Standard Aliases
 ----------------
 
-::  
-  
+::
+
   abuse
   admin
   info
@@ -69,6 +69,8 @@ Standard Aliases
 Project
 =======
 
+:document:`sales`
+
 After Order
 -----------
 
@@ -76,6 +78,9 @@ Find out who owns and controls the name servers and DNS.
 
 Before Initial Deploy
 ---------------------
+
+Set-up the SEO details for each page: *Name*, *Meta description* and
+*Meta keywords*.
 
 Create a ``favicon.ico``.  See :ref:`static_favicon`
 

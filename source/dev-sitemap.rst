@@ -24,7 +24,7 @@ SiteMap
       url(regex=r'^sitemap\.xml$',
           view='django.contrib.sitemaps.views.sitemap',
           kwargs={'sitemaps': sitemaps},
-      ),
+          ),
 
   # settings/base.py
   DJANGO_APPS = (
