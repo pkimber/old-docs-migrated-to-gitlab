@@ -12,7 +12,9 @@ Requirements:
 
 .. tip:: Find the version number in :doc:`dev-requirements`
 
-``example/base.py`` for an app, ``settings/base.py`` for a project::
+In ``example/base.py`` for an app, ``settings/base.py`` for a project:
+
+.. code-block:: python
 
   THIRD_PARTY_APPS = (
       'rest_framework',
