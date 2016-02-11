@@ -1,9 +1,11 @@
 Adding Angular to Django Project
 ================================
 
-.. note:: This document is a work in progress!!
+.. warning:: This document is a work in progress!!
           This procedure does not use gulp or grunt as the tsd compiler has
           it's own watch mechanism
+
+.. note:: This document assumes that your angualr app is called 'app'
 
 After you have created your django project, create a directory for the angular 
 part of the project e.g. angular::
@@ -82,7 +84,7 @@ The npm version should be higher than 2.1.8
 As node v10 is sufficient, you can probably simply install your distro's
 packages e.g.::
 
-    sudo apt-get install nodejs).
+    sudo apt-get install nodejs
 
 It's also worth checking you have the latest npm::
 
