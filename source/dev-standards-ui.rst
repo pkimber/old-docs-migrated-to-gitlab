@@ -1,6 +1,9 @@
 UI Standards
 ************
 
+- Click here for :doc:`dev-standards`
+- Click here for :doc:`dev-standards-code`
+
 Dashboard
 =========
 

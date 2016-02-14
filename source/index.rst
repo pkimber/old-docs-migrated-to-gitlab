@@ -29,6 +29,7 @@ Process
    checklist
    monitor
    dev-standards
+   dev-standards-code
    dev-standards-ui
    dev-workflow
 
