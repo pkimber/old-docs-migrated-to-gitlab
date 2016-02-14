@@ -69,7 +69,7 @@ Standard Aliases
 Project
 =======
 
-:document:`sales`
+:doc:`sales`
 
 After Order
 -----------
