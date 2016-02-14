@@ -94,6 +94,7 @@ Development
    dev-journal
 
    learning
+   dev-angular2-with-django
    dev-env
    dev-captcha
    dev-ckeditor
