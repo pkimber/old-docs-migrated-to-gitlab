@@ -34,7 +34,7 @@ Requirements::
   django-statsd-mozilla==0.3.14
   django-storages-redux
   Django==1.8.9
-  djangorestframework==3.1.3
+  djangorestframework==3.3.2
   djrill==1.4.0
   docutils==0.12
   easy-thumbnails==2.3
