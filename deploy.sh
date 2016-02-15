@@ -5,4 +5,4 @@ set -u
 set -e
 # deploy
 make html
-rsync -av --delete --force --size-only ./build/html/ web@pkimber.net:/home/web/repo/project/www.pkimber.net/open/
+rsync -av --delete --force --size-only ./build/html/ web@kbsoftware.co.uk:/home/web/repo/project/www.kbsoftware.co.uk/docs/

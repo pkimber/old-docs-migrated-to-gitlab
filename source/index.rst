@@ -29,6 +29,8 @@ Process
    checklist
    monitor
    dev-standards
+   dev-standards-code
+   dev-standards-ui
    dev-workflow
 
 Master
@@ -94,6 +96,7 @@ Development
    dev-journal
 
    learning
+   dev-angular2-with-django
    dev-env
    dev-angular2-with-django
    dev-captcha
