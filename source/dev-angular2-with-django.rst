@@ -2,10 +2,12 @@ Adding Angular to Django Project
 ================================
 
 .. warning:: This document is a work in progress!!
-          This procedure does not use gulp or grunt as the tsd compiler has
-          it's own watch mechanism
+          This procedure does not currently use gulp or grunt as the tsc
+          compiler has it's own watch mechanism.
 
-.. note:: This document assumes that your angualr app is called 'app'
+.. note:: This document refers to an angular app in a directory called 'app'.
+          Substitute the name of you've given your angular app. Multiple apps
+          can created in the angular directory.
 
 After you have created your django project, create a directory for the angular 
 part of the project e.g. angular::
@@ -62,7 +64,7 @@ Create tsconfig.json as follows::
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "removeComments": false,
-      "noImplicitAny": false
+      "noImplicitAny": true
     },
     "exclude": [
       "node_modules"
@@ -86,31 +88,31 @@ packages e.g.::
 
     sudo apt-get install nodejs
 
-It's also worth checking you have the latest npm::
+After installing check that you have the latest npm::
 
     sudo npm install npm -g
 
-For the latest version of the nodejs tool chain see::
+Or see the nodejs_ website for details of the latest version of the tool chain
 
-  https://nodejs.org/en/download/package-manager/
 
-The install generates an error if typescript and tsd are only installed as
-local dependencies. If you don't have them installed already on your system,
-they can be installed as follows::
+At the time of writing the install generates an error if typescript and tsd are
+not installed globally.  If you don't have them installed already on your
+system, they can be installed as follows::
 
-    npm install -g typescript@^1.7.0
-    npm install -g tsd
+    sudo npm install -g typescript@^1.7.0
+    sudo npm install -g tsd
 
-Now install angular and dependancies::
-    
+Now install angular and dependancies listed in the package.json above::
+
     npm install
 
 Create your static directory for use by django::
 
     mkdir -p static/angular/jslib
     mkdir -p static/angular/app
-    
-Copy the modules needed for your project to the jslib directory::
+
+In order to use the static mechanism to serve the angular modules copy then
+from the node_modules directory to a directory called jslib::
 
     cp node_modules/es6-shim/es6-shim.min.js static/angular/jslib
     cp node_modules/systemjs/dist/system-polyfills.js static/angular/jslib
@@ -121,11 +123,11 @@ Copy the modules needed for your project to the jslib directory::
     cp node_modules/angular2/bundles/angular2.dev.js static/angular/jslib
     cp node_modules/angular2/bundles/http.dev.js static/angular/jslib
 
-The following are required for development, they should not be included in the
-distribution::
+The following are useful for development, they should not be included whens
+you distribute your project::
 
     cp node_modules/es6-shim/es6-shim.map static/angular/jslib
-    cp node_modules/systemjs/dist/system-polyfills.js static/angular/jslib
+    cp node_modules/systemjs/dist/system-polyfills.js.map static/angular/jslib
 
 Create your angular app directory (e.g. app)::
 
@@ -164,9 +166,15 @@ Using standard configuration your served template render this::
 
     System.paths["app/*"] = "/static/angular/app/*"
 
+Vim typescript syntax highlighting
+----------------------------------
+If you use Vim or GVim to enable syntax highlighting (assuming you have
+Pathogen_ and git_ installed) simply::
+
+    git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/bundle/typescript-vim
 
 
-
+    System.paths['app/*'] = '/static/angular/app/*'
 
 Useful further reading::
   https://lincolnloop.com/blog/simplifying-your-django-frontend-tasks-grunt/
@@ -178,6 +186,9 @@ Useful further reading::
 
 
 
+.. _nodejs: https://nodejs.org/en/download/package-manager/
+.. _Pathogen: https://github.com/tpope/vim-pathogen/
+.. _git: https://git-scm.com/
 
 
 Error when running npm install without typscript and tsd installed globally

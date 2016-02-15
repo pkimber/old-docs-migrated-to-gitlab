@@ -95,6 +95,7 @@ Development
 
    learning
    dev-env
+   dev-angular2-with-django
    dev-captcha
    dev-ckeditor
    dev-codemirror
